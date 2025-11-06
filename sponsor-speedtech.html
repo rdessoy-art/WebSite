@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speed Tech Racing - Harrison Dessoy Partner</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #e63946;
+            --secondary: #1d3557;
+            --accent: #f1faee;
+            --dark: #0a0a0a;
+            --light: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: var(--light);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--secondary) 100%);
+            color: var(--light);
+            padding: 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .back-link {
+            color: var(--light);
+            text-decoration: none;
+            padding: 0.5rem 1.5rem;
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+
+        .back-link:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .sponsor-hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--light);
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .sponsor-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .sponsor-hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .content-section {
+            margin-bottom: 4rem;
+        }
+
+        .content-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--secondary);
+            border-left: 5px solid var(--primary);
+            padding-left: 1rem;
+        }
+
+        .content-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .partnership-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .partnership-card {
+            background: var(--accent);
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 5px solid var(--primary);
+        }
+
+        .partnership-card h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .partnership-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .partnership-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .partnership-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .quote-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            color: var(--light);
+            padding: 3rem;
+            border-radius: 10px;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .quote-section blockquote {
+            font-size: 1.5rem;
+            font-style: italic;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .quote-section cite {
+            font-size: 1.1rem;
+            font-style: normal;
+        }
+
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-box {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 3px solid var(--accent);
+        }
+
+        .stat-box h3 {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-box p {
+            color: var(--secondary);
+            font-weight: 500;
+            margin: 0;
+        }
+
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            height: 250px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--secondary) 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light);
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .cta-section {
+            background: var(--accent);
+            padding: 3rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .cta-section h2 {
+            border: none;
+            padding: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--primary);
+            color: var(--light);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: 2px solid var(--primary);
+            margin: 0.5rem;
+        }
+
+        .cta-button:hover {
+            background: var(--secondary);
+            border-color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .tech-specs {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-top: 2rem;
+        }
+
+        .tech-specs h3 {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-specs table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .tech-specs th, .tech-specs td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--accent);
+        }
+
+        .tech-specs th {
+            background: var(--accent);
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        footer {
+            background: var(--dark);
+            color: var(--light);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .sponsor-hero h1 {
+                font-size: 2rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .partnership-grid, .stats-section, .image-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">HARRISON DESSOY</div>
+            <a href="index.html" class="back-link">← Back to Main Site</a>
+        </div>
+    </header>
+
+    <div class="sponsor-hero">
+        <h1>Speed Tech Racing</h1>
+        <p>Official Technical Partner of Harrison Dessoy</p>
+    </div>
+
+    <main>
+        <section class="content-section">
+            <h2>About Speed Tech Racing</h2>
+            <p>Speed Tech Racing is a world-leading manufacturer of high-performance motorcycle components and racing technology. With over 20 years of experience in elite motorsport, Speed Tech Racing has become synonymous with innovation, precision engineering, and championship-winning performance.</p>
+            
+            <p>Our partnership with Harrison Dessoy represents the perfect synergy between cutting-edge technology and exceptional athletic talent. Together, we're pushing the boundaries of what's possible in World Superbikes competition.</p>
+
+            <p>From advanced aerodynamics to state-of-the-art telemetry systems, Speed Tech Racing provides Harrison with the technological edge needed to compete at the highest level of motorcycle racing.</p>
+        </section>
+
+        <div class="stats-section">
+            <div class="stat-box">
+                <h3>20+</h3>
+                <p>Years in Racing</p>
+            </div>
+            <div class="stat-box">
+                <h3>15</h3>
+                <p>World Championships</p>
+            </div>
+            <div class="stat-box">
+                <h3>100+</h3>
+                <p>Race Victories</p>
+            </div>
+            <div class="stat-box">
+                <h3>50+</h3>
+                <p>Racing Teams</p>
+            </div>
+        </div>
+
+        <section class="content-section">
+            <h2>Our Partnership with Harrison</h2>
+            
+            <div class="partnership-grid">
+                <div class="partnership-card">
+                    <h3>Technical Support</h3>
+                    <ul>
+                        <li>Advanced bike setup and optimization</li>
+                        <li>Real-time telemetry analysis</li>
+                        <li>Custom component development</li>
+                        <li>Track-side engineering support</li>
+                        <li>Performance data analytics</li>
+                    </ul>
+                </div>
+
+                <div class="partnership-card">
+                    <h3>Equipment Provision</h3>
+                    <ul>
+                        <li>Custom exhaust systems</li>
+                        <li>Advanced suspension components</li>
+                        <li>Aerodynamic bodywork</li>
+                        <li>Electronic control systems</li>
+                        <li>Performance monitoring tools</li>
+                    </ul>
+                </div>
+
+                <div class="partnership-card">
+                    <h3>Research & Development</h3>
+                    <ul>
+                        <li>Testing new technologies</li>
+                        <li>Performance feedback integration</li>
+                        <li>Prototype component trials</li>
+                        <li>Data-driven improvements</li>
+                        <li>Innovation collaboration</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="quote-section">
+            <blockquote>
+                "Working with Speed Tech Racing has transformed my approach to racing. Their commitment to innovation and performance excellence matches my own dedication to being the best. Together, we're creating something special for the 2026 season."
+            </blockquote>
+            <cite>— Harrison Dessoy</cite>
+        </div>
+
+        <section class="content-section">
+            <h2>Technology & Innovation</h2>
+            <p>Speed Tech Racing's cutting-edge technology gives Harrison a competitive advantage on the track. Our engineering team works closely with Harrison to develop custom solutions tailored to his riding style and the demands of World Superbikes competition.</p>
+
+            <div class="tech-specs">
+                <h3>Key Technologies</h3>
+                <table>
+                    <tr>
+                        <th>Technology</th>
+                        <th>Benefit</th>
+                    </tr>
+                    <tr>
+                        <td>Advanced Aerodynamics</td>
+                        <td>Improved stability and top speed</td>
+                    </tr>
+                    <tr>
+                        <td>Electronic Suspension</td>
+                        <td>Real-time adaptive handling</td>
+                    </tr>
+                    <tr>
+                        <td>Telemetry Systems</td>
+                        <td>Comprehensive performance data</td>
+                    </tr>
+                    <tr>
+                        <td>Custom ECU Mapping</td>
+                        <td>Optimized power delivery</td>
+                    </tr>
+                    <tr>
+                        <td>Lightweight Materials</td>
+                        <td>Enhanced performance and efficiency</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Gallery</h2>
+            <div class="image-gallery">
+                <div class="gallery-item">Track Testing</div>
+                <div class="gallery-item">Engineering Team</div>
+                <div class="gallery-item">Component Development</div>
+                <div class="gallery-item">Race Day Preparation</div>
+                <div class="gallery-item">Victory Celebrations</div>
+                <div class="gallery-item">Technical Analysis</div>
+            </div>
+        </section>
+
+        <div class="cta-section">
+            <h2>Join the Speed Tech Racing Family</h2>
+            <p>Interested in partnering with Speed Tech Racing or learning more about our technology?</p>
+            <a href="#" class="cta-button">Contact Us</a>
+            <a href="#" class="cta-button">View Products</a>
+            <a href="index.html" class="cta-button">Back to Harrison's Site</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Speed Tech Racing. Official Partner of Harrison Dessoy.</p>
+        <p>World Superbikes Sportbike Class 2026</p>
+    </footer>
+</body>
+</html>
