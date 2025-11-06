@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harrison Dessoy - World Superbikes 2026</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #e63946;
+            --secondary: #1d3557;
+            --accent: #f1faee;
+            --dark: #0a0a0a;
+            --light: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: var(--light);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--secondary) 100%);
+            color: var(--light);
+            padding: 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 0.5rem 1rem;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary);
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%231d3557" width="1200" height="600"/><path fill="%23e63946" opacity="0.1" d="M0 300 Q300 200 600 300 T1200 300 V600 H0Z"/></svg>');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--light);
+            margin-top: 70px;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--primary);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--primary);
+            color: var(--light);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: 2px solid var(--primary);
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(230, 57, 70, 0.3);
+        }
+
+        main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        section {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--secondary);
+            border-left: 5px solid var(--primary);
+            padding-left: 1rem;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .about-image {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            height: 400px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light);
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            background: var(--accent);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 3px solid var(--secondary);
+        }
+
+        .stat-card h3 {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card p {
+            color: var(--secondary);
+            font-weight: 500;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .blog-card {
+            background: var(--light);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .blog-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light);
+            font-weight: bold;
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+        }
+
+        .blog-content h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .blog-date {
+            color: var(--primary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .read-more {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .sponsors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .sponsor-card {
+            background: var(--light);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 2px solid var(--accent);
+            transition: all 0.3s;
+        }
+
+        .sponsor-card:hover {
+            border-color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        .sponsor-logo {
+            height: 100px;
+            background: var(--accent);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-weight: bold;
+            color: var(--secondary);
+        }
+
+        .sponsor-card h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .partnership-section {
+            background: var(--accent);
+            padding: 3rem;
+            border-radius: 10px;
+            margin-top: 3rem;
+            border-left: 5px solid var(--primary);
+        }
+
+        .fanclub-hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--light);
+            padding: 3rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .fanclub-hero h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .benefit-card {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-card h4 {
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .signup-form {
+            background: var(--accent);
+            padding: 3rem;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: 3rem auto;
+        }
+
+        .signup-form h3 {
+            color: var(--secondary);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+            font-weight: 500;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid var(--secondary);
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary);
+            color: var(--light);
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-button:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        footer {
+            background: var(--dark);
+            color: var(--light);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            color: var(--light);
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .blog-grid, .sponsors-grid, .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">HARRISON DESSOY</div>
+            <nav>
+                <ul>
+                    <li><a href="#home" class="nav-link active" onclick="showSection('home')">Home</a></li>
+                    <li><a href="#about" class="nav-link" onclick="showSection('about')">About</a></li>
+                    <li><a href="#blog" class="nav-link" onclick="showSection('blog')">Blog</a></li>
+                    <li><a href="#sponsors" class="nav-link" onclick="showSection('sponsors')">Sponsors</a></li>
+                    <li><a href="#fanclub" class="nav-link" onclick="showSection('fanclub')">Fan Club</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="active">
+        <div class="hero">
+            <div class="hero-content">
+                <h1>Harrison Dessoy</h1>
+                <p class="subtitle">World Superbikes Sportbike Class 2026</p>
+                <a href="#about" class="cta-button" onclick="showSection('about')">Discover My Journey</a>
+            </div>
+        </div>
+    </section>
+
+    <main>
+        <section id="about">
+            <h2>About Harrison</h2>
+            <div class="about-grid">
+                <div class="about-image">HD</div>
+                <div class="about-content">
+                    <p>Harrison Dessoy is an elite athlete making his historic debut in the World Superbikes Sportbike class in 2026. With years of dedication, training, and passion for motorsport, Harrison represents the next generation of world-class racing talent.</p>
+                    
+                    <p>From his early days in competitive racing to now preparing for the world stage, Harrison has demonstrated exceptional skill, determination, and sportsmanship. His commitment to excellence and relentless pursuit of perfection make him a formidable competitor in the Superbike arena.</p>
+                    
+                    <p>As Harrison embarks on this incredible journey to compete at the highest level of motorcycle racing, he brings with him a unique blend of technical expertise, physical conditioning, and mental fortitude that sets him apart from the competition.</p>
+                </div>
+            </div>
+
+            <div class="stats">
+                <div class="stat-card">
+                    <h3>2026</h3>
+                    <p>World Superbikes Debut</p>
+                </div>
+                <div class="stat-card">
+                    <h3>100%</h3>
+                    <p>Commitment to Excellence</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Elite</h3>
+                    <p>Athlete Status</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="blog">
+            <h2>Latest Updates</h2>
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <div class="blog-image">Training Update</div>
+                    <div class="blog-content">
+                        <p class="blog-date">November 2025</p>
+                        <h3>Preparing for 2026 Season</h3>
+                        <p>An inside look at the intensive training regime and preparation for the upcoming World Superbikes season.</p>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </div>
+
+                <div class="blog-card">
+                    <div class="blog-image">Team Announcement</div>
+                    <div class="blog-content">
+                        <p class="blog-date">October 2025</p>
+                        <h3>Joining World Superbikes</h3>
+                        <p>The exciting announcement of Harrison's entry into the prestigious World Superbikes Sportbike class.</p>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </div>
+
+                <div class="blog-card">
+                    <div class="blog-image">Behind the Scenes</div>
+                    <div class="blog-content">
+                        <p class="blog-date">September 2025</p>
+                        <h3>A Day in the Life</h3>
+                        <p>Follow Harrison through a typical training day as he prepares mentally and physically for competition.</p>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sponsors">
+            <h2>Our Partners</h2>
+            <p>Harrison Dessoy is proud to work with industry-leading brands who share his commitment to excellence and innovation in motorsport.</p>
+
+            <div class="sponsors-grid">
+                <div class="sponsor-card">
+                    <div class="sponsor-logo">Partner 1</div>
+                    <h3>Title Sponsor</h3>
+                    <p>Our title sponsor provides cutting-edge technology and support that enables Harrison to compete at the highest level of World Superbikes racing.</p>
+                </div>
+
+                <div class="sponsor-card">
+                    <div class="sponsor-logo">Partner 2</div>
+                    <h3>Technical Partner</h3>
+                    <p>Advanced engineering solutions and performance optimization through innovative technical partnerships.</p>
+                </div>
+
+                <div class="sponsor-card">
+                    <div class="sponsor-logo">Partner 3</div>
+                    <h3>Equipment Sponsor</h3>
+                    <p>Premium racing equipment and safety gear ensuring optimal performance and protection on the track.</p>
+                </div>
+            </div>
+
+            <div class="partnership-section">
+                <h3>Partnership Opportunities</h3>
+                <p>Harrison Dessoy offers unique partnership opportunities for brands looking to align with elite motorsport performance. Through strategic collaborations, sponsors gain:</p>
+                <ul style="margin-top: 1rem; margin-left: 2rem;">
+                    <li>Global exposure through World Superbikes coverage</li>
+                    <li>Association with excellence and high-performance athletics</li>
+                    <li>Access to exclusive racing events and hospitality</li>
+                    <li>Digital and social media presence across platforms</li>
+                    <li>Authentic brand storytelling through racing narratives</li>
+                </ul>
+                <p style="margin-top: 1.5rem;">For partnership inquiries, please contact: <strong>partnerships@harrisondessoy.com</strong></p>
+            </div>
+        </section>
+
+        <section id="fanclub">
+            <h2>Fan Club</h2>
+            <div class="fanclub-hero">
+                <h3>Join the Harrison Dessoy Fan Club</h3>
+                <p>Be part of Harrison's journey to World Superbikes glory. Get exclusive access, behind-the-scenes content, and connect with fans worldwide!</p>
+            </div>
+
+            <h3 style="margin-bottom: 2rem; color: var(--secondary);">Member Benefits</h3>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🏁</div>
+                    <h4>Exclusive Updates</h4>
+                    <p>Race results, training updates, and personal messages from Harrison</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">📸</div>
+                    <h4>Behind the Scenes</h4>
+                    <p>Exclusive photos and videos from training and race weekends</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎁</div>
+                    <h4>Member Perks</h4>
+                    <p>Exclusive merchandise, discounts, and giveaways</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">💬</div>
+                    <h4>Community Access</h4>
+                    <p>Connect with other fans and discuss races in our private forum</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎫</div>
+                    <h4>Event Priority</h4>
+                    <p>Early access to meet-and-greet opportunities and events</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">📧</div>
+                    <h4>Newsletter</h4>
+                    <p>Monthly newsletter with exclusive content and updates</p>
+                </div>
+            </div>
+
+            <div class="signup-form">
+                <h3>Join the Fan Club</h3>
+                <form id="fanclubForm" onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="country">Country</label>
+                        <input type="text" id="country" name="country" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Why do you want to join? (Optional)</label>
+                        <textarea id="message" name="message" rows="4"></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-button">Join Now</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="social-links">
+            <a href="#" title="Instagram">📷</a>
+            <a href="#" title="Twitter">🐦</a>
+            <a href="#" title="Facebook">📘</a>
+            <a href="#" title="YouTube">📹</a>
+        </div>
+        <p>&copy; 2025 Harrison Dessoy. All rights reserved.</p>
+        <p>World Superbikes Sportbike Class 2026</p>
+    </footer>
+
+    <script>
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('main section, #home');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            document.getElementById(sectionId).classList.add('active');
+            
+            const activeLink = document.querySelector(`a[href="#${sectionId}"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+            
+            if (sectionId !== 'home') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('Thank you for joining the Harrison Dessoy Fan Club! You will receive a confirmation email shortly.');
+            document.getElementById('fanclubForm').reset();
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+            });
+        });
+    </script>
+</body>
+</html>
