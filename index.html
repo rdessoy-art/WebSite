@@ -719,14 +719,6 @@
             const submitButton = form.querySelector('.submit-button');
             const formData = new FormData(form);
 
-            // Convert FormData to JSON object
-            const data = {
-                name: formData.get('name'),
-                email: formData.get('email'),
-                country: formData.get('country'),
-                message: formData.get('message') || ''
-            };
-
             // Remove any existing messages
             const existingMessage = form.querySelector('.form-message');
             if (existingMessage) {
@@ -738,13 +730,10 @@
             submitButton.textContent = 'Submitting...';
 
             try {
-                // Send directly to Zapier webhook
+                // Send as form-encoded data to avoid CORS preflight
                 const response = await fetch('https://hooks.zapier.com/hooks/catch/25289939/usc27w8/', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data)
+                    body: formData
                 });
 
                 if (response.ok) {
