@@ -648,6 +648,8 @@
             <div class="signup-form">
                 <h3>Join the Fan Club</h3>
                 <form id="fanclubForm">
+                    <input type="hidden" name="access_key" value="849b83c2-85b1-495c-8074-a020510f09b7">
+
                     <div class="form-group">
                         <label for="name">Full Name</label>
                         <input type="text" id="name" name="name" required>
@@ -730,25 +732,26 @@
             submitButton.textContent = 'Submitting...';
 
             try {
-                // Convert FormData to JSON object for Zapier parsing
+                // Convert FormData to JSON object for Web3Forms
                 const jsonData = {};
                 for (const [key, value] of formData.entries()) {
                     jsonData[key] = value;
                 }
 
-                console.log('Submitting form data to Zapier:', jsonData);
-                const response = await fetch('https://hooks.zapier.com/hooks/catch/25289939/usc27w8/', {
+                console.log('Submitting form data to Web3Forms:', jsonData);
+                const response = await fetch('https://api.web3forms.com/submit', {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
                     },
                     body: JSON.stringify(jsonData)
                 });
 
-                console.log('Response status:', response.status);
-                console.log('Response ok:', response.ok);
+                const result = await response.json();
+                console.log('Response:', result);
 
-                if (response.ok) {
+                if (result.success) {
                     // Show success message
                     const successMessage = document.createElement('div');
                     successMessage.className = 'form-message success';
@@ -761,9 +764,8 @@
                     // Scroll to message
                     successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 } else {
-                    const responseText = await response.text();
-                    console.error('Failed response:', responseText);
-                    throw new Error(`Failed to submit form: ${response.status} ${response.statusText}`);
+                    console.error('Failed response:', result);
+                    throw new Error(result.message || 'Failed to submit form');
                 }
             } catch (error) {
                 console.error('Form submission error:', error);
