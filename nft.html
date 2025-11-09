@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NFT Information - Harrison Dessoy Racing Club</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #e63946;
+            --secondary: #1d3557;
+            --accent: #f1faee;
+            --dark: #0a0a0a;
+            --light: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: var(--light);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--secondary) 100%);
+            color: var(--light);
+            padding: 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .back-link {
+            color: var(--light);
+            text-decoration: none;
+            padding: 0.5rem 1.5rem;
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+
+        .back-link:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .nft-hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--light);
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .nft-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nft-hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .content-section {
+            margin-bottom: 4rem;
+        }
+
+        .content-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--secondary);
+            border-left: 5px solid var(--primary);
+            padding-left: 1rem;
+        }
+
+        .content-section h3 {
+            font-size: 1.8rem;
+            margin: 2rem 0 1rem 0;
+            color: var(--secondary);
+        }
+
+        .content-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .intro-box {
+            background: var(--accent);
+            padding: 2.5rem;
+            border-radius: 10px;
+            border-left: 5px solid var(--primary);
+            margin-bottom: 3rem;
+        }
+
+        .intro-box h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            margin-top: 0;
+        }
+
+        .intro-box p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-top: 4px solid var(--primary);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .feature-card h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+        }
+
+        .feature-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .feature-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .feature-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .use-cases {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin: 2rem 0;
+        }
+
+        .use-case-item {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .use-case-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .use-case-item h4 {
+            color: var(--primary);
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .benefits-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            color: var(--light);
+            padding: 3rem;
+            border-radius: 10px;
+            margin: 3rem 0;
+        }
+
+        .benefits-section h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            color: var(--light);
+        }
+
+        .benefits-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            list-style: none;
+            padding: 0;
+        }
+
+        .benefits-list li {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--light);
+        }
+
+        .benefits-list li strong {
+            display: block;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .simple-explanation {
+            background: var(--accent);
+            padding: 2.5rem;
+            border-radius: 10px;
+            margin: 3rem 0;
+            border: 3px solid var(--secondary);
+        }
+
+        .simple-explanation h3 {
+            color: var(--secondary);
+            text-align: center;
+            margin-bottom: 1.5rem;
+            margin-top: 0;
+        }
+
+        .analogy-box {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            border-left: 5px solid var(--primary);
+        }
+
+        .analogy-box p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .cta-section {
+            background: var(--accent);
+            padding: 3rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .cta-section h2 {
+            border: none;
+            padding: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--primary);
+            color: var(--light);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: 2px solid var(--primary);
+            margin: 0.5rem;
+        }
+
+        .cta-button:hover {
+            background: var(--secondary);
+            border-color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        footer {
+            background: var(--dark);
+            color: var(--light);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .nft-hero h1 {
+                font-size: 2rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .benefits-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">HARRISON DESSOY</div>
+            <a href="index.html" class="back-link">← Back to Main Site</a>
+        </div>
+    </header>
+
+    <div class="nft-hero">
+        <h1>Racing Club NFTs</h1>
+        <p>Your Digital Membership Badge for Harrison's Racing Journey</p>
+    </div>
+
+    <main>
+        <div class="intro-box">
+            <h3>What's This All About?</h3>
+            <p>When you join the Harrison Dessoy Racing Club, you'll receive a special digital membership badge called an NFT. Think of it as a unique, collectible trading card that lives on your phone or computer - but it's way more than just a picture!</p>
+        </div>
+
+        <section class="content-section">
+            <h2>What is an NFT? (Simple Explanation)</h2>
+
+            <div class="simple-explanation">
+                <h3>NFT in Plain English</h3>
+                <p><strong>NFT stands for "Non-Fungible Token"</strong> - but forget the technical jargon. Here's what it really means:</p>
+
+                <div class="analogy-box">
+                    <p><strong>Think of it like a signed trading card or concert ticket stub:</strong></p>
+                    <p>You know how a signed photograph from your favorite athlete is special because it's unique and proves you met them? An NFT works the same way, except it's digital. It's a one-of-a-kind digital item that proves you own something special.</p>
+                    <p>The "Non-Fungible" part just means it's unique and can't be replaced with something identical. Your £10 note is "fungible" - you can swap it for any other £10 note. But a signed photo is "non-fungible" - there's only one exactly like it, making it special and potentially valuable.</p>
+                </div>
+
+                <p style="margin-top: 1.5rem;">In the digital world, an NFT is stored on something called a "blockchain" (basically a secure digital record book that can't be faked). This proves that you - and only you - own that specific digital item.</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>How NFTs Work with Harrison's Racing Club</h2>
+
+            <div class="use-cases">
+                <div class="use-case-item">
+                    <h4>Your Membership Proof</h4>
+                    <p>Your NFT is like a digital membership card that shows you're part of Harrison's Racing Club. It's unique to you and proves you're an official supporter of Harrison's 2026 World Sportbike campaign.</p>
+                </div>
+
+                <div class="use-case-item">
+                    <h4>Different Tiers, Different NFTs</h4>
+                    <p>Each membership tier has its own special NFT design:</p>
+                    <ul style="margin-top: 0.5rem; margin-left: 1.5rem;">
+                        <li><strong>Bronze NFT:</strong> Limited to 100 members - a collectible badge showing you're an early supporter</li>
+                        <li><strong>Silver NFT:</strong> Only the first 50 Silver members get this exclusive design</li>
+                        <li><strong>Gold NFT:</strong> A unique, one-of-a-kind NFT designed specially for each Gold member (only 20-25 exist!)</li>
+                    </ul>
+                </div>
+
+                <div class="use-case-item">
+                    <h4>Given Away as Part of Membership</h4>
+                    <p>You don't have to buy your NFT separately - it's included free with your Racing Club membership! When you join, we'll send your NFT directly to your digital wallet (we'll help you set this up if you've never done it before).</p>
+                </div>
+
+                <div class="use-case-item">
+                    <h4>You Can Trade or Keep Them</h4>
+                    <p>Because NFTs are like digital collectibles, you can:</p>
+                    <ul style="margin-top: 0.5rem; margin-left: 1.5rem;">
+                        <li>Keep it as a memento of supporting Harrison's racing career</li>
+                        <li>Trade it with other fans or collectors</li>
+                        <li>Sell it if someone wants to buy it (especially if Harrison becomes a World Champion - then your early supporter NFT could become quite valuable!)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="benefits-section">
+            <h3>Why Your Racing Club NFT Matters</h3>
+            <ul class="benefits-list">
+                <li>
+                    <strong>Exclusive & Limited</strong>
+                    Only Racing Club members get these NFTs, and once they're gone, they're gone forever
+                </li>
+                <li>
+                    <strong>Proof of Early Support</strong>
+                    Your NFT proves you supported Harrison before he became a World Sportbike star
+                </li>
+                <li>
+                    <strong>Potential Value</strong>
+                    Like early Beatles records or vintage sports memorabilia, early supporter NFTs could become valuable as Harrison's career progresses
+                </li>
+                <li>
+                    <strong>Tradeable</strong>
+                    You can trade or sell your NFT to other fans and collectors anytime
+                </li>
+                <li>
+                    <strong>Digital Bragging Rights</strong>
+                    Show off your membership in digital spaces, online communities, and social media
+                </li>
+                <li>
+                    <strong>Forever Yours</strong>
+                    Unlike a physical card that can be lost or damaged, your NFT is stored securely on the blockchain forever
+                </li>
+            </ul>
+        </div>
+
+        <section class="content-section">
+            <h2>What Makes These NFTs Special?</h2>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3><span class="feature-icon">🎨</span> Unique Designs</h3>
+                    <p>Each tier has custom artwork designed specifically for Harrison's Racing Club. Gold members get completely one-of-a-kind NFTs - no two are the same!</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3><span class="feature-icon">🔒</span> Limited Quantities</h3>
+                    <p>Scarcity creates value. With only 100 Bronze NFTs, 50 Silver NFTs, and 20-25 Gold NFTs ever created, these are genuinely rare digital collectibles.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3><span class="feature-icon">📈</span> Growing Value Potential</h3>
+                    <p>As Harrison's racing career progresses, early supporter NFTs could increase in value. Imagine owning a piece of memorabilia from before a World Champion's first season!</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3><span class="feature-icon">🤝</span> Community Connection</h3>
+                    <p>Your NFT connects you to other Racing Club members - a digital badge that shows you're part of an exclusive community supporting Harrison's journey.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3><span class="feature-icon">🔐</span> Proven Authenticity</h3>
+                    <p>The blockchain technology behind NFTs means your membership can't be faked or copied. You have verifiable proof you're an official Racing Club member.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3><span class="feature-icon">🌍</span> Global Trading</h3>
+                    <p>NFTs can be bought, sold, or traded globally with other racing fans and collectors - your membership badge has international reach!</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>How to Get Your NFT</h2>
+            <div class="analogy-box">
+                <p><strong>It's Simple:</strong></p>
+                <ol style="margin-left: 1.5rem; margin-top: 1rem;">
+                    <li style="margin-bottom: 1rem;"><strong>Join the Racing Club</strong> - Choose your membership tier (Bronze, Silver, or Gold)</li>
+                    <li style="margin-bottom: 1rem;"><strong>Set Up Your Digital Wallet</strong> - We'll send you simple instructions (it's like creating an email account, but for digital items)</li>
+                    <li style="margin-bottom: 1rem;"><strong>Receive Your NFT</strong> - We'll transfer your unique NFT directly to your wallet</li>
+                    <li><strong>Show It Off!</strong> - Display it, trade it, or keep it safe as a collectible</li>
+                </ol>
+                <p style="margin-top: 1.5rem;"><em>New to NFTs? Don't worry! We'll guide you through every step. It's much easier than it sounds, and we're here to help.</em></p>
+            </div>
+        </section>
+
+        <div class="cta-section">
+            <h2>Ready to Get Your Racing Club NFT?</h2>
+            <p>Join the Racing Club today and receive your exclusive NFT membership badge</p>
+            <a href="index.html#fanclub" class="cta-button">Join Racing Club</a>
+            <a href="index.html" class="cta-button">Back to Main Site</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Harrison Dessoy Racing Club. All rights reserved.</p>
+        <p>World Superbikes Sportbike Class 2026</p>
+    </footer>
+</body>
+</html>
