@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Behind the Scenes - A Day in the Life | Harrison Dessoy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #e63946;
+            --secondary: #1d3557;
+            --accent: #f1faee;
+            --dark: #0a0a0a;
+            --light: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: var(--light);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--secondary) 100%);
+            color: var(--light);
+            padding: 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .back-link {
+            color: var(--light);
+            text-decoration: none;
+            padding: 0.5rem 1.5rem;
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+
+        .back-link:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .article-hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--light);
+            padding: 6rem 2rem 4rem 2rem;
+            text-align: center;
+        }
+
+        .article-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .article-meta {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-top: 1rem;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .article-content {
+            background: var(--light);
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .article-content h2 {
+            font-size: 2rem;
+            margin: 2.5rem 0 1.5rem 0;
+            color: var(--secondary);
+            border-left: 5px solid var(--primary);
+            padding-left: 1rem;
+        }
+
+        .article-content h2:first-child {
+            margin-top: 0;
+        }
+
+        .article-content h3 {
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem 0;
+            color: var(--secondary);
+        }
+
+        .article-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: #444;
+        }
+
+        .time-block {
+            background: var(--accent);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 5px solid var(--primary);
+            margin: 1.5rem 0;
+        }
+
+        .time-block h3 {
+            color: var(--primary);
+            margin: 0 0 0.8rem 0;
+            font-size: 1.3rem;
+        }
+
+        .time-block p {
+            margin-bottom: 0.8rem;
+        }
+
+        .time-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight-box {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 3px solid var(--accent);
+            margin: 2rem 0;
+        }
+
+        .highlight-box h3 {
+            color: var(--secondary);
+            margin-top: 0;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            color: var(--light);
+            padding: 2.5rem;
+            border-radius: 10px;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .quote-box blockquote {
+            font-size: 1.4rem;
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .quote-box cite {
+            font-size: 1.1rem;
+            font-style: normal;
+        }
+
+        .cta-section {
+            background: var(--accent);
+            padding: 2.5rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .cta-section h3 {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--primary);
+            color: var(--light);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: 2px solid var(--primary);
+            margin: 0.5rem;
+        }
+
+        .cta-button:hover {
+            background: var(--secondary);
+            border-color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        footer {
+            background: var(--dark);
+            color: var(--light);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .article-hero h1 {
+                font-size: 2rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .article-content {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">HARRISON DESSOY</div>
+            <a href="index.html" class="back-link">← Back to Main Site</a>
+        </div>
+    </header>
+
+    <div class="article-hero">
+        <h1>Behind the Scenes: A Day in the Life</h1>
+        <div class="article-meta">September 2025 | Training Day</div>
+    </div>
+
+    <main>
+        <article class="article-content">
+            <p>Ever wondered what a typical training day looks like for a World Superbike rider? Join us as we follow Harrison Dessoy through a day of preparation as he gears up for his 2026 World Superbikes debut.</p>
+
+            <h2>Early Morning: The Day Begins</h2>
+
+            <div class="time-block">
+                <h3>6:00 AM - Wake Up and Nutrition</h3>
+                <p>Harrison's day starts early. A proper breakfast is crucial to fuel the intensive training ahead. Today's menu includes porridge with berries, eggs, and a protein shake - carefully planned to provide sustained energy throughout the morning.</p>
+            </div>
+
+            <div class="time-block">
+                <h3>7:00 AM - Morning Cardio</h3>
+                <p>Before most people have started their commute, Harrison is already an hour into his day with a 45-minute cycling session. Cardiovascular fitness is essential for maintaining focus and physical performance during long races.</p>
+                <p>The morning cardio session helps build the endurance needed to compete at peak levels throughout entire race weekends.</p>
+            </div>
+
+            <h2>Mid-Morning: Strength and Conditioning</h2>
+
+            <div class="time-block">
+                <h3>9:00 AM - Gym Session</h3>
+                <p>After a quick recovery period, Harrison heads to the gym for targeted strength training. Today's focus is on core stability and neck strengthening - both critical for handling the extreme forces experienced on a Superbike.</p>
+                <p>The session includes exercises specifically designed for motorcycle racing: weighted neck exercises, core stability work on balance boards, and explosive power training.</p>
+            </div>
+
+            <div class="time-block">
+                <h3>11:00 AM - Recovery and Nutrition</h3>
+                <p>Recovery is just as important as training. Harrison takes time for stretching, physiotherapy, and a carefully planned lunch designed to aid muscle recovery and prepare for the afternoon's track session.</p>
+            </div>
+
+            <h2>Afternoon: Track Time</h2>
+
+            <div class="time-block">
+                <h3>1:00 PM - Track Preparation</h3>
+                <p>Arriving at the circuit, Harrison meets with his technical team to review data from previous sessions and discuss the afternoon's objectives. They analyze telemetry, discuss setup changes, and plan specific aspects to work on during today's track time.</p>
+            </div>
+
+            <div class="time-block">
+                <h3>2:00 PM - On-Track Session</h3>
+                <p>This is what it's all about. Harrison spends two hours on the bike, working through various drills and exercises designed to refine his technique. Today's focus includes corner entry speeds, trail braking techniques, and race simulations.</p>
+                <p>Between sessions, the team reviews real-time data, makes adjustments to the bike's setup, and provides feedback to help Harrison extract every tenth of a second from each lap.</p>
+            </div>
+
+            <div class="highlight-box">
+                <h3>Inside the Track Session</h3>
+                <p>A typical track session isn't just about lapping as fast as possible. Harrison and his team methodically work through specific objectives:</p>
+                <ul style="margin-top: 1rem; margin-left: 1.5rem;">
+                    <li>Warm-up laps to build tire temperature and confidence</li>
+                    <li>Focused work on individual corners and sections</li>
+                    <li>Race simulation laps to practice consistency</li>
+                    <li>Practice starts and first-lap scenarios</li>
+                    <li>Cool-down laps and immediate debrief</li>
+                </ul>
+            </div>
+
+            <h2>Evening: Analysis and Recovery</h2>
+
+            <div class="time-block">
+                <h3>5:00 PM - Video and Data Analysis</h3>
+                <p>Back in the team's office, Harrison spends time reviewing onboard footage and telemetry data from the afternoon's session. This analysis helps identify areas for improvement and validates what worked well.</p>
+                <p>Comparing data traces from different laps reveals where time can be gained and where Harrison is already at the limit.</p>
+            </div>
+
+            <div class="time-block">
+                <h3>6:30 PM - Recovery Protocol</h3>
+                <p>Physical recovery is critical. Harrison's evening routine includes massage therapy, stretching, and sometimes ice baths to reduce inflammation and prepare the body for tomorrow's training.</p>
+            </div>
+
+            <div class="time-block">
+                <h3>7:30 PM - Dinner and Mental Prep</h3>
+                <p>A nutritious dinner rich in protein and vegetables helps with overnight recovery. Harrison also spends time on mental preparation, using visualization techniques to mentally rehearse race scenarios and build confidence.</p>
+            </div>
+
+            <div class="time-block">
+                <h3>9:00 PM - Wind Down</h3>
+                <p>Before bed, Harrison reviews the next day's schedule, responds to messages, and perhaps checks in with fans on social media. Quality sleep is crucial for performance, so bedtime is consistent and protected.</p>
+            </div>
+
+            <div class="quote-box">
+                <blockquote>
+                    "Every day is an investment in the future. The work I put in now, even on the days when it's tough, is what will make the difference when I'm on the grid at my first World Superbikes race."
+                </blockquote>
+                <cite>— Harrison Dessoy</cite>
+            </div>
+
+            <h2>The Bigger Picture</h2>
+            <p>This is just one day in a carefully structured training programme that runs year-round. While the specific activities vary - some days focus more on strength, others on track time, and some on pure recovery - the dedication and attention to detail remain constant.</p>
+
+            <p>It's this daily commitment, repeated week after week, month after month, that transforms an already talented rider into someone capable of competing at the world championship level.</p>
+
+            <div class="cta-section">
+                <h3>Get Exclusive Behind-the-Scenes Access</h3>
+                <p>Racing Club members get regular behind-the-scenes content, exclusive videos, and insider access to Harrison's journey</p>
+                <a href="index.html#fanclub" class="cta-button">Join Racing Club</a>
+                <a href="index.html#news" class="cta-button">More News</a>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Harrison Dessoy. All rights reserved.</p>
+        <p>World Superbikes Sportbike Class 2026</p>
+    </footer>
+</body>
+</html>

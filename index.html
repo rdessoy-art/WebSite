@@ -671,7 +671,7 @@
                 <ul>
                     <li><a href="#home" class="nav-link active" onclick="showSection('home')">Home</a></li>
                     <li><a href="#about" class="nav-link" onclick="showSection('about')">About</a></li>
-                    <li><a href="#blog" class="nav-link" onclick="showSection('blog')">Blog</a></li>
+                    <li><a href="#news" class="nav-link" onclick="showSection('news')">News</a></li>
                     <li><a href="#sponsors" class="nav-link" onclick="showSection('sponsors')">Sponsors</a></li>
                     <li><a href="#fanclub" class="nav-link" onclick="showSection('fanclub')">Fan Club</a></li>
                     <li><a href="nft.html">NFT</a></li>
@@ -722,8 +722,8 @@
             </div>
         </section>
 
-        <section id="blog">
-            <h2>Latest Updates</h2>
+        <section id="news">
+            <h2>Latest News</h2>
             <div class="blog-grid">
                 <div class="blog-card">
                     <div class="blog-image">Training Update</div>
@@ -731,17 +731,17 @@
                         <p class="blog-date">November 2025</p>
                         <h3>Preparing for 2026 Season</h3>
                         <p>An inside look at the intensive training regime and preparation for the upcoming World Superbikes season.</p>
-                        <a href="#" class="read-more">Read More →</a>
+                        <a href="training-update.html" class="read-more">Read More →</a>
                     </div>
                 </div>
 
                 <div class="blog-card">
                     <div class="blog-image">Team Announcement</div>
                     <div class="blog-content">
-                        <p class="blog-date">October 2025</p>
-                        <h3>Joining World Superbikes</h3>
-                        <p>The exciting announcement of Harrison's entry into the prestigious World Superbikes Sportbike class.</p>
-                        <a href="#" class="read-more">Read More →</a>
+                        <p class="blog-date">Coming Soon</p>
+                        <h3>Exciting Announcement</h3>
+                        <p>An exciting announcement will be made at the Motorcycle Live 2025 event at the NEC Birmingham, very soon!</p>
+                        <a href="motorcycle-live-announcement.html" class="read-more">Read More →</a>
                     </div>
                 </div>
 
@@ -751,7 +751,7 @@
                         <p class="blog-date">September 2025</p>
                         <h3>A Day in the Life</h3>
                         <p>Follow Harrison through a typical training day as he prepares mentally and physically for competition.</p>
-                        <a href="#" class="read-more">Read More →</a>
+                        <a href="behind-the-scenes.html" class="read-more">Read More →</a>
                     </div>
                 </div>
             </div>
@@ -1059,6 +1059,14 @@
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
             });
+        });
+
+        // Handle hash navigation on page load
+        window.addEventListener('load', function() {
+            const hash = window.location.hash.substring(1);
+            if (hash && document.getElementById(hash)) {
+                showSection(hash);
+            }
         });
     </script>
 </body>
