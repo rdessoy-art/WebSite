@@ -412,6 +412,194 @@
             border: 1px solid #f5c6cb;
         }
 
+        .club-intro {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+            border-left: 5px solid var(--primary);
+        }
+
+        .club-intro h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .club-intro p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .membership-tiers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .tier-card {
+            background: var(--light);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tier-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .tier-card.bronze {
+            border: 3px solid #cd7f32;
+        }
+
+        .tier-card.silver {
+            border: 3px solid #c0c0c0;
+        }
+
+        .tier-card.gold {
+            border: 3px solid #ffd700;
+        }
+
+        .tier-badge {
+            position: absolute;
+            top: 15px;
+            right: -35px;
+            background: var(--primary);
+            color: var(--light);
+            padding: 5px 40px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            transform: rotate(45deg);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .tier-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #eee;
+        }
+
+        .tier-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+
+        .tier-price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .tier-price span {
+            font-size: 1rem;
+            color: #666;
+            font-weight: normal;
+        }
+
+        .tier-limit {
+            font-size: 0.85rem;
+            color: #666;
+            font-weight: 600;
+        }
+
+        .tier-benefits {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .tier-benefits li {
+            padding: 0.6rem 0;
+            color: #555;
+            display: flex;
+            align-items: flex-start;
+            line-height: 1.5;
+        }
+
+        .tier-benefits li::before {
+            content: "✓";
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-right: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        .tier-note {
+            background: var(--accent);
+            padding: 1rem;
+            border-radius: 5px;
+            font-size: 0.85rem;
+            color: #666;
+            font-style: italic;
+            margin-top: 1rem;
+            border-left: 3px solid var(--secondary);
+        }
+
+        .why-join-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .why-join-card {
+            text-align: center;
+            padding: 2rem;
+            background: var(--light);
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .why-join-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .why-join-card h4 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .why-join-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--light);
+            padding: 3rem;
+            border-radius: 10px;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .cta-box h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-box p {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .cta-box .small {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
         footer {
             background: var(--dark);
             color: var(--light);
@@ -462,6 +650,14 @@
             }
 
             .blog-grid, .sponsors-grid, .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .membership-tiers {
+                grid-template-columns: 1fr;
+            }
+
+            .why-join-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -600,53 +796,111 @@
         </section>
 
         <section id="fanclub">
-            <h2>Fan Club</h2>
+            <h2>Racing Club</h2>
             <div class="fanclub-hero">
-                <h3>Join the Harrison Dessoy's Fan Club</h3>
-                <p>Be part of Harrison's journey to World Superbikes glory. Get exclusive access, behind-the-scenes content, and connect with fans worldwide!</p>
+                <h3>Join the World Sportbike Journey</h3>
+                <p>Be part of something special as Harrison competes in the World Sportbike series in 2026</p>
+                <p style="font-size: 1rem; margin-top: 1rem;">Exclusive access • Behind-the-scenes content • VIP experiences</p>
             </div>
 
-            <h3 style="margin-bottom: 2rem; color: var(--secondary);">Member Benefits</h3>
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <div class="benefit-icon">🏁</div>
-                    <h4>Exclusive Updates</h4>
-                    <p>Race results, training updates, and personal messages from Harrison</p>
+            <div class="club-intro">
+                <h3>About the Club</h3>
+                <p>I'm building something different - not just a sponsorship programme, but a proper racing club where you're part of the team. As I step up to compete in the World Sportbike series in 2026, I want to bring my supporters closer to the action than ever before.</p>
+                <p>Whether you want to support the journey with exclusive content, get your name on my pitboard, or join me in the garage on race weekends, there's a tier that fits. Every member gets real value, and every membership directly funds my racing career.</p>
+            </div>
+
+            <h3 style="text-align: center; margin-bottom: 2rem; color: var(--secondary); font-size: 2rem;">Choose Your Level</h3>
+
+            <div class="membership-tiers">
+                <!-- Bronze Tier -->
+                <div class="tier-card bronze">
+                    <div class="tier-header">
+                        <h3>Bronze</h3>
+                        <div class="tier-price">£25<span>/year</span></div>
+                        <div class="tier-limit">Unlimited spots</div>
+                    </div>
+                    <ul class="tier-benefits">
+                        <li>Welcome pack with sticker kit and signed rider card</li>
+                        <li>Bronze club keyring with cartoon design</li>
+                        <li>Exclusive access to monthly behind-the-scenes videos</li>
+                        <li>Bronze NFT (only 100 made)</li>
+                    </ul>
+                    <div class="tier-note">
+                        Perfect for supporters who want exclusive content and official club gear while staying connected to the journey.
+                    </div>
                 </div>
 
-                <div class="benefit-card">
-                    <div class="benefit-icon">📸</div>
-                    <h4>Behind the Scenes</h4>
-                    <p>Exclusive photos and videos from training and race weekends</p>
+                <!-- Silver Tier -->
+                <div class="tier-card silver">
+                    <div class="tier-header">
+                        <h3>Silver</h3>
+                        <div class="tier-price">£100<span>/year</span></div>
+                        <div class="tier-limit">Limited to 100 spots</div>
+                    </div>
+                    <ul class="tier-benefits">
+                        <li>Official club Hat & T-shirt</li>
+                        <li>Sticker kit</li>
+                        <li>Signed rider card</li>
+                        <li>Personalised thank you video</li>
+                        <li>Silver club keyring</li>
+                        <li>Monthly behind-the-scenes videos</li>
+                        <li><strong>Silver NFT - First 50 signups only!</strong></li>
+                    </ul>
+                    <div class="tier-note">
+                        For dedicated fans who want premium merch and genuine personal touches from the team. First 50 members get the exclusive Silver NFT!
+                    </div>
                 </div>
 
-                <div class="benefit-card">
-                    <div class="benefit-icon">🎁</div>
-                    <h4>Member Perks</h4>
-                    <p>Exclusive merchandise, discounts, and giveaways</p>
+                <!-- Gold Tier -->
+                <div class="tier-card gold">
+                    <div class="tier-badge">VIP</div>
+                    <div class="tier-header">
+                        <h3>Gold</h3>
+                        <div class="tier-price">£500<span>/year</span></div>
+                        <div class="tier-limit">Limited to 20-25 spots</div>
+                    </div>
+                    <ul class="tier-benefits">
+                        <li><strong>All Silver benefits included</strong></li>
+                        <li>Your name on 2026 race pitboard</li>
+                        <li>Garage tour & paddock access</li>
+                        <li>Gold members only WhatsApp group for race updates</li>
+                        <li>Personal calls with Harrison</li>
+                        <li>Unique 1-of-1 NFT (special to each member)</li>
+                        <li>WSBK VIP passes - Guaranteed ONE round of your choice (subject to availability). Additional rounds on first-come basis</li>
+                    </ul>
+                    <div class="tier-note">
+                        The ultimate VIP experience - direct access to Harrison, garage tours, race weekend passes, and a genuine insider's view of World Sportbike racing.
+                    </div>
                 </div>
+            </div>
 
-                <div class="benefit-card">
-                    <div class="benefit-icon">💬</div>
-                    <h4>Community Access</h4>
-                    <p>Connect with other fans and discuss races in our private forum</p>
+            <div class="cta-box">
+                <h3>Ready to Join?</h3>
+                <p>Be part of the World Sportbike journey in 2026. Silver and Gold tiers have limited spots - once they're gone, they're gone.</p>
+                <p class="small" style="margin-top: 1rem;">Contact Harrison directly or fill out the form below to secure your membership</p>
+            </div>
+
+            <h3 style="text-align: center; margin-bottom: 2rem; color: var(--secondary); font-size: 1.5rem;">Why Join the Racing Club?</h3>
+            <div class="why-join-grid">
+                <div class="why-join-card">
+                    <div class="icon">🏍️</div>
+                    <h4>Support the Journey</h4>
+                    <p>Every membership directly funds Harrison's 2026 World Sportbike campaign</p>
                 </div>
-
-                <div class="benefit-card">
-                    <div class="benefit-icon">🎫</div>
-                    <h4>Event Priority</h4>
-                    <p>Early access to meet-and-greet opportunities and events</p>
+                <div class="why-join-card">
+                    <div class="icon">🎥</div>
+                    <h4>Exclusive Content</h4>
+                    <p>Behind-the-scenes access you won't find anywhere else</p>
                 </div>
-
-                <div class="benefit-card">
-                    <div class="benefit-icon">📧</div>
-                    <h4>Newsletter</h4>
-                    <p>Monthly newsletter with exclusive content and updates</p>
+                <div class="why-join-card">
+                    <div class="icon">🤝</div>
+                    <h4>Be Part of the Team</h4>
+                    <p>More than sponsorship - you're genuinely part of the racing family</p>
                 </div>
             </div>
 
             <div class="signup-form">
-                <h3>Join the Fan Club</h3>
+                <h3>Express Your Interest</h3>
                 <form id="fanclubForm">
                     <input type="hidden" name="access_key" value="849b83c2-85b1-495c-8074-a020510f09b7">
 
@@ -666,11 +920,21 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="message">Why do you want to join? (Optional)</label>
-                        <textarea id="message" name="message" rows="4"></textarea>
+                        <label for="tier">Membership Tier Interest</label>
+                        <select id="tier" name="tier" required style="width: 100%; padding: 0.8rem; border: 2px solid var(--secondary); border-radius: 5px; font-size: 1rem;">
+                            <option value="">Select a tier...</option>
+                            <option value="Bronze - £25/year">Bronze - £25/year</option>
+                            <option value="Silver - £100/year">Silver - £100/year</option>
+                            <option value="Gold - £500/year">Gold - £500/year</option>
+                        </select>
                     </div>
 
-                    <button type="submit" class="submit-button">Join Now</button>
+                    <div class="form-group">
+                        <label for="message">Message (Optional)</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Tell us why you want to join or any questions you have..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-button">Submit Interest</button>
                 </form>
             </div>
         </section>
