@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weise Clothing - Harrison Dessoy Equipment Partner</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #e63946;
+            --secondary: #1d3557;
+            --accent: #f1faee;
+            --dark: #0a0a0a;
+            --light: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: var(--light);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--secondary) 100%);
+            color: var(--light);
+            padding: 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .back-link {
+            color: var(--light);
+            text-decoration: none;
+            padding: 0.5rem 1.5rem;
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+
+        .back-link:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .sponsor-hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--light);
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .sponsor-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .sponsor-hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .content-section {
+            margin-bottom: 4rem;
+        }
+
+        .content-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--secondary);
+            border-left: 5px solid var(--primary);
+            padding-left: 1rem;
+        }
+
+        .content-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .partnership-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .partnership-card {
+            background: var(--accent);
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 5px solid var(--primary);
+        }
+
+        .partnership-card h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .partnership-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .partnership-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .partnership-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .quote-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            color: var(--light);
+            padding: 3rem;
+            border-radius: 10px;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .quote-section blockquote {
+            font-size: 1.5rem;
+            font-style: italic;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .quote-section cite {
+            font-size: 1.1rem;
+            font-style: normal;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-box {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-top: 4px solid var(--primary);
+        }
+
+        .feature-box h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .cta-section {
+            background: var(--accent);
+            padding: 3rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .cta-section h2 {
+            border: none;
+            padding: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--primary);
+            color: var(--light);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: 2px solid var(--primary);
+            margin: 0.5rem;
+        }
+
+        .cta-button:hover {
+            background: var(--secondary);
+            border-color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        footer {
+            background: var(--dark);
+            color: var(--light);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .sponsor-hero h1 {
+                font-size: 2rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .partnership-grid, .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">HARRISON DESSOY</div>
+            <a href="index.html" class="back-link">← Back to Main Site</a>
+        </div>
+    </header>
+
+    <div class="sponsor-hero">
+        <h1>Weise Clothing</h1>
+        <p>Official Equipment Partner of Harrison Dessoy</p>
+    </div>
+
+    <main>
+        <section class="content-section">
+            <h2>About Weise Clothing</h2>
+            <p>Weise is a leading manufacturer of premium motorcycle clothing and protective gear, dedicated to providing riders with the highest quality equipment for safety, comfort, and performance. With decades of experience in the motorcycle industry, Weise has built a reputation for innovation, durability, and rider-focused design.</p>
+
+            <p>From everyday riding gear to high-performance racing equipment, Weise offers a comprehensive range of products designed to meet the needs of riders at every level. Their commitment to quality and safety makes them the perfect partner for Harrison's racing journey.</p>
+
+            <p>Weise's product range includes motorcycle jackets, trousers, gloves, boots, and complete protective gear systems, all engineered with advanced materials and cutting-edge safety features to provide maximum protection without compromising on comfort or style.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Supporting Harrison's Journey</h2>
+
+            <div class="partnership-grid">
+                <div class="partnership-card">
+                    <h3>Protective Gear</h3>
+                    <ul>
+                        <li>High-quality motorcycle jackets and suits</li>
+                        <li>Advanced impact protection systems</li>
+                        <li>Breathable, weather-resistant materials</li>
+                        <li>CE-approved safety standards</li>
+                        <li>Customized fit for optimal comfort</li>
+                    </ul>
+                </div>
+
+                <div class="partnership-card">
+                    <h3>Training Equipment</h3>
+                    <ul>
+                        <li>Durable gear for daily training sessions</li>
+                        <li>All-weather riding clothing</li>
+                        <li>Thermal and cooling layers</li>
+                        <li>Gloves for all conditions</li>
+                        <li>Footwear for track and travel</li>
+                    </ul>
+                </div>
+
+                <div class="partnership-card">
+                    <h3>Professional Support</h3>
+                    <ul>
+                        <li>Custom gear solutions</li>
+                        <li>Technical clothing advice</li>
+                        <li>Latest product innovations</li>
+                        <li>Ongoing equipment support</li>
+                        <li>Safety-first approach</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="quote-section">
+            <blockquote>
+                "Quality equipment is non-negotiable in motorcycle racing. Weise provides me with protective gear I can trust completely, allowing me to focus on performance knowing I have the best safety equipment available."
+            </blockquote>
+            <cite>— Harrison Dessoy</cite>
+        </div>
+
+        <section class="content-section">
+            <h2>Why Weise?</h2>
+
+            <div class="features-grid">
+                <div class="feature-box">
+                    <h3>Quality Materials</h3>
+                    <p>Premium fabrics and construction for durability and protection</p>
+                </div>
+
+                <div class="feature-box">
+                    <h3>Safety First</h3>
+                    <p>CE-approved protection and advanced safety features</p>
+                </div>
+
+                <div class="feature-box">
+                    <h3>Comfort Design</h3>
+                    <p>Ergonomic fit and breathable materials for all-day comfort</p>
+                </div>
+
+                <div class="feature-box">
+                    <h3>Proven Performance</h3>
+                    <p>Trusted by riders worldwide for quality and reliability</p>
+                </div>
+
+                <div class="feature-box">
+                    <h3>All Conditions</h3>
+                    <p>Weather-resistant gear for training and competition</p>
+                </div>
+
+                <div class="feature-box">
+                    <h3>Expert Innovation</h3>
+                    <p>Continuous product development and improvement</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>The Partnership</h2>
+            <p>Weise's partnership with Harrison Dessoy ensures he has access to the best protective clothing and equipment throughout his racing career. From training sessions to race weekends, Weise provides Harrison with gear that offers optimal protection, comfort, and performance.</p>
+
+            <p>This collaboration represents Weise's commitment to supporting the next generation of racing talent, providing Harrison with equipment that meets the demanding requirements of elite-level motorcycle competition.</p>
+        </section>
+
+        <div class="cta-section">
+            <h2>Discover Weise Clothing</h2>
+            <p>Learn more about Weise's premium motorcycle clothing and protective gear</p>
+            <a href="https://www.weiseclothing.com/about/" target="_blank" class="cta-button">Visit Weise Clothing</a>
+            <a href="index.html" class="cta-button">Back to Harrison's Site</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Weise Clothing. Official Partner of Harrison Dessoy.</p>
+        <p>Racing at the Highest Level</p>
+    </footer>
+</body>
+</html>
