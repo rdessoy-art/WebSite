@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZeroFit - Harrison Dessoy Equipment Partner</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #e63946;
+            --secondary: #1d3557;
+            --accent: #f1faee;
+            --dark: #0a0a0a;
+            --light: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: var(--light);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--secondary) 100%);
+            color: var(--light);
+            padding: 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .back-link {
+            color: var(--light);
+            text-decoration: none;
+            padding: 0.5rem 1.5rem;
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+
+        .back-link:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .sponsor-hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--light);
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .sponsor-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .sponsor-hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .content-section {
+            margin-bottom: 4rem;
+        }
+
+        .content-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--secondary);
+            border-left: 5px solid var(--primary);
+            padding-left: 1rem;
+        }
+
+        .content-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .partnership-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .partnership-card {
+            background: var(--accent);
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 5px solid var(--primary);
+        }
+
+        .partnership-card h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .partnership-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .partnership-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .partnership-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .quote-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            color: var(--light);
+            padding: 3rem;
+            border-radius: 10px;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .quote-section blockquote {
+            font-size: 1.5rem;
+            font-style: italic;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .quote-section cite {
+            font-size: 1.1rem;
+            font-style: normal;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-box {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-top: 4px solid var(--primary);
+        }
+
+        .feature-box h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .highlight-section {
+            background: var(--accent);
+            padding: 2.5rem;
+            border-radius: 10px;
+            margin: 3rem 0;
+            border-left: 5px solid var(--primary);
+        }
+
+        .highlight-section h3 {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .cta-section {
+            background: var(--accent);
+            padding: 3rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .cta-section h2 {
+            border: none;
+            padding: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--primary);
+            color: var(--light);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: 2px solid var(--primary);
+            margin: 0.5rem;
+        }
+
+        .cta-button:hover {
+            background: var(--secondary);
+            border-color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        footer {
+            background: var(--dark);
+            color: var(--light);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .sponsor-hero h1 {
+                font-size: 2rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .partnership-grid, .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">HARRISON DESSOY</div>
+            <a href="index.html" class="back-link">← Back to Main Site</a>
+        </div>
+    </header>
+
+    <div class="sponsor-hero">
+        <h1>ZeroFit</h1>
+        <p>Official Equipment Partner of Harrison Dessoy</p>
+    </div>
+
+    <main>
+        <section class="content-section">
+            <h2>About ZeroFit</h2>
+            <p>ZeroFit is a premium Japanese brand specializing in advanced base layer technology designed to provide exceptional thermal regulation and comfort for athletes and active individuals. With innovative design rooted in Japanese engineering excellence, ZeroFit has revolutionized the base layer market with products that deliver unmatched warmth without bulk.</p>
+
+            <p>Designed in Japan and built on cutting-edge fabric technology, ZeroFit base layers use unique heat-trapping principles to provide superior insulation while maintaining breathability and freedom of movement. This makes them ideal for high-performance athletes like Harrison who need reliable temperature regulation during intensive training and competition.</p>
+
+            <p>ZeroFit's commitment to quality and innovation has made them a trusted choice for athletes across multiple disciplines who demand the best in performance apparel. Their base layers are engineered to keep athletes comfortable in the most demanding conditions, allowing them to focus entirely on performance.</p>
+        </section>
+
+        <div class="highlight-section">
+            <h3>Japanese Engineering Excellence</h3>
+            <p>ZeroFit's Japanese design heritage brings precision engineering and attention to detail to every product. Their innovative approach to thermal regulation technology sets new standards in the performance apparel industry, combining traditional Japanese craftsmanship with modern scientific research.</p>
+        </div>
+
+        <section class="content-section">
+            <h2>Supporting Harrison's Performance</h2>
+
+            <div class="partnership-grid">
+                <div class="partnership-card">
+                    <h3>Training Comfort</h3>
+                    <ul>
+                        <li>Superior thermal regulation during workouts</li>
+                        <li>Moisture-wicking technology</li>
+                        <li>Unrestricted movement and flexibility</li>
+                        <li>Lightweight, non-bulky design</li>
+                        <li>All-season comfort solutions</li>
+                    </ul>
+                </div>
+
+                <div class="partnership-card">
+                    <h3>Competition Ready</h3>
+                    <ul>
+                        <li>Optimal body temperature maintenance</li>
+                        <li>Enhanced focus through comfort</li>
+                        <li>Quick-drying materials</li>
+                        <li>Breathable fabric technology</li>
+                        <li>Professional-grade performance</li>
+                    </ul>
+                </div>
+
+                <div class="partnership-card">
+                    <h3>Recovery Support</h3>
+                    <ul>
+                        <li>Comfortable post-training wear</li>
+                        <li>Temperature regulation for recovery</li>
+                        <li>Soft, skin-friendly materials</li>
+                        <li>Travel-friendly base layers</li>
+                        <li>All-day wearability</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="quote-section">
+            <blockquote>
+                "Maintaining optimal body temperature is crucial for performance and recovery. ZeroFit's Japanese-engineered base layers keep me comfortable whether I'm training in cold conditions or traveling to different climates. The quality and attention to detail are exceptional."
+            </blockquote>
+            <cite>— Harrison Dessoy</cite>
+        </div>
+
+        <section class="content-section">
+            <h2>ZeroFit Technology</h2>
+
+            <div class="features-grid">
+                <div class="feature-box">
+                    <h3>Heat Trap Technology</h3>
+                    <p>Innovative design traps body heat for superior warmth without bulk</p>
+                </div>
+
+                <div class="feature-box">
+                    <h3>Japanese Design</h3>
+                    <p>Precision engineering and quality craftsmanship from Japan</p>
+                </div>
+
+                <div class="feature-box">
+                    <h3>Moisture Management</h3>
+                    <p>Advanced wicking keeps skin dry during intensive activity</p>
+                </div>
+
+                <div class="feature-box">
+                    <h3>Lightweight Comfort</h3>
+                    <p>Warm without weight - maximum performance, minimum bulk</p>
+                </div>
+
+                <div class="feature-box">
+                    <h3>Flexible Fit</h3>
+                    <p>Ergonomic design allows unrestricted movement</p>
+                </div>
+
+                <div class="feature-box">
+                    <h3>All-Season Use</h3>
+                    <p>Versatile base layers for various training conditions</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>The Partnership</h2>
+            <p>ZeroFit's partnership with Harrison Dessoy ensures he has access to the finest base layer technology available. From early morning training sessions to race weekends in varying climates, ZeroFit provides Harrison with the thermal regulation and comfort he needs to perform at his peak.</p>
+
+            <p>This collaboration highlights ZeroFit's commitment to supporting elite athletes who demand nothing but the best in performance apparel. Harrison's rigorous training schedule and competition demands make him the perfect ambassador for ZeroFit's advanced base layer technology.</p>
+        </section>
+
+        <div class="cta-section">
+            <h2>Discover ZeroFit</h2>
+            <p>Experience Japanese-engineered base layer technology</p>
+            <a href="https://zerofit.co.uk/pages/about" target="_blank" class="cta-button">Visit ZeroFit</a>
+            <a href="index.html" class="cta-button">Back to Harrison's Site</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 ZeroFit. Official Partner of Harrison Dessoy.</p>
+        <p>Racing at the Highest Level</p>
+    </footer>
+</body>
+</html>
