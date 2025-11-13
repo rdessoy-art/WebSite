@@ -815,6 +815,46 @@
                 <p style="font-size: 1rem; margin-top: 1rem;">Exclusive access • Behind-the-scenes content • VIP experiences</p>
             </div>
 
+            <div class="signup-form">
+                <h3>Express Your Interest</h3>
+                <form id="fanclubForm">
+                    <input type="hidden" name="access_key" value="849b83c2-85b1-495c-8074-a020510f09b7">
+
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="country">Country</label>
+                        <input type="text" id="country" name="country" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tier">Membership Tier Interest</label>
+                        <select id="tier" name="tier" required style="width: 100%; padding: 0.8rem; border: 2px solid var(--secondary); border-radius: 5px; font-size: 1rem;">
+                            <option value="">Select a tier...</option>
+                            <option value="Bronze - £25/year">Bronze - £25/year</option>
+                            <option value="Silver - £100/year">Silver - £100/year</option>
+                            <option value="Gold - £500/year">Gold - £500/year</option>
+                            <option value="News Letter">News Letter</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message (Optional)</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Tell us why you want to join or any questions you have..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-button">Submit Interest</button>
+                </form>
+            </div>
+
             <div class="club-intro">
                 <h3>About the Club</h3>
                 <p>I'm building something different - not just a sponsorship programme, but a proper racing club where you're part of the team. As I prepare to compete at the highest level in 2026, I want to bring my supporters closer to the action than ever before.</p>
@@ -911,44 +951,6 @@
                 </div>
             </div>
 
-            <div class="signup-form">
-                <h3>Express Your Interest</h3>
-                <form id="fanclubForm">
-                    <input type="hidden" name="access_key" value="849b83c2-85b1-495c-8074-a020510f09b7">
-
-                    <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="country">Country</label>
-                        <input type="text" id="country" name="country" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="tier">Membership Tier Interest</label>
-                        <select id="tier" name="tier" required style="width: 100%; padding: 0.8rem; border: 2px solid var(--secondary); border-radius: 5px; font-size: 1rem;">
-                            <option value="">Select a tier...</option>
-                            <option value="Bronze - £25/year">Bronze - £25/year</option>
-                            <option value="Silver - £100/year">Silver - £100/year</option>
-                            <option value="Gold - £500/year">Gold - £500/year</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="message">Message (Optional)</label>
-                        <textarea id="message" name="message" rows="4" placeholder="Tell us why you want to join or any questions you have..."></textarea>
-                    </div>
-
-                    <button type="submit" class="submit-button">Submit Interest</button>
-                </form>
-            </div>
         </section>
     </main>
 
