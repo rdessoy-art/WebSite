@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z0P3DBDMDZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-Z0P3DBDMDZ');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events - Harrison Dessoy Racing</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #e63946;
+            --secondary: #1d3557;
+            --accent: #f1faee;
+            --dark: #0a0a0a;
+            --light: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: var(--light);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--secondary) 100%);
+            color: var(--light);
+            padding: 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 0.5rem 1rem;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary);
+        }
+
+        main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            margin-top: 70px;
+        }
+
+        .page-hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--light);
+            padding: 3rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .page-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--secondary);
+            border-left: 5px solid var(--primary);
+            padding-left: 1rem;
+        }
+
+        .races-grid {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .race-row {
+            display: grid;
+            grid-template-columns: 120px 150px 150px 2fr 120px 150px;
+            gap: 1.5rem;
+            align-items: center;
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-left: 4px solid var(--primary);
+        }
+
+        .race-row:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        .track-image {
+            width: 120px;
+            height: 80px;
+            border-radius: 8px;
+            overflow: hidden;
+            background: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            text-align: center;
+            color: var(--secondary);
+            font-weight: 500;
+        }
+
+        .track-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .race-date {
+            color: var(--secondary);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .race-country {
+            color: #555;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .country-flag {
+            font-size: 1.5rem;
+        }
+
+        .track-name {
+            color: var(--secondary);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .track-length {
+            color: #666;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .race-report-btn {
+            padding: 0.8rem 1.5rem;
+            background: var(--primary);
+            color: var(--light);
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .race-report-btn:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        footer {
+            background: var(--dark);
+            color: var(--light);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            color: var(--light);
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+        }
+
+        @media (max-width: 1200px) {
+            .race-row {
+                grid-template-columns: 100px 130px 130px 1fr 100px 130px;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .track-image {
+                width: 100px;
+                height: 70px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.5rem;
+            }
+
+            nav a {
+                padding: 0.3rem 0.7rem;
+                font-size: 0.9rem;
+            }
+
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+
+            .race-row {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .track-image {
+                width: 100%;
+                height: 120px;
+                margin: 0 auto;
+            }
+
+            .race-country {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">HARRISON DESSOY</div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#news">News</a></li>
+                    <li><a href="events.html" class="active">Events</a></li>
+                    <li><a href="index.html#sponsors">Sponsors</a></li>
+                    <li><a href="index.html#fanclub">Fan Club</a></li>
+                    <li><a href="nft.html">NFT</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="page-hero">
+            <h1>2026 Racing Calendar</h1>
+            <p>Follow Harrison Dessoy through the world's premier motorcycle racing championship</p>
+        </div>
+
+        <h2>Worldsuperbike races</h2>
+
+        <div class="races-grid">
+            <!-- Round 1 -->
+            <div class="race-row">
+                <div class="track-image">
+                    <img src="images/tracks/phillip-island.jpg" alt="Phillip Island Circuit" onerror="this.parentElement.innerHTML='Phillip Island'">
+                </div>
+                <div class="race-date">February 21-23</div>
+                <div class="race-country">
+                    <span class="country-flag">🇦🇺</span>
+                    <span>Australia</span>
+                </div>
+                <div class="track-name">Phillip Island Circuit</div>
+                <div class="track-length">4.448 km</div>
+                <button class="race-report-btn">Race Report</button>
+            </div>
+
+            <!-- Round 2 -->
+            <div class="race-row">
+                <div class="track-image">
+                    <img src="images/tracks/mandalika.jpg" alt="Mandalika International Street Circuit" onerror="this.parentElement.innerHTML='Mandalika'">
+                </div>
+                <div class="race-date">March 14-16</div>
+                <div class="race-country">
+                    <span class="country-flag">🇮🇩</span>
+                    <span>Indonesia</span>
+                </div>
+                <div class="track-name">Mandalika International Street Circuit</div>
+                <div class="track-length">4.310 km</div>
+                <button class="race-report-btn">Race Report</button>
+            </div>
+
+            <!-- Round 3 -->
+            <div class="race-row">
+                <div class="track-image">
+                    <img src="images/tracks/aragon.jpg" alt="MotorLand Aragón" onerror="this.parentElement.innerHTML='Aragón'">
+                </div>
+                <div class="race-date">April 4-6</div>
+                <div class="race-country">
+                    <span class="country-flag">🇪🇸</span>
+                    <span>Spain</span>
+                </div>
+                <div class="track-name">MotorLand Aragón</div>
+                <div class="track-length">5.077 km</div>
+                <button class="race-report-btn">Race Report</button>
+            </div>
+
+            <!-- Round 4 -->
+            <div class="race-row">
+                <div class="track-image">
+                    <img src="images/tracks/assen.jpg" alt="TT Circuit Assen" onerror="this.parentElement.innerHTML='Assen'">
+                </div>
+                <div class="race-date">April 25-27</div>
+                <div class="race-country">
+                    <span class="country-flag">🇳🇱</span>
+                    <span>Netherlands</span>
+                </div>
+                <div class="track-name">TT Circuit Assen</div>
+                <div class="track-length">4.542 km</div>
+                <button class="race-report-btn">Race Report</button>
+            </div>
+
+            <!-- Round 5 -->
+            <div class="race-row">
+                <div class="track-image">
+                    <img src="images/tracks/imola.jpg" alt="Autodromo Enzo e Dino Ferrari" onerror="this.parentElement.innerHTML='Imola'">
+                </div>
+                <div class="race-date">May 9-11</div>
+                <div class="race-country">
+                    <span class="country-flag">🇮🇹</span>
+                    <span>Italy</span>
+                </div>
+                <div class="track-name">Autodromo Enzo e Dino Ferrari</div>
+                <div class="track-length">4.936 km</div>
+                <button class="race-report-btn">Race Report</button>
+            </div>
+
+            <!-- Round 6 -->
+            <div class="race-row">
+                <div class="track-image">
+                    <img src="images/tracks/donington.jpg" alt="Donington Park" onerror="this.parentElement.innerHTML='Donington'">
+                </div>
+                <div class="race-date">May 23-25</div>
+                <div class="race-country">
+                    <span class="country-flag">🇬🇧</span>
+                    <span>United Kingdom</span>
+                </div>
+                <div class="track-name">Donington Park</div>
+                <div class="track-length">4.023 km</div>
+                <button class="race-report-btn">Race Report</button>
+            </div>
+
+            <!-- Round 7 -->
+            <div class="race-row">
+                <div class="track-image">
+                    <img src="images/tracks/misano.jpg" alt="Misano World Circuit Marco Simoncelli" onerror="this.parentElement.innerHTML='Misano'">
+                </div>
+                <div class="race-date">June 13-15</div>
+                <div class="race-country">
+                    <span class="country-flag">🇮🇹</span>
+                    <span>Italy</span>
+                </div>
+                <div class="track-name">Misano World Circuit Marco Simoncelli</div>
+                <div class="track-length">4.226 km</div>
+                <button class="race-report-btn">Race Report</button>
+            </div>
+
+            <!-- Round 8 -->
+            <div class="race-row">
+                <div class="track-image">
+                    <img src="images/tracks/most.jpg" alt="Autodrom Most" onerror="this.parentElement.innerHTML='Most'">
+                </div>
+                <div class="race-date">July 18-20</div>
+                <div class="race-country">
+                    <span class="country-flag">🇨🇿</span>
+                    <span>Czech Republic</span>
+                </div>
+                <div class="track-name">Autodrom Most</div>
+                <div class="track-length">4.212 km</div>
+                <button class="race-report-btn">Race Report</button>
+            </div>
+
+            <!-- Round 9 -->
+            <div class="race-row">
+                <div class="track-image">
+                    <img src="images/tracks/portimao.jpg" alt="Autódromo Internacional do Algarve" onerror="this.parentElement.innerHTML='Portimão'">
+                </div>
+                <div class="race-date">August 8-10</div>
+                <div class="race-country">
+                    <span class="country-flag">🇵🇹</span>
+                    <span>Portugal</span>
+                </div>
+                <div class="track-name">Autódromo Internacional do Algarve</div>
+                <div class="track-length">4.592 km</div>
+                <button class="race-report-btn">Race Report</button>
+            </div>
+
+            <!-- Round 10 -->
+            <div class="race-row">
+                <div class="track-image">
+                    <img src="images/tracks/magny-cours.jpg" alt="Circuit de Nevers Magny-Cours" onerror="this.parentElement.innerHTML='Magny-Cours'">
+                </div>
+                <div class="race-date">September 5-7</div>
+                <div class="race-country">
+                    <span class="country-flag">🇫🇷</span>
+                    <span>France</span>
+                </div>
+                <div class="track-name">Circuit de Nevers Magny-Cours</div>
+                <div class="track-length">4.411 km</div>
+                <button class="race-report-btn">Race Report</button>
+            </div>
+
+            <!-- Round 11 -->
+            <div class="race-row">
+                <div class="track-image">
+                    <img src="images/tracks/barcelona.jpg" alt="Circuit de Barcelona-Catalunya" onerror="this.parentElement.innerHTML='Barcelona'">
+                </div>
+                <div class="race-date">September 19-21</div>
+                <div class="race-country">
+                    <span class="country-flag">🇪🇸</span>
+                    <span>Spain</span>
+                </div>
+                <div class="track-name">Circuit de Barcelona-Catalunya</div>
+                <div class="track-length">4.675 km</div>
+                <button class="race-report-btn">Race Report</button>
+            </div>
+
+            <!-- Round 12 -->
+            <div class="race-row">
+                <div class="track-image">
+                    <img src="images/tracks/jerez.jpg" alt="Circuito de Jerez" onerror="this.parentElement.innerHTML='Jerez'">
+                </div>
+                <div class="race-date">October 17-19</div>
+                <div class="race-country">
+                    <span class="country-flag">🇪🇸</span>
+                    <span>Spain</span>
+                </div>
+                <div class="track-name">Circuito de Jerez</div>
+                <div class="track-length">4.423 km</div>
+                <button class="race-report-btn">Race Report</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://www.instagram.com/harrison_dessoy55/" title="Instagram">📷</a>
+            <a href="#" title="Twitter">🐦</a>
+            <a href="https://www.facebook.com/HarrisonDessoy" title="Facebook">📘</a>
+            <a href="https://www.youtube.com/channel/UCco2lC1RzhZFZYTZYMhFdcA" title="YouTube" target="_blank">
+                <img src="images/YouTube.jpg" alt="YouTube" width="24" height="24">
+            </a>
+        </div>
+        <p>&copy; 2025 Harrison Dessoy. All rights reserved.</p>
+        <p>Racing at the Highest Level</p>
+    </footer>
+</body>
+</html>
