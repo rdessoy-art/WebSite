@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+         <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z0P3DBDMDZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-Z0P3DBDMDZ');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Martin Sheath & Eastern Garage Racing - Harrison Dessoy Product Partner</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #e63946;
+            --secondary: #1d3557;
+            --accent: #f1faee;
+            --dark: #0a0a0a;
+            --light: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: var(--light);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--secondary) 100%);
+            color: var(--light);
+            padding: 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .back-link {
+            color: var(--light);
+            text-decoration: none;
+            padding: 0.5rem 1.5rem;
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+
+        .back-link:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .sponsor-hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--light);
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .sponsor-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .sponsor-hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .content-section {
+            margin-bottom: 4rem;
+        }
+
+        .content-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--secondary);
+            border-left: 5px solid var(--primary);
+            padding-left: 1rem;
+        }
+
+        .content-section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            margin-top: 2rem;
+            color: var(--secondary);
+        }
+
+        .content-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .content-section ul {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .content-section li {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .partnership-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .partnership-card {
+            background: var(--accent);
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 5px solid var(--primary);
+        }
+
+        .partnership-card h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .partnership-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .partnership-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .partnership-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .quote-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            color: var(--light);
+            padding: 3rem;
+            border-radius: 10px;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .quote-section blockquote {
+            font-size: 1.5rem;
+            font-style: italic;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .quote-section cite {
+            font-size: 1.1rem;
+            font-style: normal;
+        }
+
+        .highlight-box {
+            background: var(--accent);
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            border-left: 5px solid var(--primary);
+        }
+
+        .highlight-box h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-box {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-top: 4px solid var(--primary);
+        }
+
+        .feature-box h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .cta-section {
+            background: var(--accent);
+            padding: 3rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .cta-section h2 {
+            border: none;
+            padding: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--primary);
+            color: var(--light);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: 2px solid var(--primary);
+            margin: 0.5rem;
+        }
+
+        .cta-button:hover {
+            background: var(--secondary);
+            border-color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        footer {
+            background: var(--dark);
+            color: var(--light);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .sponsor-hero h1 {
+                font-size: 2rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .content-section h2 {
+                font-size: 2rem;
+            }
+
+            .content-section h3 {
+                font-size: 1.5rem;
+            }
+
+            .partnership-grid, .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">HARRISON DESSOY</div>
+            <a href="index.html" class="back-link">← Back to Main Site</a>
+        </div>
+    </header>
+
+    <div class="sponsor-hero">
+        <h1>Eastern Garage Racing</h1>
+        <img src="images/EGR.png" alt="Eastern Garage Racing Logo" style="max-width: 400px; margin: 2rem auto; display: block; background: white; padding: 1rem; border-radius: 10px;">
+        <p>Product Partner - Supporting Harrison Dessoy</p>
+    </div>
+
+    <main>
+        <section class="content-section">
+            <h2>About Martin Sheath & Eastern Garage Racing</h2>
+            <p>Martin Sheath is the owner of Eastern Garage (Essex) Limited, which he took over in 1989. Eastern Garage was originally established in 1950 and has been serving the local community with various car franchises for over 60 years.</p>
+
+            <p>With his team of 10 employees, Martin and Eastern Garage serve not only the local community but also fleet commercial operators as far away as Enfield, plus the local Ministry of Defence Police headquarters at Wethersfield.</p>
+
+            <p>Eastern Garage represents a blend of traditional automotive excellence and modern service standards, making them an ideal product partner for Harrison's racing journey.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Services & Expertise</h2>
+
+            <div class="partnership-grid">
+                <div class="partnership-card">
+                    <h3>Car Body Repairs</h3>
+                    <ul>
+                        <li>Professional collision repair</li>
+                        <li>Expert paint matching</li>
+                        <li>Quality workmanship</li>
+                        <li>Modern repair techniques</li>
+                        <li>Insurance work welcome</li>
+                    </ul>
+                </div>
+
+                <div class="partnership-card">
+                    <h3>MOT & Servicing</h3>
+                    <ul>
+                        <li>MOT for Class 3, 4 & 4a vehicles</li>
+                        <li>Comprehensive car servicing</li>
+                        <li>Engine repairs and diagnostics</li>
+                        <li>Preventative maintenance</li>
+                        <li>Fleet services available</li>
+                    </ul>
+                </div>
+
+                <div class="partnership-card">
+                    <h3>Tyre Services</h3>
+                    <ul>
+                        <li>Wide range of tyre brands</li>
+                        <li>Quick tyre fitting</li>
+                        <li>Wheel alignment</li>
+                        <li>Tyre pressure monitoring</li>
+                        <li>Expert advice on tyre selection</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="quote-section">
+            <blockquote>
+                "Eastern Garage has been serving the Essex community for over 70 years with dedication, expertise, and a commitment to quality service that aligns perfectly with the standards we strive for in racing."
+            </blockquote>
+            <cite>— Harrison Dessoy</cite>
+        </div>
+
+        <section class="content-section">
+            <h2>Why Eastern Garage Racing?</h2>
+
+            <div class="features-grid">
+                <div class="feature-box">
+                    <h3>70+ Years Experience</h3>
+                    <p>Established in 1950, serving the community since</p>
+                </div>
+
+                <div class="feature-box">
+                    <h3>Expert Team</h3>
+                    <p>10 skilled professionals dedicated to quality service</p>
+                </div>
+
+                <div class="feature-box">
+                    <h3>Comprehensive Services</h3>
+                    <p>From MOTs to body repairs and everything in between</p>
+                </div>
+
+                <div class="feature-box">
+                    <h3>Customer Focused</h3>
+                    <p>Fast, courteous, and efficient service</p>
+                </div>
+
+                <div class="feature-box">
+                    <h3>Local Expertise</h3>
+                    <p>Deep understanding of community needs</p>
+                </div>
+
+                <div class="feature-box">
+                    <h3>Fleet Services</h3>
+                    <p>Supporting commercial operators across the region</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>Customer Reputation</h2>
+            <p>Customers highly praise Eastern Garage for its fast, courteous, and efficient service, with particular appreciation for quick tyre fittings, helpful staff, and friendly atmosphere. The garage has built a strong reputation in the local community through decades of reliable service and professional expertise.</p>
+
+            <p>This reputation for excellence and attention to detail makes Eastern Garage an ideal partner for Harrison's racing endeavors, where precision and reliability are paramount.</p>
+        </section>
+
+        <div class="highlight-box">
+            <h3>Location & Contact</h3>
+            <p><strong>Address:</strong> Wethersfield Road, Finchingfield, Braintree, Essex, CM7 4NT</p>
+            <p><strong>Phone:</strong> <a href="tel:01371810238" style="color: var(--primary); font-weight: bold;">01371 810238</a></p>
+            <p><strong>Email:</strong> <a href="mailto:info@easterngarage.net" style="color: var(--primary); font-weight: bold;">info@easterngarage.net</a></p>
+            <p><strong>Website:</strong> <a href="https://www.easterngarageessex.co.uk/" target="_blank" style="color: var(--primary); font-weight: bold;">easterngarageessex.co.uk</a></p>
+        </div>
+
+        <section class="content-section">
+            <h2>The Partnership</h2>
+            <p>Martin Sheath and Eastern Garage Racing's partnership with Harrison Dessoy represents a shared commitment to excellence and performance. Their product partnership provides valuable support for Harrison's racing career, combining Eastern Garage's automotive expertise with the precision and dedication required in competitive motorcycle racing.</p>
+
+            <p>This collaboration showcases Eastern Garage's dedication to supporting local talent and their commitment to the broader motorsport community in Essex and beyond.</p>
+        </section>
+
+        <div class="cta-section">
+            <h2>Visit Eastern Garage</h2>
+            <p>Discover more about Eastern Garage's comprehensive automotive services</p>
+            <a href="https://www.easterngarageessex.co.uk/" target="_blank" class="cta-button">Visit Eastern Garage Website</a>
+            <a href="tel:01371810238" class="cta-button">Call 01371 810238</a>
+            <a href="index.html" class="cta-button">Back to Harrison's Site</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Eastern Garage Racing. Product Partner of Harrison Dessoy.</p>
+        <p>Racing at the Highest Level</p>
+    </footer>
+</body>
+</html>
