@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+         <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z0P3DBDMDZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-Z0P3DBDMDZ');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mark Walker Coaching - Harrison Dessoy Fitness Coach</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #e63946;
+            --secondary: #1d3557;
+            --accent: #f1faee;
+            --dark: #0a0a0a;
+            --light: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: var(--light);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--secondary) 100%);
+            color: var(--light);
+            padding: 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .back-link {
+            color: var(--light);
+            text-decoration: none;
+            padding: 0.5rem 1.5rem;
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+
+        .back-link:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .sponsor-hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--light);
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .sponsor-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .sponsor-hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .content-section {
+            margin-bottom: 4rem;
+        }
+
+        .content-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--secondary);
+            border-left: 5px solid var(--primary);
+            padding-left: 1rem;
+        }
+
+        .content-section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            margin-top: 2rem;
+            color: var(--secondary);
+        }
+
+        .content-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .content-section ul {
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .content-section li {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .quote-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            color: var(--light);
+            padding: 3rem;
+            border-radius: 10px;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .quote-section blockquote {
+            font-size: 1.5rem;
+            font-style: italic;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .quote-section cite {
+            font-size: 1.1rem;
+            font-style: normal;
+        }
+
+        .highlight-box {
+            background: var(--accent);
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            border-left: 5px solid var(--primary);
+        }
+
+        .highlight-box h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .cta-section {
+            background: var(--accent);
+            padding: 3rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .cta-section h2 {
+            border: none;
+            padding: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--primary);
+            color: var(--light);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: 2px solid var(--primary);
+            margin: 0.5rem;
+        }
+
+        .cta-button:hover {
+            background: var(--secondary);
+            border-color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        footer {
+            background: var(--dark);
+            color: var(--light);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .sponsor-hero h1 {
+                font-size: 2rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .content-section h2 {
+                font-size: 2rem;
+            }
+
+            .content-section h3 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">HARRISON DESSOY</div>
+            <a href="index.html" class="back-link">← Back to Main Site</a>
+        </div>
+    </header>
+
+    <div class="sponsor-hero">
+        <h1>Mark Walker Coaching</h1>
+        <img src="images/MWC_Logo_Black.png" alt="Mark Walker Coaching Logo" style="max-width: 400px; margin: 2rem auto; display: block;">
+        <p>Harrison's Fitness Coach - Sports Science Excellence</p>
+    </div>
+
+    <main>
+        <section class="content-section">
+            <h2>How Sports Science is Helping Harrison Dessoy to Prepare for Racing</h2>
+            <p><em>By Mark Walker</em></p>
+            <p>Mark Walker explains how Sports Science is helping Harrison Dessoy to get physically and mentally prepared for elite-level racing.</p>
+        </section>
+
+        <section class="content-section">
+            <h3>Why is Harrison using Sports Science?</h3>
+            <p>I have been working with Harrison since 2021 preparing him both physically and mentally for the demands of high-level racing. My previous experience is in professional cycling having coached Alex Dowsett to the world hour record and numerous riders to national and world championship medals. I've always had a keen interest in motorcycle racing and enjoy looking for parallels between human powered cycling and its motorised cousin.</p>
+
+            <p>I think the key advantage of working with a sports science trained coach is the evidence-based approach it brings. The mantras of 'train till you puke' or 'no pain no gain' are heard less often in the gym or the athletics track. In the modern era everything is done for a reason and training is optimised to achieve the biggest gains for the effort expended.</p>
+        </section>
+
+        <section class="content-section">
+            <h3>Optimisation of Training</h3>
+            <p>I understand that there are many demands placed upon Harrison as not only does he have to be physically and mentally fit but he must put in hours of technical training too. If I can improve his fitness in a time-efficient way that frees him to focus on other aspects of his performance.</p>
+
+            <p>This is why it is important to think about where the biggest gains are likely to come from. In fact, I think the idea of 'marginal gains' is a bit misleading. Sure, lots of 1% improvements will add up to make a difference but in the early stages of an athlete's career small tweaks to their training can bring pretty big returns.</p>
+
+            <p>This is where training optimisation comes to the fore. My first task was to prioritise the most important aspect of Harrison's performance. I then placed those qualities at the core of Harrison's training and set about constructing a training plan which would give the greatest returns.</p>
+        </section>
+
+        <section class="content-section">
+            <h3>Start at the End and Work Back to the Start</h3>
+            <p>I structured Harrison's training plan by looking at the key races and then worked backwards. This gave me an appropriate starting point and ensured that all the key elements of training were covered at the appropriate time. In sports science terms this is known as periodising training.</p>
+
+            <p>It is so easy to miss something if training is set day by day 'on the fly' so it always pays to write everything down in advance. A further advantage of this approach is that Harrison and I can look back at previous years and evaluate what worked well and what might need changing.</p>
+        </section>
+
+        <section class="content-section">
+            <h3>From the Sports Science Lab to the Field</h3>
+            <p>Testing is an important aspect of coaching, and for good reason. Testing allows sports scientists and coaches to benchmark athletes against themselves and others. It also provides insights into which training methods may be the most effective. However, testing needs to be used wisely and I witness people doing lots of unnecessary laboratory tests.</p>
+
+            <p>These days a diverse range of relevant data can be collected from wearable devices. Relatively inexpensive sports watches collect data that just a few years ago could only be obtained in a laboratory. To regularly take Harrison out of training for lab testing would be highly disruptive as he would need to be well rested to obtain valid data. The testing takes an additional day out of training and many of the conventional lab tests will have little relevance to his performance on the bike.</p>
+
+            <p>Using Harrison's field data is less disruptive to training and through careful interpretation I can evaluate all the key aspects of his fitness and performance. I believe the increasing use of field data is an aspect of sports performance analysis that will, in future, bring huge changes to the way athletes are trained.</p>
+        </section>
+
+        <section class="content-section">
+            <h3>Accidents Will Happen</h3>
+            <p>It is an unfortunate inevitability that athletes will become injured either because of training or during competition. Sometimes these problems are little niggles than can be treated relatively easily or they may require medical intervention.</p>
+
+            <p>Harrison like all motorcycle racers has had his fair share of tumbles. Most of the time he has walked away relatively unscathed but from time to time he has required specialist treatment for his injuries. With my sports science background I have a basic understanding of sports medicine which has enabled me to understand diagnoses and act upon the medical advice. I've been able to adjust Harrison's training to complement any given rehabilitation programme and ensure a speedy return to fitness.</p>
+        </section>
+
+        <section class="content-section">
+            <h3>Strength and Conditioning</h3>
+            <p>Strength and conditioning has become a popular term in the last 10 years and now many personal trainers describe themselves as S&C coaches. The term covers a wide range of training methods designed to build muscular strength and to develop aerobic conditioning.</p>
+
+            <p>Harrison has been following what might be termed an S&C programme. Much of his aerobic training is completed on the bike as it is low impact and the indoor trainer provides valuable data to monitor his progress. Harrison has a background in swimming so he trains weekly in the pool and has even competed in a couple of galas over the winter.</p>
+
+            <p>I am conscious that cycling and swimming are non-weight bearing so I have also prescribed regular running to build bone density.</p>
+
+            <p>Riding a motorcycle at speed is very physical so Harrison needs a high degree of strength as well as good strength-endurance. His twice weekly gym sessions have been a fixture on the training programme all winter. Strength training has the added advantages of further increasing bone density and making Harrison more resilient if he falls.</p>
+
+            <p>When Harrison is away from home he undertakes body weight strength, running to maintain his aerobic fitness, and core work. This is on top of the daily stretching routine Harrison does all year round.</p>
+        </section>
+
+        <section class="content-section">
+            <h3>The Best Measure of Performance is the Performance Itself</h3>
+            <p>I can evaluate training data and test Harrison all I like but ultimately the race day performance is the only true measure. Some athletes perform extremely well in training or the lab but can't seem to reproduce the quality needed in competition. I've spent a lot of time working with Harrison to translate all the work he has completed into great race day performances. This includes warm-up, cool down, nutrition and some mental skills. I soon hope to write another post, either here or on my own site, to explain more about these important aspects of preparation. But suffice to say, both Harrison and I are excited for the first race of the season and the opportunity to discover just how far he has progressed. From what I know, I think it will be a massive leap forward!</p>
+        </section>
+
+        <div class="highlight-box">
+            <h3>About Mark Walker</h3>
+            <p>Mark Walker is a sports scientist, coach educator and athletic trainer with extensive experience in elite-level sports performance. His background includes coaching professional cyclists to world records and championship medals, and he has been instrumental in Harrison's physical and mental preparation since 2021.</p>
+            <p>You can read more about Mark's work as a sports scientist, coach educator and athletic trainer at his website: <a href="https://markwalkercoaching.co.uk" target="_blank" style="color: var(--primary); font-weight: bold;">markwalkercoaching.co.uk</a></p>
+            <p>Mark has places available for new athletes so please contact him if you too would like to benefit from his help.</p>
+        </div>
+
+        <div class="cta-section">
+            <h2>Learn More About Mark Walker Coaching</h2>
+            <p>Discover more about Mark Walker's sports science coaching services</p>
+            <a href="https://markwalkercoaching.co.uk" target="_blank" class="cta-button">Visit Mark Walker Coaching</a>
+            <a href="index.html" class="cta-button">Back to Harrison's Site</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Mark Walker Coaching. Official Partner of Harrison Dessoy.</p>
+        <p>Racing at the Highest Level</p>
+    </footer>
+</body>
+</html>
