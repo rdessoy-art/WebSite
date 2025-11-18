@@ -142,36 +142,9 @@
         #news {
             position: relative;
             padding: 3rem;
-            background:
-                linear-gradient(135deg, rgba(241, 250, 238, 0.95) 0%, rgba(255, 255, 255, 0.92) 50%, rgba(241, 250, 238, 0.95) 100%),
-                url('images/Cadwell win 1.JPEG'),
-                url('images/Hall Bends.JPEG');
-            background-size: cover, 40% auto, 40% auto;
-            background-position: center, left center, right center;
-            background-repeat: no-repeat, no-repeat, no-repeat;
-            background-blend-mode: overlay, luminosity, luminosity;
+            background: linear-gradient(135deg, rgba(241, 250, 238, 0.95) 0%, rgba(255, 255, 255, 0.92) 50%, rgba(241, 250, 238, 0.95) 100%);
             border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-
-        #news::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background:
-                radial-gradient(circle at 20% 50%, rgba(230, 57, 70, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 80% 50%, rgba(29, 53, 87, 0.08) 0%, transparent 50%);
-            border-radius: 15px;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        #news > * {
-            position: relative;
-            z-index: 1;
         }
 
         @keyframes fadeIn {
@@ -721,7 +694,7 @@
         }
 
         .hero-sponsor-logo {
-            height: 60px;
+            height: 80px;
             width: auto;
             object-fit: contain;
             opacity: 0.9;
@@ -740,7 +713,7 @@
             }
 
             .hero-sponsor-logo {
-                height: 45px;
+                height: 60px;
             }
         }
 
@@ -775,8 +748,8 @@
         }
 
         .social-links img {
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             object-fit: contain;
             filter: brightness(0) invert(1);
             transition: all 0.3s;
@@ -915,7 +888,7 @@
             <h2>Latest News</h2>
             <div class="blog-grid">
                 <div class="blog-card">
-                    <div class="blog-image"><span>Training Update</span></div>
+                    <div class="blog-image" style="background-image: url('images/Cadwell win 1.JPEG');"><span>Training Update</span></div>
                     <div class="blog-content">
                         <p class="blog-date">November 2025</p>
                         <h3>Preparing for 2026 Season</h3>
@@ -925,7 +898,7 @@
                 </div>
 
                 <div class="blog-card">
-                    <div class="blog-image"><span>Team Announcement</span></div>
+                    <div class="blog-image" style="background-image: url('images/Hall Bends.JPEG');"><span>Team Announcement</span></div>
                     <div class="blog-content">
                         <p class="blog-date">Coming Soon</p>
                         <h3>Exciting Announcement</h3>
@@ -935,7 +908,7 @@
                 </div>
 
                 <div class="blog-card">
-                    <div class="blog-image"><span>Behind the Scenes</span></div>
+                    <div class="blog-image" style="background-image: url('images/IMG_9418.JPEG');"><span>Behind the Scenes</span></div>
                     <div class="blog-content">
                         <p class="blog-date">September 2025</p>
                         <h3>A Day in the Life</h3>
