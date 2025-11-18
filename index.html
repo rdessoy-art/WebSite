@@ -231,6 +231,33 @@
             justify-content: center;
             color: var(--light);
             font-weight: bold;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .blog-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(29, 53, 87, 0.7) 0%, rgba(230, 57, 70, 0.7) 100%);
+            z-index: 1;
+        }
+
+        .blog-image span {
+            position: relative;
+            z-index: 2;
+        }
+
+        .blog-image.cadwell-win {
+            background-image: url('images/Cadwell win 1.JPEG');
+        }
+
+        .blog-image.hall-bends {
+            background-image: url('images/Hall Bends.JPEG');
         }
 
         .blog-content {
@@ -655,6 +682,44 @@
             letter-spacing: 1px;
         }
 
+        .hero-sponsors {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-sponsor-logo {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+            opacity: 0.9;
+            transition: all 0.3s;
+        }
+
+        .hero-sponsor-logo:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .hero-sponsors {
+                gap: 1.5rem;
+                padding: 1.5rem;
+            }
+
+            .hero-sponsor-logo {
+                height: 45px;
+            }
+        }
+
         footer {
             background: var(--dark);
             color: var(--light);
@@ -760,6 +825,14 @@
                         </div>
                     </div>
                 </div>
+                <div class="hero-sponsors">
+                    <img src="images/PHR-with-Wriiting-below-pdf.webp" alt="PHR Performance" class="hero-sponsor-logo">
+                    <img src="images/GreyersGraphics.svg" alt="Grayers Graphics" class="hero-sponsor-logo">
+                    <img src="images/weise-logo_h100.jpg" alt="Weise Clothing" class="hero-sponsor-logo">
+                    <img src="images/HelmetCity.webp" alt="Helmet City" class="hero-sponsor-logo">
+                    <img src="images/EGR.png" alt="ARC-ON" class="hero-sponsor-logo">
+                    <img src="images/Fletchers-Solicitors-Logo.png" alt="Fletchers Solicitors" class="hero-sponsor-logo">
+                </div>
                 <a href="#about" class="cta-button" onclick="showSection('about')" style="margin-top: 2rem;">Discover My Journey</a>
             </div>
         </div>
@@ -801,7 +874,7 @@
             <h2>Latest News</h2>
             <div class="blog-grid">
                 <div class="blog-card">
-                    <div class="blog-image">Training Update</div>
+                    <div class="blog-image cadwell-win"><span>Training Update</span></div>
                     <div class="blog-content">
                         <p class="blog-date">November 2025</p>
                         <h3>Preparing for 2026 Season</h3>
@@ -811,7 +884,7 @@
                 </div>
 
                 <div class="blog-card">
-                    <div class="blog-image">Team Announcement</div>
+                    <div class="blog-image hall-bends"><span>Team Announcement</span></div>
                     <div class="blog-content">
                         <p class="blog-date">Coming Soon</p>
                         <h3>Exciting Announcement</h3>
@@ -821,7 +894,7 @@
                 </div>
 
                 <div class="blog-card">
-                    <div class="blog-image">Behind the Scenes</div>
+                    <div class="blog-image"><span>Behind the Scenes</span></div>
                     <div class="blog-content">
                         <p class="blog-date">September 2025</p>
                         <h3>A Day in the Life</h3>
@@ -957,8 +1030,8 @@
 
         // Countdown Timer
         function updateCountdown() {
-            // Set the date we're counting down to - November 21st, 2025 at 3pm
-            const countDownDate = new Date("November 21, 2025 15:00:00").getTime();
+            // Set the date we're counting down to - November 23rd, 2025 at 1pm
+            const countDownDate = new Date("November 23, 2025 13:00:00").getTime();
 
             // Update the countdown every 1 second
             const x = setInterval(function() {
