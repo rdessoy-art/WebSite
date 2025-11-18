@@ -139,6 +139,41 @@
             display: block;
         }
 
+        #news {
+            position: relative;
+            padding: 3rem;
+            background:
+                linear-gradient(135deg, rgba(241, 250, 238, 0.95) 0%, rgba(255, 255, 255, 0.92) 50%, rgba(241, 250, 238, 0.95) 100%),
+                url('images/Cadwell win 1.JPEG'),
+                url('images/Hall Bends.JPEG');
+            background-size: cover, 40% auto, 40% auto;
+            background-position: center, left center, right center;
+            background-repeat: no-repeat, no-repeat, no-repeat;
+            background-blend-mode: overlay, luminosity, luminosity;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        #news::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(230, 57, 70, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(29, 53, 87, 0.08) 0%, transparent 50%);
+            border-radius: 15px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        #news > * {
+            position: relative;
+            z-index: 1;
+        }
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -250,14 +285,6 @@
         .blog-image span {
             position: relative;
             z-index: 2;
-        }
-
-        .blog-image.cadwell-win {
-            background-image: url('images/Cadwell win 1.JPEG');
-        }
-
-        .blog-image.hall-bends {
-            background-image: url('images/Hall Bends.JPEG');
         }
 
         .blog-content {
@@ -728,18 +755,35 @@
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            gap: 3rem;
             margin-bottom: 1rem;
+            align-items: center;
         }
 
         .social-links a {
             color: var(--light);
             font-size: 1.5rem;
-            transition: color 0.3s;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .social-links a:hover {
             color: var(--primary);
+            transform: scale(1.15);
+        }
+
+        .social-links img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover img {
+            filter: brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(320deg);
         }
 
         @media (max-width: 768px) {
@@ -871,7 +915,7 @@
             <h2>Latest News</h2>
             <div class="blog-grid">
                 <div class="blog-card">
-                    <div class="blog-image cadwell-win"><span>Training Update</span></div>
+                    <div class="blog-image"><span>Training Update</span></div>
                     <div class="blog-content">
                         <p class="blog-date">November 2025</p>
                         <h3>Preparing for 2026 Season</h3>
@@ -881,7 +925,7 @@
                 </div>
 
                 <div class="blog-card">
-                    <div class="blog-image hall-bends"><span>Team Announcement</span></div>
+                    <div class="blog-image"><span>Team Announcement</span></div>
                     <div class="blog-content">
                         <p class="blog-date">Coming Soon</p>
                         <h3>Exciting Announcement</h3>
@@ -976,16 +1020,16 @@
     <footer>
         <div class="social-links">
             <a href="https://www.instagram.com/harrison_dessoy55/" title="Instagram" target="_blank">
-                <img src="images/Instagram_logo_.svg" alt="Instagram" width="24" height="24">
+                <img src="images/Instagram logo.png" alt="Instagram">
             </a>
             <a href="https://www.facebook.com/HarrisonDessoy" title="Facebook" target="_blank">
-                <img src="images/Facebook logo.png" alt="Facebook" width="24" height="24">
+                <img src="images/Facebook logo.png" alt="Facebook">
             </a>
             <a href="https://www.youtube.com/channel/UCco2lC1RzhZFZYTZYMhFdcA" title="YouTube" target="_blank">
-                <img src="images/Youtube_logo.png" alt="YouTube" width="24" height="24">
+                <img src="images/Youtube_logo.png" alt="YouTube">
             </a>
             <a href="https://www.linkedin.com/in/harrisondessoy/" title="LinkedIn" target="_blank">
-                <img src="images/LinkedIn_logo.png" alt="LinkedIn" width="24" height="24">
+                <img src="images/LinkedIn_logo.png" alt="LinkedIn">
             </a>
         </div>
         <p>&copy; 2025 Harrison Dessoy. All rights reserved.</p>
