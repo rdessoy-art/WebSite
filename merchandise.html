@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z0P3DBDMDZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-Z0P3DBDMDZ');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merchandise - Harrison Dessoy Racing</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #e63946;
+            --secondary: #1d3557;
+            --accent: #f1faee;
+            --dark: #0a0a0a;
+            --light: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: var(--light);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--secondary) 100%);
+            color: var(--light);
+            padding: 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .back-link {
+            color: var(--light);
+            text-decoration: none;
+            padding: 0.5rem 1.5rem;
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+
+        .back-link:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .coming-soon-container {
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 2rem;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+
+        .icon {
+            font-size: 5rem;
+            margin-bottom: 2rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        footer {
+            background: var(--dark);
+            color: var(--light);
+            text-align: center;
+            padding: 2rem;
+            margin-top: auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 1rem;
+            align-items: center;
+        }
+
+        .social-links a {
+            color: var(--light);
+            font-size: 1.5rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+            transform: scale(1.15);
+        }
+
+        .social-links img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover img {
+            transform: scale(1.15);
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .icon {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">HARRISON DESSOY</div>
+            <a href="index.html" class="back-link">← Back to Main Site</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="coming-soon-container">
+            <div class="icon">🏍️</div>
+            <h1>Merchandise coming soon...</h1>
+            <p class="subtitle">We're working on bringing you exclusive Harrison Dessoy Racing merchandise. Check back soon!</p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://www.instagram.com/harrison_dessoy55/" title="Instagram" target="_blank" rel="noopener">
+                <img src="images/Instagram logo.png" alt="Instagram" width="50" height="50">
+            </a>
+            <a href="https://www.facebook.com/HarrisonDessoy" title="Facebook" target="_blank" rel="noopener">
+                <img src="images/Facebook logo.png" alt="Facebook" width="50" height="50">
+            </a>
+            <a href="https://www.youtube.com/channel/UCco2lC1RzhZFZYTZYMhFdcA" title="YouTube" target="_blank" rel="noopener">
+                <img src="images/Youtube_logo.png" alt="YouTube" width="50" height="50">
+            </a>
+            <a href="https://www.linkedin.com/in/harrisondessoy/" title="LinkedIn" target="_blank" rel="noopener">
+                <img src="images/LinkedIn_logo.png" alt="LinkedIn" width="50" height="50">
+            </a>
+        </div>
+        <p>&copy; 2025 Harrison Dessoy. All rights reserved.</p>
+        <p>Racing at the Highest Level</p>
+    </footer>
+</body>
+</html>
