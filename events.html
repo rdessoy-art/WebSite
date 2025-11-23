@@ -123,7 +123,7 @@
 
         .race-row {
             display: grid;
-            grid-template-columns: 50px 120px 150px 2fr 120px 150px;
+            grid-template-columns: 50px 150px 150px 2fr 120px 150px;
             gap: 1.5rem;
             align-items: center;
             background: var(--light);
@@ -132,6 +132,12 @@
             box-shadow: 0 3px 10px rgba(0,0,0,0.1);
             transition: transform 0.3s, box-shadow 0.3s;
             border-left: 4px solid var(--primary);
+        }
+
+        .country-name {
+            color: var(--secondary);
+            font-weight: 600;
+            font-size: 1.1rem;
         }
 
         .race-row:hover {
@@ -246,14 +252,9 @@
 
         @media (max-width: 1200px) {
             .race-row {
-                grid-template-columns: 50px 100px 130px 1fr 100px 130px;
+                grid-template-columns: 50px 130px 130px 1fr 100px 130px;
                 gap: 1rem;
                 padding: 1rem;
-            }
-
-            .track-image {
-                width: 100px;
-                height: 70px;
             }
         }
 
@@ -322,9 +323,7 @@
             <!-- Round 2 - Portuguese Round -->
             <a href="https://www.worldsbk.com/en/event/POR/2026?utm_campaign=EN_worldSBK&utm_source=web_DessoyRacing" target="_blank" class="race-row" style="text-decoration: none; color: inherit;">
                 <img class="country-flag" src="https://flagcdn.com/w40/pt.png" alt="Portugal">
-                <div class="track-image">
-                    <img src="images/tracks/portimao.jpg" alt="Portuguese Round" onerror="this.parentElement.innerHTML='PT'">
-                </div>
+                <div class="country-name">Portugal</div>
                 <div class="race-date">March 20-22</div>
                 <div class="race-country">
                     <img class="venue-logo" src="images/POR.svg" alt="Portimão">
@@ -337,9 +336,7 @@
             <!-- Round 3 - Dutch Round -->
             <div class="race-row">
                 <img class="country-flag" src="https://flagcdn.com/w40/nl.png" alt="Netherlands">
-                <div class="track-image">
-                    <img src="images/tracks/assen.jpg" alt="Dutch Round" onerror="this.parentElement.innerHTML='NL'">
-                </div>
+                <div class="country-name">Netherlands</div>
                 <div class="race-date">April 17-19</div>
                 <div class="race-country">
                     <span>NL</span>
@@ -351,9 +348,7 @@
             <!-- Round 5 - Czech Round -->
             <div class="race-row">
                 <img class="country-flag" src="https://flagcdn.com/w40/cz.png" alt="Czech Republic">
-                <div class="track-image">
-                    <img src="images/tracks/most.jpg" alt="Czech Round" onerror="this.parentElement.innerHTML='CZ'">
-                </div>
+                <div class="country-name">Czech Republic</div>
                 <div class="race-date">May 15-17</div>
                 <div class="race-country">
                     <span>CZ</span>
@@ -365,9 +360,7 @@
             <!-- Round 6 - Aragon Round -->
             <div class="race-row">
                 <img class="country-flag" src="https://flagcdn.com/w40/es.png" alt="Spain">
-                <div class="track-image">
-                    <img src="images/tracks/aragon.jpg" alt="Aragon Round" onerror="this.parentElement.innerHTML='ES'">
-                </div>
+                <div class="country-name">Spain</div>
                 <div class="race-date">May 29-31</div>
                 <div class="race-country">
                     <span>ES</span>
@@ -379,9 +372,7 @@
             <!-- Round 7 - Emilia-Romagna Round -->
             <div class="race-row">
                 <img class="country-flag" src="https://flagcdn.com/w40/it.png" alt="Italy">
-                <div class="track-image">
-                    <img src="images/tracks/misano.jpg" alt="Emilia-Romagna Round" onerror="this.parentElement.innerHTML='IT'">
-                </div>
+                <div class="country-name">Italy</div>
                 <div class="race-date">June 12-14</div>
                 <div class="race-country">
                     <span>IT</span>
@@ -393,9 +384,7 @@
             <!-- Round 9 - French Round -->
             <div class="race-row">
                 <img class="country-flag" src="https://flagcdn.com/w40/fr.png" alt="France">
-                <div class="track-image">
-                    <img src="images/tracks/magny-cours.jpg" alt="French Round" onerror="this.parentElement.innerHTML='FR'">
-                </div>
+                <div class="country-name">France</div>
                 <div class="race-date">September 4-6</div>
                 <div class="race-country">
                     <span>FR</span>
@@ -407,9 +396,7 @@
             <!-- Round 10 - Italian Round -->
             <div class="race-row">
                 <img class="country-flag" src="https://flagcdn.com/w40/it.png" alt="Italy">
-                <div class="track-image">
-                    <img src="images/tracks/imola.jpg" alt="Italian Round" onerror="this.parentElement.innerHTML='IT'">
-                </div>
+                <div class="country-name">Italy</div>
                 <div class="race-date">September 25-27</div>
                 <div class="race-country">
                     <span>IT</span>
@@ -421,9 +408,7 @@
             <!-- Round 12 - Spanish Round -->
             <div class="race-row">
                 <img class="country-flag" src="https://flagcdn.com/w40/es.png" alt="Spain">
-                <div class="track-image">
-                    <img src="images/tracks/jerez.jpg" alt="Spanish Round" onerror="this.parentElement.innerHTML='ES'">
-                </div>
+                <div class="country-name">Spain</div>
                 <div class="race-date">October 16-18</div>
                 <div class="race-country">
                     <span>ES</span>
