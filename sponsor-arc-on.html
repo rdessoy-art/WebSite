@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+         <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z0P3DBDMDZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-Z0P3DBDMDZ');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARC-ON Gloves - Harrison Dessoy Partner</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #e63946;
+            --secondary: #1d3557;
+            --accent: #f1faee;
+            --dark: #0a0a0a;
+            --light: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: var(--light);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--secondary) 100%);
+            color: var(--light);
+            padding: 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .back-link {
+            color: var(--light);
+            text-decoration: none;
+            padding: 0.5rem 1.5rem;
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+
+        .back-link:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .sponsor-hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--light);
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .sponsor-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .sponsor-hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .content-section {
+            margin-bottom: 4rem;
+        }
+
+        .content-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--secondary);
+            border-left: 5px solid var(--primary);
+            padding-left: 1rem;
+        }
+
+        .content-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .partnership-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .partnership-card {
+            background: var(--accent);
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 5px solid var(--primary);
+        }
+
+        .partnership-card h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .partnership-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .partnership-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .partnership-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .quote-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            color: var(--light);
+            padding: 3rem;
+            border-radius: 10px;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .quote-section blockquote {
+            font-size: 1.5rem;
+            font-style: italic;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .quote-section cite {
+            font-size: 1.1rem;
+            font-style: normal;
+        }
+
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-box {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 3px solid var(--accent);
+        }
+
+        .stat-box h3 {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-box p {
+            color: var(--secondary);
+            font-weight: 500;
+            margin: 0;
+        }
+
+        .cta-section {
+            background: var(--accent);
+            padding: 3rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .cta-section h2 {
+            border: none;
+            padding: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--primary);
+            color: var(--light);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: 2px solid var(--primary);
+            margin: 0.5rem;
+        }
+
+        .cta-button:hover {
+            background: var(--secondary);
+            border-color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        footer {
+            background: var(--dark);
+            color: var(--light);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .sponsor-hero h1 {
+                font-size: 2rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .partnership-grid, .stats-section {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">HARRISON DESSOY</div>
+            <a href="index.html" class="back-link">← Back to Main Site</a>
+        </div>
+    </header>
+
+    <div class="sponsor-hero">
+        <img src="images/ARC-ON-VECTOR.png" alt="ARC-ON Logo" style="max-width: 400px; margin: 2rem auto; display: block; background: white; padding: 2rem; border-radius: 10px;">
+    </div>
+
+    <main>
+        <section class="content-section">
+            <h2>About ARC-ON</h2>
+            <p>ARC-ON is a UK-based specialist manufacturer of award-winning motorcycle race gloves, with over 16 years of innovation and dedication to rider safety. Founded on the principles of providing the highest levels of protection without compromising on comfort or performance, ARC-ON has become a trusted name among professional racers worldwide.</p>
+
+            <p>Their flagship 034 RS gloves represent the pinnacle of glove technology, featuring the revolutionary Kozane Invicta textile armour lining. This cutting-edge material provides exceptional abrasion and puncture resistance while maintaining the flexibility and comfort that racers demand during intense competition.</p>
+
+            <p>ARC-ON gloves are extensively tested and trusted by BSB (British Superbike Championship) and World Endurance Championship riders, proving their performance at the highest levels of motorcycle racing. This professional-grade protection is exactly what Harrison needs as he competes on the world stage.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Our Partnership with Harrison</h2>
+
+            <div class="partnership-grid">
+                <div class="partnership-card">
+                    <h3>Premium Protection</h3>
+                    <ul>
+                        <li>Kozane Invicta textile armour lining</li>
+                        <li>Exceptional abrasion resistance</li>
+                        <li>Superior puncture protection</li>
+                        <li>CE certified safety standards</li>
+                        <li>Race-proven at the highest levels</li>
+                    </ul>
+                </div>
+
+                <div class="partnership-card">
+                    <h3>Performance Features</h3>
+                    <ul>
+                        <li>Ergonomic race-fit design</li>
+                        <li>Enhanced grip and control</li>
+                        <li>Optimal flexibility for lever operation</li>
+                        <li>Breathable materials for comfort</li>
+                        <li>Secure wrist closure system</li>
+                    </ul>
+                </div>
+
+                <div class="partnership-card">
+                    <h3>Innovation & Quality</h3>
+                    <ul>
+                        <li>16+ years of glove expertise</li>
+                        <li>Continuous R&D development</li>
+                        <li>UK-designed and manufactured</li>
+                        <li>Trusted by professional racers</li>
+                        <li>Award-winning designs</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="quote-section">
+            <blockquote>
+                "Having the right protective gear is essential when racing at the limit. ARC-ON gloves give me the confidence to push hard, knowing my hands are protected by the best technology available. Their attention to detail and commitment to safety is outstanding."
+            </blockquote>
+            <cite>— Harrison Dessoy</cite>
+        </div>
+
+        <section class="content-section">
+            <h2>Why ARC-ON?</h2>
+            <p>ARC-ON's commitment to excellence and innovation makes them the perfect partner for Harrison's racing journey. Their gloves represent the perfect balance of protection, performance, and comfort that elite racers demand.</p>
+
+            <div class="stats-section">
+                <div class="stat-box">
+                    <h3>16+</h3>
+                    <p>Years of Innovation</p>
+                </div>
+                <div class="stat-box">
+                    <h3>BSB</h3>
+                    <p>Trusted by Champions</p>
+                </div>
+                <div class="stat-box">
+                    <h3>UK</h3>
+                    <p>Designed & Made</p>
+                </div>
+            </div>
+
+            <p>With their revolutionary Kozane Invicta technology and years of racing heritage, ARC-ON continues to push the boundaries of what's possible in motorcycle glove protection. Harrison is proud to be partnered with such an innovative British brand.</p>
+        </section>
+
+        <div class="cta-section">
+            <h2>Learn More About ARC-ON</h2>
+            <p>Discover ARC-ON's full range of professional motorcycle race gloves</p>
+            <a href="https://www.arc-on.co.uk/?utm_source=dessoyracing&utm_medium=website&utm_campaign=sponsor_link&utm_content=arc_on" target="_blank" class="cta-button">Visit Website</a>
+            <a href="index.html" class="cta-button">Back to Harrison's Site</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-contact" style="margin-bottom: 1rem;">
+            <p style="margin-bottom: 0.3rem;">Website: www.DessoyRacing.com</p>
+            <p>Email: <a href="mailto:Robert@DessoyRacing.com?subject=DessoyRacing.com%20website%20enquiry" style="color: var(--light); text-decoration: underline;">Robert@DessoyRacing.com</a></p>
+        </div>
+        <p>&copy; 2025 ARC-ON. Official Partner of Harrison Dessoy.</p>
+        <p>Racing at the Highest Level</p>
+    </footer>
+</body>
+</html>
