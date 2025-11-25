@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-     <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z0P3DBDMDZ"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -10,12 +10,9 @@
       gtag('config', 'G-Z0P3DBDMDZ');
     </script>
 
-    <!-- Stripe.js -->
-    <script src="https://js.stripe.com/v3/"></script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Merchandise - Harrison Dessoy Racing</title>
+    <title>Checkout Cancelled - Harrison Dessoy Racing</title>
     <style>
         * {
             margin: 0;
@@ -29,6 +26,7 @@
             --accent: #f1faee;
             --dark: #0a0a0a;
             --light: #ffffff;
+            --warning: #ff9800;
         }
 
         body {
@@ -89,6 +87,7 @@
             color: var(--light);
             transition: color 0.3s;
             padding: 0.5rem;
+            margin-left: 1rem;
         }
 
         .basket-icon:hover {
@@ -104,165 +103,111 @@
             border-radius: 50%;
             width: 20px;
             height: 20px;
-            display: flex;
+            display: none;
             align-items: center;
             justify-content: center;
             font-size: 0.75rem;
             font-weight: bold;
         }
 
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-            padding: 0.5rem;
-            z-index: 1001;
-        }
-
-        .hamburger span {
-            width: 25px;
-            height: 3px;
-            background: var(--light);
-            margin: 3px 0;
-            transition: all 0.3s;
-            border-radius: 3px;
-        }
-
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(8px, 8px);
-        }
-
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -7px);
-        }
-
         main {
-            max-width: 1400px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 4rem 2rem;
             flex: 1;
+            text-align: center;
+        }
+
+        .cancel-icon {
+            font-size: 5rem;
+            color: var(--warning);
+            margin-bottom: 2rem;
+            animation: shakeIn 0.5s ease;
+        }
+
+        @keyframes shakeIn {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            25% {
+                transform: translateX(-10px);
+            }
+            75% {
+                transform: translateX(10px);
+            }
         }
 
         h1 {
             font-size: 3rem;
             color: var(--secondary);
-            margin-bottom: 2rem;
-            border-left: 5px solid var(--primary);
-            padding-left: 1rem;
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .product-card {
-            background: var(--light);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-        }
-
-        .product-image {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            background: var(--accent);
-        }
-
-        .product-content {
-            padding: 1.5rem;
-        }
-
-        .product-content h3 {
-            color: var(--secondary);
-            margin-bottom: 0.5rem;
-            font-size: 1.5rem;
-        }
-
-        .product-price {
-            color: var(--primary);
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin: 1rem 0;
-        }
-
-        .product-description {
-            color: #666;
             margin-bottom: 1rem;
-            line-height: 1.6;
         }
 
-        .product-actions {
+        .cancel-message {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .info-box {
+            background: var(--accent);
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            border-left: 5px solid var(--warning);
+            text-align: left;
+        }
+
+        .info-box h2 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .info-box p {
+            margin-bottom: 0.5rem;
+            color: #555;
+        }
+
+        .button-group {
             display: flex;
             gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 3rem;
         }
 
-        .add-to-basket-btn {
-            flex: 1;
-            padding: 0.8rem 1.5rem;
-            background: var(--secondary);
-            color: var(--light);
-            border: none;
-            border-radius: 5px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-align: center;
-        }
-
-        .add-to-basket-btn:hover {
-            background: var(--primary);
-            transform: translateY(-2px);
-        }
-
-        .buy-now-btn {
-            flex: 1;
-            padding: 0.8rem 1.5rem;
-            background: var(--primary);
-            color: var(--light);
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
             text-decoration: none;
             border-radius: 5px;
             font-weight: bold;
-            text-align: center;
             transition: all 0.3s;
-            display: inline-block;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
         }
 
-        .buy-now-btn:hover {
+        .btn-primary {
+            background: var(--primary);
+            color: var(--light);
+        }
+
+        .btn-primary:hover {
             background: var(--secondary);
             transform: translateY(-2px);
         }
 
-        .coming-soon-section {
-            text-align: center;
-            padding: 3rem;
-            background: var(--accent);
-            border-radius: 10px;
-            margin-top: 2rem;
+        .btn-secondary {
+            background: var(--secondary);
+            color: var(--light);
         }
 
-        .coming-soon-section h2 {
-            color: var(--secondary);
-            margin-bottom: 1rem;
-            font-size: 2rem;
-        }
-
-        .coming-soon-section p {
-            color: #666;
-            font-size: 1.1rem;
+        .btn-secondary:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
         }
 
         /* Basket Sidebar */
@@ -464,55 +409,25 @@
         }
 
         @media (max-width: 768px) {
-            .header-content {
-                flex-direction: row;
-                justify-content: space-between;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-
-            nav {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 70%;
-                height: 100vh;
-                background: linear-gradient(135deg, var(--dark) 0%, var(--secondary) 100%);
-                padding: 5rem 2rem 2rem;
-                transition: right 0.3s ease;
-                z-index: 1000;
-                box-shadow: -5px 0 15px rgba(0,0,0,0.3);
-            }
-
-            nav.active {
-                right: 0;
-            }
-
-            nav ul {
-                flex-direction: column;
-                gap: 0.5rem;
-                text-align: left;
-            }
-
-            nav a {
-                display: block;
-                padding: 1rem;
-                border-bottom: 1px solid rgba(255,255,255,0.1);
-            }
-
             h1 {
                 font-size: 2rem;
+            }
+
+            .cancel-icon {
+                font-size: 4rem;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
             }
 
             .basket-sidebar {
                 width: 100%;
                 right: -100%;
-            }
-
-            .products-grid {
-                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -521,19 +436,11 @@
     <header>
         <div class="header-content">
             <div class="logo">HARRISON DESSOY</div>
-            <div class="hamburger" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <nav id="nav">
+            <nav>
                 <ul>
-                    <li><a href="index.html#home" onclick="closeMenu()">Home</a></li>
-                    <li><a href="index.html#about" onclick="closeMenu()">About</a></li>
-                    <li><a href="index.html#news" onclick="closeMenu()">News</a></li>
-                    <li><a href="index.html#sponsors" onclick="closeMenu()">Sponsors</a></li>
-                    <li><a href="merchandise.html" onclick="closeMenu()">Merchandise</a></li>
-                    <li><a href="fanclub.html" onclick="closeMenu()">Fan Club</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="merchandise.html">Merchandise</a></li>
+                    <li><a href="fanclub.html">Fan Club</a></li>
                 </ul>
             </nav>
             <div class="basket-icon" onclick="toggleBasket()">
@@ -544,28 +451,24 @@
     </header>
 
     <main>
-        <h1>Official Merchandise</h1>
+        <div class="cancel-icon">⚠</div>
+        <h1>Checkout Cancelled</h1>
+        <p class="cancel-message">
+            Your order was cancelled and no payment was processed.
+        </p>
 
-        <div class="products-grid">
-            <!-- HD55 Beanie -->
-            <div class="product-card">
-                <img src="images/Drawing.jpg" alt="HD55 Beanie" class="product-image">
-                <div class="product-content">
-                    <h3>HD55 Beanie</h3>
-                    <p class="product-price">£15.00</p>
-                    <p class="product-description">Official Harrison Dessoy Racing beanie. Stay warm while showing your support for HD55. Premium quality knit beanie with embroidered logo.</p>
-                    <div class="product-actions">
-                        <button class="add-to-basket-btn" onclick="addToBasket('HD55 Beanie', 15.00, 'images/Drawing.jpg', 'https://buy.stripe.com/14A8wP8Ome3O4ot8uj9k403', 'price_HD55_BEANIE_REPLACE_ME')">Add to Basket</button>
-                        <a href="https://buy.stripe.com/14A8wP8Ome3O4ot8uj9k403" target="_blank" rel="noopener" class="buy-now-btn">Buy Now</a>
-                    </div>
-                </div>
-            </div>
+        <div class="info-box">
+            <h2>Your items are still in your basket</h2>
+            <p>🛒 Don't worry - your basket items have been saved.</p>
+            <p>💳 You can complete your purchase at any time.</p>
+            <p>❓ If you encountered any issues during checkout, please contact us at <a href="mailto:Robert@DessoyRacing.com" style="color: var(--primary); font-weight: bold;">Robert@DessoyRacing.com</a></p>
+            <p>💬 We're here to help with any questions or concerns!</p>
         </div>
 
-        <div class="coming-soon-section">
-            <div style="font-size: 3rem; margin-bottom: 1rem;">🏍️</div>
-            <h2>More merchandise coming soon...</h2>
-            <p>We're working on bringing you more exclusive Harrison Dessoy Racing merchandise. Check back soon!</p>
+        <div class="button-group">
+            <button onclick="toggleBasket()" class="btn btn-primary">View Basket</button>
+            <a href="merchandise.html" class="btn btn-secondary">Continue Shopping</a>
+            <a href="index.html" class="btn btn-secondary">Return to Home</a>
         </div>
     </main>
 
@@ -615,21 +518,7 @@
 
     <script src="basket.js"></script>
     <script>
-        function toggleMenu() {
-            const nav = document.getElementById('nav');
-            const hamburger = document.querySelector('.hamburger');
-            nav.classList.toggle('active');
-            hamburger.classList.toggle('active');
-        }
-
-        function closeMenu() {
-            const nav = document.getElementById('nav');
-            const hamburger = document.querySelector('.hamburger');
-            nav.classList.remove('active');
-            hamburger.classList.remove('active');
-        }
-
-        // Initialize basket on page load
+        // Update basket display when page loads
         document.addEventListener('DOMContentLoaded', function() {
             updateBasketDisplay();
         });
