@@ -150,31 +150,40 @@ async function checkout() {
         return;
     }
 
-    // Check if Stripe is initialized
-    if (!stripe) {
-        showNotification('Stripe is not configured. Please contact support.', 'error');
-        console.error('Stripe not initialized. Please check STRIPE_PUBLISHABLE_KEY in basket.js');
-        return;
-    }
+    // Check if Stripe is properly configured (not using placeholder key)
+    const isStripeConfigured = stripe && STRIPE_PUBLISHABLE_KEY !== 'pk_test_YOUR_PUBLISHABLE_KEY_HERE';
 
-    // Check if all items have Price IDs
-    const hasAllPriceIds = basket.every(item => item.stripePriceId);
+    // Check if all items have valid Price IDs (not placeholders)
+    const hasAllPriceIds = basket.every(item =>
+        item.stripePriceId &&
+        !item.stripePriceId.includes('REPLACE_ME')
+    );
 
-    if (!hasAllPriceIds) {
-        // Fallback for items without Price IDs
+    // If Stripe is not configured or Price IDs are missing, use payment links
+    if (!isStripeConfigured || !hasAllPriceIds) {
         if (basket.length === 1) {
-            // Single item without Price ID - use payment link
+            // Single item - redirect to payment link
             const item = basket[0];
             if (item.stripeLink) {
                 window.open(item.stripeLink, '_blank');
                 showNotification('Redirecting to checkout...', 'success');
                 return;
+            } else {
+                showNotification('Payment link not available. Please contact support.', 'error');
+                return;
             }
-        }
+        } else {
+            // Multiple items - show contact message
+            const itemsList = basket.map(item => `${item.name} - £${item.price.toFixed(2)}`).join('%0A');
+            const total = basket.reduce((sum, item) => sum + item.price, 0);
+            const subject = 'Multiple Item Order from Website';
+            const body = `Hi, I would like to purchase the following items:%0A%0A${itemsList}%0A%0ATotal: £${total.toFixed(2)}%0A%0APlease let me know how to proceed with the payment.%0A%0AThank you!`;
 
-        // Multiple items or no payment link - show error
-        showNotification('Some items are missing payment information. Please contact support.', 'error');
-        return;
+            // Open email client with pre-filled message
+            window.location.href = `mailto:Robert@DessoyRacing.com?subject=${subject}&body=${body}`;
+            showNotification('Please complete your order via email. We\'ll respond shortly!', 'info');
+            return;
+        }
     }
 
     // Build line items for Stripe Checkout
