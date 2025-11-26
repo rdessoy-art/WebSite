@@ -9,7 +9,10 @@
       gtag('js', new Date());
       gtag('config', 'G-Z0P3DBDMDZ');
     </script>
-    
+
+    <!-- Stripe.js -->
+    <script src="https://js.stripe.com/v3/"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Harrison Dessoy - Racing Excellence</title>
@@ -53,6 +56,37 @@
             justify-content: space-between;
             align-items: center;
             padding: 1rem 2rem;
+            position: relative;
+        }
+
+        .basket-icon {
+            position: relative;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--light);
+            transition: color 0.3s;
+            padding: 0.5rem;
+            margin-left: 1rem;
+        }
+
+        .basket-icon:hover {
+            color: var(--primary);
+        }
+
+        .basket-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--primary);
+            color: var(--light);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: bold;
         }
 
         .logo {
@@ -737,6 +771,162 @@
             transform: scale(1.1);
         }
 
+        /* Basket Sidebar */
+        .basket-sidebar {
+            position: fixed;
+            right: -400px;
+            top: 0;
+            width: 400px;
+            height: 100vh;
+            background: var(--light);
+            box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+            transition: right 0.3s ease;
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .basket-sidebar.active {
+            right: 0;
+        }
+
+        .basket-header {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--secondary) 100%);
+            color: var(--light);
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .basket-header h2 {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+
+        .close-basket {
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .close-basket:hover {
+            color: var(--primary);
+        }
+
+        .basket-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1.5rem;
+        }
+
+        .basket-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+            align-items: center;
+        }
+
+        .basket-item-image {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 5px;
+            background: var(--accent);
+        }
+
+        .basket-item-details {
+            flex: 1;
+        }
+
+        .basket-item-name {
+            font-weight: bold;
+            color: var(--secondary);
+            margin-bottom: 0.25rem;
+        }
+
+        .basket-item-price {
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .remove-item {
+            background: none;
+            border: none;
+            color: var(--primary);
+            cursor: pointer;
+            font-size: 1.2rem;
+            padding: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .remove-item:hover {
+            color: var(--secondary);
+        }
+
+        .basket-empty {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: #999;
+        }
+
+        .basket-footer {
+            border-top: 2px solid #eee;
+            padding: 1.5rem;
+            background: var(--accent);
+        }
+
+        .basket-total {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--secondary);
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary);
+            color: var(--light);
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .checkout-btn:hover {
+            background: var(--secondary);
+        }
+
+        .checkout-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .basket-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1999;
+            display: none;
+        }
+
+        .basket-overlay.active {
+            display: block;
+        }
+
         @media (max-width: 768px) {
             .hero-sponsors {
                 gap: 1.5rem;
@@ -745,6 +935,11 @@
 
             .hero-sponsor-logo {
                 height: 60px;
+            }
+
+            .basket-sidebar {
+                width: 100%;
+                right: -100%;
             }
         }
 
@@ -869,11 +1064,16 @@
                     <li><a href="#home" class="nav-link active" onclick="showSection('home'); closeMenu()">Home</a></li>
                     <li><a href="#about" class="nav-link" onclick="showSection('about'); closeMenu()">About</a></li>
                     <li><a href="#news" class="nav-link" onclick="showSection('news'); closeMenu()">News</a></li>
+                    <li><a href="events.html">Events</a></li>
                     <li><a href="#sponsors" class="nav-link" onclick="showSection('sponsors'); closeMenu()">Sponsors</a></li>
                     <li><a href="merchandise.html">Merchandise</a></li>
                     <li><a href="fanclub.html">Fan Club</a></li>
                 </ul>
             </nav>
+            <div class="basket-icon" onclick="toggleBasket()">
+                🛒
+                <span class="basket-count" id="basketCount">0</span>
+            </div>
         </div>
     </header>
 
@@ -973,36 +1173,69 @@
 
         <section id="news">
             <h2>Latest from social media</h2>
-            <div class="blog-grid">
-                <a href="https://www.instagram.com/p/DQ30FF3jFjj/" target="_blank" rel="noopener" class="blog-card" style="text-decoration: none; color: inherit;">
-                    <div class="blog-image" style="background-image: url('images/IMG_9759.JPEG');"></div>
-                    <div class="blog-content">
-                        <p class="blog-date">Latest Post</p>
-                        <h3>Motorcycle Live Throwback</h3>
-                        <p>A throwback to last years Motorcycle live at the NEC! A brilliant week where I announced I'd be riding for my PHR performance team in 2025.</p>
-                        <span class="read-more">View on Instagram →</span>
-                    </div>
-                </a>
 
-                <a href="https://www.instagram.com/p/DQpQiQGCMMX/" target="_blank" rel="noopener" class="blog-card" style="text-decoration: none; color: inherit;">
-                    <div class="blog-image" style="background-image: url('images/IMG_9233.JPEG');"></div>
-                    <div class="blog-content">
-                        <p class="blog-date">Recent Post</p>
-                        <h3>Triumph Daytona 660 Championship</h3>
-                        <p>The Triumph Daytona 660's Pirelli National Sportbike Championship in numbers.</p>
-                        <span class="read-more">View on Instagram →</span>
-                    </div>
-                </a>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 3rem; margin-top: 2rem;">
+                <!-- Harrison Dessoy Column -->
+                <div>
+                    <h3 style="color: var(--secondary); margin-bottom: 1.5rem; font-size: 1.5rem; border-left: 5px solid var(--primary); padding-left: 1rem;">Latest posts from Harrison Dessoy</h3>
+                    <div style="display: flex; flex-direction: column; gap: 2rem;">
+                        <a href="https://www.instagram.com/harrison_dessoy55/" target="_blank" rel="noopener" class="blog-card" style="text-decoration: none; color: inherit;">
+                            <div class="blog-image" style="background-image: url('images/IMG_9759.JPEG');"></div>
+                            <div class="blog-content">
+                                <p class="blog-date">@harrison_dessoy55</p>
+                                <h3>Motorcycle Live Throwback</h3>
+                                <p>A throwback to last years Motorcycle live at the NEC! A brilliant week where I announced I'd be riding for my PHR performance team in 2025.</p>
+                                <span class="read-more">View on Instagram →</span>
+                            </div>
+                        </a>
 
-                <a href="https://www.instagram.com/p/DQRYwIQjD_J/" target="_blank" rel="noopener" class="blog-card" style="text-decoration: none; color: inherit;">
-                    <div class="blog-image" style="background-image: url('images/IMG_9259.JPEG');"></div>
-                    <div class="blog-content">
-                        <p class="blog-date">Recent Post</p>
-                        <h3>Safety Gear Sponsors</h3>
-                        <p>A very important shoutout to the people and companies that provide my safety gear of helmets, leathers, boots, gloves and undergarments this season.</p>
-                        <span class="read-more">View on Instagram →</span>
+                        <a href="https://www.instagram.com/harrison_dessoy55/" target="_blank" rel="noopener" class="blog-card" style="text-decoration: none; color: inherit;">
+                            <div class="blog-image" style="background-image: url('images/IMG_9233.JPEG');"></div>
+                            <div class="blog-content">
+                                <p class="blog-date">@harrison_dessoy55</p>
+                                <h3>Triumph Daytona 660 Championship</h3>
+                                <p>The Triumph Daytona 660's Pirelli National Sportbike Championship in numbers.</p>
+                                <span class="read-more">View on Instagram →</span>
+                            </div>
+                        </a>
+
+                        <a href="https://www.instagram.com/harrison_dessoy55/" target="_blank" rel="noopener" class="blog-card" style="text-decoration: none; color: inherit;">
+                            <div class="blog-image" style="background-image: url('images/Cadwellpodium.JPG');"></div>
+                            <div class="blog-content">
+                                <p class="blog-date">@harrison_dessoy55</p>
+                                <h3>Cadwell Park Podium</h3>
+                                <p>Racing highlights from Cadwell Park - standing on the podium!</p>
+                                <span class="read-more">View on Instagram →</span>
+                            </div>
+                        </a>
                     </div>
-                </a>
+                </div>
+
+                <!-- PHR Performance Column -->
+                <div>
+                    <h3 style="color: var(--secondary); margin-bottom: 1.5rem; font-size: 1.5rem; border-left: 5px solid var(--primary); padding-left: 1rem;">Latest posts from PHR Performance</h3>
+                    <div style="display: flex; flex-direction: column; gap: 2rem;">
+                        <a href="https://www.instagram.com/p/DOajeOTDbjo/?img_index=1" target="_blank" rel="noopener" class="blog-card" style="text-decoration: none; color: inherit;">
+                            <div class="blog-image" style="background-image: url('images/Standard660phr.jfif');"></div>
+                            <div class="blog-content">
+                                <p class="blog-date">@phr_performance</p>
+                                <h3>The TT's New Sportbike Class</h3>
+                                <p>Exciting news from PHR Performance about the Triumph Daytona 660 World Sportbike campaign.</p>
+                                <span class="read-more">View on Instagram →</span>
+                            </div>
+                        </a>
+
+                        <a href="https://www.instagram.com/p/DRcFtGYjNkb/?img_index=1" target="_blank" rel="noopener" class="blog-card" style="text-decoration: none; color: inherit;">
+                            <div class="blog-image" style="background-image: url('images/PHR-48-scaled.jpg');"></div>
+                            <div class="blog-content">
+                                <p class="blog-date">@phr_performance</p>
+                                <h3>PHR Performance Update</h3>
+                                <p>Latest update from the PHR Performance team.</p>
+                                <span class="read-more">View on Instagram →</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1073,6 +1306,15 @@
                     <p>Triumph East London offers expert Triumph motorcycle services and support, representing iconic British motorcycling heritage and professional excellence.</p>
                     <a href="sponsor-triumph-east-london.html" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1.5rem; background: var(--primary); color: var(--light); text-decoration: none; border-radius: 5px; font-weight: bold;">Learn More →</a>
                 </div>
+
+                <div class="sponsor-card">
+                    <div class="sponsor-logo" style="background: white; padding: 1rem;">
+                        <img src="images/ARC-ON-VECTOR.png" alt="ARC-ON Gloves" style="width: 100%; height: 100%; object-fit: contain;">
+                    </div>
+                    <h3>Equipment Sponsor</h3>
+                    <p>ARC-ON is a UK-based specialist manufacturer of award-winning motorcycle race gloves, with over 16 years of innovation. Their flagship 034 RS gloves feature revolutionary Kozane Invicta textile armour lining, providing exceptional abrasion and puncture resistance while maintaining comfort. Tested by BSB and World Endurance Championship riders, ARC-ON gloves deliver professional-grade protection for elite racers.</p>
+                    <a href="sponsor-arc-on.html" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1.5rem; background: var(--primary); color: var(--light); text-decoration: none; border-radius: 5px; font-weight: bold;">Learn More →</a>
+                </div>
             </div>
 
             <div class="partnership-section">
@@ -1090,6 +1332,27 @@
         </section>
 
     </main>
+
+    <!-- Basket Overlay -->
+    <div class="basket-overlay" id="basketOverlay" onclick="toggleBasket()"></div>
+
+    <!-- Basket Sidebar -->
+    <div class="basket-sidebar" id="basketSidebar">
+        <div class="basket-header">
+            <h2>Your Basket</h2>
+            <button class="close-basket" onclick="toggleBasket()">✕</button>
+        </div>
+        <div class="basket-items" id="basketItems">
+            <div class="basket-empty">Your basket is empty</div>
+        </div>
+        <div class="basket-footer">
+            <div class="basket-total">
+                <span>Total:</span>
+                <span id="basketTotal">£0.00</span>
+            </div>
+            <button class="checkout-btn" id="checkoutBtn" onclick="checkout()" disabled>Checkout</button>
+        </div>
+    </div>
 
     <footer>
         <div class="social-links">
@@ -1114,6 +1377,7 @@
         <p>Racing at the Highest Level</p>
     </footer>
 
+    <script src="basket.js"></script>
     <script>
         function toggleMenu() {
             const nav = document.getElementById('nav');
