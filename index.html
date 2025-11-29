@@ -90,9 +90,21 @@
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--primary);
+            display: flex;
+            align-items: center;
+            height: 50px;
+        }
+
+        .logo a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
         }
 
         nav ul {
@@ -978,8 +990,8 @@
             height: 50px;
             object-fit: contain;
             transition: all 0.3s;
-            background: transparent;
-            border-radius: 50%;
+            background: transparent !important;
+            border-radius: 0;
         }
 
         .social-links a:hover img {
@@ -995,6 +1007,14 @@
 
             .hamburger {
                 display: flex;
+            }
+
+            .sbk-logo {
+                margin-top: 4rem !important;
+            }
+
+            .hero-content h1 {
+                margin-top: 1rem;
             }
 
             nav {
@@ -1055,7 +1075,11 @@
 <body>
     <header>
         <div class="header-content">
-            <div class="logo">HARRISON DESSOY</div>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/Harrison Dessoy 2025 logo .png" alt="Harrison Dessoy">
+                </a>
+            </div>
             <div class="hamburger" onclick="toggleMenu()">
                 <span></span>
                 <span></span>
@@ -1082,10 +1106,9 @@
     <section id="home" class="active">
         <div class="hero">
             <div class="hero-content">
-                <img src="images/SBK_Logo.jpg" alt="World Superbike Logo" style="max-width: 300px; width: 100%; height: auto; margin-bottom: 1.5rem; border-radius: 10px; mix-blend-mode: lighten; opacity: 0.95;">
+                <img src="images/SBK_Logo.jpg" alt="World Superbike Logo" class="sbk-logo" style="max-width: 300px; width: 100%; height: auto; margin-bottom: 1.5rem; border-radius: 10px;">
                 <h1>Harrison Dessoy</h1>
                 <p style="font-size: 1.3rem; font-weight: bold; color: var(--light); margin-top: 0.5rem; margin-bottom: 1.5rem;">World Sportbike Rider</p>
-                <p class="subtitle">I am so excited to be showcasing my skills on the world stage in 2026. Riding the Triumph Daytona 660 with the PHR Performance team, I am confident to be pushing against some of the worlds best riders!</p>
                 <a href="#about" class="cta-button" onclick="showSection('about')" style="margin-top: 2rem;">Discover My Journey</a>
 
                 <div style="margin-top: 2rem; color: white;">
@@ -1124,6 +1147,8 @@
                     <p>Hello, I am Harrison Dessoy, a 20 year old motorcycle racer from Thurrock, Essex. In 2026, I am competing in the brand new 2026 World Sportbike Championship, and super excited to be competing against some fast and experienced competition.</p>
 
                     <p>With over 8 years of racing experience, starting in the Cool Fab Racing British Minibikes Championship, I embark on the world stage with my PHR Performance racing team, on the Triumph Daytona 660. With a love for physical training, mental prep work and dedication, I massively look forward to such a prestigious opportunity in 2026.</p>
+
+                    <p style="font-style: italic; margin-top: 1.5rem; padding: 1.5rem; background: rgba(230, 57, 70, 0.1); border-left: 4px solid var(--primary); border-radius: 5px;">I am so excited to be showcasing my skills on the world stage in 2026. Riding the Triumph Daytona 660 with the PHR Performance team, I am confident to be pushing against some of the worlds best riders!</p>
                 </div>
             </div>
 
