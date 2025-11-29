@@ -163,7 +163,7 @@
         }
 
         .hero {
-            height: 100vh;
+            height: 60vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -185,7 +185,7 @@
         }
 
         .hero-background-left {
-            flex: 0 0 48%;
+            flex: 0 0 46%;
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
                         url('images/Cadwellpodium.JPG');
             background-size: cover;
@@ -193,18 +193,19 @@
         }
 
         .hero-background-separator {
-            flex: 0 0 4%;
-            background: linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0.8) 100%);
+            flex: 0 0 8%;
+            background: linear-gradient(90deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.1) 100%);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
         }
 
         .hero-background-right {
-            flex: 0 0 48%;
+            flex: 0 0 46%;
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
                         url('images/SBK_Logo.jpg');
             background-size: contain;
             background-position: center;
             background-repeat: no-repeat;
-            background-color: #1d3557;
         }
 
         .hero-content {
@@ -1035,7 +1036,7 @@
             object-fit: contain;
             transition: all 0.3s;
             background: transparent !important;
-            border-radius: 0;
+            border-radius: 50%;
             padding: 0;
             border: none;
             box-shadow: none;
@@ -1066,8 +1067,10 @@
             }
 
             .hero-background-separator {
-                flex: 0 0 20px;
-                background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0.8) 100%);
+                flex: 0 0 30px;
+                background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.1) 100%);
+                backdrop-filter: blur(15px);
+                -webkit-backdrop-filter: blur(15px);
             }
 
             nav {
