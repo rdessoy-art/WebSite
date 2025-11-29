@@ -978,6 +978,8 @@
             height: 50px;
             object-fit: contain;
             transition: all 0.3s;
+            background: transparent;
+            border-radius: 50%;
         }
 
         .social-links a:hover img {
@@ -1080,8 +1082,10 @@
     <section id="home" class="active">
         <div class="hero">
             <div class="hero-content">
+                <img src="images/SBK_Logo.jpg" alt="World Superbike Logo" style="max-width: 300px; width: 100%; height: auto; margin-bottom: 1.5rem; border-radius: 10px; mix-blend-mode: lighten; opacity: 0.95;">
                 <h1>Harrison Dessoy</h1>
-                <p class="subtitle">Absolutely buzzing to be riding in World Sportbike for PHR performance on the Triumph Daytona 660 next year, it's an incredible opportunity to be competing in the World Superbike paddock in 2026, and I cannot wait to show my speed!… </p>
+                <p style="font-size: 1.3rem; font-weight: bold; color: var(--light); margin-top: 0.5rem; margin-bottom: 1.5rem;">World Sportbike Rider</p>
+                <p class="subtitle">I am so excited to be showcasing my skills on the world stage in 2026. Riding the Triumph Daytona 660 with the PHR Performance team, I am confident to be pushing against some of the worlds best riders!</p>
                 <a href="#about" class="cta-button" onclick="showSection('about')" style="margin-top: 2rem;">Discover My Journey</a>
 
                 <div style="margin-top: 2rem; color: white;">
@@ -1117,11 +1121,9 @@
                     <img src="images/2025_profilepic.png" alt="Harrison Dessoy - Profile Photo" style="width: 100%; height: 100%; object-fit: contain; border-radius: 11px; display: block; transition: transform 0.3s;" onerror="this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;background:linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);color:white;font-size:3rem;font-weight:bold;\'>Image Not Found - Check Path</div>'">
                 </div>
                 <div class="about-content">
-                    <p>Harrison Dessoy is an elite athlete preparing to compete at the highest level of motorcycle racing in 2026. With years of dedication, training, and passion for motorsport, Harrison represents the next generation of world-class racing talent.</p>
-                    
-                    <p>From his early days in competitive racing to now preparing for the world stage, Harrison has demonstrated exceptional skill, determination, and sportsmanship. His commitment to excellence and relentless pursuit of perfection make him a formidable competitor in the Superbike arena.</p>
-                    
-                    <p>As Harrison embarks on this incredible journey to compete at the highest level of motorcycle racing, he brings with him a unique blend of technical expertise, physical conditioning, and mental fortitude that sets him apart from the competition.</p>
+                    <p>Hello, I am Harrison Dessoy, a 20 year old motorcycle racer from Thurrock, Essex. In 2026, I am competing in the brand new 2026 World Sportbike Championship, and super excited to be competing against some fast and experienced competition.</p>
+
+                    <p>With over 8 years of racing experience, starting in the Cool Fab Racing British Minibikes Championship, I embark on the world stage with my PHR Performance racing team, on the Triumph Daytona 660. With a love for physical training, mental prep work and dedication, I massively look forward to such a prestigious opportunity in 2026.</p>
                 </div>
             </div>
 
@@ -1174,11 +1176,11 @@
         <section id="news">
             <h2>Latest from social media</h2>
 
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 3rem; margin-top: 2rem;">
-                <!-- Harrison Dessoy Column -->
+            <div style="display: flex; flex-direction: column; gap: 3rem; margin-top: 2rem;">
+                <!-- Harrison Dessoy Row -->
                 <div>
                     <h3 style="color: var(--secondary); margin-bottom: 1.5rem; font-size: 1.5rem; border-left: 5px solid var(--primary); padding-left: 1rem;">Latest posts from Harrison Dessoy</h3>
-                    <div style="display: flex; flex-direction: column; gap: 2rem;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
                         <a href="https://www.instagram.com/harrison_dessoy55/" target="_blank" rel="noopener" class="blog-card" style="text-decoration: none; color: inherit;">
                             <div class="blog-image" style="background-image: url('images/IMG_9759.JPEG');"></div>
                             <div class="blog-content">
@@ -1211,10 +1213,10 @@
                     </div>
                 </div>
 
-                <!-- PHR Performance Column -->
+                <!-- PHR Performance Row -->
                 <div>
                     <h3 style="color: var(--secondary); margin-bottom: 1.5rem; font-size: 1.5rem; border-left: 5px solid var(--primary); padding-left: 1rem;">Latest posts from PHR Performance</h3>
-                    <div style="display: flex; flex-direction: column; gap: 2rem;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
                         <a href="https://www.instagram.com/p/DOajeOTDbjo/?img_index=1" target="_blank" rel="noopener" class="blog-card" style="text-decoration: none; color: inherit;">
                             <div class="blog-image" style="background-image: url('images/Standard660phr.jfif');"></div>
                             <div class="blog-content">
