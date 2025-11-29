@@ -488,8 +488,11 @@
         }
 
         .social-links img {
-            background: transparent;
-            border-radius: 50%;
+            background: transparent !important;
+            border-radius: 0;
+            padding: 0;
+            border: none;
+            box-shadow: none;
         }
 
         /* Basket Sidebar */
@@ -706,8 +709,8 @@
     <header>
         <div class="header-content">
             <div class="logo">
-                <a href="index.html">
-                    <img src="images/Harrison Dessoy 2025 logo .png" alt="Harrison Dessoy">
+                <a href="index.html" style="color: var(--light); text-decoration: none; font-size: 1.5rem; font-weight: bold; letter-spacing: 1px;">
+                    Harrison Dessoy
                 </a>
             </div>
             <div class="hamburger" onclick="toggleMenu()">
