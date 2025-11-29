@@ -51,9 +51,21 @@
         }
 
         .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--primary);
+            display: flex;
+            align-items: center;
+            height: 50px;
+        }
+
+        .logo a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
         }
 
         .back-link {
@@ -232,7 +244,11 @@
 <body>
     <header>
         <div class="header-content">
-            <div class="logo">HARRISON DESSOY</div>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/Harrison Dessoy 2025 logo .png" alt="Harrison Dessoy">
+                </a>
+            </div>
             <a href="index.html" class="back-link">← Back to Main Site</a>
         </div>
     </header>
