@@ -99,6 +99,14 @@
             display: flex;
             align-items: center;
             text-decoration: none;
+            color: var(--light);
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .logo a:hover {
+            color: var(--primary);
         }
 
         .logo img {
@@ -766,7 +774,7 @@
             gap: 3rem;
             flex-wrap: wrap;
             padding: 3rem 2rem;
-            background: var(--light);
+            background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%);
             border-top: 1px solid #e0e0e0;
         }
 
@@ -992,6 +1000,9 @@
             transition: all 0.3s;
             background: transparent !important;
             border-radius: 0;
+            padding: 0;
+            border: none;
+            box-shadow: none;
         }
 
         .social-links a:hover img {
@@ -1076,9 +1087,7 @@
     <header>
         <div class="header-content">
             <div class="logo">
-                <a href="index.html">
-                    <img src="images/Harrison Dessoy 2025 logo .png" alt="Harrison Dessoy">
-                </a>
+                <a href="index.html">Harrison Dessoy</a>
             </div>
             <div class="hamburger" onclick="toggleMenu()">
                 <span></span>
@@ -1108,7 +1117,7 @@
             <div class="hero-content">
                 <img src="images/SBK_Logo.jpg" alt="World Superbike Logo" class="sbk-logo" style="max-width: 300px; width: 100%; height: auto; margin-bottom: 1.5rem; border-radius: 10px;">
                 <h1>Harrison Dessoy</h1>
-                <p style="font-size: 1.3rem; font-weight: bold; color: var(--light); margin-top: 0.5rem; margin-bottom: 1.5rem;">World Sportbike Rider</p>
+                <p style="font-size: 4rem; font-weight: bold; color: var(--light); margin-top: 0.5rem; margin-bottom: 1.5rem;">World Sportbike Rider</p>
                 <a href="#about" class="cta-button" onclick="showSection('about')" style="margin-top: 2rem;">Discover My Journey</a>
 
                 <div style="margin-top: 2rem; color: white;">
@@ -1133,6 +1142,9 @@
             <a href="https://twotyres.co.uk/" target="_blank" rel="noopener">
                 <img src="images/TwoTyres.jpeg" alt="Two Tyres" class="hero-sponsor-logo">
             </a>
+        </div>
+        <div style="background: linear-gradient(135deg, var(--dark) 0%, var(--secondary) 100%); padding: 3rem 2rem; display: flex; justify-content: center; align-items: center;">
+            <img src="images/SBK_Logo.jpg" alt="World Sportbike Logo" style="max-width: 400px; width: 100%; height: auto; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.3);">
         </div>
     </section>
 
