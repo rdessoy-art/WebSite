@@ -91,6 +91,35 @@
             color: var(--primary);
         }
 
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--light);
+            margin: 3px 0;
+            transition: all 0.3s;
+            border-radius: 3px;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
         main {
             max-width: 1400px;
             margin: 0 auto;
@@ -282,19 +311,41 @@
 
         @media (max-width: 768px) {
             .header-content {
-                flex-direction: column;
-                gap: 1rem;
+                flex-direction: row;
+                justify-content: space-between;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background: linear-gradient(135deg, var(--dark) 0%, var(--secondary) 100%);
+                padding: 5rem 2rem 2rem;
+                transition: right 0.3s ease;
+                z-index: 1000;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+            }
+
+            nav.active {
+                right: 0;
             }
 
             nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
+                flex-direction: column;
                 gap: 0.5rem;
+                text-align: left;
             }
 
             nav a {
-                padding: 0.3rem 0.7rem;
-                font-size: 0.9rem;
+                display: block;
+                padding: 1rem;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
             }
 
             .page-hero h1 {
@@ -328,15 +379,20 @@
                     Harrison Dessoy
                 </a>
             </div>
-            <nav>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav id="nav">
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html#about">About</a></li>
-                    <li><a href="index.html#news">News</a></li>
-                    <li><a href="events.html" class="active">Events</a></li>
-                    <li><a href="index.html#sponsors">Sponsors</a></li>
-                    <li><a href="index.html#fanclub">Fan Club</a></li>
-                    <li><a href="nft.html">NFT</a></li>
+                    <li><a href="index.html" onclick="closeMenu()">Home</a></li>
+                    <li><a href="index.html#about" onclick="closeMenu()">About</a></li>
+                    <li><a href="index.html#news" onclick="closeMenu()">News</a></li>
+                    <li><a href="events.html" class="active" onclick="closeMenu()">Events</a></li>
+                    <li><a href="index.html#sponsors" onclick="closeMenu()">Sponsors</a></li>
+                    <li><a href="index.html#fanclub" onclick="closeMenu()">Fan Club</a></li>
+                    <li><a href="nft.html" onclick="closeMenu()">NFT</a></li>
                 </ul>
             </nav>
         </div>
@@ -480,6 +536,20 @@
     </footer>
 
     <script>
+        function toggleMenu() {
+            const nav = document.getElementById('nav');
+            const hamburger = document.querySelector('.hamburger');
+            nav.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            const nav = document.getElementById('nav');
+            const hamburger = document.querySelector('.hamburger');
+            nav.classList.remove('active');
+            hamburger.classList.remove('active');
+        }
+
         // Add click handlers to race rows
         document.querySelectorAll('.race-row').forEach(row => {
             row.addEventListener('click', (e) => {
