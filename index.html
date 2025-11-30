@@ -165,6 +165,25 @@
             z-index: 0;
         }
 
+        /* Responsive background images for different devices */
+        @media (max-width: 1024px) {
+            .hero-background {
+                background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                            url('images/Cadwell win 1.JPEG');
+                background-size: cover;
+                background-position: center center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-background {
+                background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                            url('images/Cadwellpodium.JPG');
+                background-size: cover;
+                background-position: center center;
+            }
+        }
+
         .hero-content {
             position: relative;
             z-index: 1;
