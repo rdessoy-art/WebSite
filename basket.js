@@ -27,36 +27,21 @@ function saveBasket(basket) {
     localStorage.setItem('hdRacingBasket', JSON.stringify(basket));
 }
 
-// Add item to basket
+// Direct purchase - redirect to Stripe payment link immediately
 function addToBasket(name, price, image, stripeLink, stripePriceId = null) {
-    const basket = getBasket();
-
-    // Check if item already exists
-    const existingItem = basket.find(item => item.name === name);
-    if (existingItem) {
-        // Show message that item is already in basket
-        showNotification('This item is already in your basket!', 'info');
-        toggleBasket(); // Open basket to show item
-        return;
+    // Since basket is removed, go directly to checkout for single item
+    if (stripeLink) {
+        showNotification('Redirecting to checkout...', 'success');
+        setTimeout(() => {
+            window.open(stripeLink, '_blank');
+        }, 500);
+    } else {
+        // If no payment link, show contact message
+        const subject = 'Purchase Inquiry from Website';
+        const body = `Hi, I would like to purchase:%0A%0A${name} - £${price.toFixed(2)}%0A%0APlease let me know how to proceed with the payment.%0A%0AThank you!`;
+        window.location.href = `mailto:Robert@DessoyRacing.com?subject=${subject}&body=${body}`;
+        showNotification('Please complete your order via email. We\'ll respond shortly!', 'info');
     }
-
-    // Add new item
-    const newItem = {
-        id: Date.now(), // Unique ID
-        name: name,
-        price: price,
-        image: image,
-        stripeLink: stripeLink,
-        stripePriceId: stripePriceId // Store Stripe Price ID for checkout
-    };
-
-    basket.push(newItem);
-    saveBasket(basket);
-    updateBasketDisplay();
-    showNotification('Added to basket!', 'success');
-
-    // Optional: Open basket sidebar to show the added item
-    setTimeout(() => toggleBasket(), 300);
 }
 
 // Remove item from basket
