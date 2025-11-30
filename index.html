@@ -163,7 +163,7 @@
         }
 
         .hero {
-            height: 80vh;
+            height: 95vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -183,7 +183,7 @@
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
                         url('images/Cadwellpodium.JPG');
             background-size: cover;
-            background-position: center 30%;
+            background-position: center center;
             z-index: 0;
         }
 
@@ -294,21 +294,22 @@
         }
 
         .stat-card {
-            background: transparent;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--light) 100%);
             padding: 2rem;
             border-radius: 10px;
             text-align: center;
-            border: 3px solid var(--light);
+            border: 3px solid var(--primary);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         .stat-card h3 {
             font-size: 3rem;
-            color: var(--light);
+            color: var(--primary);
             margin-bottom: 0.5rem;
         }
 
         .stat-card p {
-            color: var(--light);
+            color: var(--secondary);
             font-weight: 500;
         }
 
@@ -1279,6 +1280,57 @@
                                 <h3>PHR Performance Update</h3>
                                 <p>Latest update from the PHR Performance team.</p>
                                 <span class="read-more">View on Instagram →</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Grayers Graphics Row -->
+                <div>
+                    <h3 style="color: var(--secondary); margin-bottom: 1.5rem; font-size: 1.5rem; border-left: 5px solid var(--primary); padding-left: 1rem;">Latest from Grayers Graphics</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                        <a href="https://www.youtube.com/watch?v=ruwk2QqeaLQ&t=135s" target="_blank" rel="noopener" class="blog-card" style="text-decoration: none; color: inherit;">
+                            <div style="height: 200px; background: white; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+                                <img src="images/GreyersGraphics.svg" alt="Grayers Graphics" style="max-width: 80%; max-height: 80%; object-fit: contain;">
+                                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; background: rgba(230, 57, 70, 0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 3;">
+                                    <div style="width: 0; height: 0; border-left: 20px solid white; border-top: 12px solid transparent; border-bottom: 12px solid transparent; margin-left: 5px;"></div>
+                                </div>
+                            </div>
+                            <div class="blog-content">
+                                <p class="blog-date">Grayers Graphics</p>
+                                <h3>Team behind the green</h3>
+                                <p>Behind the scenes look at the team supporting Harrison Dessoy Racing.</p>
+                                <span class="read-more">Watch on YouTube →</span>
+                            </div>
+                        </a>
+
+                        <a href="https://www.youtube.com/watch?v=6KnrXTWsGbo" target="_blank" rel="noopener" class="blog-card" style="text-decoration: none; color: inherit;">
+                            <div style="height: 200px; background: white; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+                                <img src="images/GreyersGraphics.svg" alt="Grayers Graphics" style="max-width: 80%; max-height: 80%; object-fit: contain;">
+                                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; background: rgba(230, 57, 70, 0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 3;">
+                                    <div style="width: 0; height: 0; border-left: 20px solid white; border-top: 12px solid transparent; border-bottom: 12px solid transparent; margin-left: 5px;"></div>
+                                </div>
+                            </div>
+                            <div class="blog-content">
+                                <p class="blog-date">Grayers Graphics</p>
+                                <h3>Proud To Sponsor</h3>
+                                <p>Grayers Graphics showcasing their proud sponsorship of Harrison Dessoy Racing.</p>
+                                <span class="read-more">Watch on YouTube →</span>
+                            </div>
+                        </a>
+
+                        <a href="https://www.youtube.com/watch?v=_rnPuE9ZJoI" target="_blank" rel="noopener" class="blog-card" style="text-decoration: none; color: inherit;">
+                            <div style="height: 200px; background: white; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+                                <img src="images/GreyersGraphics.svg" alt="Grayers Graphics" style="max-width: 80%; max-height: 80%; object-fit: contain;">
+                                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; background: rgba(230, 57, 70, 0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 3;">
+                                    <div style="width: 0; height: 0; border-left: 20px solid white; border-top: 12px solid transparent; border-bottom: 12px solid transparent; margin-left: 5px;"></div>
+                                </div>
+                            </div>
+                            <div class="blog-content">
+                                <p class="blog-date">Grayers Graphics</p>
+                                <h3>Donation of artwork for school bus</h3>
+                                <p>Grayers Graphics' generous donation of artwork for a school bus project.</p>
+                                <span class="read-more">Watch on YouTube →</span>
                             </div>
                         </a>
                     </div>
