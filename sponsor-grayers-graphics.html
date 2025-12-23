@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+         <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z0P3DBDMDZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-Z0P3DBDMDZ');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grayers Graphics - Harrison Dessoy Partner</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #e63946;
+            --secondary: #1d3557;
+            --accent: #f1faee;
+            --dark: #0a0a0a;
+            --light: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: var(--light);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--secondary) 100%);
+            color: var(--light);
+            padding: 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            height: 50px;
+        }
+
+        .logo a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .back-link {
+            color: var(--light);
+            text-decoration: none;
+            padding: 0.5rem 1.5rem;
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+
+        .back-link:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .sponsor-hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--light);
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .sponsor-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .sponsor-hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .content-section {
+            margin-bottom: 4rem;
+        }
+
+        .content-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--secondary);
+            border-left: 5px solid var(--primary);
+            padding-left: 1rem;
+        }
+
+        .content-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .partnership-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .partnership-card {
+            background: var(--accent);
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 5px solid var(--primary);
+        }
+
+        .partnership-card h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .partnership-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .partnership-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .partnership-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .quote-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            color: var(--light);
+            padding: 3rem;
+            border-radius: 10px;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .quote-section blockquote {
+            font-size: 1.5rem;
+            font-style: italic;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .quote-section cite {
+            font-size: 1.1rem;
+            font-style: normal;
+        }
+
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-box {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 3px solid var(--accent);
+        }
+
+        .stat-box h3 {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-box p {
+            color: var(--secondary);
+            font-weight: 500;
+            margin: 0;
+        }
+
+        .video-section {
+            margin-top: 4rem;
+        }
+
+        .video-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--secondary);
+            border-left: 5px solid var(--primary);
+            padding-left: 1rem;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .video-card {
+            background: var(--light);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .video-thumbnail {
+            height: 200px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-thumbnail img {
+            max-width: 80%;
+            max-height: 80%;
+            object-fit: contain;
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: rgba(230, 57, 70, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 3;
+        }
+
+        .play-button::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 20px solid white;
+            border-top: 12px solid transparent;
+            border-bottom: 12px solid transparent;
+            margin-left: 5px;
+        }
+
+        .video-content {
+            padding: 1.5rem;
+        }
+
+        .video-content h3 {
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .video-content p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .video-link {
+            color: var(--primary);
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .cta-section {
+            background: var(--accent);
+            padding: 3rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .cta-section h2 {
+            border: none;
+            padding: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--primary);
+            color: var(--light);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: 2px solid var(--primary);
+            margin: 0.5rem;
+        }
+
+        .cta-button:hover {
+            background: var(--secondary);
+            border-color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        footer {
+            background: var(--dark);
+            color: var(--light);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .sponsor-hero h1 {
+                font-size: 2rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .partnership-grid, .stats-section {
+                grid-template-columns: 1fr;
+            }
+
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <a href="index.html" style="color: var(--light); text-decoration: none; font-size: 1.5rem; font-weight: bold; letter-spacing: 1px; display: flex; align-items: center;">
+                    <img src="images/HD55 White.png" alt="Harrison Dessoy Logo" style="height: 50px; margin-right: 10px;">
+                    Harrison Dessoy
+                </a>
+            </div>
+            <a href="index.html" class="back-link">← Back to Main Site</a>
+        </div>
+    </header>
+
+    <div class="sponsor-hero">
+        <img src="images/GreyersGraphics.svg" alt="Grayers Graphics Logo" style="max-width: 500px; margin: 2rem auto; display: block; background: white; padding: 2rem; border-radius: 15px;">
+    </div>
+
+    <main>
+        <section class="content-section">
+            <h2>About Grayers Graphics</h2>
+            <p>Grayers Graphics is a highly regarded company specializing in vehicle wraps, sign writing, and graphic design, with over 15 years of experience in the sign making trade. Based in Grays, Essex, they are known for their exceptional quality of work and dedication to creating visually striking and impactful designs that help businesses stand out.</p>
+
+            <p>The company specializes in commercial vehicle wrapping, fleet livery design, supply, and installation. From vehicle graphics and wraps to rally car livery, signage, and shop front graphics, Grayers Graphics provides comprehensive branding solutions that enhance visibility and professional image.</p>
+
+            <p>Their impressive portfolio includes wrapping the coach for Brazil's national football team with only eight hours' notice - a testament to their capability to deliver outstanding results under tight deadlines. Customers consistently highlight their exceptional quality in both vehicle wraps and signage, with dedicated customer service that supports clients throughout every project.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Our Partnership with Harrison</h2>
+
+            <div class="partnership-grid">
+                <div class="partnership-card">
+                    <h3>Vehicle Livery Design</h3>
+                    <ul>
+                        <li>Custom race bike livery design</li>
+                        <li>Team transporter wrapping and branding</li>
+                        <li>Rally car livery expertise</li>
+                        <li>Professional graphic design services</li>
+                        <li>Brand consistency across all vehicles</li>
+                    </ul>
+                </div>
+
+                <div class="partnership-card">
+                    <h3>Branding & Graphics</h3>
+                    <ul>
+                        <li>Race team visual identity development</li>
+                        <li>Sponsor logo integration and placement</li>
+                        <li>Paddock signage and displays</li>
+                        <li>Marketing materials and graphics</li>
+                        <li>Professional trackside presentation</li>
+                    </ul>
+                </div>
+
+                <div class="partnership-card">
+                    <h3>Professional Service</h3>
+                    <ul>
+                        <li>15+ years of industry experience</li>
+                        <li>High-quality materials and installation</li>
+                        <li>Quick turnaround times when needed</li>
+                        <li>Dedicated customer support</li>
+                        <li>Commitment to excellence</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="quote-section">
+            <blockquote>
+                "Grayers Graphics brings professionalism and creativity to our team's visual identity. Their expertise in vehicle wrapping and graphic design ensures our race bikes and team vehicles look exceptional at every event."
+            </blockquote>
+            <cite>— Harrison Dessoy</cite>
+        </div>
+
+        <section class="content-section">
+            <h2>Why Grayers Graphics?</h2>
+            <p>Choosing Grayers Graphics means partnering with a company that understands the importance of professional presentation in motorsport. Their expertise includes:</p>
+
+            <div class="stats-section">
+                <div class="stat-box">
+                    <h3>15+</h3>
+                    <p>Years Experience</p>
+                </div>
+                <div class="stat-box">
+                    <h3>Expert</h3>
+                    <p>Vehicle Wrapping</p>
+                </div>
+                <div class="stat-box">
+                    <h3>Premium</h3>
+                    <p>Design Quality</p>
+                </div>
+            </div>
+
+            <p>Located in Grays, Essex, Grayers Graphics provides everything from initial design concepts to final installation, ensuring every aspect of Harrison's visual branding is handled with expertise and attention to detail.</p>
+        </section>
+
+        <section class="video-section">
+            <h2>Featured Videos</h2>
+            <p>Watch Grayers Graphics in action and learn more about their work</p>
+
+            <div class="video-grid">
+                <a href="https://www.youtube.com/watch?v=ruwk2QqeaLQ&t=135s" target="_blank" rel="noopener" style="text-decoration: none; color: inherit;">
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <img src="images/GreyersGraphics.svg" alt="Grayers Graphics">
+                            <div class="play-button"></div>
+                        </div>
+                        <div class="video-content">
+                            <h3>Behind the Scenes at Grayers Graphics</h3>
+                            <p>Get an exclusive behind-the-scenes look at the team at Grayers Graphics and see how they create stunning vehicle wraps and graphics.</p>
+                            <span class="video-link">Watch on YouTube →</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://www.youtube.com/watch?v=6KnrXTWsGbo" target="_blank" rel="noopener" style="text-decoration: none; color: inherit;">
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <img src="images/GreyersGraphics.svg" alt="Grayers Graphics">
+                            <div class="play-button"></div>
+                        </div>
+                        <div class="video-content">
+                            <h3>Proud To Sponsor Harrison Dessoy</h3>
+                            <p>Grayers Graphics showcases their proud sponsorship of Harrison Dessoy Racing and the partnership that helps bring professional branding to the race team.</p>
+                            <span class="video-link">Watch on YouTube →</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="https://www.youtube.com/watch?v=_rnPuE9ZJoI" target="_blank" rel="noopener" style="text-decoration: none; color: inherit;">
+                    <div class="video-card">
+                        <div class="video-thumbnail">
+                            <img src="images/GreyersGraphics.svg" alt="Grayers Graphics">
+                            <div class="play-button"></div>
+                        </div>
+                        <div class="video-content">
+                            <h3>Donation of Artwork for School Bus</h3>
+                            <p>Watch Grayers Graphics' generous donation of artwork for a school bus project, demonstrating their commitment to the community and creative excellence.</p>
+                            <span class="video-link">Watch on YouTube →</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <div class="cta-section">
+            <h2>Learn More About Grayers Graphics</h2>
+            <p>Discover more about Grayers Graphics and their services</p>
+            <a href="https://grayersgraphics.co.uk/?utm_source=dessoyracing&utm_medium=website&utm_campaign=sponsor_link&utm_content=grayers_graphics" target="_blank" class="cta-button">Visit Grayers Graphics</a>
+            <a href="index.html" class="cta-button">Back to Harrison's Site</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-contact" style="margin-bottom: 1rem;">
+            <p style="margin-bottom: 0.3rem;">Website: www.DessoyRacing.com</p>
+            <p>Email: <a href="mailto:Robert@DessoyRacing.com?subject=DessoyRacing.com%20website%20enquiry" style="color: var(--light); text-decoration: underline;">Robert@DessoyRacing.com</a></p>
+        </div>
+        <p>&copy; 2025 Grayers Graphics. Official Partner of Harrison Dessoy.</p>
+        <p>Racing at the Highest Level</p>
+    </footer>
+</body>
+</html>
