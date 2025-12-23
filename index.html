@@ -1334,8 +1334,260 @@
         <p>Racing at the Highest Level</p>
     </footer>
 
+    <!-- Newsletter Popup Modal -->
+    <div id="newsletterPopup" class="newsletter-popup-overlay" style="display: none;">
+        <div class="newsletter-popup-modal">
+            <button class="newsletter-popup-close" onclick="closeNewsletterPopup()">&times;</button>
+            <div class="newsletter-popup-content">
+                <h3>Stay Updated!</h3>
+                <p>Get exclusive racing updates, behind-the-scenes content, and special announcements delivered to your inbox.</p>
+                <form id="newsletterForm" class="newsletter-popup-form">
+                    <input type="email" id="newsletterEmail" name="email" placeholder="Enter your email" required>
+                    <button type="submit" class="newsletter-submit-btn">Subscribe</button>
+                </form>
+                <p class="newsletter-popup-privacy">We respect your privacy. Unsubscribe anytime.</p>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* Newsletter Popup Styles */
+        .newsletter-popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .newsletter-popup-modal {
+            background: var(--light);
+            border-radius: 15px;
+            padding: 2.5rem;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.3s ease-in-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .newsletter-popup-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: transparent;
+            border: none;
+            font-size: 2rem;
+            color: #999;
+            cursor: pointer;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s;
+            line-height: 1;
+        }
+
+        .newsletter-popup-close:hover {
+            background: var(--accent);
+            color: var(--primary);
+            transform: rotate(90deg);
+        }
+
+        .newsletter-popup-content h3 {
+            color: var(--secondary);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .newsletter-popup-content p {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .newsletter-popup-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .newsletter-popup-form input[type="email"] {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--accent);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .newsletter-popup-form input[type="email"]:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.1);
+        }
+
+        .newsletter-submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary);
+            color: var(--light);
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .newsletter-submit-btn:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(230, 57, 70, 0.3);
+        }
+
+        .newsletter-popup-privacy {
+            font-size: 0.85rem !important;
+            color: #999 !important;
+            margin-top: 1rem !important;
+            margin-bottom: 0 !important;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .newsletter-popup-modal {
+                padding: 2rem 1.5rem;
+                max-width: 95%;
+            }
+
+            .newsletter-popup-content h3 {
+                font-size: 1.5rem;
+            }
+
+            .newsletter-popup-content p {
+                font-size: 0.95rem;
+            }
+
+            .newsletter-popup-form input[type="email"],
+            .newsletter-submit-btn {
+                padding: 0.875rem;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .newsletter-popup-modal {
+                padding: 1.5rem 1rem;
+            }
+
+            .newsletter-popup-content h3 {
+                font-size: 1.3rem;
+            }
+
+            .newsletter-popup-close {
+                top: 10px;
+                right: 10px;
+                font-size: 1.5rem;
+                width: 30px;
+                height: 30px;
+            }
+        }
+    </style>
+
     <script src="basket.js"></script>
     <script>
+        // Newsletter Popup Functions
+        function showNewsletterPopup() {
+            const popup = document.getElementById('newsletterPopup');
+            if (popup) {
+                popup.style.display = 'flex';
+            }
+        }
+
+        function closeNewsletterPopup() {
+            const popup = document.getElementById('newsletterPopup');
+            if (popup) {
+                popup.style.display = 'none';
+                // Store dismissal in localStorage for 7 days
+                const dismissalTime = new Date().getTime();
+                const expiryTime = dismissalTime + (7 * 24 * 60 * 60 * 1000); // 7 days in milliseconds
+                localStorage.setItem('newsletterPopupDismissed', expiryTime.toString());
+            }
+        }
+
+        function checkNewsletterPopup() {
+            const dismissalExpiry = localStorage.getItem('newsletterPopupDismissed');
+            const currentTime = new Date().getTime();
+
+            // Check if popup was dismissed and if 7 days have passed
+            if (dismissalExpiry && currentTime < parseInt(dismissalExpiry)) {
+                // Popup is still dismissed
+                return;
+            }
+
+            // Clear expired dismissal
+            if (dismissalExpiry) {
+                localStorage.removeItem('newsletterPopupDismissed');
+            }
+
+            // Show popup after 12 seconds (middle of 10-15 range)
+            setTimeout(() => {
+                showNewsletterPopup();
+            }, 12000);
+        }
+
+        // Handle newsletter form submission
+        document.addEventListener('DOMContentLoaded', function() {
+            const newsletterForm = document.getElementById('newsletterForm');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const email = document.getElementById('newsletterEmail').value;
+
+                    // Here you would integrate with your newsletter service
+                    // For now, we'll just close the popup and show a success message
+                    alert('Thank you for subscribing! You\'ll receive racing updates soon.');
+                    closeNewsletterPopup();
+
+                    // Optional: You can integrate with Mailchimp, ConvertKit, or another service here
+                    // Example: Send email to your backend or newsletter service API
+                });
+            }
+
+            // Check if we should show the popup
+            checkNewsletterPopup();
+        });
+
+        // Close popup when clicking outside the modal
+        document.addEventListener('click', function(e) {
+            const popup = document.getElementById('newsletterPopup');
+            if (popup && e.target === popup) {
+                closeNewsletterPopup();
+            }
+        });
+
         function toggleMenu() {
             const nav = document.getElementById('nav');
             const hamburger = document.querySelector('.hamburger');
