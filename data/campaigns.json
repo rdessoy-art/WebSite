@@ -1,0 +1,56 @@
+{
+  "last_updated": "2025-12-23T21:32:19.912407Z",
+  "campaign_count": 5,
+  "campaigns": [
+    {
+      "id": "ad45401e69",
+      "title": "",
+      "subject": "Winter Test #2",
+      "preview_text": null,
+      "send_time": "2025-12-17T13:49:51+00:00",
+      "emails_sent": 26,
+      "archive_url": "http://eepurl.com/juLsD6",
+      "status": "sent"
+    },
+    {
+      "id": "ea9461190c",
+      "title": "Spain testing #1",
+      "subject": "Spain Test #1",
+      "preview_text": null,
+      "send_time": "2025-12-04T13:11:27+00:00",
+      "emails_sent": 19,
+      "archive_url": "http://eepurl.com/jsO6vQ",
+      "status": "sent"
+    },
+    {
+      "id": "bf507dcc24",
+      "title": "Teaser Trailer",
+      "subject": "Something big is coming...",
+      "preview_text": null,
+      "send_time": "2025-11-24T16:52:30+00:00",
+      "emails_sent": 12,
+      "archive_url": "http://eepurl.com/jsOIBA",
+      "status": "sent"
+    },
+    {
+      "id": "a1a36f909d",
+      "title": "Teaser Trailer",
+      "subject": "Something big is coming...",
+      "preview_text": null,
+      "send_time": "2025-11-18T17:09:42+00:00",
+      "emails_sent": 3,
+      "archive_url": "http://eepurl.com/jskyZE",
+      "status": "sent"
+    },
+    {
+      "id": "1512440068",
+      "title": "Teaser Trailer",
+      "subject": "Something big is coming...",
+      "preview_text": null,
+      "send_time": "2025-11-18T16:48:48+00:00",
+      "emails_sent": 1,
+      "archive_url": "http://eepurl.com/jsknPg",
+      "status": "sent"
+    }
+  ]
+}
