@@ -1341,8 +1341,12 @@
             <div class="newsletter-popup-content">
                 <h3>Stay Updated!</h3>
                 <p>Get exclusive racing updates, behind-the-scenes content, and special announcements delivered to your inbox.</p>
-                <form id="newsletterForm" class="newsletter-popup-form">
-                    <input type="email" id="newsletterEmail" name="email" placeholder="Enter your email" required>
+                <form id="newsletterForm" class="newsletter-popup-form" action="https://gmail.us14.list-manage.com/subscribe/post?u=dba85c89d82fef7f216d3993b&amp;id=6ff0d772ac&amp;f_id=0071bce5f0" method="post" target="_blank">
+                    <input type="email" name="EMAIL" id="newsletterEmail" placeholder="Enter your email" required>
+                    <!-- Anti-bot honeypot field -->
+                    <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                        <input type="text" name="b_dba85c89d82fef7f216d3993b_6ff0d772ac" tabindex="-1" value="">
+                    </div>
                     <button type="submit" class="newsletter-submit-btn">Subscribe</button>
                 </form>
                 <p class="newsletter-popup-privacy">We respect your privacy. Unsubscribe anytime.</p>
@@ -1563,16 +1567,11 @@
             const newsletterForm = document.getElementById('newsletterForm');
             if (newsletterForm) {
                 newsletterForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    const email = document.getElementById('newsletterEmail').value;
-
-                    // Here you would integrate with your newsletter service
-                    // For now, we'll just close the popup and show a success message
-                    alert('Thank you for subscribing! You\'ll receive racing updates soon.');
-                    closeNewsletterPopup();
-
-                    // Optional: You can integrate with Mailchimp, ConvertKit, or another service here
-                    // Example: Send email to your backend or newsletter service API
+                    // Let the form submit to Mailchimp (opens in new tab)
+                    // Close popup after a brief delay to allow submission
+                    setTimeout(function() {
+                        closeNewsletterPopup();
+                    }, 500);
                 });
             }
 
