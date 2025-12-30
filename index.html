@@ -1721,6 +1721,18 @@
 
         // Countdown Timer
         function updateCountdown() {
+            // Check if countdown elements exist on the page
+            const daysElement = document.getElementById("days");
+            const hoursElement = document.getElementById("hours");
+            const minutesElement = document.getElementById("minutes");
+            const secondsElement = document.getElementById("seconds");
+            const countdownElement = document.getElementById("countdown");
+
+            // Only run countdown if elements exist
+            if (!daysElement || !hoursElement || !minutesElement || !secondsElement) {
+                return; // Exit if countdown elements don't exist
+            }
+
             // Set the date we're counting down to - November 23rd, 2025 at 3pm
             const countDownDate = new Date("November 23, 2025 15:00:00").getTime();
 
@@ -1739,15 +1751,17 @@
                 const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
                 // Display the result in the elements
-                document.getElementById("days").textContent = days;
-                document.getElementById("hours").textContent = hours;
-                document.getElementById("minutes").textContent = minutes;
-                document.getElementById("seconds").textContent = seconds;
+                daysElement.textContent = days;
+                hoursElement.textContent = hours;
+                minutesElement.textContent = minutes;
+                secondsElement.textContent = seconds;
 
                 // If the count down is finished, write some text
                 if (distance < 0) {
                     clearInterval(x);
-                    document.getElementById("countdown").innerHTML = "<div style='font-size: 2rem; color: var(--primary);'>The announcement is here!</div>";
+                    if (countdownElement) {
+                        countdownElement.innerHTML = "<div style='font-size: 2rem; color: var(--primary);'>The announcement is here!</div>";
+                    }
                 }
             }, 1000);
         }
