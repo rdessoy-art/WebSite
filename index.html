@@ -1338,18 +1338,24 @@
     <div id="newsletterPopup" class="newsletter-popup-overlay" style="display: none;">
         <div class="newsletter-popup-modal">
             <button class="newsletter-popup-close" onclick="closeNewsletterPopup()">&times;</button>
-            <div class="newsletter-popup-content">
-                <h3 id="newsletterTitle">Stay Updated!</h3>
-                <p id="newsletterMessage">Get exclusive racing updates, behind-the-scenes content, and special announcements delivered to your inbox.</p>
-                <form id="newsletterForm" class="newsletter-popup-form" action="https://gmail.us14.list-manage.com/subscribe/post?u=dba85c89d82fef7f216d3993b&amp;id=6ff0d772ac&amp;f_id=0071bce5f0" method="post" target="hidden_iframe">
-                    <input type="email" name="EMAIL" id="newsletterEmail" placeholder="Enter your email" required>
-                    <!-- Anti-bot honeypot field -->
-                    <div style="position: absolute; left: -5000px;" aria-hidden="true">
-                        <input type="text" name="b_dba85c89d82fef7f216d3993b_6ff0d772ac" tabindex="-1" value="">
-                    </div>
-                    <button type="submit" class="newsletter-submit-btn" id="newsletterSubmitBtn">Subscribe</button>
-                </form>
-                <p class="newsletter-popup-privacy">We respect your privacy. Unsubscribe anytime.</p>
+            <div class="newsletter-popup-container">
+                <div class="newsletter-popup-image">
+                    <img src="images/IDM Assen.jpg" alt="Harrison Dessoy Racing">
+                </div>
+                <div class="newsletter-popup-content">
+                    <h3 id="newsletterTitle">Stay Updated!</h3>
+                    <p id="newsletterMessage">Get exclusive racing updates, behind-the-scenes content, and special announcements delivered to your inbox.</p>
+                    <form id="newsletterForm" class="newsletter-popup-form" action="https://gmail.us14.list-manage.com/subscribe/post?u=dba85c89d82fef7f216d3993b&amp;id=6ff0d772ac&amp;f_id=0071bce5f0" method="post" target="hidden_iframe">
+                        <input type="text" name="FNAME" id="newsletterName" placeholder="Enter your name" required>
+                        <input type="email" name="EMAIL" id="newsletterEmail" placeholder="Enter your email" required>
+                        <!-- Anti-bot honeypot field -->
+                        <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                            <input type="text" name="b_dba85c89d82fef7f216d3993b_6ff0d772ac" tabindex="-1" value="">
+                        </div>
+                        <button type="submit" class="newsletter-submit-btn" id="newsletterSubmitBtn">Subscribe</button>
+                    </form>
+                    <p class="newsletter-popup-privacy">We respect your privacy. Unsubscribe anytime.</p>
+                </div>
             </div>
         </div>
     </div>
@@ -1376,12 +1382,35 @@
         .newsletter-popup-modal {
             background: var(--light);
             border-radius: 15px;
-            padding: 2.5rem;
-            max-width: 500px;
+            max-width: 900px;
             width: 90%;
             position: relative;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             animation: slideUp 0.3s ease-in-out;
+            overflow: hidden;
+        }
+
+        .newsletter-popup-container {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .newsletter-popup-image {
+            flex: 0 0 45%;
+            max-width: 45%;
+            overflow: hidden;
+        }
+
+        .newsletter-popup-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .newsletter-popup-content {
+            flex: 1;
+            padding: 2.5rem;
         }
 
         @keyframes slideUp {
@@ -1485,8 +1514,21 @@
         /* Mobile Responsive */
         @media (max-width: 768px) {
             .newsletter-popup-modal {
-                padding: 2rem 1.5rem;
                 max-width: 95%;
+            }
+
+            .newsletter-popup-container {
+                flex-direction: column;
+            }
+
+            .newsletter-popup-image {
+                flex: 0 0 auto;
+                max-width: 100%;
+                height: 200px;
+            }
+
+            .newsletter-popup-content {
+                padding: 2rem 1.5rem;
             }
 
             .newsletter-popup-content h3 {
@@ -1498,6 +1540,7 @@
             }
 
             .newsletter-popup-form input[type="email"],
+            .newsletter-popup-form input[type="text"],
             .newsletter-submit-btn {
                 padding: 0.875rem;
                 font-size: 1rem;
@@ -1505,7 +1548,7 @@
         }
 
         @media (max-width: 480px) {
-            .newsletter-popup-modal {
+            .newsletter-popup-content {
                 padding: 1.5rem 1rem;
             }
 
@@ -1519,6 +1562,10 @@
                 font-size: 1.5rem;
                 width: 30px;
                 height: 30px;
+            }
+
+            .newsletter-popup-image {
+                height: 150px;
             }
         }
     </style>
@@ -1559,10 +1606,10 @@
                 localStorage.removeItem('newsletterPopupDismissed');
             }
 
-            // Show popup after 12 seconds (middle of 10-15 range)
+            // Show popup after 8 seconds
             setTimeout(() => {
                 showNewsletterPopup();
-            }, 12000);
+            }, 8000);
         }
 
         // Handle newsletter form submission
@@ -1590,6 +1637,7 @@
                                 title.textContent = 'Stay Updated!';
                                 message.textContent = 'Get exclusive racing updates, behind-the-scenes content, and special announcements delivered to your inbox.';
                                 form.style.display = 'flex';
+                                document.getElementById('newsletterName').value = '';
                                 document.getElementById('newsletterEmail').value = '';
                             }, 4000);
                         }, 500);
