@@ -1470,16 +1470,26 @@
             gap: 1rem;
         }
 
-        .newsletter-popup-form input[type="email"] {
+        .newsletter-popup-form input[type="email"],
+        .newsletter-popup-form input[type="text"] {
             width: 100%;
             padding: 1rem;
             border: 2px solid var(--accent);
             border-radius: 8px;
             font-size: 1rem;
             transition: all 0.3s;
+            font-family: inherit;
+            line-height: normal;
+            background-color: #ffffff;
+            color: #333;
+            box-sizing: border-box;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
         }
 
-        .newsletter-popup-form input[type="email"]:focus {
+        .newsletter-popup-form input[type="email"]:focus,
+        .newsletter-popup-form input[type="text"]:focus {
             outline: none;
             border-color: var(--primary);
             box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.1);
