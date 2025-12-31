@@ -1,7 +1,17 @@
 {
-  "last_updated": "2025-12-23T22:14:13.251157+00:00",
+  "last_updated": "2025-12-31T16:38:58.904172+00:00",
   "campaign_count": 5,
   "campaigns": [
+    {
+      "id": "c5c748d03b",
+      "title": "",
+      "subject": "A Merry Christmas & Happy New Year!",
+      "preview_text": null,
+      "send_time": "2025-12-24T09:27:37+00:00",
+      "emails_sent": 26,
+      "archive_url": "http://eepurl.com/jvoZ0-/",
+      "status": "sent"
+    },
     {
       "id": "ad45401e69",
       "title": "",
@@ -40,16 +50,6 @@
       "send_time": "2025-11-18T17:09:42+00:00",
       "emails_sent": 3,
       "archive_url": "http://eepurl.com/jskyZE",
-      "status": "sent"
-    },
-    {
-      "id": "1512440068",
-      "title": "Teaser Trailer",
-      "subject": "Something big is coming...",
-      "preview_text": null,
-      "send_time": "2025-11-18T16:48:48+00:00",
-      "emails_sent": 1,
-      "archive_url": "http://eepurl.com/jsknPg",
       "status": "sent"
     }
   ]
