@@ -168,9 +168,81 @@
 
         .product-image {
             width: 100%;
-            height: 300px;
+            height: 250px;
             object-fit: cover;
             background: var(--accent);
+        }
+
+        /* Carousel styles */
+        .product-carousel {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            background: var(--accent);
+            overflow: hidden;
+        }
+
+        .carousel-images {
+            display: flex;
+            transition: transform 0.3s ease;
+            height: 100%;
+        }
+
+        .carousel-images img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 0.5rem 0.8rem;
+            cursor: pointer;
+            font-size: 1.2rem;
+            z-index: 10;
+            transition: background 0.3s;
+            border-radius: 3px;
+        }
+
+        .carousel-btn:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .carousel-btn.prev {
+            left: 10px;
+        }
+
+        .carousel-btn.next {
+            right: 10px;
+        }
+
+        .carousel-indicators {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .carousel-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .carousel-indicator.active {
+            background: rgba(255, 255, 255, 1);
         }
 
         .product-content {
@@ -430,7 +502,18 @@
 
             <!-- HD55 T-Shirt -->
             <div class="product-card">
-                <img src="images/T-Shirt_2026Front.png" alt="HD55 T-Shirt" class="product-image">
+                <div class="product-carousel" data-carousel="tshirt">
+                    <div class="carousel-images">
+                        <img src="images/T-Shirt_2026Front.png" alt="HD55 T-Shirt Front">
+                        <img src="images/T-Shirt2026_Rear.png" alt="HD55 T-Shirt Back">
+                    </div>
+                    <button class="carousel-btn prev" onclick="moveCarousel('tshirt', -1)">‹</button>
+                    <button class="carousel-btn next" onclick="moveCarousel('tshirt', 1)">›</button>
+                    <div class="carousel-indicators">
+                        <span class="carousel-indicator active" onclick="goToSlide('tshirt', 0)"></span>
+                        <span class="carousel-indicator" onclick="goToSlide('tshirt', 1)"></span>
+                    </div>
+                </div>
                 <div class="product-content">
                     <h3>HD55 T-Shirt</h3>
                     <p class="product-price">£30.00</p>
@@ -444,7 +527,18 @@
 
             <!-- HD55 Hoody -->
             <div class="product-card">
-                <img src="images/Hoody2026_Front.png" alt="HD55 Hoody" class="product-image">
+                <div class="product-carousel" data-carousel="hoody">
+                    <div class="carousel-images">
+                        <img src="images/Hoody2026_Front.png" alt="HD55 Hoody Front">
+                        <img src="images/Hoody2026_Rear.png" alt="HD55 Hoody Back">
+                    </div>
+                    <button class="carousel-btn prev" onclick="moveCarousel('hoody', -1)">‹</button>
+                    <button class="carousel-btn next" onclick="moveCarousel('hoody', 1)">›</button>
+                    <div class="carousel-indicators">
+                        <span class="carousel-indicator active" onclick="goToSlide('hoody', 0)"></span>
+                        <span class="carousel-indicator" onclick="goToSlide('hoody', 1)"></span>
+                    </div>
+                </div>
                 <div class="product-content">
                     <h3>HD55 Hoody</h3>
                     <p class="product-price">£55.00</p>
@@ -542,6 +636,47 @@
         document.addEventListener('DOMContentLoaded', function() {
             updateBasketDisplay();
         });
+
+        // Carousel functionality
+        const carouselStates = {
+            tshirt: { currentIndex: 0, totalSlides: 2 },
+            hoody: { currentIndex: 0, totalSlides: 2 }
+        };
+
+        function moveCarousel(carouselId, direction) {
+            const state = carouselStates[carouselId];
+            state.currentIndex += direction;
+
+            if (state.currentIndex < 0) {
+                state.currentIndex = state.totalSlides - 1;
+            } else if (state.currentIndex >= state.totalSlides) {
+                state.currentIndex = 0;
+            }
+
+            updateCarousel(carouselId);
+        }
+
+        function goToSlide(carouselId, index) {
+            carouselStates[carouselId].currentIndex = index;
+            updateCarousel(carouselId);
+        }
+
+        function updateCarousel(carouselId) {
+            const carousel = document.querySelector(`[data-carousel="${carouselId}"]`);
+            const images = carousel.querySelector('.carousel-images');
+            const indicators = carousel.querySelectorAll('.carousel-indicator');
+            const currentIndex = carouselStates[carouselId].currentIndex;
+
+            images.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+            indicators.forEach((indicator, index) => {
+                if (index === currentIndex) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active');
+                }
+            });
+        }
     </script>
 
     <!-- Newsletter Popup Modal -->
