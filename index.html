@@ -284,6 +284,59 @@
             line-height: 1.8;
         }
 
+        /* Rider Information Box */
+        .rider-info-box {
+            background: var(--light);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .rider-info-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .rider-info-row {
+            display: flex;
+            padding: 1rem 1.5rem;
+            background: var(--accent);
+            border-radius: 8px;
+            align-items: center;
+            border-left: 4px solid var(--primary);
+        }
+
+        .rider-info-row .info-label {
+            font-weight: 600;
+            color: var(--secondary);
+            min-width: 150px;
+            font-size: 1rem;
+        }
+
+        .rider-info-row .info-value {
+            color: #333;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .rider-info-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+                padding: 1rem;
+            }
+
+            .rider-info-row .info-label {
+                min-width: auto;
+                font-size: 0.9rem;
+            }
+
+            .rider-info-row .info-value {
+                font-size: 0.95rem;
+            }
+        }
+
         .stats {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -1168,17 +1221,43 @@
 
     <main>
         <section id="about">
-            <h2>About Harrison</h2>
+            <h2>Harrison Dessoy</h2>
             <div class="about-grid">
                 <div class="about-image" style="background: none; overflow: hidden; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); border: 4px solid #000000; position: relative;">
                     <img src="images/2025_profilepic.png" alt="Harrison Dessoy - Profile Photo" style="width: 100%; height: 100%; object-fit: contain; border-radius: 11px; display: block; transition: transform 0.3s;" onerror="this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;background:linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);color:white;font-size:3rem;font-weight:bold;\'>Image Not Found - Check Path</div>'">
                 </div>
                 <div class="about-content">
-                    <p>Hello, I am Harrison Dessoy, a 20 year old motorcycle racer from Thurrock, Essex. In 2026, I am competing in the brand new 2026 World Sportbike Championship, and super excited to be competing against some fast and experienced competition.</p>
+                    <!-- HD Logo -->
+                    <div style="text-align: center; margin-bottom: 2rem;">
+                        <img src="images/HD55 White.png" alt="HD55 Logo" style="max-width: 300px; width: 100%; height: auto; filter: brightness(0);">
+                    </div>
 
-                    <p>With over 8 years of racing experience, starting in the Cool Fab Racing British Minibikes Championship, I embark on the world stage with my PHR Performance racing team, on the Triumph Daytona 660. With a love for physical training, mental prep work and dedication, I massively look forward to such a prestigious opportunity in 2026.</p>
-
-                    <p style="font-style: italic; margin-top: 1.5rem; padding: 1.5rem; background: rgba(230, 57, 70, 0.1); border-left: 4px solid var(--primary); border-radius: 5px;">I am so excited to be showcasing my skills on the world stage in 2026. Riding the Triumph Daytona 660 with the PHR Performance team, I am confident to be pushing against some of the worlds best riders!</p>
+                    <!-- Rider Information -->
+                    <div class="rider-info-box">
+                        <h3 style="color: var(--secondary); margin-bottom: 1.5rem; text-align: center; font-size: 1.8rem;">Rider Information</h3>
+                        <div class="rider-info-list">
+                            <div class="rider-info-row">
+                                <span class="info-label">Full Name</span>
+                                <span class="info-value">Harrison Robert Dessoy</span>
+                            </div>
+                            <div class="rider-info-row">
+                                <span class="info-label">Date of Birth</span>
+                                <span class="info-value">29th July 2005</span>
+                            </div>
+                            <div class="rider-info-row">
+                                <span class="info-label">Home Town</span>
+                                <span class="info-value">Thurrock, Essex</span>
+                            </div>
+                            <div class="rider-info-row">
+                                <span class="info-label">Race Number</span>
+                                <span class="info-value">55</span>
+                            </div>
+                            <div class="rider-info-row">
+                                <span class="info-label">Team</span>
+                                <span class="info-value">PHR Performance by Peter Hickman</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
