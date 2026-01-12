@@ -1440,32 +1440,8 @@
                 <div>
                     <h3 style="color: var(--secondary); margin-bottom: 1.5rem; font-size: 1.5rem; border-left: 5px solid var(--primary); padding-left: 1rem;">Newsletters</h3>
                     <div style="background: white; border-radius: 8px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-                        <div style="display: flex; flex-direction: column; gap: 1rem;">
-                            <a href="http://eepurl.com/juLsD6" target="_blank" rel="noopener" style="display: flex; align-items: center; padding: 0.75rem; border-bottom: 1px solid #f0f0f0; text-decoration: none; color: inherit; transition: background 0.2s;">
-                                <span style="color: var(--text-secondary); font-size: 0.9rem; min-width: 120px;">Dec 17, 2025</span>
-                                <span style="flex: 1; color: var(--secondary); font-weight: 500;">Winter Test #2</span>
-                                <span style="color: var(--primary); font-size: 0.9rem;">Read →</span>
-                            </a>
-                            <a href="http://eepurl.com/jsO6vQ" target="_blank" rel="noopener" style="display: flex; align-items: center; padding: 0.75rem; border-bottom: 1px solid #f0f0f0; text-decoration: none; color: inherit; transition: background 0.2s;">
-                                <span style="color: var(--text-secondary); font-size: 0.9rem; min-width: 120px;">Dec 4, 2025</span>
-                                <span style="flex: 1; color: var(--secondary); font-weight: 500;">Spain Test #1</span>
-                                <span style="color: var(--primary); font-size: 0.9rem;">Read →</span>
-                            </a>
-                            <a href="http://eepurl.com/jsOIBA" target="_blank" rel="noopener" style="display: flex; align-items: center; padding: 0.75rem; border-bottom: 1px solid #f0f0f0; text-decoration: none; color: inherit; transition: background 0.2s;">
-                                <span style="color: var(--text-secondary); font-size: 0.9rem; min-width: 120px;">Nov 24, 2025</span>
-                                <span style="flex: 1; color: var(--secondary); font-weight: 500;">Something big is coming...</span>
-                                <span style="color: var(--primary); font-size: 0.9rem;">Read →</span>
-                            </a>
-                            <a href="http://eepurl.com/jskyZE" target="_blank" rel="noopener" style="display: flex; align-items: center; padding: 0.75rem; border-bottom: 1px solid #f0f0f0; text-decoration: none; color: inherit; transition: background 0.2s;">
-                                <span style="color: var(--text-secondary); font-size: 0.9rem; min-width: 120px;">Nov 18, 2025</span>
-                                <span style="flex: 1; color: var(--secondary); font-weight: 500;">Something big is coming...</span>
-                                <span style="color: var(--primary); font-size: 0.9rem;">Read →</span>
-                            </a>
-                            <a href="http://eepurl.com/jsknPg" target="_blank" rel="noopener" style="display: flex; align-items: center; padding: 0.75rem; text-decoration: none; color: inherit; transition: background 0.2s;">
-                                <span style="color: var(--text-secondary); font-size: 0.9rem; min-width: 120px;">Nov 18, 2025</span>
-                                <span style="flex: 1; color: var(--secondary); font-weight: 500;">Something big is coming...</span>
-                                <span style="color: var(--primary); font-size: 0.9rem;">Read →</span>
-                            </a>
+                        <div id="newsletters-container" style="display: flex; flex-direction: column; gap: 1rem;">
+                            <!-- Newsletters will be loaded here dynamically -->
                         </div>
                     </div>
                 </div>
@@ -2116,6 +2092,45 @@
         updateCountdown();
 
         // Load Instagram posts
+        async function loadCampaigns() {
+            try {
+                const response = await fetch('data/campaigns.json');
+                const data = await response.json();
+                const newslettersContainer = document.getElementById('newsletters-container');
+
+                if (data.campaigns && data.campaigns.length > 0) {
+                    // Sort campaigns by send_time (newest first)
+                    const sortedCampaigns = data.campaigns.sort((a, b) => new Date(b.send_time) - new Date(a.send_time));
+
+                    newslettersContainer.innerHTML = sortedCampaigns.map((campaign, index) => {
+                        // Format the date
+                        const sendDate = new Date(campaign.send_time);
+                        const formattedDate = sendDate.toLocaleDateString('en-US', {
+                            year: 'numeric',
+                            month: 'short',
+                            day: 'numeric'
+                        });
+
+                        // Add bottom border to all except the last item
+                        const borderStyle = index < sortedCampaigns.length - 1 ? 'border-bottom: 1px solid #f0f0f0;' : '';
+
+                        return `
+                            <a href="${campaign.archive_url}" target="_blank" rel="noopener" style="display: flex; align-items: center; padding: 0.75rem; ${borderStyle} text-decoration: none; color: inherit; transition: background 0.2s;">
+                                <span style="color: var(--text-secondary); font-size: 0.9rem; min-width: 120px;">${formattedDate}</span>
+                                <span style="flex: 1; color: var(--secondary); font-weight: 500;">${campaign.subject || campaign.title}</span>
+                                <span style="color: var(--primary); font-size: 0.9rem;">Read →</span>
+                            </a>
+                        `;
+                    }).join('');
+                } else {
+                    newslettersContainer.innerHTML = '<p style="color: #666; text-align: center; padding: 2rem;">No newsletters available yet.</p>';
+                }
+            } catch (error) {
+                console.error('Error loading campaigns:', error);
+                document.getElementById('newsletters-container').innerHTML = '<p style="color: #666; text-align: center; padding: 2rem;">Unable to load newsletters.</p>';
+            }
+        }
+
         async function loadInstagramPosts() {
             try {
                 const response = await fetch('data/Instagram/instagram.json');
@@ -2164,8 +2179,11 @@
             }
         }
 
-        // Load Instagram posts when the page loads
-        window.addEventListener('load', loadInstagramPosts);
+        // Load campaigns and Instagram posts when the page loads
+        window.addEventListener('load', () => {
+            loadCampaigns();
+            loadInstagramPosts();
+        });
     </script>
 </body>
 </html>
