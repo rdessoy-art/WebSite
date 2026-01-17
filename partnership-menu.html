@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-     <!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z0P3DBDMDZ"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -10,12 +10,9 @@
       gtag('config', 'G-Z0P3DBDMDZ');
     </script>
 
-    <!-- Stripe.js -->
-    <script src="https://js.stripe.com/v3/"></script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fan Club - Harrison Dessoy Racing</title>
+    <title>Partnership Menu - Harrison Dessoy Racing</title>
     <style>
         * {
             margin: 0;
@@ -128,20 +125,6 @@
             transform: rotate(-45deg) translate(7px, -7px);
         }
 
-        .back-link {
-            color: var(--light);
-            text-decoration: none;
-            padding: 0.5rem 1.5rem;
-            border: 2px solid var(--primary);
-            border-radius: 50px;
-            transition: all 0.3s;
-        }
-
-        .back-link:hover {
-            background: var(--primary);
-            transform: translateY(-2px);
-        }
-
         main {
             max-width: 1400px;
             margin: 0 auto;
@@ -156,7 +139,7 @@
             padding-left: 1rem;
         }
 
-        .fanclub-hero {
+        .partnership-hero {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: var(--light);
             padding: 3rem;
@@ -165,12 +148,140 @@
             margin-bottom: 3rem;
         }
 
-        .fanclub-hero h3 {
+        .partnership-hero h3 {
             font-size: 2rem;
             margin-bottom: 1rem;
         }
 
-        .signup-form {
+        .partnership-intro {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+            border-left: 5px solid var(--primary);
+        }
+
+        .partnership-intro h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .partnership-intro p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .partnership-tiers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .tier-card {
+            background: var(--light);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tier-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .tier-card.title {
+            border: 3px solid #ffd700;
+        }
+
+        .tier-card.primary {
+            border: 3px solid #c0c0c0;
+        }
+
+        .tier-card.secondary {
+            border: 3px solid #cd7f32;
+        }
+
+        .tier-card.personal {
+            border: 3px solid #4a90e2;
+        }
+
+        .tier-badge {
+            position: absolute;
+            top: 15px;
+            right: -35px;
+            background: var(--primary);
+            color: var(--light);
+            padding: 5px 40px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            transform: rotate(45deg);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .tier-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #eee;
+        }
+
+        .tier-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+
+        .tier-price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .tier-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .tier-section h4 {
+            font-size: 1rem;
+            color: var(--secondary);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .tier-benefits {
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+
+        .tier-benefits li {
+            padding: 0.5rem 0;
+            color: #555;
+            display: flex;
+            align-items: flex-start;
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+
+        .tier-benefits li::before {
+            content: "✓";
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-right: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        .contact-form {
             background: var(--accent);
             padding: 3rem;
             border-radius: 10px;
@@ -178,7 +289,7 @@
             margin: 3rem auto;
         }
 
-        .signup-form h3 {
+        .contact-form h3 {
             color: var(--secondary);
             margin-bottom: 2rem;
             text-align: center;
@@ -252,170 +363,6 @@
             border: 1px solid #f5c6cb;
         }
 
-        .club-intro {
-            background: var(--light);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            margin-bottom: 3rem;
-            border-left: 5px solid var(--primary);
-        }
-
-        .club-intro h3 {
-            color: var(--secondary);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-
-        .club-intro p {
-            color: #555;
-            line-height: 1.8;
-            margin-bottom: 1rem;
-        }
-
-        .membership-tiers {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-
-        .tier-card {
-            background: var(--light);
-            border-radius: 10px;
-            padding: 2rem;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .tier-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-        }
-
-        .tier-card.bronze {
-            border: 3px solid #cd7f32;
-        }
-
-        .tier-card.silver {
-            border: 3px solid #c0c0c0;
-        }
-
-        .tier-card.gold {
-            border: 3px solid #ffd700;
-        }
-
-        .tier-badge {
-            position: absolute;
-            top: 15px;
-            right: -35px;
-            background: var(--primary);
-            color: var(--light);
-            padding: 5px 40px;
-            font-size: 0.75rem;
-            font-weight: bold;
-            transform: rotate(45deg);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-
-        .tier-header {
-            text-align: center;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid #eee;
-        }
-
-        .tier-header h3 {
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
-            color: var(--secondary);
-        }
-
-        .tier-price {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .tier-price span {
-            font-size: 1rem;
-            color: #666;
-            font-weight: normal;
-        }
-
-        .tier-limit {
-            font-size: 0.85rem;
-            color: #666;
-            font-weight: 600;
-        }
-
-        .tier-benefits {
-            list-style: none;
-            margin-bottom: 1.5rem;
-        }
-
-        .tier-benefits li {
-            padding: 0.6rem 0;
-            color: #555;
-            display: flex;
-            align-items: flex-start;
-            line-height: 1.5;
-        }
-
-        .tier-benefits li::before {
-            content: "✓";
-            color: var(--primary);
-            font-weight: bold;
-            font-size: 1.2rem;
-            margin-right: 0.8rem;
-            flex-shrink: 0;
-        }
-
-        .tier-note {
-            background: var(--accent);
-            padding: 1rem;
-            border-radius: 5px;
-            font-size: 0.85rem;
-            color: #666;
-            font-style: italic;
-            margin-top: 1rem;
-            border-left: 3px solid var(--secondary);
-        }
-
-        .why-join-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-
-        .why-join-card {
-            text-align: center;
-            padding: 2rem;
-            background: var(--light);
-            border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-        }
-
-        .why-join-card .icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .why-join-card h4 {
-            color: var(--secondary);
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-        }
-
-        .why-join-card p {
-            color: #666;
-            font-size: 0.95rem;
-        }
-
         .cta-box {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: var(--light);
@@ -433,11 +380,6 @@
         .cta-box p {
             font-size: 1.1rem;
             margin-bottom: 0.5rem;
-        }
-
-        .cta-box .small {
-            font-size: 0.9rem;
-            opacity: 0.9;
         }
 
         footer {
@@ -471,15 +413,6 @@
             padding: 0;
             border: none;
             box-shadow: none;
-        }
-
-        /* Basket Sidebar - Hidden */
-        .basket-sidebar {
-            display: none;
-        }
-
-        .basket-overlay {
-            display: none;
         }
 
         @media (max-width: 768px) {
@@ -521,11 +454,7 @@
                 border-bottom: 1px solid rgba(255,255,255,0.1);
             }
 
-            .membership-tiers {
-                grid-template-columns: 1fr;
-            }
-
-            .why-join-grid {
+            .partnership-tiers {
                 grid-template-columns: 1fr;
             }
         }
@@ -559,31 +488,182 @@
                     <li><a href="partnership-menu.html" onclick="closeMenu()">Partnership Menu</a></li>
                 </ul>
             </nav>
-            <div class="basket-icon" onclick="toggleBasket()">
-                🛒
-                <span class="basket-count" id="basketCount">0</span>
-            </div>
         </div>
     </header>
 
     <main>
-        <h2>Racing Club</h2>
-        <div class="fanclub-hero">
-            <h3>Join Harrison's Racing Journey</h3>
-            <p>Be part of something special as Harrison prepares for his 2026 racing campaign</p>
-            <p style="font-size: 1rem; margin-top: 1rem;">Exclusive access • Behind-the-scenes content • VIP experiences</p>
-            <p style="font-size: 1rem; margin-top: 1.5rem;">
-                <a href="nft.html" style="color: var(--light); text-decoration: underline; font-weight: 600;">Learn more about exclusive club NFTs →</a>
-            </p>
+        <h2>Partnership Menu</h2>
+        <div class="partnership-hero">
+            <h3>Partner with Harrison Dessoy Racing</h3>
+            <p>Join us on our journey to World Superbike success in 2026</p>
+            <p style="font-size: 1rem; margin-top: 1rem;">Premium branding • Social media exposure • VIP race experiences</p>
         </div>
 
-        <div class="signup-form">
-            <h3>Express Your Interest</h3>
-            <form id="fanclubForm">
+        <div class="partnership-intro">
+            <h3>About Our Partnership Opportunities</h3>
+            <p>Harrison Dessoy Racing offers unique partnership opportunities for brands and businesses looking to align themselves with elite-level motorcycle racing. Our partnership packages provide exceptional value through comprehensive branding, extensive social media reach, and exclusive event access.</p>
+            <p>As Harrison competes in the World Superbike Championship in 2026, your brand will gain visibility across multiple platforms and touchpoints, reaching an engaged audience of motorsport enthusiasts and racing fans worldwide.</p>
+        </div>
+
+        <h3 style="text-align: center; margin-bottom: 2rem; color: var(--secondary); font-size: 2rem;">Partnership Tiers</h3>
+
+        <div class="partnership-tiers">
+            <!-- Title Sponsor -->
+            <div class="tier-card title">
+                <div class="tier-badge">PREMIUM</div>
+                <div class="tier-header">
+                    <h3>Title Sponsor</h3>
+                    <div class="tier-price">£30,000</div>
+                </div>
+
+                <div class="tier-section">
+                    <h4>Main Company Branding</h4>
+                    <ul class="tier-benefits">
+                        <li>Logo on Team Lorry</li>
+                        <li>Logo on Team Merchandise</li>
+                        <li>Harrison Dessoy Helmet (Left and right side)</li>
+                        <li>Back of leather suit & Right shoulder</li>
+                        <li>Team boarding in garage</li>
+                        <li>Logo on front of the bike</li>
+                        <li>Logo on Seat unit</li>
+                    </ul>
+                </div>
+
+                <div class="tier-section">
+                    <h4>Social Media</h4>
+                    <ul class="tier-benefits">
+                        <li>Company logo on riders and team website</li>
+                        <li>Logo watermarked on all race weekend posts</li>
+                        <li>Mentioned in all social media posts throughout 2026</li>
+                        <li>2 dedicated posts highlighting your company</li>
+                        <li>End of season thank you and result summary</li>
+                        <li>Tagged in all story posts over race weekends</li>
+                        <li>Tagged and mentioned in all social media posts in 2026</li>
+                    </ul>
+                </div>
+
+                <div class="tier-section">
+                    <h4>2026 Events</h4>
+                    <ul class="tier-benefits">
+                        <li>6 passes to World Sportbike events in 2026</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Primary Sponsor -->
+            <div class="tier-card primary">
+                <div class="tier-header">
+                    <h3>Primary Sponsor</h3>
+                    <div class="tier-price">£20,000</div>
+                </div>
+
+                <div class="tier-section">
+                    <h4>Main Company Branding</h4>
+                    <ul class="tier-benefits">
+                        <li>Team Lorry</li>
+                        <li>Team merchandise</li>
+                        <li>Harrison Dessoy Helmet (left and right chin strap)</li>
+                        <li>Team boarding in garage</li>
+                        <li>Logo on headlights of front fairing</li>
+                        <li>Logo placement on left shoulder of suit</li>
+                    </ul>
+                </div>
+
+                <div class="tier-section">
+                    <h4>Social Media</h4>
+                    <ul class="tier-benefits">
+                        <li>Logo on rider's website</li>
+                        <li>Tagged and mentioned on all social media posts</li>
+                        <li>A dedicated post during the 2026 race season</li>
+                        <li>Tagged in social media stories on race weekend</li>
+                        <li>Tagged in all social media posts in 2026</li>
+                    </ul>
+                </div>
+
+                <div class="tier-section">
+                    <h4>2026 Events</h4>
+                    <ul class="tier-benefits">
+                        <li>4 passes for WSBK events throughout the year</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Secondary Sponsor -->
+            <div class="tier-card secondary">
+                <div class="tier-header">
+                    <h3>Secondary Sponsor</h3>
+                    <div class="tier-price">£10,000</div>
+                </div>
+
+                <div class="tier-section">
+                    <h4>Main Company Branding</h4>
+                    <ul class="tier-benefits">
+                        <li>Team merchandise</li>
+                        <li>Team boarding in garage</li>
+                        <li>Harrison Dessoy Logo on top of race helmet</li>
+                        <li>Sticker on Belly pan of race bike</li>
+                        <li>Logo on right arm of rider's suit</li>
+                    </ul>
+                </div>
+
+                <div class="tier-section">
+                    <h4>Social Media</h4>
+                    <ul class="tier-benefits">
+                        <li>Announcement of partnership with photos</li>
+                        <li>Dedicated post highlighting your company</li>
+                        <li>Tagged on all social media stories</li>
+                        <li>Tagged on all social media posts</li>
+                    </ul>
+                </div>
+
+                <div class="tier-section">
+                    <h4>2026 Events</h4>
+                    <ul class="tier-benefits">
+                        <li>2 passes for World Sportbike events</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Personal Sponsor -->
+            <div class="tier-card personal">
+                <div class="tier-header">
+                    <h3>Personal Sponsor</h3>
+                    <div class="tier-price">£5,000</div>
+                </div>
+
+                <div class="tier-section">
+                    <h4>Main Branding</h4>
+                    <ul class="tier-benefits">
+                        <li>Team merchandise</li>
+                        <li>Harrison Dessoy Helmet, side of visor and top visor strip</li>
+                        <li>Small sticker on Belly pan</li>
+                        <li>Logo on team boarding</li>
+                    </ul>
+                </div>
+
+                <div class="tier-section">
+                    <h4>Social Media</h4>
+                    <ul class="tier-benefits">
+                        <li>Announcement of sponsorship with photos</li>
+                        <li>Dedicated post highlighting your company and product</li>
+                        <li>Tagged on all social media posts with the rider</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-form">
+            <h3>Interested in Partnering?</h3>
+            <form id="partnershipForm">
                 <input type="hidden" name="access_key" value="849b83c2-85b1-495c-8074-a020510f09b7">
 
                 <div class="form-group">
-                    <label for="name">Full Name</label>
+                    <label for="company">Company Name</label>
+                    <input type="text" id="company" name="company" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Contact Name</label>
                     <input type="text" id="name" name="name" required>
                 </div>
 
@@ -593,142 +673,38 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="tier">Membership Tier Interest</label>
+                    <label for="phone">Phone Number (Optional)</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+
+                <div class="form-group">
+                    <label for="tier">Partnership Tier Interest</label>
                     <select id="tier" name="tier" required>
                         <option value="">Select a tier...</option>
-                        <option value="Bronze - £50/year">A Fan - £50/year</option>
-                        <option value="Silver - £100/year">A Supporter - £100/year</option>
-                        <option value="Gold - £500/year">A Sponsor - £500/year</option>
-                        <option value="News Letter">A News Letter</option>
+                        <option value="Title Sponsor - £30,000">Title Sponsor - £30,000</option>
+                        <option value="Primary Sponsor - £20,000">Primary Sponsor - £20,000</option>
+                        <option value="Secondary Sponsor - £10,000">Secondary Sponsor - £10,000</option>
+                        <option value="Personal Sponsor - £5,000">Personal Sponsor - £5,000</option>
                     </select>
                 </div>
 
                 <div class="form-group">
                     <label for="message">Message (Optional)</label>
-                    <textarea id="message" name="message" rows="4" placeholder="Tell us why you want to join or any questions you have..."></textarea>
+                    <textarea id="message" name="message" rows="4" placeholder="Tell us about your company and partnership goals..."></textarea>
                 </div>
 
-                <button type="submit" class="submit-button">Submit Interest</button>
+                <button type="submit" class="submit-button">Submit Enquiry</button>
             </form>
         </div>
 
-        <div class="club-intro">
-            <h3>About the Club</h3>
-            <p>I'm building something different - not just a sponsorship programme, but a proper racing club where you're part of the team. As I prepare to compete at the highest level in 2026, I want to bring my supporters closer to the action than ever before.</p>
-            <p>Whether you want to support the journey with exclusive content, get your name on my pitboard, or join me in the garage on race weekends, there's a tier that fits. Every member gets real value, and every membership directly funds my racing career.</p>
-        </div>
-
-        <h3 style="text-align: center; margin-bottom: 2rem; color: var(--secondary); font-size: 2rem;">Choose Your Level</h3>
-
-        <div class="membership-tiers">
-            <!-- Bronze Tier -->
-            <div class="tier-card bronze">
-                <div class="tier-header">
-                    <h3>The Fan</h3>
-                    <div class="tier-price">£50<span>/year</span></div>
-                    <div class="tier-limit">Unlimited spots</div>
-                </div>
-                <ul class="tier-benefits">
-                    <li>Welcome pack with stickers and signed rider card (included welcome message)</li>
-                    <li>An official club HD55 beanie hat</li>
-                    <li>A regular news letter of winter testing and training (winter test and race updates)</li>
-
-                    <li>A 'Fan' NFT (only 100 made)</li>
-                </ul>
-                <div class="tier-note">
-                    Perfect for supporters who want exclusive content and official club gear while staying connected to the journey.
-                </div>
-                <a href="https://buy.stripe.com/aFa8wPe8G3pa8EJ7qf9k402" target="_blank" rel="noopener" style="display: block; margin-top: 1rem; padding: 1rem; background: var(--primary); color: var(--light); text-decoration: none; border-radius: 5px; font-weight: bold; text-align: center; transition: all 0.3s;" onmouseover="this.style.background='var(--secondary)'" onmouseout="this.style.background='var(--primary)'">Join Now →</a>
-            </div>
-
-            <!-- Silver Tier -->
-            <div class="tier-card silver">
-                <div class="tier-header">
-                    <h3>The Supporter</h3>
-                    <div class="tier-price">£100<span>/year</span></div>
-                    <div class="tier-limit">Limited to 100 spots</div>
-                </div>
-                <ul class="tier-benefits">
-                    <li><strong>All the 'Fan' benefits</strong></li>
-                    <li>An a official club T-shirt</li>
-                    <li>Personalised thank you video</li>
-                    <li><strong>Silver NFT - First 50 signups only!</strong></li>
-                </ul>
-                <div class="tier-note">
-                    For dedicated fans who want premium merch and genuine personal touches from the team. First 50 members get the exclusive Silver NFT!
-                </div>
-                <a href="https://buy.stripe.com/eVq14nggO5xi1ch25V9k404" target="_blank" rel="noopener" style="display: block; margin-top: 1rem; padding: 1rem; background: var(--primary); color: var(--light); text-decoration: none; border-radius: 5px; font-weight: bold; text-align: center; transition: all 0.3s;" onmouseover="this.style.background='var(--secondary)'" onmouseout="this.style.background='var(--primary)'">Join Now →</a>
-            </div>
-
-            <!-- Gold Tier -->
-            <div class="tier-card gold">
-                <div class="tier-badge">VIP</div>
-                <div class="tier-header">
-                    <h3>The VIP</h3>
-                    <div class="tier-price">£500<span>/year</span></div>
-                    <div class="tier-limit">Limited to 20-25 spots</div>
-                </div>
-                <ul class="tier-benefits">
-                    <li><strong>All the Fan & Supporter benefits included</strong></li>
-                    <li>An a offical HD55 hoodie</li>
-                    <li>Your name on 2026 race pitboard</li>
-                    <li>The VIP WhatsApp group for race updates</li>
-                    <li>Personal calls with Harrison</li>
-                    <li>Unique 1-of-1 NFT (special to each member)</li>
-                </ul>
-                <div class="tier-note">
-                    The ultimate VIP experience - direct access to Harrison, a genuine insider's view of elite-level racing.
-                </div>
-                <a href="https://buy.stripe.com/bJe9AT8Om7FqaMRaCr9k405" target="_blank" rel="noopener" style="display: block; margin-top: 1rem; padding: 1rem; background: var(--primary); color: var(--light); text-decoration: none; border-radius: 5px; font-weight: bold; text-align: center; transition: all 0.3s;" onmouseover="this.style.background='var(--secondary)'" onmouseout="this.style.background='var(--primary)'">Join Now →</a>
-            </div>
-        </div>
-
         <div class="cta-box">
-            <h3>Ready to Join?</h3>
-            <p>Be part of Harrison's racing journey in 2026. Silver and Gold tiers have limited spots - once they're gone, they're gone.</p>
-            <p class="small" style="margin-top: 1rem;">Contact Harrison directly or fill out the form above to secure your membership</p>
-        </div>
-
-        <h3 style="text-align: center; margin-bottom: 2rem; color: var(--secondary); font-size: 1.5rem;">Why Join the Racing Club?</h3>
-        <div class="why-join-grid">
-            <div class="why-join-card">
-                <div class="icon">🏍️</div>
-                <h4>Support the Journey</h4>
-                <p>Every membership directly funds Harrison's 2026 racing campaign</p>
-            </div>
-            <div class="why-join-card">
-                <div class="icon">🎥</div>
-                <h4>Exclusive Content</h4>
-                <p>Behind-the-scenes access you won't find anywhere else</p>
-            </div>
-            <div class="why-join-card">
-                <div class="icon">🤝</div>
-                <h4>Be Part of the Team</h4>
-                <p>More than sponsorship - you're genuinely part of the racing family</p>
-            </div>
+            <h3>Ready to Partner with Us?</h3>
+            <p>Join Harrison Dessoy Racing and be part of our journey to the top of World Superbike racing.</p>
+            <p style="font-size: 1rem; margin-top: 1.5rem;">
+                Contact us today: <a href="mailto:Robert@DessoyRacing.com?subject=Partnership%20Enquiry" style="color: var(--light); text-decoration: underline; font-weight: 600;">Robert@DessoyRacing.com</a>
+            </p>
         </div>
     </main>
-
-    <!-- Basket Overlay -->
-    <div class="basket-overlay" id="basketOverlay" onclick="toggleBasket()"></div>
-
-    <!-- Basket Sidebar -->
-    <div class="basket-sidebar" id="basketSidebar">
-        <div class="basket-header">
-            <h2>Your Basket</h2>
-            <button class="close-basket" onclick="toggleBasket()">✕</button>
-        </div>
-        <div class="basket-items" id="basketItems">
-            <div class="basket-empty">Your basket is empty</div>
-        </div>
-        <div class="basket-footer">
-            <div class="basket-total">
-                <span>Total:</span>
-                <span id="basketTotal">£0.00</span>
-            </div>
-            <button class="checkout-btn" id="checkoutBtn" onclick="checkout()" disabled>Checkout</button>
-        </div>
-    </div>
 
     <footer>
         <div class="social-links">
@@ -753,7 +729,6 @@
         <p>Racing at the Highest Level</p>
     </footer>
 
-    <script src="basket.js"></script>
     <script>
         function toggleMenu() {
             const nav = document.getElementById('nav');
@@ -810,7 +785,7 @@
                     // Show success message
                     const successMessage = document.createElement('div');
                     successMessage.className = 'form-message success';
-                    successMessage.textContent = 'Thank you for joining the Harrison Dessoy Fan Club! You will receive a confirmation email shortly.';
+                    successMessage.textContent = 'Thank you for your partnership enquiry! We will be in touch shortly.';
                     form.insertBefore(successMessage, form.firstChild);
 
                     // Reset form
@@ -835,14 +810,14 @@
             } finally {
                 // Re-enable button
                 submitButton.disabled = false;
-                submitButton.textContent = 'Submit Interest';
+                submitButton.textContent = 'Submit Enquiry';
             }
         }
 
         // Attach form submission handler
-        const fanclubForm = document.getElementById('fanclubForm');
-        if (fanclubForm) {
-            fanclubForm.addEventListener('submit', handleSubmit);
+        const partnershipForm = document.getElementById('partnershipForm');
+        if (partnershipForm) {
+            partnershipForm.addEventListener('submit', handleSubmit);
         }
     </script>
 
