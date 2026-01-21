@@ -528,7 +528,7 @@
         <div class="products-grid">
             <!-- HD55 Beanie -->
             <div class="product-card">
-                <img src="images/Bennie2026_Front.png" alt="HD55 Beanie" class="product-image">
+                <img src="images/Bennie2026_Front.png" alt="HD55 Beanie" class="product-image" id="beanie-image">
                 <div class="product-content">
                     <h3>HD55 Beanie</h3>
                     <p class="product-price">£15.00</p>
@@ -536,7 +536,7 @@
                     <p class="product-description">Official Harrison Dessoy Racing beanie. Stay warm while showing your support for HD55. Premium quality knit beanie with embroidered logo.</p>
                     <div class="color-selector">
                         <label for="beanie-color">Color:</label>
-                        <select id="beanie-color">
+                        <select id="beanie-color" onchange="changeBeanieImage()">
                             <option value="red">Red</option>
                             <option value="black">Black</option>
                         </select>
@@ -691,6 +691,19 @@
         });
 
         // Color-based payment link functions
+        function changeBeanieImage() {
+            const colorSelect = document.getElementById('beanie-color');
+            const selectedColor = colorSelect.value;
+            const beanieImage = document.getElementById('beanie-image');
+
+            if (selectedColor === 'black') {
+                beanieImage.src = 'images/Image0.jpeg';
+            } else {
+                // Red is the default
+                beanieImage.src = 'images/Bennie2026_Front.png';
+            }
+        }
+
         function buyBeanie() {
             const colorSelect = document.getElementById('beanie-color');
             const selectedColor = colorSelect.value;
