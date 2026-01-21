@@ -276,6 +276,40 @@
             line-height: 1.6;
         }
 
+        .color-selector {
+            margin-bottom: 1rem;
+        }
+
+        .color-selector label {
+            display: block;
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .color-selector select {
+            width: 100%;
+            padding: 0.6rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            color: #333;
+            background-color: white;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+
+        .color-selector select:hover {
+            border-color: var(--primary);
+        }
+
+        .color-selector select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.1);
+        }
+
         .product-actions {
             display: flex;
             gap: 1rem;
@@ -310,6 +344,10 @@
             text-align: center;
             transition: all 0.3s;
             display: inline-block;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-family: inherit;
         }
 
         .buy-now-btn:hover {
@@ -496,8 +534,15 @@
                     <p class="product-price">£15.00</p>
                     <p class="shipping-note">+ £3.50 shipping</p>
                     <p class="product-description">Official Harrison Dessoy Racing beanie. Stay warm while showing your support for HD55. Premium quality knit beanie with embroidered logo.</p>
+                    <div class="color-selector">
+                        <label for="beanie-color">Color:</label>
+                        <select id="beanie-color">
+                            <option value="red">Red</option>
+                            <option value="black">Black</option>
+                        </select>
+                    </div>
                     <div class="product-actions">
-                        <a href="https://buy.stripe.com/14A8wP8Ome3O4ot8uj9k403" target="_blank" rel="noopener" class="buy-now-btn">Buy Now</a>
+                        <button onclick="buyBeanie()" class="buy-now-btn">Buy Now</button>
                     </div>
                 </div>
             </div>
@@ -560,8 +605,15 @@
                     <p class="product-price">£15.00</p>
                     <p class="shipping-note">+ £3.50 shipping</p>
                     <p class="product-description">Official Harrison Dessoy Racing cap. Perfect for race day or casual wear. Premium quality cap with embroidered HD55 logo.</p>
+                    <div class="color-selector">
+                        <label for="cap-color">Color:</label>
+                        <select id="cap-color">
+                            <option value="red">Red</option>
+                            <option value="black">Black</option>
+                        </select>
+                    </div>
                     <div class="product-actions">
-                        <a href="https://buy.stripe.com/3cI6oH0hQe3ObQVfWL9k408" target="_blank" rel="noopener" class="buy-now-btn">Buy Now</a>
+                        <button onclick="buyCap()" class="buy-now-btn">Buy Now</button>
                     </div>
                 </div>
             </div>
@@ -637,6 +689,37 @@
         document.addEventListener('DOMContentLoaded', function() {
             updateBasketDisplay();
         });
+
+        // Color-based payment link functions
+        function buyBeanie() {
+            const colorSelect = document.getElementById('beanie-color');
+            const selectedColor = colorSelect.value;
+
+            let paymentLink;
+            if (selectedColor === 'black') {
+                paymentLink = 'https://buy.stripe.com/dRmaEX1lU3pa5sx25V9k40a';
+            } else {
+                // Red is the default
+                paymentLink = 'https://buy.stripe.com/14A8wP8Ome3O4ot8uj9k403';
+            }
+
+            window.open(paymentLink, '_blank', 'noopener');
+        }
+
+        function buyCap() {
+            const colorSelect = document.getElementById('cap-color');
+            const selectedColor = colorSelect.value;
+
+            let paymentLink;
+            if (selectedColor === 'black') {
+                paymentLink = 'https://buy.stripe.com/dRmaEX1lU3pa5sx25V9k40a';
+            } else {
+                // Red is the default
+                paymentLink = 'https://buy.stripe.com/3cI6oH0hQe3ObQVfWL9k408';
+            }
+
+            window.open(paymentLink, '_blank', 'noopener');
+        }
 
         // Carousel functionality
         const carouselStates = {
