@@ -600,7 +600,7 @@
 
             <!-- HD55 Cap -->
             <div class="product-card">
-                <img src="images/Cap2026_Front.png" alt="HD55 Cap" class="product-image">
+                <img src="images/Cap2026_Front.png" alt="HD55 Cap" class="product-image" id="cap-image">
                 <div class="product-content">
                     <h3>HD55 Cap</h3>
                     <p class="product-price">£15.00</p>
@@ -608,9 +608,10 @@
                     <p class="product-description">Official Harrison Dessoy Racing cap. Perfect for race day or casual wear. Premium quality cap with embroidered HD55 logo.</p>
                     <div class="color-selector">
                         <label for="cap-color">Color:</label>
-                        <select id="cap-color">
+                        <select id="cap-color" onchange="changeCapImage()">
                             <option value="red">Red</option>
                             <option value="black">Black</option>
+                            <option value="white">White</option>
                             <option value="yellow">Yellow</option>
                         </select>
                     </div>
@@ -700,6 +701,8 @@
 
             if (selectedColor === 'black') {
                 beanieImage.src = 'images/image0.jpeg';
+            } else if (selectedColor === 'yellow') {
+                beanieImage.src = 'images/Hd55 Beanie yellow.jpeg';
             } else {
                 // Red is the default
                 beanieImage.src = 'images/Bennie2026_Front.png';
@@ -719,6 +722,21 @@
             }
 
             window.open(paymentLink, '_blank', 'noopener');
+        }
+
+        function changeCapImage() {
+            const colorSelect = document.getElementById('cap-color');
+            const selectedColor = colorSelect.value;
+            const capImage = document.getElementById('cap-image');
+
+            if (selectedColor === 'white') {
+                capImage.src = 'images/HD55 CAp white.jpeg';
+            } else if (selectedColor === 'yellow') {
+                capImage.src = 'images/HD55 Cap yellow.jpeg';
+            } else {
+                // Red is the default
+                capImage.src = 'images/Cap2026_Front.png';
+            }
         }
 
         function buyCap() {
