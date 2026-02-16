@@ -715,6 +715,8 @@
             let paymentLink;
             if (selectedColor === 'black') {
                 paymentLink = 'https://buy.stripe.com/dRmaEX1lU3pa5sx25V9k40a';
+            } else if (selectedColor === 'yellow') {
+                paymentLink = 'https://buy.stripe.com/3cI4gz1lUf7S1ch25V9k40b';
             } else {
                 // Red is the default
                 paymentLink = 'https://buy.stripe.com/14A8wP8Ome3O4ot8uj9k403';
@@ -742,7 +744,15 @@
             const colorSelect = document.getElementById('cap-color');
             const selectedColor = colorSelect.value;
 
-            let paymentLink = 'https://buy.stripe.com/3cI6oH0hQe3ObQVfWL9k408';
+            let paymentLink;
+            if (selectedColor === 'white') {
+                paymentLink = 'https://buy.stripe.com/aFa6oH8Om3pabQV5i79k40c';
+            } else if (selectedColor === 'yellow') {
+                paymentLink = 'https://buy.stripe.com/eVq3cv9Sq6BmaMRfWL9k40d';
+            } else {
+                // Red is the default
+                paymentLink = 'https://buy.stripe.com/3cI6oH0hQe3ObQVfWL9k408';
+            }
 
             window.open(paymentLink, '_blank', 'noopener');
         }
