@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-03-07T09:20:02.877610+00:00",
+  "last_updated": "2026-03-07T11:40:22.134706+00:00",
   "campaign_count": 5,
   "campaigns": [
     {
@@ -13,36 +13,6 @@
       "status": "sent"
     },
     {
-      "id": "aee4071b05",
-      "title": "Test Domain email (copy 01)",
-      "subject": "Test to harrison@dessoyracing.com",
-      "preview_text": null,
-      "send_time": "2026-02-24T09:37:37+00:00",
-      "emails_sent": 1,
-      "archive_url": "http://eepurl.com/jAbdPg",
-      "status": "sent"
-    },
-    {
-      "id": "56b2d9a777",
-      "title": "Test Domain email",
-      "subject": "Test to harrison@dessoyracing.com",
-      "preview_text": null,
-      "send_time": "2026-02-24T09:34:24+00:00",
-      "emails_sent": 2,
-      "archive_url": "http://eepurl.com/jz-G7Q",
-      "status": "sent"
-    },
-    {
-      "id": "dbcfe0ebcd",
-      "title": "Teaser Trailer (copy 01)",
-      "subject": "Something big is coming...",
-      "preview_text": null,
-      "send_time": "2026-02-23T20:16:37+00:00",
-      "emails_sent": 2,
-      "archive_url": "http://eepurl.com/jz-DY-/",
-      "status": "sent"
-    },
-    {
       "id": "c0d7c661de",
       "title": "Two Weeks In Spain...",
       "subject": "Two Weeks In Spain",
@@ -50,6 +20,36 @@
       "send_time": "2026-02-19T10:34:50+00:00",
       "emails_sent": 2,
       "archive_url": "http://eepurl.com/jzQsBQ",
+      "status": "sent"
+    },
+    {
+      "id": "9511d2ed3b",
+      "title": "Welcome To The Team!",
+      "subject": "HD55 Newsletter",
+      "preview_text": null,
+      "send_time": "2026-02-19T10:28:42+00:00",
+      "emails_sent": 1,
+      "archive_url": "http://eepurl.com/jzQscg",
+      "status": "sent"
+    },
+    {
+      "id": "d341f607c5",
+      "title": "Welcome To The Team!",
+      "subject": "HD55 Newsletter",
+      "preview_text": null,
+      "send_time": "2026-02-17T09:05:38+00:00",
+      "emails_sent": 15,
+      "archive_url": "http://eepurl.com/jzDzr-/",
+      "status": "sent"
+    },
+    {
+      "id": "c80fc2cfef",
+      "title": "Two Weeks In Spain...",
+      "subject": "Two Weeks In Spain",
+      "preview_text": null,
+      "send_time": "2026-02-15T13:52:21+00:00",
+      "emails_sent": 49,
+      "archive_url": "http://eepurl.com/jzui6c",
       "status": "sent"
     }
   ]
