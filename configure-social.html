@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configure Social Platforms — DessoyRacing Publisher</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary:   #e63946;
+            --secondary: #1d3557;
+            --dark:      #0a0a0a;
+            --light:     #ffffff;
+            --success:   #2ecc71;
+            --warning:   #f39c12;
+            --muted:     #666666;
+            --border:    #ddd;
+            --bg:        #f4f6f9;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: var(--bg);
+            color: #333;
+        }
+
+        /* ═══════════════ HEADER ═══════════════ */
+        header {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--secondary) 100%);
+            color: var(--light);
+            padding: 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo { display: flex; align-items: center; height: 50px; }
+
+        .logo a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--light);
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            gap: 0.75rem;
+        }
+
+        .logo img { height: 50px; width: auto; object-fit: contain; }
+
+        .logo-badge {
+            background: var(--primary);
+            color: white;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Desktop nav */
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 0.4rem 0.9rem;
+            border-radius: 6px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        nav a:hover { color: white; background: rgba(255,255,255,0.1); }
+        nav a.active { color: white; background: var(--primary); }
+
+        /* Publisher user chip */
+        .publisher-chip {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: rgba(255,255,255,0.12);
+            border-radius: 50px;
+            padding: 0.35rem 0.9rem 0.35rem 0.5rem;
+            font-size: 0.88rem;
+            color: white;
+            cursor: default;
+        }
+
+        .publisher-avatar {
+            width: 28px;
+            height: 28px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .publisher-name { font-weight: 600; }
+
+        .config-source-badge {
+            font-size: 0.68rem;
+            padding: 0.1rem 0.4rem;
+            border-radius: 3px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .config-source-badge.local  { background: #f39c12; color: white; }
+        .config-source-badge.database { background: var(--success); color: white; }
+
+        .btn-signout {
+            background: rgba(255,255,255,0.12);
+            color: rgba(255,255,255,0.85);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50px;
+            padding: 0.3rem 0.8rem;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: background 0.2s;
+            font-family: inherit;
+        }
+
+        .btn-signout:hover { background: rgba(255,255,255,0.22); }
+
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+            padding: 4px;
+        }
+
+        .hamburger span {
+            width: 25px; height: 2px;
+            background: var(--light);
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        /* ═══════════════ PAGE HERO ═══════════════ */
+        .page-hero {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--dark) 100%);
+            color: var(--light);
+            padding: 6rem 2rem 3rem;
+            text-align: center;
+        }
+
+        .page-hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.6rem;
+            letter-spacing: -0.5px;
+        }
+
+        .page-hero p {
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.75);
+            max-width: 600px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .config-source-info {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50px;
+            padding: 0.4rem 1rem;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.9);
+        }
+
+        /* ═══════════════ MAIN CONTENT ═══════════════ */
+        .page-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem 5rem;
+        }
+
+        .section-title {
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--muted);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        /* ═══════════════ PLATFORM CARDS ═══════════════ */
+        .platforms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .platform-card {
+            background: var(--light);
+            border-radius: 14px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+            overflow: hidden;
+            transition: box-shadow 0.3s;
+        }
+
+        .platform-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.11); }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .card-title-row {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+        }
+
+        .platform-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+
+        .platform-icon.facebook  { background: #e7f0fd; }
+        .platform-icon.instagram { background: #fce4ec; }
+        .platform-icon.mailchimp { background: #fff8e1; }
+        .platform-icon.youtube   { background: #ffebee; }
+        .platform-icon.analytics { background: #e8f5e9; }
+
+        .card-title { font-size: 1.05rem; font-weight: 700; color: var(--dark); }
+        .card-subtitle { font-size: 0.8rem; color: var(--muted); margin-top: 1px; }
+
+        /* Status badge */
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+        }
+
+        .status-badge.not-connected { background: #f0f0f0; color: #777; }
+        .status-badge.not-connected::before { background: #aaa; }
+
+        .status-badge.connected { background: #e8f8ef; color: #1a7a3f; }
+        .status-badge.connected::before { background: var(--success); }
+
+        .status-badge.error { background: #fff0f0; color: #b71c1c; }
+        .status-badge.error::before { background: var(--primary); }
+
+        .status-badge.testing {
+            background: #fff8e1;
+            color: #7a5700;
+            animation: pulse 1.4s infinite;
+        }
+        .status-badge.testing::before { background: var(--warning); }
+
+        @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.6; } }
+
+        /* Card body */
+        .card-body { padding: 1.5rem; }
+
+        .form-group { margin-bottom: 1rem; }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.82rem;
+            color: #333;
+            margin-bottom: 0.3rem;
+        }
+
+        .form-group label .req { color: var(--primary); margin-left: 2px; }
+
+        .field-hint {
+            font-size: 0.75rem;
+            color: var(--muted);
+            margin-top: 0.25rem;
+        }
+
+        .input-wrap { position: relative; }
+
+        .card-body input[type="text"],
+        .card-body input[type="password"],
+        .card-body input[type="url"] {
+            width: 100%;
+            height: 42px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 0 2.5rem 0 0.85rem;
+            font-size: 0.88rem;
+            font-family: inherit;
+            color: var(--dark);
+            transition: border-color 0.2s, box-shadow 0.2s;
+            background: var(--light);
+        }
+
+        .card-body input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(230,57,70,0.12);
+        }
+
+        .eye-btn {
+            position: absolute;
+            right: 0.6rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.85rem;
+            color: var(--muted);
+            padding: 0.2rem;
+            line-height: 1;
+        }
+
+        .eye-btn:hover { color: var(--dark); }
+
+        /* Card actions */
+        .card-actions {
+            display: flex;
+            gap: 0.75rem;
+            padding: 1rem 1.5rem 1.5rem;
+            border-top: 1px solid #f0f0f0;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            border: none;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 0.55rem 1.4rem;
+            transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+            font-family: inherit;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .btn:active { transform: scale(0.97); }
+        .btn:disabled { opacity: 0.55; cursor: not-allowed; transform: none !important; }
+
+        .btn-save {
+            background: var(--primary);
+            color: white;
+        }
+        .btn-save:hover:not(:disabled) {
+            background: #c1121f;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(230,57,70,0.3);
+        }
+
+        .btn-test {
+            background: var(--secondary);
+            color: white;
+        }
+        .btn-test:hover:not(:disabled) {
+            background: #14253d;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(29,53,87,0.3);
+        }
+
+        .btn-clear {
+            background: transparent;
+            color: var(--muted);
+            border: 1px solid var(--border);
+        }
+        .btn-clear:hover:not(:disabled) { background: #f5f5f5; color: #333; }
+
+        /* Inline feedback */
+        .feedback-box {
+            display: none;
+            margin: 0 1.5rem 1rem;
+            border-radius: 8px;
+            padding: 0.85rem 1rem;
+            font-size: 0.85rem;
+        }
+
+        .feedback-box.success {
+            display: block;
+            background: #e8f8ef;
+            border-left: 4px solid var(--success);
+        }
+
+        .feedback-box.error {
+            display: block;
+            background: #fff5f5;
+            border-left: 4px solid var(--primary);
+        }
+
+        .feedback-title { font-weight: 700; margin-bottom: 0.2rem; }
+        .feedback-title.success-text { color: #1a7a3f; }
+        .feedback-title.error-text   { color: #b71c1c; }
+
+        .feedback-detail { color: #555; line-height: 1.4; }
+
+        .error-code-tag {
+            display: inline-block;
+            font-family: monospace;
+            background: #fce4e4;
+            padding: 0.1rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.78rem;
+            color: #b71c1c;
+            margin-top: 0.4rem;
+        }
+
+        .support-hint {
+            font-size: 0.78rem;
+            color: var(--muted);
+            margin-top: 0.35rem;
+        }
+
+        /* ═══════════════ TOAST ═══════════════ */
+        .toast {
+            position: fixed;
+            top: 90px;
+            right: 1.5rem;
+            background: var(--success);
+            color: white;
+            padding: 0.85rem 1.4rem;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            z-index: 2000;
+            transform: translateX(calc(100% + 2rem));
+            transition: transform 0.35s ease;
+        }
+
+        .toast.show { transform: translateX(0); }
+
+        /* ═══════════════ MOBILE ═══════════════ */
+        @media (max-width: 768px) {
+            nav { display: none; }
+            .hamburger { display: flex; }
+
+            nav.active {
+                display: block;
+                position: fixed;
+                top: 82px;
+                right: 0;
+                background: linear-gradient(135deg, var(--dark) 0%, var(--secondary) 100%);
+                width: 100%;
+                padding: 1rem 0;
+                z-index: 999;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            }
+
+            nav.active ul { flex-direction: column; gap: 0; }
+            nav.active a { display: block; padding: 0.75rem 1.5rem; border-radius: 0; }
+
+            .publisher-chip .publisher-name { display: none; }
+            .config-source-badge { display: none; }
+
+            .platforms-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+            .page-content { padding: 2rem 1rem 4rem; }
+            .page-hero { padding: 5.5rem 1rem 2.5rem; }
+            .page-hero h1 { font-size: 1.7rem; }
+        }
+
+        @media (max-width: 480px) {
+            .card-actions { flex-direction: column; }
+            .btn { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══════════════ HEADER ═══════════════ -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/Logo.png" alt="DessoyRacing" onerror="this.style.display='none'">
+                    DessoyRacing
+                    <span class="logo-badge">Publisher</span>
+                </a>
+            </div>
+
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="configure-social.html" class="active">Configure Social Platform</a></li>
+                </ul>
+            </nav>
+
+            <div style="display:flex; align-items:center; gap:0.75rem;">
+                <div class="publisher-chip" id="publisherChip">
+                    <div class="publisher-avatar" id="avatarInitial">?</div>
+                    <span>Publisher <span class="publisher-name" id="publisherName">[loading]</span></span>
+                    <span class="config-source-badge" id="configSourceBadge">—</span>
+                </div>
+                <button class="btn-signout" onclick="signOut()">Sign out</button>
+                <div class="hamburger" id="hamburger" onclick="toggleNav()">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Toast notification -->
+    <div class="toast" id="toast"></div>
+
+    <!-- ═══════════════ PAGE HERO ═══════════════ -->
+    <div class="page-hero">
+        <h1>Configure Social Platforms</h1>
+        <p>Connect your social media accounts to enable automated posting, analytics, and content management.</p>
+        <div class="config-source-info" id="heroConfigInfo">
+            ⚙ Loading configuration source…
+        </div>
+    </div>
+
+    <!-- ═══════════════ PLATFORM CARDS ═══════════════ -->
+    <div class="page-content">
+
+        <p class="section-title">Active Platforms</p>
+
+        <div class="platforms-grid">
+
+            <!-- ── Meta / Facebook ── -->
+            <div class="platform-card" id="card-facebook">
+                <div class="card-header">
+                    <div class="card-title-row">
+                        <div class="platform-icon facebook">📘</div>
+                        <div>
+                            <div class="card-title">Meta / Facebook</div>
+                            <div class="card-subtitle">Page posting & insights</div>
+                        </div>
+                    </div>
+                    <span class="status-badge not-connected" id="status-facebook">Not connected</span>
+                </div>
+
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="fb-app-id">App ID <span class="req">*</span></label>
+                        <input type="text" id="fb-app-id" placeholder="e.g. 123456789012345" autocomplete="off">
+                        <p class="field-hint">Found in Meta for Developers → Your App → Settings → Basic</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="fb-app-secret">App Secret <span class="req">*</span></label>
+                        <div class="input-wrap">
+                            <input type="password" id="fb-app-secret" placeholder="Paste your App Secret" autocomplete="off">
+                            <button type="button" class="eye-btn" onclick="toggleField('fb-app-secret',this)">👁</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="fb-page-id">Page ID <span class="req">*</span></label>
+                        <input type="text" id="fb-page-id" placeholder="e.g. 123456789" autocomplete="off">
+                        <p class="field-hint">Your Facebook Page's numeric ID</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="fb-access-token">Long-lived Access Token <span class="req">*</span></label>
+                        <div class="input-wrap">
+                            <input type="password" id="fb-access-token" placeholder="Paste your access token" autocomplete="off">
+                            <button type="button" class="eye-btn" onclick="toggleField('fb-access-token',this)">👁</button>
+                        </div>
+                        <p class="field-hint">Generate via Graph API Explorer — expires in ~60 days</p>
+                    </div>
+                </div>
+
+                <div class="feedback-box" id="feedback-facebook"></div>
+
+                <div class="card-actions">
+                    <button class="btn btn-save"  onclick="savePlatform('facebook')">💾 Save</button>
+                    <button class="btn btn-test"  onclick="testPlatform('facebook')">🔗 Test connection</button>
+                    <button class="btn btn-clear" onclick="clearPlatform('facebook')">Clear</button>
+                </div>
+            </div>
+
+            <!-- ── Instagram ── -->
+            <div class="platform-card" id="card-instagram">
+                <div class="card-header">
+                    <div class="card-title-row">
+                        <div class="platform-icon instagram">📸</div>
+                        <div>
+                            <div class="card-title">Instagram</div>
+                            <div class="card-subtitle">Business account posting</div>
+                        </div>
+                    </div>
+                    <span class="status-badge not-connected" id="status-instagram">Not connected</span>
+                </div>
+
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="ig-account-id">Business Account ID <span class="req">*</span></label>
+                        <input type="text" id="ig-account-id" placeholder="e.g. 17841400455970203" autocomplete="off">
+                        <p class="field-hint">Numeric ID of your Instagram Business account</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="ig-username">Username <span class="req">*</span></label>
+                        <input type="text" id="ig-username" placeholder="@your_handle" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <label for="ig-access-token">Access Token <span class="req">*</span></label>
+                        <div class="input-wrap">
+                            <input type="password" id="ig-access-token" placeholder="Paste your access token" autocomplete="off">
+                            <button type="button" class="eye-btn" onclick="toggleField('ig-access-token',this)">👁</button>
+                        </div>
+                        <p class="field-hint">Use the same long-lived token from your Meta App</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="ig-webhook-secret">Webhook Secret</label>
+                        <div class="input-wrap">
+                            <input type="password" id="ig-webhook-secret" placeholder="Optional — for receiving DMs & comments" autocomplete="off">
+                            <button type="button" class="eye-btn" onclick="toggleField('ig-webhook-secret',this)">👁</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feedback-box" id="feedback-instagram"></div>
+
+                <div class="card-actions">
+                    <button class="btn btn-save"  onclick="savePlatform('instagram')">💾 Save</button>
+                    <button class="btn btn-test"  onclick="testPlatform('instagram')">🔗 Test connection</button>
+                    <button class="btn btn-clear" onclick="clearPlatform('instagram')">Clear</button>
+                </div>
+            </div>
+
+            <!-- ── Mailchimp ── -->
+            <div class="platform-card" id="card-mailchimp">
+                <div class="card-header">
+                    <div class="card-title-row">
+                        <div class="platform-icon mailchimp">📧</div>
+                        <div>
+                            <div class="card-title">Mailchimp</div>
+                            <div class="card-subtitle">Newsletter & email campaigns</div>
+                        </div>
+                    </div>
+                    <span class="status-badge not-connected" id="status-mailchimp">Not connected</span>
+                </div>
+
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="mc-api-key">API Key <span class="req">*</span></label>
+                        <div class="input-wrap">
+                            <input type="password" id="mc-api-key" placeholder="e.g. abc123…-us14" autocomplete="off">
+                            <button type="button" class="eye-btn" onclick="toggleField('mc-api-key',this)">👁</button>
+                        </div>
+                        <p class="field-hint">Mailchimp → Account → Extras → API Keys</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="mc-server">Server Prefix <span class="req">*</span></label>
+                        <input type="text" id="mc-server" placeholder="e.g. us14" autocomplete="off" style="text-transform:lowercase" maxlength="6">
+                        <p class="field-hint">The prefix at the end of your API key (e.g. us14)</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="mc-audience-id">Audience / List ID <span class="req">*</span></label>
+                        <input type="text" id="mc-audience-id" placeholder="e.g. dba85c89d8" autocomplete="off">
+                        <p class="field-hint">Mailchimp → Audience → Settings → Audience name and campaign defaults</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="mc-form-id">Embedded Form ID</label>
+                        <input type="text" id="mc-form-id" placeholder="e.g. 0071bce5f0" autocomplete="off">
+                        <p class="field-hint">Found in the embed code URL — optional</p>
+                    </div>
+                </div>
+
+                <div class="feedback-box" id="feedback-mailchimp"></div>
+
+                <div class="card-actions">
+                    <button class="btn btn-save"  onclick="savePlatform('mailchimp')">💾 Save</button>
+                    <button class="btn btn-test"  onclick="testPlatform('mailchimp')">🔗 Test connection</button>
+                    <button class="btn btn-clear" onclick="clearPlatform('mailchimp')">Clear</button>
+                </div>
+            </div>
+
+            <!-- ── YouTube ── -->
+            <div class="platform-card" id="card-youtube">
+                <div class="card-header">
+                    <div class="card-title-row">
+                        <div class="platform-icon youtube">▶️</div>
+                        <div>
+                            <div class="card-title">YouTube</div>
+                            <div class="card-subtitle">Channel statistics & video links</div>
+                        </div>
+                    </div>
+                    <span class="status-badge not-connected" id="status-youtube">Not connected</span>
+                </div>
+
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="yt-channel-id">Channel ID <span class="req">*</span></label>
+                        <input type="text" id="yt-channel-id" placeholder="e.g. UCco2lC1RzhZF…" autocomplete="off">
+                        <p class="field-hint">YouTube Studio → Settings → Channel → Advanced settings</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="yt-api-key">API Key <span class="req">*</span></label>
+                        <div class="input-wrap">
+                            <input type="password" id="yt-api-key" placeholder="Paste your YouTube Data API v3 key" autocomplete="off">
+                            <button type="button" class="eye-btn" onclick="toggleField('yt-api-key',this)">👁</button>
+                        </div>
+                        <p class="field-hint">Google Cloud Console → APIs & Services → Credentials</p>
+                    </div>
+                </div>
+
+                <div class="feedback-box" id="feedback-youtube"></div>
+
+                <div class="card-actions">
+                    <button class="btn btn-save"  onclick="savePlatform('youtube')">💾 Save</button>
+                    <button class="btn btn-test"  onclick="testPlatform('youtube')">🔗 Test connection</button>
+                    <button class="btn btn-clear" onclick="clearPlatform('youtube')">Clear</button>
+                </div>
+            </div>
+
+            <!-- ── Google Analytics ── -->
+            <div class="platform-card" id="card-analytics">
+                <div class="card-header">
+                    <div class="card-title-row">
+                        <div class="platform-icon analytics">📊</div>
+                        <div>
+                            <div class="card-title">Google Analytics</div>
+                            <div class="card-subtitle">Website traffic & insights</div>
+                        </div>
+                    </div>
+                    <span class="status-badge not-connected" id="status-analytics">Not connected</span>
+                </div>
+
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="ga-measurement-id">Measurement ID <span class="req">*</span></label>
+                        <input type="text" id="ga-measurement-id" placeholder="G-XXXXXXXXXX" autocomplete="off" style="text-transform:uppercase">
+                        <p class="field-hint">Google Analytics → Admin → Data Streams → Web stream details</p>
+                    </div>
+                </div>
+
+                <div class="feedback-box" id="feedback-analytics"></div>
+
+                <div class="card-actions">
+                    <button class="btn btn-save"  onclick="savePlatform('analytics')">💾 Save</button>
+                    <button class="btn btn-test"  onclick="testPlatform('analytics')">🔗 Test connection</button>
+                    <button class="btn btn-clear" onclick="clearPlatform('analytics')">Clear</button>
+                </div>
+            </div>
+
+        </div><!-- /platforms-grid -->
+
+        <p class="section-title">Coming soon</p>
+        <div style="background:white; border-radius:12px; padding:1.5rem 2rem; color:var(--muted); font-size:0.95rem; box-shadow:0 2px 8px rgba(0,0,0,0.05);">
+            Additional platforms — Twitter/X, LinkedIn, TikTok, and Stripe — will be added in a future release.
+        </div>
+
+    </div><!-- /page-content -->
+
+    <!-- ═══════════════ FOOTER ═══════════════ -->
+    <footer style="background:linear-gradient(135deg,var(--dark) 0%,var(--secondary) 100%); color:rgba(255,255,255,0.6); text-align:center; padding:1.5rem 2rem; font-size:0.85rem;">
+        <p>&copy; 2025 Harrison Dessoy. All rights reserved. &nbsp;|&nbsp;
+            <a href="policies/privacy-policy.html" style="color:rgba(255,255,255,0.8);">Privacy Policy</a> &nbsp;|&nbsp;
+            <a href="policies/terms-of-service.html" style="color:rgba(255,255,255,0.8);">Terms of Service</a>
+        </p>
+    </footer>
+
+    <!-- ═══════════════ JAVASCRIPT ═══════════════ */
+    <script>
+    // ─────────────────────────────────────────────
+    //  Platform field definitions
+    // ─────────────────────────────────────────────
+    const PLATFORMS = {
+        facebook: {
+            fields: ['fb-app-id','fb-app-secret','fb-page-id','fb-access-token'],
+            required: ['fb-app-id','fb-app-secret','fb-page-id','fb-access-token'],
+            errors: {
+                missing:   { code:'ERR-FB-001', msg:'One or more required Facebook fields are empty.' },
+                appId:     { code:'ERR-FB-001', msg:'The App ID doesn\'t look right — it should be a long number.' },
+                appSecret: { code:'ERR-FB-002', msg:'The App Secret appears to be incorrect or too short.' },
+                pageId:    { code:'ERR-FB-003', msg:'The Page ID should be a numeric value.' },
+                token:     { code:'ERR-FB-004', msg:'The access token looks too short. Make sure you copied the full token.' },
+                rateLimit: { code:'ERR-FB-005', msg:'Facebook\'s API rate limit has been reached. Please wait a moment and try again.' },
+            }
+        },
+        instagram: {
+            fields: ['ig-account-id','ig-username','ig-access-token','ig-webhook-secret'],
+            required: ['ig-account-id','ig-username','ig-access-token'],
+            errors: {
+                missing:     { code:'ERR-IG-001', msg:'Account ID, username, and access token are all required.' },
+                accountId:   { code:'ERR-IG-001', msg:'The Instagram account ID should be a long number.' },
+                token:       { code:'ERR-IG-002', msg:'The access token is invalid or may have expired. Please generate a new one.' },
+                notBusiness: { code:'ERR-IG-003', msg:'This Instagram account must be a Business or Creator account to use the API.' },
+            }
+        },
+        mailchimp: {
+            fields: ['mc-api-key','mc-server','mc-audience-id','mc-form-id'],
+            required: ['mc-api-key','mc-server','mc-audience-id'],
+            errors: {
+                missing:    { code:'ERR-MC-001', msg:'API key, server prefix, and audience ID are all required.' },
+                apiKey:     { code:'ERR-MC-001', msg:'The Mailchimp API key doesn\'t look right. It should end with a dash and your server prefix (e.g. -us14).' },
+                serverPrefix:{ code:'ERR-MC-002', msg:'The server prefix should be a short code like "us14" or "us6".' },
+                audienceId: { code:'ERR-MC-003', msg:'We couldn\'t find an audience with that ID. Check it in your Mailchimp account settings.' },
+            }
+        },
+        youtube: {
+            fields: ['yt-channel-id','yt-api-key'],
+            required: ['yt-channel-id','yt-api-key'],
+            errors: {
+                missing:    { code:'ERR-YT-001', msg:'Channel ID and API key are both required.' },
+                channelId:  { code:'ERR-YT-001', msg:'The YouTube channel ID should start with "UC" followed by characters.' },
+                apiKey:     { code:'ERR-YT-002', msg:'The API key is invalid or hasn\'t been enabled for the YouTube Data API v3.' },
+            }
+        },
+        analytics: {
+            fields: ['ga-measurement-id'],
+            required: ['ga-measurement-id'],
+            errors: {
+                missing:   { code:'ERR-GA-001', msg:'A Measurement ID is required.' },
+                format:    { code:'ERR-GA-001', msg:'The Measurement ID should be in the format G-XXXXXXXXXX.' },
+            }
+        }
+    };
+
+    // ─────────────────────────────────────────────
+    //  Session guard — redirect to login if no session
+    // ─────────────────────────────────────────────
+    let session = null;
+
+    (function initSession() {
+        const raw = sessionStorage.getItem('dr_session');
+        if (!raw) { window.location.href = 'login.html'; return; }
+        try {
+            session = JSON.parse(raw);
+            const hoursSince = (Date.now() - session.signedInAt) / 3600000;
+            if (!session.email || hoursSince > 8) { window.location.href = 'login.html'; return; }
+
+            // Populate header user chip
+            const name = session.displayName || session.username || 'User';
+            document.getElementById('publisherName').textContent = '[' + name + ']';
+            document.getElementById('avatarInitial').textContent = name.charAt(0).toUpperCase();
+
+            const badge = document.getElementById('configSourceBadge');
+            const isLocal = session.configSource === 'local';
+            badge.textContent = isLocal ? 'LOCAL' : 'DB';
+            badge.className = 'config-source-badge ' + (isLocal ? 'local' : 'database');
+
+            // Hero info
+            document.getElementById('heroConfigInfo').textContent =
+                isLocal
+                    ? '⚙ Using local config (test mode) — changes save to local storage'
+                    : '⚙ Using database config — changes will be saved to the database';
+
+            // Load saved values
+            loadAll();
+        } catch { window.location.href = 'login.html'; }
+    })();
+
+    function signOut() {
+        sessionStorage.removeItem('dr_session');
+        window.location.href = 'login.html';
+    }
+
+    // ─────────────────────────────────────────────
+    //  Storage helpers
+    // ─────────────────────────────────────────────
+    function storageKey(platform) {
+        const prefix = (session && session.configSource === 'local') ? 'dr_local_' : 'dr_db_';
+        return prefix + platform;
+    }
+
+    function saveConfig(platform, data) {
+        localStorage.setItem(storageKey(platform), JSON.stringify(data));
+    }
+
+    function loadConfig(platform) {
+        try { return JSON.parse(localStorage.getItem(storageKey(platform))) || {}; } catch { return {}; }
+    }
+
+    function loadAll() {
+        Object.keys(PLATFORMS).forEach(platform => {
+            const cfg = loadConfig(platform);
+            const def = PLATFORMS[platform];
+            def.fields.forEach(id => {
+                const el = document.getElementById(id);
+                if (el && cfg[id]) el.value = cfg[id];
+            });
+            if (Object.keys(cfg).length > 0) {
+                setStatus(platform, 'connected');
+            }
+        });
+    }
+
+    // ─────────────────────────────────────────────
+    //  Save
+    // ─────────────────────────────────────────────
+    function savePlatform(platform) {
+        const def = PLATFORMS[platform];
+        const cfg = {};
+        def.fields.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) cfg[id] = el.value.trim();
+        });
+
+        // Simple required check
+        const missing = def.required.filter(id => !cfg[id]);
+        if (missing.length) {
+            showFeedbackError(platform,
+                'Some required fields are empty',
+                'Please fill in all fields marked with a red asterisk (*) before saving.',
+                def.errors.missing.code);
+            return;
+        }
+
+        saveConfig(platform, cfg);
+        setStatus(platform, 'connected');
+        showFeedbackSuccess(platform, 'Configuration saved', 'Your settings have been saved successfully.');
+        showToast('✅ ' + titleOf(platform) + ' settings saved');
+    }
+
+    // ─────────────────────────────────────────────
+    //  Test connection (simulated validation)
+    // ─────────────────────────────────────────────
+    async function testPlatform(platform) {
+        const def = PLATFORMS[platform];
+        hideFeedback(platform);
+
+        // Collect values
+        const vals = {};
+        def.fields.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) vals[id] = el.value.trim();
+        });
+
+        // Check required fields
+        const missing = def.required.filter(id => !vals[id]);
+        if (missing.length) {
+            showFeedbackError(platform,
+                'Missing required details',
+                'Please fill in all required fields before testing the connection.',
+                def.errors.missing.code);
+            return;
+        }
+
+        // Disable buttons & show testing badge
+        setBtnsDisabled(platform, true);
+        setStatus(platform, 'testing');
+
+        // Simulate async validation delay (1–2 s)
+        await new Promise(r => setTimeout(r, 1200 + Math.random() * 600));
+
+        // ── Per-platform client-side format validation ──
+        let err = null;
+
+        if (platform === 'facebook') {
+            if (!/^\d{10,20}$/.test(vals['fb-app-id']))
+                err = def.errors.appId;
+            else if (vals['fb-app-secret'].length < 20)
+                err = def.errors.appSecret;
+            else if (!/^\d{5,20}$/.test(vals['fb-page-id']))
+                err = def.errors.pageId;
+            else if (vals['fb-access-token'].length < 50)
+                err = def.errors.token;
+        }
+
+        if (platform === 'instagram') {
+            if (!/^\d{10,25}$/.test(vals['ig-account-id']))
+                err = def.errors.accountId;
+            else if (vals['ig-access-token'].length < 50)
+                err = def.errors.token;
+        }
+
+        if (platform === 'mailchimp') {
+            if (!vals['mc-api-key'].includes('-'))
+                err = def.errors.apiKey;
+            else if (!/^[a-z]{2}\d+$/.test(vals['mc-server']))
+                err = def.errors.serverPrefix;
+            else if (vals['mc-audience-id'].length < 6)
+                err = def.errors.audienceId;
+        }
+
+        if (platform === 'youtube') {
+            if (!vals['yt-channel-id'].startsWith('UC') && vals['yt-channel-id'].length < 10)
+                err = def.errors.channelId;
+            else if (vals['yt-api-key'].length < 20)
+                err = def.errors.apiKey;
+        }
+
+        if (platform === 'analytics') {
+            if (!/^G-[A-Z0-9]{6,12}$/i.test(vals['ga-measurement-id']))
+                err = def.errors.format;
+        }
+
+        setBtnsDisabled(platform, false);
+
+        if (err) {
+            setStatus(platform, 'error');
+            showFeedbackError(platform,
+                'Connection test failed',
+                err.msg + ' Please check the value and try again.',
+                err.code);
+        } else {
+            setStatus(platform, 'connected');
+            showFeedbackSuccess(platform,
+                'Connection successful ✓',
+                'All details look correct. Your ' + titleOf(platform) + ' connection is working.');
+            // Auto-save on successful test
+            savePlatform(platform);
+        }
+    }
+
+    // ─────────────────────────────────────────────
+    //  Clear a platform's saved config
+    // ─────────────────────────────────────────────
+    function clearPlatform(platform) {
+        if (!confirm('Clear all ' + titleOf(platform) + ' settings? This cannot be undone.')) return;
+        localStorage.removeItem(storageKey(platform));
+        PLATFORMS[platform].fields.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.value = '';
+        });
+        setStatus(platform, 'not-connected');
+        hideFeedback(platform);
+        showToast('🗑 ' + titleOf(platform) + ' settings cleared');
+    }
+
+    // ─────────────────────────────────────────────
+    //  UI helpers
+    // ─────────────────────────────────────────────
+    function setStatus(platform, state) {
+        const el = document.getElementById('status-' + platform);
+        const labels = { connected:'Connected', 'not-connected':'Not connected', error:'Error', testing:'Testing…' };
+        el.className = 'status-badge ' + state;
+        el.textContent = labels[state] || state;
+    }
+
+    function showFeedbackSuccess(platform, title, detail) {
+        const el = document.getElementById('feedback-' + platform);
+        el.className = 'feedback-box success';
+        el.innerHTML = `<div class="feedback-title success-text">${title}</div>
+                        <div class="feedback-detail">${detail}</div>`;
+    }
+
+    function showFeedbackError(platform, title, detail, code) {
+        const el = document.getElementById('feedback-' + platform);
+        el.className = 'feedback-box error';
+        el.innerHTML = `<div class="feedback-title error-text">${title}</div>
+                        <div class="feedback-detail">${detail}</div>
+                        <span class="error-code-tag">${code}</span>
+                        <p class="support-hint">Quote this code if you call our support line — it helps us fix this faster.</p>`;
+    }
+
+    function hideFeedback(platform) {
+        const el = document.getElementById('feedback-' + platform);
+        el.className = 'feedback-box';
+        el.innerHTML = '';
+    }
+
+    function setBtnsDisabled(platform, disabled) {
+        const card = document.getElementById('card-' + platform);
+        card.querySelectorAll('.btn').forEach(b => b.disabled = disabled);
+    }
+
+    function titleOf(p) {
+        const t = { facebook:'Facebook', instagram:'Instagram', mailchimp:'Mailchimp', youtube:'YouTube', analytics:'Google Analytics' };
+        return t[p] || p;
+    }
+
+    function toggleField(id, btn) {
+        const el = document.getElementById(id);
+        if (el.type === 'password') { el.type = 'text'; btn.textContent = '🙈'; }
+        else { el.type = 'password'; btn.textContent = '👁'; }
+    }
+
+    // ─────────────────────────────────────────────
+    //  Toast
+    // ─────────────────────────────────────────────
+    let toastTimer;
+    function showToast(msg) {
+        const t = document.getElementById('toast');
+        t.textContent = msg;
+        t.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => t.classList.remove('show'), 4000);
+    }
+
+    // ─────────────────────────────────────────────
+    //  Mobile hamburger nav
+    // ─────────────────────────────────────────────
+    function toggleNav() {
+        document.getElementById('mainNav').classList.toggle('active');
+    }
+    </script>
+
+</body>
+</html>

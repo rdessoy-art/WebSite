@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In — DessoyRacing Publisher</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #e63946;
+            --secondary: #1d3557;
+            --dark: #0a0a0a;
+            --light: #ffffff;
+            --success: #2ecc71;
+            --muted: #666666;
+            --border: #ddd;
+            --bg: #f4f6f9;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: var(--bg);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ── Header ── */
+        header {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--secondary) 100%);
+            color: var(--light);
+            padding: 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            height: 50px;
+        }
+
+        .logo a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--light);
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            gap: 0.75rem;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo-badge {
+            background: var(--primary);
+            color: white;
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+
+        /* ── Main layout ── */
+        .page-body {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 1.5rem 3rem;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 460px;
+        }
+
+        .login-card {
+            background: var(--light);
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            padding: 2.5rem;
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .login-icon {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.25rem;
+            font-size: 1.8rem;
+        }
+
+        .login-header h1 {
+            font-size: 1.6rem;
+            color: var(--dark);
+            margin-bottom: 0.4rem;
+        }
+
+        .login-header p {
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        /* ── Form ── */
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #333;
+            margin-bottom: 0.4rem;
+        }
+
+        label .req {
+            color: var(--primary);
+            margin-left: 2px;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        input[type="email"],
+        input[type="password"],
+        input[type="text"] {
+            width: 100%;
+            height: 48px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 0 1rem;
+            font-size: 0.95rem;
+            font-family: inherit;
+            color: var(--dark);
+            transition: border-color 0.2s, box-shadow 0.2s;
+            background: var(--light);
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(230,57,70,0.15);
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            color: var(--muted);
+            padding: 0.25rem;
+            line-height: 1;
+        }
+
+        .toggle-password:hover { color: var(--dark); }
+
+        /* ── Config source toggle ── */
+        .config-source-box {
+            background: #f8f9fa;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .config-source-box .box-label {
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--muted);
+            margin-bottom: 0.75rem;
+        }
+
+        .config-toggle-row {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            cursor: pointer;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 44px;
+            height: 24px;
+            flex-shrink: 0;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            inset: 0;
+            background: #ccc;
+            border-radius: 24px;
+            transition: background 0.3s;
+            cursor: pointer;
+        }
+
+        .toggle-slider::before {
+            content: '';
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            left: 3px;
+            top: 3px;
+            background: white;
+            border-radius: 50%;
+            transition: transform 0.3s;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+        }
+
+        .toggle-switch input:checked + .toggle-slider {
+            background: var(--secondary);
+        }
+
+        .toggle-switch input:checked + .toggle-slider::before {
+            transform: translateX(20px);
+        }
+
+        .toggle-text {
+            font-size: 0.9rem;
+            color: #333;
+        }
+
+        .toggle-text strong { color: var(--secondary); }
+
+        .config-note {
+            font-size: 0.78rem;
+            color: var(--muted);
+            margin-top: 0.5rem;
+            padding-left: 0.25rem;
+        }
+
+        /* ── Submit button ── */
+        .btn-primary {
+            width: 100%;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            letter-spacing: 0.3px;
+        }
+
+        .btn-primary:hover {
+            background: #c1121f;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(230,57,70,0.3);
+        }
+
+        .btn-primary:active { transform: translateY(0); }
+
+        .btn-primary:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .spinner {
+            width: 18px;
+            height: 18px;
+            border: 2px solid rgba(255,255,255,0.4);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+            display: none;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* ── Error message ── */
+        .error-box {
+            display: none;
+            background: #fff5f5;
+            border-left: 4px solid var(--primary);
+            border-radius: 8px;
+            padding: 0.9rem 1.1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .error-box.visible { display: block; }
+
+        .error-title {
+            font-weight: 600;
+            color: #b71c1c;
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .error-detail {
+            font-size: 0.85rem;
+            color: #555;
+        }
+
+        .error-code {
+            display: inline-block;
+            font-family: monospace;
+            background: #fce4e4;
+            padding: 0.1rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: #b71c1c;
+            margin-top: 0.4rem;
+        }
+
+        /* ── Footer links ── */
+        .login-footer {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        .login-footer a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .login-footer a:hover { text-decoration: underline; }
+
+        /* ── Page footer ── */
+        footer {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--secondary) 100%);
+            color: rgba(255,255,255,0.6);
+            text-align: center;
+            padding: 1.5rem 2rem;
+            font-size: 0.85rem;
+        }
+
+        footer a { color: rgba(255,255,255,0.8); }
+
+        /* ── Responsive ── */
+        @media (max-width: 480px) {
+            .login-card { padding: 1.75rem 1.25rem; }
+            .page-body { padding: 5.5rem 1rem 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/Logo.png" alt="DessoyRacing" onerror="this.style.display='none'">
+                    DessoyRacing
+                    <span class="logo-badge">Publisher</span>
+                </a>
+            </div>
+            <div class="header-right">
+                <span>Sign in to manage your social platforms</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="page-body">
+        <div class="login-container">
+            <div class="login-card">
+                <div class="login-header">
+                    <div class="login-icon">🏍️</div>
+                    <h1>Welcome back</h1>
+                    <p>Sign in to DessoyRacing Publisher</p>
+                </div>
+
+                <!-- Error message -->
+                <div class="error-box" id="errorBox">
+                    <div class="error-title" id="errorTitle">Sign in failed</div>
+                    <div class="error-detail" id="errorDetail">Please check your email and password and try again.</div>
+                    <span class="error-code" id="errorCode">ERR-AUTH-001</span>
+                </div>
+
+                <form id="loginForm" novalidate>
+                    <div class="form-group">
+                        <label for="email">Email address <span class="req">*</span></label>
+                        <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password <span class="req">*</span></label>
+                        <div class="input-wrapper">
+                            <input type="password" id="password" name="password" placeholder="Enter your password" autocomplete="current-password" required>
+                            <button type="button" class="toggle-password" onclick="togglePassword()" aria-label="Show/hide password" id="eyeBtn">👁</button>
+                        </div>
+                    </div>
+
+                    <!-- Config source selector — for testing only -->
+                    <div class="config-source-box">
+                        <div class="box-label">⚙ Configuration Source (Testing)</div>
+                        <label class="config-toggle-row" for="useLocalConfig">
+                            <div class="toggle-switch">
+                                <input type="checkbox" id="useLocalConfig" name="useLocalConfig">
+                                <span class="toggle-slider"></span>
+                            </div>
+                            <span class="toggle-text">
+                                <strong id="configLabel">Database config</strong>
+                            </span>
+                        </label>
+                        <p class="config-note" id="configNote">
+                            Settings will be loaded from and saved to the database.
+                        </p>
+                    </div>
+
+                    <button type="submit" class="btn-primary" id="signInBtn">
+                        <div class="spinner" id="spinner"></div>
+                        <span id="btnLabel">Sign In</span>
+                    </button>
+                </form>
+
+                <div class="login-footer">
+                    <p>Forgotten your password? <a href="mailto:Harrison@dessoyracing.com?subject=Password Reset Request">Contact support</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Harrison Dessoy. All rights reserved. &nbsp;|&nbsp;
+            <a href="policies/privacy-policy.html">Privacy Policy</a> &nbsp;|&nbsp;
+            <a href="policies/terms-of-service.html">Terms of Service</a>
+        </p>
+    </footer>
+
+    <script>
+        // ── Config source toggle label ──
+        const toggle = document.getElementById('useLocalConfig');
+        const configLabel = document.getElementById('configLabel');
+        const configNote = document.getElementById('configNote');
+
+        toggle.addEventListener('change', () => {
+            if (toggle.checked) {
+                configLabel.textContent = 'Local config (test mode)';
+                configNote.textContent = 'Settings will be read from local storage — simulating a local .env file. For testing only.';
+            } else {
+                configLabel.textContent = 'Database config';
+                configNote.textContent = 'Settings will be loaded from and saved to the database.';
+            }
+        });
+
+        // ── Show/hide password ──
+        function togglePassword() {
+            const pwd = document.getElementById('password');
+            const btn = document.getElementById('eyeBtn');
+            if (pwd.type === 'password') {
+                pwd.type = 'text';
+                btn.textContent = '🙈';
+            } else {
+                pwd.type = 'password';
+                btn.textContent = '👁';
+            }
+        }
+
+        // ── Error display ──
+        function showError(title, detail, code) {
+            document.getElementById('errorTitle').textContent = title;
+            document.getElementById('errorDetail').textContent = detail;
+            document.getElementById('errorCode').textContent = code;
+            document.getElementById('errorBox').classList.add('visible');
+        }
+
+        function hideError() {
+            document.getElementById('errorBox').classList.remove('visible');
+        }
+
+        // ── Loading state ──
+        function setLoading(loading) {
+            const btn = document.getElementById('signInBtn');
+            const spinner = document.getElementById('spinner');
+            const label = document.getElementById('btnLabel');
+            btn.disabled = loading;
+            spinner.style.display = loading ? 'block' : 'none';
+            label.textContent = loading ? 'Signing in…' : 'Sign In';
+        }
+
+        // ── Form submission ──
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            hideError();
+
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const useLocal = document.getElementById('useLocalConfig').checked;
+
+            if (!email || !password) {
+                showError(
+                    'Missing details',
+                    'Please enter your email address and password.',
+                    'ERR-AUTH-001'
+                );
+                return;
+            }
+
+            setLoading(true);
+
+            // Simulate network delay for UX realism
+            await new Promise(r => setTimeout(r, 900));
+
+            // ── Auth logic ──
+            // In production this calls your backend API.
+            // For the UI demo, any valid-looking email + password works.
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                setLoading(false);
+                showError(
+                    'Invalid email address',
+                    'Please enter a valid email address and try again.',
+                    'ERR-AUTH-001'
+                );
+                return;
+            }
+
+            if (password.length < 4) {
+                setLoading(false);
+                showError(
+                    'Incorrect password',
+                    'The password you entered is incorrect. Please try again.',
+                    'ERR-AUTH-001'
+                );
+                return;
+            }
+
+            // ── Store session ──
+            const username = email.split('@')[0];
+            sessionStorage.setItem('dr_session', JSON.stringify({
+                email,
+                username,
+                displayName: username.charAt(0).toUpperCase() + username.slice(1),
+                configSource: useLocal ? 'local' : 'database',
+                signedInAt: Date.now()
+            }));
+
+            setLoading(false);
+
+            // Redirect to configuration page
+            window.location.href = 'configure-social.html';
+        });
+
+        // ── Auto-redirect if already signed in ──
+        (function checkSession() {
+            const session = sessionStorage.getItem('dr_session');
+            if (session) {
+                try {
+                    const s = JSON.parse(session);
+                    if (s.email && (Date.now() - s.signedInAt) < 8 * 60 * 60 * 1000) {
+                        window.location.href = 'configure-social.html';
+                    }
+                } catch {}
+            }
+        })();
+    </script>
+
+</body>
+</html>
