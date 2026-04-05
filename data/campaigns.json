@@ -1,7 +1,17 @@
 {
-  "last_updated": "2026-03-13T20:09:39.324643+00:00",
+  "last_updated": "2026-04-05T19:56:34.503996+00:00",
   "campaign_count": 5,
   "campaigns": [
+    {
+      "id": "a4e597c6fb",
+      "title": "Oh I love this track! (send 2)",
+      "subject": "From Portimao with Harrison Dessoy #55",
+      "preview_text": "From Portimao with Harrison Dessoy #55",
+      "send_time": "2026-03-17T19:06:49+00:00",
+      "emails_sent": 31,
+      "archive_url": "http://eepurl.com/jBW8GI",
+      "status": "sent"
+    },
     {
       "id": "b99fdf4998",
       "title": "Oh I love this track!",
@@ -40,16 +50,6 @@
       "send_time": "2026-02-15T13:52:21+00:00",
       "emails_sent": 49,
       "archive_url": "http://eepurl.com/jzui6c",
-      "status": "sent"
-    },
-    {
-      "id": "04deb1f2f1",
-      "title": "Welcome To The Team! (copy 01)",
-      "subject": "HD55 Newsletter",
-      "preview_text": null,
-      "send_time": "2026-02-14T21:16:13+00:00",
-      "emails_sent": 2,
-      "archive_url": "http://eepurl.com/jzudaw",
       "status": "sent"
     }
   ]
