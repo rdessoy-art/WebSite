@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-06T16:55:04.766788+00:00",
+  "last_updated": "2026-06-06T19:37:27.456005+00:00",
   "platform": "mastodon",
   "post_count": 3,
   "posts": [
@@ -12,8 +12,8 @@
       "likes": 0,
       "comments": 0,
       "shares": 0,
-      "image_filename": null,
-      "image_path": null
+      "image_filename": "mastodon_116569499670707819.jpg",
+      "image_path": "data/mastodon/mastodon_116569499670707819.jpg"
     },
     {
       "id": "116569453753160859",
@@ -24,8 +24,8 @@
       "likes": 0,
       "comments": 0,
       "shares": 0,
-      "image_filename": null,
-      "image_path": null
+      "image_filename": "mastodon_116569453753160859.jpg",
+      "image_path": "data/mastodon/mastodon_116569453753160859.jpg"
     },
     {
       "id": "116569443021637805",
@@ -36,8 +36,8 @@
       "likes": 0,
       "comments": 0,
       "shares": 0,
-      "image_filename": null,
-      "image_path": null
+      "image_filename": "mastodon_116569443021637805.jpg",
+      "image_path": "data/mastodon/mastodon_116569443021637805.jpg"
     }
   ]
 }

@@ -1368,6 +1368,9 @@
             <h2>Latest from social media</h2>
 
             <div style="display: flex; flex-direction: column; gap: 3rem; margin-top: 2rem;">
+                <!-- Social feeds — injected dynamically from data/manifest.json -->
+                <div id="social-feeds"></div>
+
                 <!-- Harrison Dessoy Row -->
                 <div>
                     <h3 style="color: var(--secondary); margin-bottom: 1.5rem; font-size: 1.5rem; border-left: 5px solid var(--primary); padding-left: 1rem;">Latest posts from Harrison Dessoy</h3>
@@ -1427,14 +1430,6 @@
                                 <span class="read-more">View on Instagram →</span>
                             </div>
                         </a>
-                    </div>
-                </div>
-
-                <!-- Instagram Posts Row -->
-                <div>
-                    <h3 style="color: var(--secondary); margin-bottom: 1.5rem; font-size: 1.5rem; border-left: 5px solid var(--primary); padding-left: 1rem;">Latest from Instagram</h3>
-                    <div id="instagram-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-                        <!-- Instagram posts will be loaded here dynamically -->
                     </div>
                 </div>
 
@@ -2133,58 +2128,78 @@
             }
         }
 
-        async function loadInstagramPosts() {
+        function renderFeedSection(feed, posts) {
+            const label = feed.label;
+            const profileUrl = feed.profile_url || '#';
+            const viewLabel = label.replace('Latest from ', 'View on ');
+
+            const cards = posts.map(post => {
+                const text = post.caption || post.text || '';
+                const truncated = text.length > 150 ? text.substring(0, 150) + '...' : text;
+
+                const postDate = new Date(post.timestamp).toLocaleDateString('en-US', {
+                    year: 'numeric', month: 'short', day: 'numeric'
+                });
+
+                const stats = [
+                    post.likes    != null ? `❤️ ${post.likes}`   : null,
+                    post.comments != null ? `💬 ${post.comments}` : null,
+                    post.shares   != null ? `🔁 ${post.shares}`   : null,
+                ].filter(Boolean).join(' ');
+
+                const imageStyle = post.image_path
+                    ? `background-image: url('${post.image_path}'); background-size: cover; background-position: center;`
+                    : `background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);`;
+
+                return `
+                    <a href="${post.permalink}" target="_blank" rel="noopener" class="blog-card" style="text-decoration: none; color: inherit;">
+                        <div class="blog-image" style="${imageStyle}">
+                            ${stats ? `<span style="position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.7); color: white; padding: 0.5rem; border-radius: 5px; font-size: 0.9rem;">${stats}</span>` : ''}
+                        </div>
+                        <div class="blog-content">
+                            <p class="blog-date">${postDate}</p>
+                            <p style="color: #555; line-height: 1.6; margin-bottom: 1rem;">${truncated}</p>
+                            <span class="read-more">${viewLabel} →</span>
+                        </div>
+                    </a>`;
+            }).join('');
+
+            return `
+                <div>
+                    <h3 style="color: var(--secondary); margin-bottom: 1.5rem; font-size: 1.5rem; border-left: 5px solid var(--primary); padding-left: 1rem;">${label}</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                        ${cards || `<p style="color: #666; text-align: center; padding: 2rem;">No posts available yet.</p>`}
+                    </div>
+                </div>`;
+        }
+
+        async function loadSocialFeeds() {
+            const container = document.getElementById('social-feeds');
             try {
-                const response = await fetch('data/Instagram/instagram.json');
-                const data = await response.json();
-                const instagramGrid = document.getElementById('instagram-grid');
+                const manifest = await fetch('data/manifest.json').then(r => r.json());
 
-                if (data.posts && data.posts.length > 0) {
-                    // Sort posts by timestamp (newest first)
-                    const sortedPosts = data.posts.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+                const sections = await Promise.all(manifest.feeds.map(async feed => {
+                    try {
+                        const file = feed.file || 'posts.json';
+                        const data = await fetch(`data/${feed.folder}/${file}`).then(r => r.json());
+                        const sorted = (data.posts || []).sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+                        return renderFeedSection(feed, sorted);
+                    } catch (e) {
+                        console.error(`Failed to load feed: ${feed.folder}`, e);
+                        return '';
+                    }
+                }));
 
-                    instagramGrid.innerHTML = sortedPosts.map(post => {
-                        // Format the date
-                        const postDate = new Date(post.timestamp);
-                        const formattedDate = postDate.toLocaleDateString('en-US', {
-                            year: 'numeric',
-                            month: 'short',
-                            day: 'numeric'
-                        });
-
-                        // Truncate caption to first 150 characters
-                        const truncatedCaption = post.caption.length > 150
-                            ? post.caption.substring(0, 150) + '...'
-                            : post.caption;
-
-                        return `
-                            <a href="${post.permalink}" target="_blank" rel="noopener" class="blog-card" style="text-decoration: none; color: inherit;">
-                                <div class="blog-image" style="background-image: url('${post.image_path}'); background-size: cover; background-position: center;">
-                                    <span style="position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.7); color: white; padding: 0.5rem; border-radius: 5px; font-size: 0.9rem;">
-                                        ❤️ ${post.likes} 💬 ${post.comments}
-                                    </span>
-                                </div>
-                                <div class="blog-content">
-                                    <p class="blog-date">${formattedDate}</p>
-                                    <p style="color: #555; line-height: 1.6; margin-bottom: 1rem;">${truncatedCaption}</p>
-                                    <span class="read-more">View on Instagram →</span>
-                                </div>
-                            </a>
-                        `;
-                    }).join('');
-                } else {
-                    instagramGrid.innerHTML = '<p style="color: #666; text-align: center; padding: 2rem;">No Instagram posts available yet.</p>';
-                }
+                container.innerHTML = sections.join('');
             } catch (error) {
-                console.error('Error loading Instagram posts:', error);
-                document.getElementById('instagram-grid').innerHTML = '<p style="color: #666; text-align: center; padding: 2rem;">Unable to load Instagram posts.</p>';
+                console.error('Failed to load social feed manifest:', error);
             }
         }
 
-        // Load campaigns and Instagram posts when the page loads
+        // Load all dynamic content when the page loads
         window.addEventListener('load', () => {
             loadCampaigns();
-            loadInstagramPosts();
+            loadSocialFeeds();
         });
     </script>
 </body>

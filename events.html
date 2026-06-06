@@ -309,6 +309,66 @@
             }
         }
 
+        .race-report-btn.btn-past {
+            background: #999;
+            cursor: not-allowed;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .report-modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .report-modal-overlay.active {
+            display: flex;
+        }
+
+        .report-modal {
+            background: var(--light);
+            border-radius: 10px;
+            padding: 2.5rem 2rem;
+            max-width: 420px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+
+        .report-modal h3 {
+            color: var(--secondary);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .report-modal p {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .report-modal-close {
+            padding: 0.7rem 2rem;
+            background: var(--primary);
+            color: var(--light);
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .report-modal-close:hover {
+            background: var(--secondary);
+        }
+
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: row;
@@ -458,7 +518,7 @@
                     <span>Autodrom Most</span>
                 </div>
                 <div class="track-name">Round 5</div>
-                <a href="2026RaceReports.html#czech" class="race-report-btn">Race Report</a>
+                <a href="Most_Sponsor_Debrief.pdf" class="race-report-btn" target="_blank">Race Report</a>
                 <a href="https://tickets.worldsbk.com/en/25781-czech-republic/?utm_source=worldsbk.com&utm_medium=web&utm_campaign=calendar26_cze&_ga=2.240996931.1998201811.1764184683-720137188.1763886340" class="race-report-btn" target="_blank">Buy Tickets</a>
             </div>
 
@@ -471,7 +531,7 @@
                     <span>MotorLand Aragon</span>
                 </div>
                 <div class="track-name">Round 6</div>
-                <a href="2026RaceReports.html#aragon" class="race-report-btn">Race Report</a>
+                <a href="Aragon_Sponsor_Debrief.pdf" class="race-report-btn" target="_blank">Race Report</a>
                 <a href="https://tickets.worldsbk.com/en/25741-aragon/" class="race-report-btn" target="_blank">Buy Tickets</a>
             </div>
 
@@ -484,7 +544,7 @@
                     <span>Misano World Circuit - Marco Simoncelli</span>
                 </div>
                 <div class="track-name">Round 7</div>
-                <a href="2026RaceReports.html#misano" class="race-report-btn">Race Report</a>
+                <button onclick="showReportComingSoon()" class="race-report-btn">Race Report</button>
                 <a href="https://tickets.worldsbk.com/en/25801-emilia-romagna/?utm_source=worldsbk.com&utm_medium=web&utm_campaign=calendar26_rsm&_ga=2.141564530.1998201811.1764184683-720137188.1763886340" class="race-report-btn" target="_blank">Buy Tickets</a>
             </div>
 
@@ -497,7 +557,7 @@
                     <span>Circuit de Nevers Magny-Cours</span>
                 </div>
                 <div class="track-name">Round 9</div>
-                <a href="2026RaceReports.html#france" class="race-report-btn">Race Report</a>
+                <button onclick="showReportComingSoon()" class="race-report-btn">Race Report</button>
                 <a href="https://tickets.worldsbk.com/en/25821-france/?utm_source=worldsbk.com&utm_medium=web&utm_campaign=calendar26_fra&_ga=2.141564530.1998201811.1764184683-720137188.1763886340" class="race-report-btn" target="_blank">Buy Tickets</a>
             </div>
 
@@ -510,7 +570,7 @@
                     <span>Cremona Circuit</span>
                 </div>
                 <div class="track-name">Round 10</div>
-                <a href="2026RaceReports.html#cremona" class="race-report-btn">Race Report</a>
+                <button onclick="showReportComingSoon()" class="race-report-btn">Race Report</button>
                 <a href="https://tickets.worldsbk.com/en/66578-italy/" class="race-report-btn" target="_blank">Buy Tickets</a>
             </div>
 
@@ -523,7 +583,7 @@
                     <span>Circuito de Jerez</span>
                 </div>
                 <div class="track-name">Round 12</div>
-                <a href="2026RaceReports.html#jerez" class="race-report-btn">Race Report</a>
+                <button onclick="showReportComingSoon()" class="race-report-btn">Race Report</button>
                 <a href="https://tickets.worldsbk.com/en/32851-jerez/" class="race-report-btn" target="_blank">Buy Tickets</a>
             </div>
         </div>
@@ -567,6 +627,51 @@
             hamburger.classList.remove('active');
         }
 
+        (function greyOutPastTickets() {
+            const months = {
+                January:0, February:1, March:2, April:3, May:4, June:5,
+                July:6, August:7, September:8, October:9, November:10, December:11
+            };
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            document.querySelectorAll('.race-row').forEach(function(row) {
+                const dateEl = row.querySelector('.race-date');
+                if (!dateEl) return;
+
+                const parts = dateEl.textContent.trim().split(' ');
+                if (parts.length !== 2) return;
+
+                const month = months[parts[0]];
+                if (month === undefined) return;
+
+                const endDay = parseInt(parts[1].split('-').pop(), 10);
+                const eventEnd = new Date(2026, month, endDay);
+
+                if (eventEnd < today) {
+                    const btns = row.querySelectorAll('.race-report-btn');
+                    btns.forEach(function(btn) {
+                        if (btn.textContent.trim() === 'Buy Tickets') {
+                            btn.classList.add('btn-past');
+                            btn.title = 'This event has already taken place';
+                        }
+                    });
+                }
+            });
+        })();
+
+        function showReportComingSoon() {
+            document.getElementById('reportModal').classList.add('active');
+        }
+
+        function closeReportModal() {
+            document.getElementById('reportModal').classList.remove('active');
+        }
+
+        document.getElementById('reportModal').addEventListener('click', function(e) {
+            if (e.target === this) closeReportModal();
+        });
+
         // Add click handlers to race rows
         document.querySelectorAll('.race-row').forEach(row => {
             row.addEventListener('click', (e) => {
@@ -582,6 +687,15 @@
             });
         });
     </script>
+
+    <!-- Race Report Coming Soon Modal -->
+    <div id="reportModal" class="report-modal-overlay">
+        <div class="report-modal">
+            <h3>Race Report Coming Soon</h3>
+            <p>This race hasn't taken place yet. Harrison's report will be available here shortly after the event.</p>
+            <button class="report-modal-close" onclick="closeReportModal()">Close</button>
+        </div>
+    </div>
 
     <!-- Newsletter Popup Modal -->
     <div id="newsletterPopup" class="newsletter-popup-overlay" style="display: none;">

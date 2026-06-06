@@ -61,7 +61,6 @@ Last updated: 2025-11-26
 - sponsor-mark-walker-coaching.html
 - sponsor-martin-sheath.html
 - sponsor-phr-performance.html
-- sponsor-speedtech.html
 - sponsor-triumph-east-london.html
 - sponsor-twotyres.html
 - sponsor-weise.html

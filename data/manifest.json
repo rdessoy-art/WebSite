@@ -1,0 +1,20 @@
+{
+  "feeds": [
+    {
+      "folder": "Instagram",
+      "file": "instagram.json",
+      "label": "Latest from Instagram",
+      "profile_url": "https://www.instagram.com/harrison_dessoy55/"
+    },
+    {
+      "folder": "facebook",
+      "label": "Latest from Facebook",
+      "profile_url": "https://www.facebook.com/HarrisonDessoy"
+    },
+    {
+      "folder": "mastodon",
+      "label": "Latest from Mastodon",
+      "profile_url": "https://mastodon.social/@harrison_dessoy55"
+    }
+  ]
+}

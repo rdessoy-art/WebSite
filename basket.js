@@ -1,50 +1,16 @@
-// Shopping Basket System for Harrison Dessoy Racing
-// Uses localStorage to persist basket across pages
+// Basket sidebar for Harrison Dessoy Racing
+// Note: purchases use direct buy.stripe.com links; this file provides the
+// sidebar UI and notification helper only.
 
-// ====================================
-// STRIPE CONFIGURATION
-// ====================================
-// Replace this with your Stripe Publishable Key
-// Get this from: https://dashboard.stripe.com/apikeys
-const STRIPE_PUBLISHABLE_KEY = 'pk_test_YOUR_PUBLISHABLE_KEY_HERE';
-
-// Initialize Stripe (will be set when page loads)
-let stripe = null;
-
-// Initialize Stripe when the script loads
-if (typeof Stripe !== 'undefined') {
-    stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
-}
-
-// Get basket from localStorage or initialize empty basket
 function getBasket() {
     const basketData = localStorage.getItem('hdRacingBasket');
     return basketData ? JSON.parse(basketData) : [];
 }
 
-// Save basket to localStorage
 function saveBasket(basket) {
     localStorage.setItem('hdRacingBasket', JSON.stringify(basket));
 }
 
-// Direct purchase - redirect to Stripe payment link immediately
-function addToBasket(name, price, image, stripeLink, stripePriceId = null) {
-    // Since basket is removed, go directly to checkout for single item
-    if (stripeLink) {
-        showNotification('Redirecting to checkout...', 'success');
-        setTimeout(() => {
-            window.open(stripeLink, '_blank');
-        }, 500);
-    } else {
-        // If no payment link, show contact message
-        const subject = 'Purchase Inquiry from Website';
-        const body = `Hi, I would like to purchase:%0A%0A${name} - £${price.toFixed(2)}%0A%0APlease let me know how to proceed with the payment.%0A%0AThank you!`;
-        window.location.href = `mailto:Robert@DessoyRacing.com?subject=${subject}&body=${body}`;
-        showNotification('Please complete your order via email. We\'ll respond shortly!', 'info');
-    }
-}
-
-// Remove item from basket
 function removeFromBasket(itemId) {
     let basket = getBasket();
     basket = basket.filter(item => item.id !== itemId);
@@ -53,32 +19,18 @@ function removeFromBasket(itemId) {
     showNotification('Item removed from basket', 'info');
 }
 
-// Clear entire basket
-function clearBasket() {
-    localStorage.removeItem('hdRacingBasket');
-    updateBasketDisplay();
-}
-
-// Update basket display (count, items, total)
 function updateBasketDisplay() {
     const basket = getBasket();
-    const basketCount = basket.length;
 
-    // Update basket count badge
     const countElement = document.getElementById('basketCount');
     if (countElement) {
-        countElement.textContent = basketCount;
-        if (basketCount === 0) {
-            countElement.style.display = 'none';
-        } else {
-            countElement.style.display = 'flex';
-        }
+        countElement.textContent = basket.length;
+        countElement.style.display = basket.length === 0 ? 'none' : 'flex';
     }
 
-    // Update basket items display
     const basketItemsContainer = document.getElementById('basketItems');
     if (basketItemsContainer) {
-        if (basketCount === 0) {
+        if (basket.length === 0) {
             basketItemsContainer.innerHTML = '<div class="basket-empty">Your basket is empty</div>';
         } else {
             basketItemsContainer.innerHTML = basket.map(item => `
@@ -94,21 +46,18 @@ function updateBasketDisplay() {
         }
     }
 
-    // Update total price
     const total = basket.reduce((sum, item) => sum + item.price, 0);
     const totalElement = document.getElementById('basketTotal');
     if (totalElement) {
         totalElement.textContent = `£${total.toFixed(2)}`;
     }
 
-    // Enable/disable checkout button
     const checkoutBtn = document.getElementById('checkoutBtn');
     if (checkoutBtn) {
-        checkoutBtn.disabled = basketCount === 0;
+        checkoutBtn.disabled = basket.length === 0;
     }
 }
 
-// Toggle basket sidebar
 function toggleBasket() {
     const sidebar = document.getElementById('basketSidebar');
     const overlay = document.getElementById('basketOverlay');
@@ -116,18 +65,11 @@ function toggleBasket() {
     if (sidebar && overlay) {
         sidebar.classList.toggle('active');
         overlay.classList.toggle('active');
-
-        // Prevent body scroll when basket is open
-        if (sidebar.classList.contains('active')) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = '';
-        }
+        document.body.style.overflow = sidebar.classList.contains('active') ? 'hidden' : '';
     }
 }
 
-// Checkout function using Stripe Checkout
-async function checkout() {
+function checkout() {
     const basket = getBasket();
 
     if (basket.length === 0) {
@@ -135,90 +77,27 @@ async function checkout() {
         return;
     }
 
-    // Check if Stripe is properly configured (not using placeholder key)
-    const isStripeConfigured = stripe && STRIPE_PUBLISHABLE_KEY !== 'pk_test_YOUR_PUBLISHABLE_KEY_HERE';
-
-    // Check if all items have valid Price IDs (not placeholders)
-    const hasAllPriceIds = basket.every(item =>
-        item.stripePriceId &&
-        !item.stripePriceId.includes('REPLACE_ME')
-    );
-
-    // If Stripe is not configured or Price IDs are missing, use payment links
-    if (!isStripeConfigured || !hasAllPriceIds) {
-        if (basket.length === 1) {
-            // Single item - redirect to payment link
-            const item = basket[0];
-            if (item.stripeLink) {
-                window.open(item.stripeLink, '_blank');
-                showNotification('Redirecting to checkout...', 'success');
-                return;
-            } else {
-                showNotification('Payment link not available. Please contact support.', 'error');
-                return;
-            }
-        } else {
-            // Multiple items - show contact message
-            const itemsList = basket.map(item => `${item.name} - £${item.price.toFixed(2)}`).join('%0A');
-            const total = basket.reduce((sum, item) => sum + item.price, 0);
-            const subject = 'Multiple Item Order from Website';
-            const body = `Hi, I would like to purchase the following items:%0A%0A${itemsList}%0A%0ATotal: £${total.toFixed(2)}%0A%0APlease let me know how to proceed with the payment.%0A%0AThank you!`;
-
-            // Open email client with pre-filled message
-            window.location.href = `mailto:Robert@DessoyRacing.com?subject=${subject}&body=${body}`;
-            showNotification('Please complete your order via email. We\'ll respond shortly!', 'info');
-            return;
-        }
+    if (basket.length === 1 && basket[0].stripeLink) {
+        window.open(basket[0].stripeLink, '_blank');
+        showNotification('Redirecting to checkout...', 'success');
+        return;
     }
 
-    // Build line items for Stripe Checkout
-    const lineItems = basket.map(item => ({
-        price: item.stripePriceId,
-        quantity: 1
-    }));
-
-    try {
-        showNotification('Redirecting to checkout...', 'info');
-
-        // Get the current page URL for success/cancel redirects
-        const currentUrl = window.location.origin + window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
-
-        // Redirect to Stripe Checkout
-        const { error } = await stripe.redirectToCheckout({
-            lineItems: lineItems,
-            mode: 'payment',
-            successUrl: currentUrl + 'success.html?session_id={CHECKOUT_SESSION_ID}',
-            cancelUrl: currentUrl + 'cancel.html',
-            billingAddressCollection: 'required',
-            shippingAddressCollection: {
-                allowedCountries: ['GB', 'US', 'CA', 'AU', 'NZ', 'IE']
-            }
-        });
-
-        if (error) {
-            console.error('Stripe Checkout error:', error);
-            showNotification('Checkout failed: ' + error.message, 'error');
-        }
-    } catch (error) {
-        console.error('Checkout error:', error);
-        showNotification('An error occurred during checkout. Please try again.', 'error');
-    }
+    // Multiple items — fall back to email
+    const itemsList = basket.map(item => `${item.name} - £${item.price.toFixed(2)}`).join('%0A');
+    const total = basket.reduce((sum, item) => sum + item.price, 0);
+    const subject = 'Order from Website';
+    const body = `Hi, I would like to purchase:%0A%0A${itemsList}%0A%0ATotal: £${total.toFixed(2)}%0A%0AThank you!`;
+    window.location.href = `mailto:Robert@DessoyRacing.com?subject=${subject}&body=${body}`;
 }
 
-// Show notification
 function showNotification(message, type = 'info') {
-    // Remove existing notification if any
-    const existingNotification = document.querySelector('.basket-notification');
-    if (existingNotification) {
-        existingNotification.remove();
-    }
+    const existing = document.querySelector('.basket-notification');
+    if (existing) existing.remove();
 
-    // Create notification element
     const notification = document.createElement('div');
     notification.className = `basket-notification basket-notification-${type}`;
     notification.textContent = message;
-
-    // Add styles
     notification.style.cssText = `
         position: fixed;
         top: 80px;
@@ -233,61 +112,29 @@ function showNotification(message, type = 'info') {
         font-weight: 500;
     `;
 
-    // Add animation keyframes
     if (!document.querySelector('#basket-notification-styles')) {
         const style = document.createElement('style');
         style.id = 'basket-notification-styles';
         style.textContent = `
             @keyframes slideIn {
-                from {
-                    transform: translateX(400px);
-                    opacity: 0;
-                }
-                to {
-                    transform: translateX(0);
-                    opacity: 1;
-                }
+                from { transform: translateX(400px); opacity: 0; }
+                to   { transform: translateX(0);     opacity: 1; }
             }
             @keyframes slideOut {
-                from {
-                    transform: translateX(0);
-                    opacity: 1;
-                }
-                to {
-                    transform: translateX(400px);
-                    opacity: 0;
-                }
+                from { transform: translateX(0);     opacity: 1; }
+                to   { transform: translateX(400px); opacity: 0; }
             }
         `;
         document.head.appendChild(style);
     }
 
     document.body.appendChild(notification);
-
-    // Remove notification after 3 seconds
     setTimeout(() => {
         notification.style.animation = 'slideOut 0.3s ease';
         setTimeout(() => notification.remove(), 300);
     }, 3000);
 }
 
-// Close basket when clicking outside
-document.addEventListener('click', function(event) {
-    const sidebar = document.getElementById('basketSidebar');
-    const basketIcon = document.querySelector('.basket-icon');
-
-    if (sidebar && basketIcon && sidebar.classList.contains('active')) {
-        if (!sidebar.contains(event.target) && !basketIcon.contains(event.target)) {
-            // Click is outside basket and icon
-            if (event.target.id === 'basketOverlay') {
-                // Already handled by overlay onclick
-                return;
-            }
-        }
-    }
-});
-
-// Initialize basket on page load
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     updateBasketDisplay();
 });
