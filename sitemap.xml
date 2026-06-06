@@ -100,6 +100,12 @@
     <priority>0.5</priority>
   </url>
 
+  <url>
+    <loc>https://dessoyracing.com/sponsor-bonabotanica.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
   <!-- Transaction Pages -->
   <url>
     <loc>https://dessoyracing.com/success.html</loc>
