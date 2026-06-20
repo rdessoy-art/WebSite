@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+         <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z0P3DBDMDZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-Z0P3DBDMDZ');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Cameras - Harrison Dessoy Partner</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #e63946;
+            --secondary: #1d3557;
+            --accent: #f1faee;
+            --dark: #0a0a0a;
+            --light: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: var(--light);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--secondary) 100%);
+            color: var(--light);
+            padding: 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            height: 50px;
+        }
+
+        .logo a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .back-link {
+            color: var(--light);
+            text-decoration: none;
+            padding: 0.5rem 1.5rem;
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+
+        .back-link:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .sponsor-hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--light);
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .sponsor-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .sponsor-hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .content-section {
+            margin-bottom: 4rem;
+        }
+
+        .content-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--secondary);
+            border-left: 5px solid var(--primary);
+            padding-left: 1rem;
+        }
+
+        .content-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .partnership-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .partnership-card {
+            background: var(--accent);
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 5px solid var(--primary);
+        }
+
+        .partnership-card h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .partnership-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .partnership-card li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .partnership-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .quote-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            color: var(--light);
+            padding: 3rem;
+            border-radius: 10px;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .quote-section blockquote {
+            font-size: 1.5rem;
+            font-style: italic;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .quote-section cite {
+            font-size: 1.1rem;
+            font-style: normal;
+        }
+
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-box {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border: 3px solid var(--accent);
+        }
+
+        .stat-box h3 {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-box p {
+            color: var(--secondary);
+            font-weight: 500;
+            margin: 0;
+        }
+
+        .cta-section {
+            background: var(--accent);
+            padding: 3rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .cta-section h2 {
+            border: none;
+            padding: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--primary);
+            color: var(--light);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: 2px solid var(--primary);
+            margin: 0.5rem;
+        }
+
+        .cta-button:hover {
+            background: var(--secondary);
+            border-color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        footer {
+            background: var(--dark);
+            color: var(--light);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .sponsor-hero h1 {
+                font-size: 2rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .partnership-grid, .stats-section {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <a href="index.html" style="color: var(--light); text-decoration: none; font-size: 1.5rem; font-weight: bold; letter-spacing: 1px; display: flex; align-items: center;">
+                    <img src="images/HD55 White.png" alt="Harrison Dessoy Logo" style="height: 50px; margin-right: 10px;">
+                    Harrison Dessoy
+                </a>
+            </div>
+            <a href="index.html" class="back-link">← Back to Main Site</a>
+        </div>
+    </header>
+
+    <div class="sponsor-hero">
+        <img src="images/RockCameras_Logo.png" alt="Rock Cameras Logo" style="max-width: 500px; margin: 2rem auto; display: block; border-radius: 10px;">
+    </div>
+
+    <main>
+        <section class="content-section">
+            <h2>About Rock Cameras</h2>
+            <p>Rock Cameras is a London-based specialist in camera rentals and photographic digital equipment. They offer an extensive range of rental cameras and digital equipment, available for dry hire or wet hire with one of their experienced Digital Operators — making professional-grade imaging accessible to productions of all sizes.</p>
+
+            <p>As an authorised stockist of premium brands including Inovativ, Area51 Tether cables, Mule Carts, Fotofortress, Rock Tether Cables, Calipso, and Swift Bklyn, Rock Cameras brings together the very best in professional imaging technology under one roof. Their team combines deep technical expertise with a hands-on approach, ensuring every client gets the right kit for the job.</p>
+
+            <p>With a loyalty rewards programme and a commitment to beating any UK price on brands they stock, Rock Cameras is the go-to partner for photographers and filmmakers who demand the highest standards from their equipment.</p>
+        </section>
+
+        <section class="content-section">
+            <h2>Our Partnership with Harrison</h2>
+
+            <div class="partnership-grid">
+                <div class="partnership-card">
+                    <h3>Behind the Lens</h3>
+                    <ul>
+                        <li>Professional camera equipment support</li>
+                        <li>High-quality imagery at race weekends</li>
+                        <li>Expert digital operator access</li>
+                        <li>Premium rental kit for content creation</li>
+                        <li>Capturing motorsport at its finest</li>
+                    </ul>
+                </div>
+
+                <div class="partnership-card">
+                    <h3>Content Creation</h3>
+                    <ul>
+                        <li>Race day photography coverage</li>
+                        <li>Behind-the-scenes media content</li>
+                        <li>Social media assets and visuals</li>
+                        <li>Sponsor deliverables and brand content</li>
+                        <li>Documentary and lifestyle shoots</li>
+                    </ul>
+                </div>
+
+                <div class="partnership-card">
+                    <h3>Brand Values</h3>
+                    <ul>
+                        <li>Specialist expertise in imaging technology</li>
+                        <li>Competitive pricing and customer-first approach</li>
+                        <li>Premium brands, professional results</li>
+                        <li>Trusted by productions across the UK</li>
+                        <li>London-based, nationally renowned</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="quote-section">
+            <blockquote>
+                "Great imagery tells the story of a race weekend better than any result sheet. Having Rock Cameras supporting our content means we can capture every moment — from the preparation to the podium — with the quality it deserves."
+            </blockquote>
+            <cite>— Harrison Dessoy</cite>
+        </div>
+
+        <section class="content-section">
+            <h2>Why Rock Cameras?</h2>
+            <p>Motorsport is as much a visual spectacle as it is a sporting one. The images and footage captured at race weekends are essential for telling Harrison's story to fans, sponsors, and media around the world. Rock Cameras provides the professional-grade equipment and expertise to ensure that every moment is captured with precision and clarity.</p>
+
+            <div class="stats-section">
+                <div class="stat-box">
+                    <h3>Pro</h3>
+                    <p>Grade Equipment</p>
+                </div>
+                <div class="stat-box">
+                    <h3>UK</h3>
+                    <p>Best Prices Matched</p>
+                </div>
+                <div class="stat-box">
+                    <h3>Dry &amp; Wet</h3>
+                    <p>Hire Available</p>
+                </div>
+            </div>
+
+            <p>From track-side photography to sponsor content and social media, Rock Cameras ensures Harrison's racing story is told in stunning detail. Their support gives the team the tools to produce world-class content that reflects the professionalism and ambition of the entire programme.</p>
+        </section>
+
+        <div class="cta-section">
+            <h2>Learn More About Rock Cameras</h2>
+            <p>Discover the professional camera rental and equipment services from Rock Cameras</p>
+            <a href="https://www.rockcameras.co.uk" target="_blank" class="cta-button">Visit Website</a>
+            <a href="index.html" class="cta-button">Back to Harrison's Site</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-contact" style="margin-bottom: 1rem;">
+            <p style="margin-bottom: 0.3rem;">Website: www.DessoyRacing.com</p>
+            <p>Email: <a href="mailto:Robert@DessoyRacing.com?subject=DessoyRacing.com%20website%20enquiry" style="color: var(--light); text-decoration: underline;">Robert@DessoyRacing.com</a></p>
+        </div>
+        <p>&copy; 2026 Rock Cameras. Official Partner of Harrison Dessoy.</p>
+        <p>Racing at the Highest Level</p>
+    </footer>
+</body>
+</html>
