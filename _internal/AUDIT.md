@@ -11,8 +11,8 @@ A theme runs through this whole audit: **every shared element is copy-pasted per
 
 ## 1. Performance — P1
 
-- [ ] **P1 — Merchandise page loads ~49 MB of images.** The product PNGs are enormous: `T-Shirt_2026Front.png` 8.9 MB, `Cap2026_Front.png` 8.5 MB, `T-Shirt2026_Rear.png` 8.1 MB, both hoodies ~7–8 MB, beanie 6.6 MB. On a phone connection the shop is effectively unusable, and this page is where you sell things. Convert to WebP at display resolution (the cards render ~400 px tall; 100–200 KB each is achievable — a ~99% reduction). `sips`/`cwebp` can do this locally.
-- [ ] **P1 — Home page hero/background images are also heavy:** `centered_wide_fade.png` 4.5 MB, `Cadwell2.png` 4.9 MB, several 2–3 MB JPEGs. Same treatment: resize + WebP.
+- [x] **P1 — Merchandise page loads ~49 MB of images.** ~~The product PNGs are enormous...~~ **Done 2026-07-10:** converted all 10 product/color-variant images to WebP via `cwebp` (`optimize-image` skill) — merchandise page image weight dropped from ~49 MB to ~455 KB. Old PNG/JPEG originals and their HEIC sources removed.
+- [x] **P1 — Home page hero/background images are also heavy.** **Done 2026-07-10:** all three responsive hero backgrounds (`centered_wide_fade.png` 4.5 MB, `Cadwell win 1.JPEG` 3.0 MB, `Cadwellpodium.JPG` 2.3 MB) converted to WebP (86/135/64 KB). `Cadwell2.png` (4.9 MB) was unreferenced anywhere — deleted rather than converted.
 - [ ] **P2 — No `loading="lazy"` on below-the-fold images** (sponsor grids, social feed cards, merch). One attribute per `<img>` defers most of the page weight.
 - [ ] **P2 — No `width`/`height` attributes on most images**, so the page reflows as images load (layout shift). Add intrinsic dimensions or `aspect-ratio` CSS.
 - [ ] **P3 — `.git` is 129 MB** — image/PDF history has accreted. Not urgent (clone speed only), but avoid re-committing large binaries repeatedly; consider Git LFS if merch photos churn each season.
@@ -25,12 +25,13 @@ The nav is now centralized in `nav.js` (done this session). These are the remain
 - [ ] **P2 — Footer markup is duplicated in ~24 pages.** Adding the DessoyArt credit line meant editing 28 files — that's the cost of the pattern, every time. Extract to `footer.js` exactly like `nav.js` (a `renderFooter(pageType)` that handles the standard/sponsor/minimal variants). The inconsistencies below then fix themselves in one place.
 - [ ] **P1 — Contact email is inconsistent:** 26 footers say `Robert@DessoyRacing.com`, index.html says `Harrison@dessoyracing.com`. Pick one (or intentionally differ) — right now it looks accidental.
 - [ ] **P2 — Copyright years are inconsistent:** most pages say `© 2025`, three sponsor pages say `© 2026`. It's mid-2026 — either bump all to 2026 or render the year with JS so it never goes stale.
-- [ ] **P2 — Google Analytics snippet is missing from `behind-the-scenes.html`** (present on the other 22 content pages). The dev guide claims "all 22 pages" — drift in both code and doc. A shared `head`-injector or a checklist skill (§8) prevents recurrence.
+- [x] **P2 — Google Analytics snippet is missing from `behind-the-scenes.html`.** **Done 2026-07-10:** snippet added; `site-check.py` now reports zero GA failures site-wide.
 - [ ] **P2 — Newsletter popup markup is pasted inline into 5+ pages** while `newsletter-popup.html` sits unused as a "reference copy". Either inject the modal from `newsletter-popup.js` (it already owns the behavior) or accept the duplication and delete the reference file — the half-way state is what breeds drift.
 - [ ] **P3 — Each page carries its own full `<style>` block (6–33 KB, ~200 KB total duplicated CSS).** This is the root enabler of drift (the missing `nav a.active` rule on 3 pages was CSS drift). A single `site.css` for the shared tokens/header/footer/nav rules — keeping page-specific styles inline — would halve the problem without needing a build step.
 
 ## 3. HTML5 / semantics / accessibility — P2
 
+- [ ] **P2 — NEW (found 2026-07-10) — `events.html` throws a JS error on every page load:** `document.getElementById('reportModal').addEventListener('click', ...)` runs before the `#reportModal` element (defined later in the body, line ~690) exists in the DOM, so `getElementById` returns `null` and the call throws `TypeError: Cannot read properties of null (reading 'addEventListener')`. Practical effect: clicking outside the report modal to close it silently doesn't work (whatever close button/mechanism exists may still work — not verified). Fix: wrap the three `reportModal` lines (~662–673) in a `DOMContentLoaded` listener, or move the script block below the modal's HTML.
 - [ ] **P2 — The hamburger menu is a `<div onclick>`** on every page: not keyboard-focusable, not announced to screen readers, no state. Make it `<button type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav">` and toggle `aria-expanded` in `toggleMenu()` (one change in each header + one line in `nav.js`).
 - [ ] **P2 — 17 pages have no `<h1>`** (all 13 sponsor pages, events, fanclub, partnership-menu). They start at `<h2>`. Each page should have exactly one `<h1>` naming the page — good for SEO and screen-reader navigation.
 - [ ] **P2 — ~45 `target="_blank"` links lack `rel="noopener"`** (events.html alone has 15). Mostly ticket/venue links. Mechanical fix; a one-line script can patch all files.
@@ -41,20 +42,20 @@ The nav is now centralized in `nav.js` (done this session). These are the remain
 
 ## 4. SEO & sharing — P1/P2
 
-- [ ] **P1 — No favicon anywhere.** Every browser tab shows a blank page icon, and it costs a 404 on every visit. Add `favicon.ico` + `<link rel="icon">` (the HD55 logo is right there) and an `apple-touch-icon`.
-- [ ] **P1 — Zero `<meta name="description">` and zero Open Graph/Twitter tags on the entire site.** Sharing dessoyracing.com to WhatsApp/Facebook/X shows a bare URL — painful for a sponsor-driven site whose links get shared constantly. Minimum: description + `og:title/og:description/og:image` on index, events, merchandise, fanclub, and the card page. (A git commit says "Update to card metadata for sharing" but `card/index.html` has no OG tags — that change appears lost.)
-- [ ] **P2 — `sitemap.xml` is out of sync** [PATTERN — same drift as the nav]: missing `sponsor-fletcherssolicitors`, `sponsor-rockcameras`, `sponsor-pro-bolt`, `sponsor-grayers-graphics`, and `card/`; still lists `success.html`/`cancel.html`, which shouldn't be indexed at all.
-- [ ] **P2 — `success.html` and `cancel.html` need `<meta name="robots" content="noindex">`** — checkout artifacts, not content. Remove them from the sitemap at the same time.
+- [x] **P1 — No favicon anywhere.** **Done 2026-07-10:** generated `favicon.ico` + 16/32px PNGs + apple-touch-icon from the HD55 mark, added `<link>` tags to all 28 real content pages.
+- [x] **P1 — Zero `<meta name="description">` and zero Open Graph/Twitter tags** on index, events, merchandise, fanclub. **Done 2026-07-10:** added description + OG/Twitter tags to all four, each with a dedicated 1200×630 preview image cropped from existing site photos. (Correction: `card/index.html` already had full OG tags from commit `1180141` — the original note that this was "lost" was a mistake on my part; it was never missing.) Remaining pages (13 sponsor pages, success/cancel, etc.) still lack descriptions — tracked as ongoing warnings in `site-check.py`.
+- [x] **P2 — `sitemap.xml` is out of sync** [PATTERN — same drift as the nav]. **Done 2026-07-10:** added the 4 missing sponsor pages; removed `success.html`/`cancel.html` (see next item). `card/` still not in the sitemap — it's a personal contact card, arguably shouldn't be indexed either; left out deliberately, revisit if that's wrong.
+- [x] **P2 — `success.html` and `cancel.html` need `<meta name="robots" content="noindex">`.** **Done 2026-07-10:** noindex tag added to both, removed from sitemap.xml.
 - [ ] **P3 — Policy pages are orphaned:** `policies/*.html` are linked from nowhere (the dev guide has flagged this since June). Add Privacy/Terms links to the shared footer — trivial once footer.js exists (§2).
 - [ ] **P3 — The two emoji blog folders** (`cadwell-park-round-7-🏁` / `-✅`) work but produce Unicode-normalization noise in git on macOS and are fragile as URLs. They're legacy redirects; leave them, but don't create emoji paths again.
 
 ## 5. Dead code & cruft — P2/P3
 
 - [ ] **P2 — `basket.js` is vestigial** (dev guide confirms): a full cart UI + localStorage basket with **no `addToBasket()` caller anywhere** — the basket can never gain an item. All purchases are direct `buy.stripe.com` links. Four pages load the script and carry hidden sidebar markup. Delete the basket machinery (keep `showNotification` if anything still uses it) — it's also the last `innerHTML` sink left on the site.
-- [ ] **P2 — The countdown timer in `index.html` targets November 23, 2025** — over 7 months in the past. The interval runs on every visit and would inject "The announcement is here!" if the elements existed. Delete `updateCountdown()`.
-- [ ] **P2 — `Next change` (stray notes file in the root) is fully done** — it describes adding the sponsor logo strip, which happened long ago, and it deploys to the live site as `dessoyracing.com/Next%20change`. Delete it; track future work in this file or GitHub issues.
-- [ ] **P3 — `data/mastodon.json`** is a stale duplicate of `data/mastodon/posts.json` (guide agrees). Verify Publisher doesn't write it, then delete.
-- [ ] **P3 — Six `.heic` originals in `/images/`** have PNG/JPEG equivalents (guide says safe to delete).
+- [x] **P2 — The countdown timer in `index.html` targets November 23, 2025.** **Done 2026-07-10:** `updateCountdown()` and its orphaned CSS deleted (confirmed the `#days/#hours/#minutes/#seconds/#countdown` elements it referenced no longer exist in the HTML).
+- [x] **P2 — `Next change` (stray notes file in the root) is fully done.** **Done 2026-07-10:** deleted.
+- [x] **P3 — `data/mastodon.json`** is a stale duplicate of `data/mastodon/posts.json`. **Done 2026-07-10:** confirmed unreferenced by any page, confirmed stale (older `last_updated`), deleted.
+- [x] **P3 — Six `.heic` originals in `/images/`** have PNG/JPEG equivalents. **Done 2026-07-10:** confirmed unreferenced, deleted (5.5 MB).
 - [ ] **P3 — 21 image filenames contain spaces** (plus `Instagram logo(2).png` with parens, and mixed-case `.PNG`/`.JPEG` extensions). Works, but every reference needs URL-encoding and case must match exactly on the case-sensitive deploy host. Convention going forward: `lowercase-hyphenated.webp`.
 
 ## 6. Security — P2 (mostly done this session)
@@ -92,6 +93,6 @@ The single highest-leverage change: **you have a genuinely useful dev guide that
 
 ## Suggested working order
 
-1. **Quick wins, big impact (one sitting):** favicon · merch image WebP conversion · meta description/OG on the 5 key pages · sitemap fix + noindex on success/cancel · delete `Next change`, countdown, `data/mastodon.json`, HEICs.
-2. **Foundation (one sitting):** `CLAUDE.md` · footer.js extraction (fixes email/year/policy-links in one go) · basket.js removal.
-3. **Rolling:** hamburger a11y + h1s + noopener sweep · skills as you next need each workflow · doc refresh.
+1. ~~**Quick wins, big impact (one sitting):** favicon · merch image WebP conversion · meta description/OG on the 5 key pages · sitemap fix + noindex on success/cancel · delete `Next change`, countdown, `data/mastodon.json`, HEICs.~~ **Done 2026-07-10** — also fixed the GA gap on behind-the-scenes.html while in there (site-check.py now reports zero FAILURES, only tracked warnings). One new bug surfaced during verification and was logged rather than fixed inline: the `events.html` `reportModal` null-reference error in §3.
+2. **Foundation (one sitting):** `CLAUDE.md` (done) · footer.js extraction (fixes email/year/policy-links in one go) · basket.js removal.
+3. **Rolling:** hamburger a11y + h1s + noopener sweep · the new `reportModal` bug · skills as you next need each workflow · doc refresh.

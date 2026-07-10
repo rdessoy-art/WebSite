@@ -15,7 +15,24 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
     <title>Merchandise - Harrison Dessoy Racing</title>
+    <meta name="description" content="Official Harrison Dessoy Racing merchandise — HD55 caps, t-shirts, hoodies and beanies. Show your support for #55 on and off the track.">
+
+    <!-- Open Graph / share preview tags -->
+    <meta property="og:title" content="Merchandise - Harrison Dessoy Racing">
+    <meta property="og:description" content="Official Harrison Dessoy Racing merchandise — HD55 caps, t-shirts, hoodies and beanies. Show your support for #55 on and off the track.">
+    <meta property="og:image" content="https://dessoyracing.com/images/og-image-merchandise.jpg">
+    <meta property="og:url" content="https://dessoyracing.com/merchandise.html">
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Merchandise - Harrison Dessoy Racing">
+    <meta name="twitter:description" content="Official Harrison Dessoy Racing merchandise — HD55 caps, t-shirts, hoodies and beanies. Show your support for #55 on and off the track.">
+    <meta name="twitter:image" content="https://dessoyracing.com/images/og-image-merchandise.jpg">
     <style>
         * {
             margin: 0;
@@ -519,7 +536,7 @@
         <div class="products-grid">
             <!-- HD55 Beanie -->
             <div class="product-card">
-                <img src="images/Bennie2026_Front.png" alt="HD55 Beanie" class="product-image" id="beanie-image">
+                <img src="images/beanie-2026-front.webp" alt="HD55 Beanie" class="product-image" id="beanie-image">
                 <div class="product-content">
                     <h3>HD55 Beanie</h3>
                     <p class="product-price">£15.00</p>
@@ -543,8 +560,8 @@
             <div class="product-card">
                 <div class="product-carousel" data-carousel="tshirt">
                     <div class="carousel-images">
-                        <img src="images/T-Shirt_2026Front.png" alt="HD55 T-Shirt Front">
-                        <img src="images/T-Shirt2026_Rear.png" alt="HD55 T-Shirt Back">
+                        <img src="images/t-shirt-2026-front.webp" alt="HD55 T-Shirt Front">
+                        <img src="images/t-shirt-2026-rear.webp" alt="HD55 T-Shirt Back">
                     </div>
                     <button class="carousel-btn prev" onclick="moveCarousel('tshirt', -1)">‹</button>
                     <button class="carousel-btn next" onclick="moveCarousel('tshirt', 1)">›</button>
@@ -568,8 +585,8 @@
             <div class="product-card">
                 <div class="product-carousel" data-carousel="hoody">
                     <div class="carousel-images">
-                        <img src="images/Hoody2026_Front.png" alt="HD55 Hoody Front">
-                        <img src="images/Hoody2026_Rear.png" alt="HD55 Hoody Back">
+                        <img src="images/hoody-2026-front.webp" alt="HD55 Hoody Front">
+                        <img src="images/hoody-2026-rear.webp" alt="HD55 Hoody Back">
                     </div>
                     <button class="carousel-btn prev" onclick="moveCarousel('hoody', -1)">‹</button>
                     <button class="carousel-btn next" onclick="moveCarousel('hoody', 1)">›</button>
@@ -591,7 +608,7 @@
 
             <!-- HD55 Cap -->
             <div class="product-card">
-                <img src="images/Cap2026_Front.png" alt="HD55 Cap" class="product-image" id="cap-image">
+                <img src="images/cap-2026-front.webp" alt="HD55 Cap" class="product-image" id="cap-image">
                 <div class="product-content">
                     <h3>HD55 Cap</h3>
                     <p class="product-price">£15.00</p>
@@ -680,12 +697,12 @@
             const beanieImage = document.getElementById('beanie-image');
 
             if (selectedColor === 'black') {
-                beanieImage.src = 'images/image0.jpeg';
+                beanieImage.src = 'images/beanie-2026-black.webp';
             } else if (selectedColor === 'yellow') {
-                beanieImage.src = 'images/Hd55 Beanie yellow.jpeg';
+                beanieImage.src = 'images/beanie-2026-yellow.webp';
             } else {
                 // Red is the default
-                beanieImage.src = 'images/Bennie2026_Front.png';
+                beanieImage.src = 'images/beanie-2026-front.webp';
             }
         }
 
@@ -712,12 +729,12 @@
             const capImage = document.getElementById('cap-image');
 
             if (selectedColor === 'white') {
-                capImage.src = 'images/HD55 CAp white.jpeg';
+                capImage.src = 'images/cap-2026-white.webp';
             } else if (selectedColor === 'yellow') {
-                capImage.src = 'images/HD55 Cap yellow.jpeg';
+                capImage.src = 'images/cap-2026-yellow.webp';
             } else {
                 // Red is the default
-                capImage.src = 'images/Cap2026_Front.png';
+                capImage.src = 'images/cap-2026-front.webp';
             }
         }
 

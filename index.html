@@ -15,8 +15,25 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
     <link rel="canonical" href="https://dessoyracing.com/" />
     <title>Harrison Dessoy - Racing Excellence</title>
+    <meta name="description" content="Harrison Dessoy (#55) — FIM World Sportbike Championship rider for PHR Performance on a Triumph Daytona 660. Race results, news, sponsors and events.">
+
+    <!-- Open Graph / share preview tags -->
+    <meta property="og:title" content="Harrison Dessoy - World Sportbike Rider">
+    <meta property="og:description" content="Harrison Dessoy (#55) — FIM World Sportbike Championship rider for PHR Performance on a Triumph Daytona 660.">
+    <meta property="og:image" content="https://dessoyracing.com/images/og-image-home.jpg">
+    <meta property="og:url" content="https://dessoyracing.com/">
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Harrison Dessoy - World Sportbike Rider">
+    <meta name="twitter:description" content="Harrison Dessoy (#55) — FIM World Sportbike Championship rider for PHR Performance on a Triumph Daytona 660.">
+    <meta name="twitter:image" content="https://dessoyracing.com/images/og-image-home.jpg">
     <style>
         * {
             margin: 0;
@@ -160,7 +177,7 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-                        url('images/centered_wide_fade.png');
+                        url('images/hero-bg-desktop.webp');
             background-size: cover;
             background-position: center center;
             z-index: 0;
@@ -170,7 +187,7 @@
         @media (max-width: 1024px) {
             .hero-background {
                 background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-                            url('images/Cadwell win 1.JPEG');
+                            url('images/hero-bg-tablet.webp');
                 background-size: cover;
                 background-position: center center;
             }
@@ -179,7 +196,7 @@
         @media (max-width: 768px) {
             .hero-background {
                 background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-                            url('images/Cadwellpodium.JPG');
+                            url('images/hero-bg-mobile.webp');
                 background-size: cover;
                 background-position: center center;
             }
@@ -945,52 +962,6 @@
         .cta-box .small {
             font-size: 0.9rem;
             opacity: 0.9;
-        }
-
-        .countdown-container {
-            margin-top: 2rem;
-            text-align: center;
-        }
-
-        .countdown-label {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            color: var(--light);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .countdown {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .countdown-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-width: 80px;
-        }
-
-        .countdown-value {
-            font-size: 3rem;
-            font-weight: bold;
-            color: var(--primary);
-            background: rgba(255, 255, 255, 0.1);
-            padding: 1rem 1.5rem;
-            border-radius: 10px;
-            min-width: 80px;
-            border: 2px solid var(--primary);
-        }
-
-        .countdown-label-text {
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
-            color: var(--light);
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
         .hero-sponsors {
@@ -2069,56 +2040,6 @@
                 showSection(hash);
             }
         });
-
-        // Countdown Timer
-        function updateCountdown() {
-            // Check if countdown elements exist on the page
-            const daysElement = document.getElementById("days");
-            const hoursElement = document.getElementById("hours");
-            const minutesElement = document.getElementById("minutes");
-            const secondsElement = document.getElementById("seconds");
-            const countdownElement = document.getElementById("countdown");
-
-            // Only run countdown if elements exist
-            if (!daysElement || !hoursElement || !minutesElement || !secondsElement) {
-                return; // Exit if countdown elements don't exist
-            }
-
-            // Set the date we're counting down to - November 23rd, 2025 at 3pm
-            const countDownDate = new Date("November 23, 2025 15:00:00").getTime();
-
-            // Update the countdown every 1 second
-            const x = setInterval(function() {
-                // Get today's date and time
-                const now = new Date().getTime();
-
-                // Find the distance between now and the count down date
-                const distance = countDownDate - now;
-
-                // Time calculations for days, hours, minutes and seconds
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                // Display the result in the elements
-                daysElement.textContent = days;
-                hoursElement.textContent = hours;
-                minutesElement.textContent = minutes;
-                secondsElement.textContent = seconds;
-
-                // If the count down is finished, write some text
-                if (distance < 0) {
-                    clearInterval(x);
-                    if (countdownElement) {
-                        countdownElement.innerHTML = "<div style='font-size: 2rem; color: var(--primary);'>The announcement is here!</div>";
-                    }
-                }
-            }, 1000);
-        }
-
-        // Start the countdown when the page loads
-        updateCountdown();
 
         // Escape a value for safe interpolation into HTML.
         function escapeHtml(value) {
