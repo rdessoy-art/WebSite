@@ -1165,16 +1165,7 @@
                 <span></span>
             </div>
             <nav id="nav">
-                <ul>
-                    <li><a href="#home" class="nav-link active" onclick="showSection('home'); closeMenu()">Home</a></li>
-                    <li><a href="#about" class="nav-link" onclick="showSection('about'); closeMenu()">About</a></li>
-                    <li><a href="#news" class="nav-link" onclick="showSection('news'); closeMenu()">News</a></li>
-                    <li><a href="events.html">Events</a></li>
-                    <li><a href="#sponsors" class="nav-link" onclick="showSection('sponsors'); closeMenu()">Sponsors</a></li>
-                    <li><a href="merchandise.html">Merchandise</a></li>
-                    <li><a href="fanclub.html">Fan Club</a></li>
-                    <!-- <li><a href="partnership-menu.html">Partnership Menu</a></li> -->
-                </ul>
+                <ul></ul>
             </nav>
             <div class="basket-icon" onclick="toggleBasket()">
                 🛒
@@ -1215,6 +1206,30 @@
             </a>
             <a href="sponsor-martin-sheath.html" target="_blank" rel="noopener">
                 <img src="images/EGR.png" alt="Eastern Garage Racing" class="hero-sponsor-logo">
+            </a>
+            <a href="https://markwalkercoaching.co.uk/" target="_blank" rel="noopener">
+                <img src="images/MWC_Logo_Black.png" alt="Mark Walker Coaching" class="hero-sponsor-logo">
+            </a>
+            <a href="https://www.weiseclothing.com/about/" target="_blank" rel="noopener">
+                <img src="images/weise-logo_h100.jpg" alt="Weise Clothing" class="hero-sponsor-logo">
+            </a>
+            <a href="sponsor-zerofit.html" rel="noopener">
+                <img src="images/Zerofit Image.png" alt="ZeroFit" class="hero-sponsor-logo">
+            </a>
+            <a href="sponsor-triumph-east-london.html" rel="noopener">
+                <img src="images/Triumph Logo.png" alt="Triumph East London" class="hero-sponsor-logo">
+            </a>
+            <a href="sponsor-arc-on.html" rel="noopener">
+                <img src="images/ARC-ON-VECTOR.png" alt="ARC-ON Gloves" class="hero-sponsor-logo">
+            </a>
+            <a href="https://www.pro-bolt.com/titanium/" target="_blank" rel="noopener">
+                <img src="images/Pro-Bolt Logo.jpg" alt="Pro Bolt" class="hero-sponsor-logo">
+            </a>
+            <a href="https://bonabotanica.com" target="_blank" rel="noopener">
+                <img src="images/BonaBotanica_Logo.svg" alt="Bona Botanica" class="hero-sponsor-logo">
+            </a>
+            <a href="https://www.rockcameras.co.uk" target="_blank" rel="noopener">
+                <img src="images/RockCameras_Logo.png" alt="Rock Cameras" class="hero-sponsor-logo">
             </a>
         </div>
     </section>
@@ -1626,6 +1641,7 @@
         </div>
         <p>&copy; 2025 Harrison Dessoy. All rights reserved.</p>
         <p>Racing at the Highest Level</p>
+        <p style="margin-top: 1rem; font-size: 0.85rem; opacity: 0.75;">Website designed &amp; built by DessoyArt &mdash; for website enquiries or changes, <a href="https://website.dessoy.co.uk" target="_blank" rel="noopener" style="color: var(--light); text-decoration: underline;">get in touch</a>.</p>
     </footer>
 
     <!-- Newsletter Popup Modal -->
@@ -1905,8 +1921,11 @@
         }
     </style>
 
+    <script src="nav.js"></script>
     <script src="basket.js"></script>
     <script>
+        renderNav('home', true);
+
         // Newsletter Popup Functions
         function showNewsletterPopup() {
             const popup = document.getElementById('newsletterPopup');
@@ -1991,20 +2010,6 @@
                 closeNewsletterPopup();
             }
         });
-
-        function toggleMenu() {
-            const nav = document.getElementById('nav');
-            const hamburger = document.querySelector('.hamburger');
-            nav.classList.toggle('active');
-            hamburger.classList.toggle('active');
-        }
-
-        function closeMenu() {
-            const nav = document.getElementById('nav');
-            const hamburger = document.querySelector('.hamburger');
-            nav.classList.remove('active');
-            hamburger.classList.remove('active');
-        }
 
         // Profile Tabs Function
         function showProfileTab(tabName) {
@@ -2115,6 +2120,27 @@
         // Start the countdown when the page loads
         updateCountdown();
 
+        // Escape a value for safe interpolation into HTML.
+        function escapeHtml(value) {
+            return String(value ?? '')
+                .replaceAll('&', '&amp;')
+                .replaceAll('<', '&lt;')
+                .replaceAll('>', '&gt;')
+                .replaceAll('"', '&quot;')
+                .replaceAll("'", '&#39;');
+        }
+
+        // Allow only http(s) URLs; anything else falls back to '#'.
+        function safeUrl(value) {
+            try {
+                const url = new URL(value);
+                if (url.protocol === 'https:' || url.protocol === 'http:') {
+                    return escapeHtml(url.href);
+                }
+            } catch (e) { /* not a valid absolute URL */ }
+            return '#';
+        }
+
         // Load Instagram posts
         async function loadCampaigns() {
             try {
@@ -2139,9 +2165,9 @@
                         const borderStyle = index < sortedCampaigns.length - 1 ? 'border-bottom: 1px solid #f0f0f0;' : '';
 
                         return `
-                            <a href="${campaign.archive_url}" target="_blank" rel="noopener" style="display: flex; align-items: center; padding: 0.75rem; ${borderStyle} text-decoration: none; color: inherit; transition: background 0.2s;">
+                            <a href="${safeUrl(campaign.archive_url)}" target="_blank" rel="noopener" style="display: flex; align-items: center; padding: 0.75rem; ${borderStyle} text-decoration: none; color: inherit; transition: background 0.2s;">
                                 <span style="color: var(--text-secondary); font-size: 0.9rem; min-width: 120px;">${formattedDate}</span>
-                                <span style="flex: 1; color: var(--secondary); font-weight: 500;">${campaign.subject || campaign.title}</span>
+                                <span style="flex: 1; color: var(--secondary); font-weight: 500;">${escapeHtml(campaign.subject || campaign.title)}</span>
                                 <span style="color: var(--primary); font-size: 0.9rem;">Read →</span>
                             </a>
                         `;
@@ -2162,24 +2188,27 @@
 
             const cards = posts.map(post => {
                 const text = post.caption || post.text || '';
-                const truncated = text.length > 150 ? text.substring(0, 150) + '...' : text;
+                const truncated = escapeHtml(text.length > 150 ? text.substring(0, 150) + '...' : text);
 
                 const postDate = new Date(post.timestamp).toLocaleDateString('en-US', {
                     year: 'numeric', month: 'short', day: 'numeric'
                 });
 
                 const stats = [
-                    post.likes    != null ? `❤️ ${post.likes}`   : null,
-                    post.comments != null ? `💬 ${post.comments}` : null,
-                    post.shares   != null ? `🔁 ${post.shares}`   : null,
+                    post.likes    != null ? `❤️ ${escapeHtml(post.likes)}`    : null,
+                    post.comments != null ? `💬 ${escapeHtml(post.comments)}` : null,
+                    post.shares   != null ? `🔁 ${escapeHtml(post.shares)}`   : null,
                 ].filter(Boolean).join(' ');
 
-                const imageStyle = post.image_path
-                    ? `background-image: url('${post.image_path}'); background-size: cover; background-position: center;`
+                // image_path must be a plain relative path into data/ — reject anything else
+                const imagePathOk = typeof post.image_path === 'string'
+                    && /^data\/[\w .\/-]+$/.test(post.image_path);
+                const imageStyle = imagePathOk
+                    ? `background-image: url('${escapeHtml(post.image_path)}'); background-size: cover; background-position: center;`
                     : `background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);`;
 
                 return `
-                    <a href="${post.permalink}" target="_blank" rel="noopener" class="blog-card" style="text-decoration: none; color: inherit;">
+                    <a href="${safeUrl(post.permalink)}" target="_blank" rel="noopener" class="blog-card" style="text-decoration: none; color: inherit;">
                         <div class="blog-image" style="${imageStyle}">
                             ${stats ? `<span style="position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.7); color: white; padding: 0.5rem; border-radius: 5px; font-size: 0.9rem;">${stats}</span>` : ''}
                         </div>

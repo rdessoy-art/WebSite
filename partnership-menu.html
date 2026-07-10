@@ -92,7 +92,7 @@
             padding: 0.5rem 1rem;
         }
 
-        nav a:hover {
+        nav a:hover, nav a.active {
             color: var(--primary);
         }
 
@@ -477,16 +477,7 @@
                 <span></span>
             </div>
             <nav id="nav">
-                <ul>
-                    <li><a href="index.html#home" onclick="closeMenu()">Home</a></li>
-                    <li><a href="index.html#about" onclick="closeMenu()">About</a></li>
-                    <li><a href="index.html#news" onclick="closeMenu()">News</a></li>
-                    <li><a href="events.html" onclick="closeMenu()">Events</a></li>
-                    <li><a href="index.html#sponsors" onclick="closeMenu()">Sponsors</a></li>
-                    <li><a href="merchandise.html" onclick="closeMenu()">Merchandise</a></li>
-                    <li><a href="fanclub.html" onclick="closeMenu()">Fan Club</a></li>
-                    <!-- <li><a href="partnership-menu.html" onclick="closeMenu()">Partnership Menu</a></li> -->
-                </ul>
+                <ul></ul>
             </nav>
         </div>
     </header>
@@ -743,22 +734,12 @@
         </div>
         <p>&copy; 2025 Harrison Dessoy. All rights reserved.</p>
         <p>Racing at the Highest Level</p>
+        <p style="margin-top: 1rem; font-size: 0.85rem; opacity: 0.75;">Website designed &amp; built by DessoyArt &mdash; for website enquiries or changes, <a href="https://website.dessoy.co.uk" target="_blank" rel="noopener" style="color: var(--light); text-decoration: underline;">get in touch</a>.</p>
     </footer>
 
+    <script src="nav.js"></script>
     <script>
-        function toggleMenu() {
-            const nav = document.getElementById('nav');
-            const hamburger = document.querySelector('.hamburger');
-            nav.classList.toggle('active');
-            hamburger.classList.toggle('active');
-        }
-
-        function closeMenu() {
-            const nav = document.getElementById('nav');
-            const hamburger = document.querySelector('.hamburger');
-            nav.classList.remove('active');
-            hamburger.classList.remove('active');
-        }
+        renderNav(null, false);
 
         async function handleSubmit(event) {
             event.preventDefault();
