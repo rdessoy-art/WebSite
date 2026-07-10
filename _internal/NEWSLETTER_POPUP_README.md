@@ -40,7 +40,7 @@ Add this markup before the closing `</body>` tag:
         <button class="newsletter-popup-close" onclick="closeNewsletterPopup()">&times;</button>
         <div class="newsletter-popup-container">
             <div class="newsletter-popup-image">
-                <img src="images/IDM Assen.jpg" alt="Harrison Dessoy Racing">
+                <img src="images/idm-assen.jpg" alt="Harrison Dessoy Racing">
             </div>
             <div class="newsletter-popup-content">
                 <h3 id="newsletterTitle">Stay Updated!</h3>
@@ -100,9 +100,9 @@ const expiryTime = dismissalTime + (7 * 24 * 60 * 60 * 1000); // 7 days in milli
 ```
 
 ### Image Path
-The image path is set to `images/IDM Assen.jpg`. If pages are in subdirectories, you may need to adjust the path:
-- For pages in root: `images/IDM Assen.jpg`
-- For pages in subdirectories: `../images/IDM Assen.jpg` or adjust as needed
+The image path is set to `images/idm-assen.jpg`. If pages are in subdirectories, you may need to adjust the path:
+- For pages in root: `images/idm-assen.jpg`
+- For pages in subdirectories: `../images/idm-assen.jpg` or adjust as needed
 
 ## Features
 

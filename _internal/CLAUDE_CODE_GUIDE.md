@@ -98,8 +98,8 @@ Main navigation links (rendered by `nav.js` — see below, never hardcode this):
 |------|---------|---------|
 | `nav.js` | index, events, fanclub, merchandise, partnership-menu | `renderNav(pageId, isHome)` builds the `<nav id="nav">` menu — never hardcode nav `<li>`s. `toggleMenu()`/`closeMenu()` here too, and keep `aria-expanded` on the hamburger `<button>` in sync. |
 | `footer.js` | All pages except `card/index.html` and `policies/*.html` | `renderFooter({withSocial, copyrightName, copyrightSuffix})` builds the whole `<footer>` — social links, contact, copyright (auto year), Privacy/Terms links, DessoyArt credit. Never hardcode a footer either. |
-| `newsletter-popup.js` | events.html, fanclub.html, merchandise.html, partnership-menu.html | Newsletter modal (8s delay, 7-day localStorage dismissal) |
-| `newsletter-popup.css` | All pages that include newsletter-popup.js | Modal CSS |
+| `newsletter-popup.js` | index, events, fanclub, merchandise, partnership-menu | `renderNewsletterPopup()` injects the modal HTML (`insertAdjacentHTML`) — call it once, synchronously, alongside `renderNav()`/`renderFooter()`. Also owns the show/hide/dismissal logic (8s delay, 7-day localStorage dismissal). Never hardcode the modal HTML either — index.html had a fully duplicated inline copy of this HTML/CSS/JS until 2026-07-10, and the CSS copy was missing a `z-index` fix the shared file had. |
+| `newsletter-popup.css` | Same 5 pages | Modal CSS, linked in `<head>` |
 | `scripts/site-check.py` | Run manually / via `verify-site` skill | Consistency checks — GA present, footer credit present, sitemap sync, exactly one `<h1>`, `rel="noopener"` on external links, no hardcoded nav, image size budget |
 
 `basket.js` was removed 2026-07-10 — it was fully vestigial (no `addToBasket()` existed anywhere, so the cart could never gain an item). It's not coming back; purchases are, and always were, direct `buy.stripe.com` Payment Links. See `STRIPE_SETUP.md`.
@@ -182,18 +182,18 @@ All site images live in `/images/` (~28 MB, down from ~98 MB after the 2026-07-1
 
 | File | Used For |
 |------|---------|
-| `HD55 White.png` | Header logo (50px height); source for the favicon |
-| `Harrison Dessoy 2025 logo.png` | Profile section logo |
+| `hd55-white.png` | Header logo (50px height); source for the favicon |
+| `harrison-dessoy-2025-logo.png` | Profile section logo |
 | `2025_profilepic.png` | Profile photo |
 | `hero-bg-desktop.webp` / `hero-bg-tablet.webp` / `hero-bg-mobile.webp` | Responsive hero backgrounds (index.html) |
 | `og-image-home.jpg` / `og-image-fanclub.jpg` / `og-image-merchandise.jpg` | Open Graph / Twitter card preview images (1200×630) |
 | `cap-2026-front.webp`, `hoody-2026-front.webp`/`-rear.webp`, `t-shirt-2026-front.webp`/`-rear.webp`, `beanie-2026-front.webp` (+ `-black`/`-yellow`/`-white` color variants) | Merchandise product photos |
-| `favicon.ico`, `favicon-16x16.png`, `favicon-32x32.png`, `apple-touch-icon.png` | Browser tab / home-screen icons, generated from `HD55 White.png` |
-| `Instagram logo(2).png`, `Facebook logo.png`, `Youtube_logo.png`, `LinkedIn_logo.png` | Footer social icons (rendered by `footer.js`) |
+| `favicon.ico`, `favicon-16x16.png`, `favicon-32x32.png`, `apple-touch-icon.png` | Browser tab / home-screen icons, generated from `hd55-white.png` |
+| `instagram-logo-2.png`, `facebook-logo.png`, `Youtube_logo.png`, `LinkedIn_logo.png` | Footer social icons (rendered by `footer.js`) |
 
 **Formats in use:** WebP (preferred — merch, hero backgrounds, most logos), PNG (logos/UI needing transparency), JPEG/JPG (photos, OG images), SVG (a few sponsor logos).
 
-**Convention for new images:** WebP, ≤300–500 KB, lowercase-hyphenated filename (`sponsor-name-logo.webp`, not `Sponsor Name (2).PNG`). Use the `optimize-image` Claude Code skill — `cwebp` is installed via Homebrew on the primary dev machine (verified 2026-07-10: turns an 8.5 MB source photo into ~45 KB with no visible quality loss). Existing pre-2026-07-10 filenames keep spaces/mixed case; match them exactly since the deploy host is case-sensitive.
+**Convention for new images:** WebP, ≤300–500 KB, lowercase-hyphenated filename (`sponsor-name-logo.webp`, not `Sponsor Name (2).PNG`). Use the `optimize-image` Claude Code skill — `cwebp` is installed via Homebrew on the primary dev machine (verified 2026-07-10: turns an 8.5 MB source photo into ~45 KB with no visible quality loss). **2026-07-11:** the 15 image filenames that had spaces or parens were renamed to this convention (see `AUDIT.md` §5), so no image reference needs URL-encoding anymore. Two non-image files still have spaces (`230308_Article for Harrison.docx`, `ARC-ON VECTOR.pdf` — both unreferenced by any page, out of scope for this item), and plenty of existing images still have mixed-case names without spaces (e.g. `BonaBotanica_Logo.svg`, `Fletchers-Solicitors-Logo.png`) — matching case exactly still matters for those since the deploy host is case-sensitive; the convention above is for new images going forward, not a retroactive rename of everything.
 
 `scripts/site-check.py` flags any committed image over 500 KB — a growing list of pre-existing large photos (data/Instagram JPEGs, a few `images/IMG_*.JPEG` files) is tracked as ongoing warnings in `AUDIT.md`, not yet cleaned up.
 
@@ -207,7 +207,7 @@ All site images live in `/images/` (~28 MB, down from ~98 MB after the 2026-07-1
 2. Include Google Analytics snippet in `<head>` — use the same tracking ID `G-Z0P3DBDMDZ`
 3. Include the favicon `<link>` block (copy from any page) and a `<meta name="description">`
 4. Give the page exactly one `<h1>`
-5. If the page needs a newsletter popup, add `newsletter-popup.css`, `newsletter-popup.js`, and the modal HTML (see `newsletter-popup.html` for the reference implementation)
+5. If the page needs a newsletter popup: link `newsletter-popup.css` in `<head>`, add `<script src="newsletter-popup.js">`, and call `renderNewsletterPopup()` alongside `renderNav()`/`renderFooter()` — **don't hardcode the modal HTML**, that's exactly the duplication that was cleaned up 2026-07-10 (`newsletter-popup.html` is a static reference showing what the injected markup looks like, not something to copy from)
 6. Add the page to `sitemap.xml` — see `SITEMAP_MAINTENANCE.md` for priority/frequency guidelines
 7. Update `SITEMAP_MAINTENANCE.md` to record the new page
 8. Link the page from at least one other page so it is reachable from the site
