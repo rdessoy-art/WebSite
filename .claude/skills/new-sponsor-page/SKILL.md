@@ -29,8 +29,8 @@ Copy the structure of the most recently added sponsor page (currently `sponsor-r
 
 ## 4. The three side-updates (the part that gets forgotten)
 
-1. **Index "Our Partners" card** — add a `.sponsor-card` in the `<section id="sponsors">` grid in `index.html`, following the existing card markup exactly (logo div, `<h3>` role title, description, "Learn More →" button linking to the new page).
-2. **Hero logo strip** — add the logo to `.hero-sponsors` in `index.html` (`hero-sponsor-logo` class), linking to the sponsor's external site or their internal page, matching how similar sponsors are linked.
+1. **Index "Our Partners" card** — add a `.sponsor-card` in the `<section id="sponsors">` grid in `index.html`, following the existing card markup exactly (logo div, `<h3>` role title, description, "Learn More →" button linking to the new page). This `<img>` sits in a div with a fixed `height: 100px` and `width: 100%; height: 100%` on the image itself, so no `width`/`height` attributes are needed here — it's already shift-safe.
+2. **Hero logo strip** — add the logo to `.hero-sponsors` in `index.html` (`hero-sponsor-logo` class), linking to the sponsor's external site or their internal page, matching how similar sponsors are linked. This one only has `height: 80px` fixed in CSS (`width: auto`), so add `width`/`height` HTML attributes using the logo's real pixel dimensions (`sips -g pixelWidth -g pixelHeight <file>`) — otherwise the strip reflows as the image loads. Same applies to the hero logo on the new sponsor page itself (the `max-width: 400px` pattern only constrains one axis).
 3. **`sitemap.xml`** — add the page with `priority 0.5`, `changefreq monthly`, today's date as lastmod.
 
 ## 5. Verify and finish
