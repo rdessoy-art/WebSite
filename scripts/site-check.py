@@ -49,7 +49,11 @@ def check_pages():
         if "googletagmanager.com/gtag" not in html:
             failures.append(f"{page}: missing Google Analytics snippet")
 
-        if "built by DessoyArt" not in html:
+        # footer.js injects the credit line at runtime, so a page that wires
+        # it up (script include + renderFooter call) satisfies this even
+        # though the string isn't in the static HTML.
+        uses_footer_js = "footer.js" in html and "renderFooter(" in html
+        if "built by DessoyArt" not in html and not uses_footer_js:
             failures.append(f"{page}: missing DessoyArt footer credit line")
 
         h1s = len(re.findall(r"<h1[\s>]", html))

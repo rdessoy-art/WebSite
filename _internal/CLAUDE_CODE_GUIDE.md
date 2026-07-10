@@ -50,7 +50,8 @@ dessoyracing/
 ├── img_7586-mp4/index.html  # Redirect → behind-the-scenes.html  │ DO NOT DELETE
 ├── img_8781/index.html      # Redirect → behind-the-scenes.html  ┘
 │
-├── basket.js                # Shared: shopping cart + Stripe checkout
+├── nav.js                   # Shared: renders the main nav menu (renderNav)
+├── footer.js                # Shared: renders the site footer (renderFooter)
 ├── newsletter-popup.js      # Shared: newsletter modal logic
 ├── newsletter-popup.css     # Shared: newsletter modal styles
 │
@@ -88,9 +89,12 @@ Main navigation links (consistent across all pages):
 
 | File | Used By | Purpose |
 |------|---------|---------|
-| `basket.js` | fanclub.html, merchandise.html, events.html, index.html, cancel.html, partnership-menu.html | Notification helper + redirect to Stripe payment links; basket/cart code is vestigial |
+| `nav.js` | Every page with the full main nav | `renderNav(pageId, isHome)` builds the `<nav id="nav">` menu — never hardcode nav `<li>`s |
+| `footer.js` | All pages except `card/index.html` and `policies/*.html` | `renderFooter({withSocial, copyrightName, copyrightSuffix})` builds the whole `<footer>` |
 | `newsletter-popup.js` | events.html, fanclub.html, merchandise.html, partnership-menu.html | Newsletter modal (8s delay, 7-day localStorage dismissal) |
 | `newsletter-popup.css` | All pages that include newsletter-popup.js | Modal CSS |
+
+`basket.js` was removed 2026-07-10 (it was fully vestigial — no `addToBasket()` existed anywhere, so the cart could never gain an item). Purchases are, and always were, direct `buy.stripe.com` payment links.
 
 All other CSS is **inline** inside `<style>` blocks in each HTML file's `<head>`. There is no global stylesheet other than the above.
 
@@ -134,9 +138,7 @@ All other CSS is **inline** inside `<style>` blocks in each HTML file's `<head>`
 - **STATUS: FULLY CONFIGURED AND LIVE** — all purchase buttons are direct `<a href="https://buy.stripe.com/...">` links to Stripe-hosted payment pages
 - Clicking "Buy Now" or "Join Now" opens Stripe's hosted checkout in a new tab — there is no on-site basket involved in the purchase flow
 - `fanclub.html`: three membership tiers each link to their own `buy.stripe.com` URL
-- `merchandise.html`: cap and hoodie (per size) each link to their own `buy.stripe.com` URL
-- `basket.js` contains a `basketSidebar` and localStorage cart that are vestigial — `addToBasket()` immediately redirects to the Stripe payment link rather than queuing items; the function itself notes "basket is removed"
-- The `STRIPE_PUBLISHABLE_KEY = 'pk_test_YOUR_PUBLISHABLE_KEY_HERE'` placeholder in `basket.js` line 9 is not used in the current payment flow and does not affect checkout
+- `merchandise.html`: cap and hoodie (per size) each link to their own `buy.stripe.com` URL, wired via `changeCapImage()`/`buyCap()` etc. for color variants
 - Stripe.js v3 is loaded via CDN on fanclub.html and merchandise.html but is not required for the payment link flow
 
 ---
@@ -179,13 +181,14 @@ All site images live in `/images/`. Key files:
 
 ## Adding a New Page
 
-1. Copy the header/footer structure from an existing page (e.g., `events.html`)
+1. Copy the header/footer structure from an existing page (e.g., `events.html`) — empty `<nav id="nav"><ul></ul></nav>` + `<footer></footer>`, with `nav.js`/`footer.js` included and `renderNav()`/`renderFooter()` called
 2. Include Google Analytics snippet in `<head>` — use the same tracking ID `G-Z0P3DBDMDZ`
 3. If the page needs a newsletter popup, add `newsletter-popup.css`, `newsletter-popup.js`, and the modal HTML (see `newsletter-popup.html` for the reference implementation)
-4. If the page needs the shopping basket, include `basket.js`
-5. Add the page to `sitemap.xml` — see `SITEMAP_MAINTENANCE.md` for priority/frequency guidelines
-6. Update `SITEMAP_MAINTENANCE.md` to record the new page
-7. Link the page from at least one other page so it is reachable from the site
+4. Add the page to `sitemap.xml` — see `SITEMAP_MAINTENANCE.md` for priority/frequency guidelines
+5. Update `SITEMAP_MAINTENANCE.md` to record the new page
+6. Link the page from at least one other page so it is reachable from the site
+
+Or use the `new-page`/`new-sponsor-page` Claude Code skill, which encodes this checklist.
 
 ---
 
@@ -217,8 +220,7 @@ Priority scale:
 
 | Item | Details |
 |------|---------|
-| Vestigial basket code in `basket.js` | The `basketSidebar`, localStorage cart, and `STRIPE_PUBLISHABLE_KEY` placeholder are unused. Purchases go directly to `buy.stripe.com` links. The dead code could be cleaned up but is harmless. |
-| Policy pages not linked in footer | `policies/privacy-policy.html`, `terms-of-service.html`, `data-deletion.html` exist but no footer links. |
+| Policy pages linked from footer.js | `policies/privacy-policy.html`, `terms-of-service.html`, `data-deletion.html` now linked from every `footer.js`-rendered footer. Not orphaned any more. |
 | Blog archive not accessible | 13 posts in `2023/` and `2024/` have no entry point from main nav. |
 | No 2025/2026 blog posts in archive structure | Recent news is standalone HTML files, not in the dated archive folder structure. |
 | `partnership-menu.html` commented out | Intentionally hidden — do not remove, may be activated later. |

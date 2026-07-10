@@ -22,9 +22,9 @@ A theme runs through this whole audit: **every shared element is copy-pasted per
 
 The nav is now centralized in `nav.js` (done this session). These are the remaining duplicated blocks, in order of drift risk:
 
-- [ ] **P2 — Footer markup is duplicated in ~24 pages.** Adding the DessoyArt credit line meant editing 28 files — that's the cost of the pattern, every time. Extract to `footer.js` exactly like `nav.js` (a `renderFooter(pageType)` that handles the standard/sponsor/minimal variants). The inconsistencies below then fix themselves in one place.
-- [ ] **P1 — Contact email is inconsistent:** 26 footers say `Robert@DessoyRacing.com`, index.html says `Harrison@dessoyracing.com`. Pick one (or intentionally differ) — right now it looks accidental.
-- [ ] **P2 — Copyright years are inconsistent:** most pages say `© 2025`, three sponsor pages say `© 2026`. It's mid-2026 — either bump all to 2026 or render the year with JS so it never goes stale.
+- [x] **P2 — Footer markup is duplicated in ~24 pages.** **Done 2026-07-10:** extracted to `footer.js` (`renderFooter({withSocial, copyrightName, copyrightSuffix})`), same pattern as `nav.js`. Pages now render an empty `<footer></footer>` and call `renderFooter()`. `card/index.html` and `policies/*.html` deliberately left out — different footer designs by intent, not drift.
+- [x] **P1 — Contact email is inconsistent.** **Done 2026-07-10:** standardized to `Robert@DessoyRacing.com` everywhere (the 26:1 majority pattern) as part of the `footer.js` extraction — index.html's `Harrison@dessoyracing.com` was the outlier.
+- [x] **P2 — Copyright years are inconsistent.** **Done 2026-07-10:** `footer.js` renders `new Date().getFullYear()`, so this can never go stale again.
 - [x] **P2 — Google Analytics snippet is missing from `behind-the-scenes.html`.** **Done 2026-07-10:** snippet added; `site-check.py` now reports zero GA failures site-wide.
 - [ ] **P2 — Newsletter popup markup is pasted inline into 5+ pages** while `newsletter-popup.html` sits unused as a "reference copy". Either inject the modal from `newsletter-popup.js` (it already owns the behavior) or accept the duplication and delete the reference file — the half-way state is what breeds drift.
 - [ ] **P3 — Each page carries its own full `<style>` block (6–33 KB, ~200 KB total duplicated CSS).** This is the root enabler of drift (the missing `nav a.active` rule on 3 pages was CSS drift). A single `site.css` for the shared tokens/header/footer/nav rules — keeping page-specific styles inline — would halve the problem without needing a build step.
@@ -46,12 +46,12 @@ The nav is now centralized in `nav.js` (done this session). These are the remain
 - [x] **P1 — Zero `<meta name="description">` and zero Open Graph/Twitter tags** on index, events, merchandise, fanclub. **Done 2026-07-10:** added description + OG/Twitter tags to all four, each with a dedicated 1200×630 preview image cropped from existing site photos. (Correction: `card/index.html` already had full OG tags from commit `1180141` — the original note that this was "lost" was a mistake on my part; it was never missing.) Remaining pages (13 sponsor pages, success/cancel, etc.) still lack descriptions — tracked as ongoing warnings in `site-check.py`.
 - [x] **P2 — `sitemap.xml` is out of sync** [PATTERN — same drift as the nav]. **Done 2026-07-10:** added the 4 missing sponsor pages; removed `success.html`/`cancel.html` (see next item). `card/` still not in the sitemap — it's a personal contact card, arguably shouldn't be indexed either; left out deliberately, revisit if that's wrong.
 - [x] **P2 — `success.html` and `cancel.html` need `<meta name="robots" content="noindex">`.** **Done 2026-07-10:** noindex tag added to both, removed from sitemap.xml.
-- [ ] **P3 — Policy pages are orphaned:** `policies/*.html` are linked from nowhere (the dev guide has flagged this since June). Add Privacy/Terms links to the shared footer — trivial once footer.js exists (§2).
+- [x] **P3 — Policy pages are orphaned.** **Done 2026-07-10:** `footer.js` now renders a Privacy Policy / Terms of Service link row on every page that uses it.
 - [ ] **P3 — The two emoji blog folders** (`cadwell-park-round-7-🏁` / `-✅`) work but produce Unicode-normalization noise in git on macOS and are fragile as URLs. They're legacy redirects; leave them, but don't create emoji paths again.
 
 ## 5. Dead code & cruft — P2/P3
 
-- [ ] **P2 — `basket.js` is vestigial** (dev guide confirms): a full cart UI + localStorage basket with **no `addToBasket()` caller anywhere** — the basket can never gain an item. All purchases are direct `buy.stripe.com` links. Four pages load the script and carry hidden sidebar markup. Delete the basket machinery (keep `showNotification` if anything still uses it) — it's also the last `innerHTML` sink left on the site.
+- [x] **P2 — `basket.js` is vestigial.** **Done 2026-07-10:** deleted `basket.js` and every trace of it — the header cart icon (visible and functional-looking on `cancel.html`; already `display:none` elsewhere), the sidebar/overlay markup, and all associated CSS from `index.html`, `fanclub.html`, `merchandise.html`, `cancel.html`, `partnership-menu.html`. Also rewrote `cancel.html`'s copy, which had told users "your basket items have been saved" — actively misleading, since nothing could ever add an item — to accurate copy with no basket reference. Removed `success.html`'s matching "basket automatically cleared" message and its `localStorage.removeItem` script.
 - [x] **P2 — The countdown timer in `index.html` targets November 23, 2025.** **Done 2026-07-10:** `updateCountdown()` and its orphaned CSS deleted (confirmed the `#days/#hours/#minutes/#seconds/#countdown` elements it referenced no longer exist in the HTML).
 - [x] **P2 — `Next change` (stray notes file in the root) is fully done.** **Done 2026-07-10:** deleted.
 - [x] **P3 — `data/mastodon.json`** is a stale duplicate of `data/mastodon/posts.json`. **Done 2026-07-10:** confirmed unreferenced by any page, confirmed stale (older `last_updated`), deleted.
@@ -62,7 +62,7 @@ The nav is now centralized in `nav.js` (done this session). These are the remain
 
 - [x] Stored XSS in feed rendering — **fixed** (`escapeHtml`/`safeUrl` in index.html).
 - [ ] **P2 — Publisher-side sanitization** is still pending — see `FEED_SECURITY_CHANGES.md` §4 (strip HTML from Mastodon content, validate URLs/hosts, keep generating image filenames itself). Defense-in-depth; the website fix already closes the hole.
-- [ ] **P3 — `basket.js` `innerHTML` sink** goes away with the dead-code removal in §5.
+- [x] **P3 — `basket.js` `innerHTML` sink** goes away with the dead-code removal in §5. **Done 2026-07-10** (see above).
 
 ## 7. Documentation drift — P2
 
@@ -94,5 +94,5 @@ The single highest-leverage change: **you have a genuinely useful dev guide that
 ## Suggested working order
 
 1. ~~**Quick wins, big impact (one sitting):** favicon · merch image WebP conversion · meta description/OG on the 5 key pages · sitemap fix + noindex on success/cancel · delete `Next change`, countdown, `data/mastodon.json`, HEICs.~~ **Done 2026-07-10** — also fixed the GA gap on behind-the-scenes.html while in there (site-check.py now reports zero FAILURES, only tracked warnings). One new bug surfaced during verification and was logged rather than fixed inline: the `events.html` `reportModal` null-reference error in §3.
-2. **Foundation (one sitting):** `CLAUDE.md` (done) · footer.js extraction (fixes email/year/policy-links in one go) · basket.js removal.
-3. **Rolling:** hamburger a11y + h1s + noopener sweep · the new `reportModal` bug · skills as you next need each workflow · doc refresh.
+2. ~~**Foundation (one sitting):** `CLAUDE.md` · footer.js extraction (fixes email/year/policy-links in one go) · basket.js removal.~~ **Done 2026-07-10** — all three complete. `footer.js` fixed the email/copyright-year drift and orphaned policy pages in one shot; `basket.js` removal also caught a real UX bug (`cancel.html` was telling users a non-existent basket had been saved).
+3. **Rolling:** doc refresh (§7 — the dev guide and STRIPE_SETUP.md are now visibly out of date after today's changes) · hamburger a11y + h1s + noopener sweep · the new `reportModal` bug · skills as you next need each workflow.

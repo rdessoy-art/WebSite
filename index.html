@@ -77,14 +77,6 @@
             position: relative;
         }
 
-        .basket-icon {
-            display: none;
-        }
-
-        .basket-count {
-            display: none;
-        }
-
         .logo {
             display: flex;
             align-items: center;
@@ -988,15 +980,6 @@
             transform: scale(1.1);
         }
 
-        /* Basket Sidebar - Hidden */
-        .basket-sidebar {
-            display: none;
-        }
-
-        .basket-overlay {
-            display: none;
-        }
-
         @media (max-width: 768px) {
             .hero-sponsors {
                 gap: 1.5rem;
@@ -1138,10 +1121,6 @@
             <nav id="nav">
                 <ul></ul>
             </nav>
-            <div class="basket-icon" onclick="toggleBasket()">
-                🛒
-                <span class="basket-count" id="basketCount">0</span>
-            </div>
         </div>
     </header>
 
@@ -1570,50 +1549,12 @@
 
     </main>
 
-    <!-- Basket Overlay -->
-    <div class="basket-overlay" id="basketOverlay" onclick="toggleBasket()"></div>
+    <footer></footer>
 
-    <!-- Basket Sidebar -->
-    <div class="basket-sidebar" id="basketSidebar">
-        <div class="basket-header">
-            <h2>Your Basket</h2>
-            <button class="close-basket" onclick="toggleBasket()">✕</button>
-        </div>
-        <div class="basket-items" id="basketItems">
-            <div class="basket-empty">Your basket is empty</div>
-        </div>
-        <div class="basket-footer">
-            <div class="basket-total">
-                <span>Total:</span>
-                <span id="basketTotal">£0.00</span>
-            </div>
-            <button class="checkout-btn" id="checkoutBtn" onclick="checkout()" disabled>Checkout</button>
-        </div>
-    </div>
-
-    <footer>
-        <div class="social-links">
-            <a href="https://www.instagram.com/harrison_dessoy55/" title="Instagram" target="_blank" rel="noopener">
-                <img src="images/Instagram logo(2).png" alt="Instagram" width="50" height="50">
-            </a>
-            <a href="https://www.facebook.com/HarrisonDessoy" title="Facebook" target="_blank" rel="noopener">
-                <img src="images/Facebook logo.png" alt="Facebook" width="50" height="50">
-            </a>
-            <a href="https://www.youtube.com/channel/UCco2lC1RzhZFZYTZYMhFdcA" title="YouTube" target="_blank" rel="noopener">
-                <img src="images/Youtube_logo.png" alt="YouTube" width="50" height="50">
-            </a>
-            <a href="https://www.linkedin.com/in/harrisondessoy/" title="LinkedIn" target="_blank" rel="noopener">
-                <img src="images/LinkedIn_logo.png" alt="LinkedIn" width="50" height="50">
-            </a>
-        </div>
-        <div class="footer-contact" style="margin: 1.5rem 0;">
-            <p style="margin-bottom: 0.3rem;">Website: www.DessoyRacing.com</p>
-            <p>Email: <a href="mailto:Harrison@dessoyracing.com?subject=DessoyRacing.com%20website%20enquiry" style="color: var(--light); text-decoration: underline;">Harrison@dessoyracing.com</a></p>
-        </div>
-        <p>&copy; 2025 Harrison Dessoy. All rights reserved.</p>
-        <p>Racing at the Highest Level</p>
-        <p style="margin-top: 1rem; font-size: 0.85rem; opacity: 0.75;">Website designed &amp; built by DessoyArt &mdash; for website enquiries or changes, <a href="https://website.dessoy.co.uk" target="_blank" rel="noopener" style="color: var(--light); text-decoration: underline;">get in touch</a>.</p>
-    </footer>
+    <script src="footer.js"></script>
+    <script>
+        renderFooter({ withSocial: true });
+    </script>
 
     <!-- Newsletter Popup Modal -->
     <div id="newsletterPopup" class="newsletter-popup-overlay" style="display: none;">
@@ -1893,7 +1834,6 @@
     </style>
 
     <script src="nav.js"></script>
-    <script src="basket.js"></script>
     <script>
         renderNav('home', true);
 
