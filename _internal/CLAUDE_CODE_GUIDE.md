@@ -133,7 +133,8 @@ All other CSS is **inline** inside `<style>` blocks in each HTML file's `<head>`
 
 - Hamburger menu is a real `<button type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav">` on the 5 full-nav pages (was a `<div onclick>` until 2026-07-10). `nav.js` keeps `aria-expanded` in sync — don't revert to a div.
 - Every real content page has exactly one `<h1>`. `site-check.py` enforces this — a new page failing this check means the title text is missing or duplicated, not that the check is wrong.
-- External links use `rel="noopener"` on `target="_blank"`; internal links stay same-tab (the one intentional exception is the EGR/Martin Sheath link in the hero strip, which opens a local page in a new tab — inconsistent but low-priority, see AUDIT.md).
+- External links use `rel="noopener"` on `target="_blank"`; internal links stay same-tab, no exceptions (the one that existed, the EGR/Martin Sheath hero-strip link, was fixed 2026-07-10).
+- The 5 full-nav pages have a "Skip to content" link as the first element in `<body>` (visually hidden until keyboard-focused). On index.html it targets `#home` rather than a generic `#main-content` id — that page toggles section visibility via `section.active`/`showSection()`, and a plain new id on `<main>` would collide with the hash-routing (loading `#main-content` would hide every section with nothing to show in their place). Keep using `#home` there if you touch this.
 
 ---
 
@@ -195,6 +196,8 @@ All site images live in `/images/` (~28 MB, down from ~98 MB after the 2026-07-1
 **Convention for new images:** WebP, ≤300–500 KB, lowercase-hyphenated filename (`sponsor-name-logo.webp`, not `Sponsor Name (2).PNG`). Use the `optimize-image` Claude Code skill — `cwebp` is installed via Homebrew on the primary dev machine (verified 2026-07-10: turns an 8.5 MB source photo into ~45 KB with no visible quality loss). Existing pre-2026-07-10 filenames keep spaces/mixed case; match them exactly since the deploy host is case-sensitive.
 
 `scripts/site-check.py` flags any committed image over 500 KB — a growing list of pre-existing large photos (data/Instagram JPEGs, a few `images/IMG_*.JPEG` files) is tracked as ongoing warnings in `AUDIT.md`, not yet cleaned up.
+
+**`loading="lazy"`:** applied 2026-07-10 to below-the-fold `<img>` tags (index.html's sponsor grid, events.html's flags/venue logos, merchandise.html's rear/back carousel photos). Leave it off anything likely to be in the initial viewport (header logo, hero images, front-facing product photos) — it only helps if the browser can skip a real network fetch. Note this doesn't apply to the "News"/social-feed cards on index.html — those render via CSS `background-image` on a `<div>`, and the `loading` attribute only works on `<img>`/`<iframe>`.
 
 ---
 

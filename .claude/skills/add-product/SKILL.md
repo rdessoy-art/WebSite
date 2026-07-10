@@ -16,7 +16,7 @@ Every buy button is a direct link to a Stripe-hosted payment page: `<a href="htt
 ## Steps
 
 1. Optimize image(s) → `images/` (front + rear shots use the carousel pattern — see the hoodie card's `product-carousel` markup).
-2. Add a `.product-card` to the grid in `merchandise.html`, copying an existing card: image (or carousel), `<h3>` name, `.product-price` (£, `.toFixed(2)` style formatting, e.g. `£25.00`), `.shipping-note` if applicable, description, size selector if sizes exist, buy button with the real `buy.stripe.com` link (`target="_blank" rel="noopener"`).
+2. Add a `.product-card` to the grid in `merchandise.html`, copying an existing card: image (or carousel), `<h3>` name, `.product-price` (£, `.toFixed(2)` style formatting, e.g. `£25.00`), `.shipping-note` if applicable, description, size selector if sizes exist, buy button with the real `buy.stripe.com` link (`target="_blank" rel="noopener"`). If it's a carousel, add `loading="lazy"` to every slide after the first (front-facing) one — those are never visible without a user clicking the arrow, so it's free perf with zero risk.
 3. If a product is retired, remove its card and (ask first) archive its images.
 
 ## Verify
