@@ -262,7 +262,12 @@ These have been identified as genuinely unused. Confirm before deleting:
 
 | File | Topic |
 |------|-------|
+| `CLAUDE.md` | Short invariants auto-loaded by Claude Code every session (points here for detail) |
+| `AUDIT.md` | Prioritized site audit checklist (2026-07-10) — work items with severity |
+| `FEED_SECURITY_CHANGES.md` | Feed-rendering XSS fix + required Publisher-side sanitization |
+| `.claude/skills/` | Project skills: new-page, new-sponsor-page, add-product, optimize-image, verify-site |
+| `scripts/site-check.py` | Consistency checks (GA, footer credit, sitemap, nav, image budget) — run before committing |
 | `SITEMAP_MAINTENANCE.md` | How to keep sitemap.xml current |
 | `NEWSLETTER_POPUP_README.md` | Newsletter popup implementation details |
 | `MAILCHIMP_TROUBLESHOOTING.md` | Mailchimp integration issues |
-| `STRIPE_SETUP.md` | How to configure Stripe keys |
+| `STRIPE_SETUP.md` | How to configure Stripe keys (⚠ stale — describes a removed basket.js flow; see AUDIT.md §7) |
