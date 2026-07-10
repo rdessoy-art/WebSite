@@ -458,11 +458,30 @@
                 grid-template-columns: 1fr;
             }
         }
-    </style>
+            .skip-link {
+            position: absolute;
+            top: -100px;
+            left: 0;
+            background: var(--primary);
+            color: var(--light);
+            padding: 0.75rem 1.5rem;
+            z-index: 2000;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 0 0 5px 0;
+            transition: top 0.2s;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+</style>
     <link rel="stylesheet" href="newsletter-popup.css">
     <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/dba85c89d82fef7f216d3993b/caa6283199cbc79f4a36d9208.js");</script>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
     <header>
         <div class="header-content">
             <div class="logo">
@@ -482,7 +501,7 @@
         </div>
     </header>
 
-    <main>
+    <main id="main-content">
         <h1>Partnership Menu</h1>
         <div class="partnership-hero">
             <h3>Partner with Harrison Dessoy Racing</h3>
