@@ -118,6 +118,9 @@
             cursor: pointer;
             padding: 0.5rem;
             z-index: 1001;
+            background: none;
+            border: none;
+            font: inherit;
         }
 
         .hamburger span {
@@ -475,11 +478,11 @@
                     Harrison Dessoy
                 </a>
             </div>
-            <div class="hamburger" onclick="toggleMenu()">
+            <button type="button" class="hamburger" onclick="toggleMenu()" aria-label="Menu" aria-expanded="false" aria-controls="nav">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
             <nav id="nav">
                 <ul></ul>
             </nav>

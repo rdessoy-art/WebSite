@@ -41,8 +41,9 @@ function renderNav(activePage, isHome) {
 function toggleMenu() {
     const nav = document.getElementById('nav');
     const hamburger = document.querySelector('.hamburger');
-    nav.classList.toggle('active');
+    const isOpen = nav.classList.toggle('active');
     hamburger.classList.toggle('active');
+    hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
 }
 
 function closeMenu() {
@@ -50,4 +51,5 @@ function closeMenu() {
     const hamburger = document.querySelector('.hamburger');
     nav.classList.remove('active');
     hamburger.classList.remove('active');
+    hamburger.setAttribute('aria-expanded', 'false');
 }
