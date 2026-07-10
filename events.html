@@ -447,16 +447,7 @@
                 <span></span>
             </div>
             <nav id="nav">
-                <ul>
-                    <li><a href="index.html" onclick="closeMenu()">Home</a></li>
-                    <li><a href="index.html#about" onclick="closeMenu()">About</a></li>
-                    <li><a href="index.html#news" onclick="closeMenu()">News</a></li>
-                    <li><a href="events.html" class="active" onclick="closeMenu()">Events</a></li>
-                    <li><a href="index.html#sponsors" onclick="closeMenu()">Sponsors</a></li>
-                    <li><a href="index.html#fanclub" onclick="closeMenu()">Fan Club</a></li>
-                    <!-- <li><a href="partnership-menu.html" onclick="closeMenu()">Partnership Menu</a></li> -->
-                    <li><a href="nft.html" onclick="closeMenu()">NFT</a></li>
-                </ul>
+                <ul></ul>
             </nav>
         </div>
     </header>
@@ -612,20 +603,9 @@
         <p>Racing at the Highest Level</p>
     </footer>
 
+    <script src="nav.js"></script>
     <script>
-        function toggleMenu() {
-            const nav = document.getElementById('nav');
-            const hamburger = document.querySelector('.hamburger');
-            nav.classList.toggle('active');
-            hamburger.classList.toggle('active');
-        }
-
-        function closeMenu() {
-            const nav = document.getElementById('nav');
-            const hamburger = document.querySelector('.hamburger');
-            nav.classList.remove('active');
-            hamburger.classList.remove('active');
-        }
+        renderNav('events', false);
 
         (function greyOutPastTickets() {
             const months = {

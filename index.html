@@ -1165,16 +1165,7 @@
                 <span></span>
             </div>
             <nav id="nav">
-                <ul>
-                    <li><a href="#home" class="nav-link active" onclick="showSection('home'); closeMenu()">Home</a></li>
-                    <li><a href="#about" class="nav-link" onclick="showSection('about'); closeMenu()">About</a></li>
-                    <li><a href="#news" class="nav-link" onclick="showSection('news'); closeMenu()">News</a></li>
-                    <li><a href="events.html">Events</a></li>
-                    <li><a href="#sponsors" class="nav-link" onclick="showSection('sponsors'); closeMenu()">Sponsors</a></li>
-                    <li><a href="merchandise.html">Merchandise</a></li>
-                    <li><a href="fanclub.html">Fan Club</a></li>
-                    <!-- <li><a href="partnership-menu.html">Partnership Menu</a></li> -->
-                </ul>
+                <ul></ul>
             </nav>
             <div class="basket-icon" onclick="toggleBasket()">
                 🛒
@@ -1929,8 +1920,11 @@
         }
     </style>
 
+    <script src="nav.js"></script>
     <script src="basket.js"></script>
     <script>
+        renderNav('home', true);
+
         // Newsletter Popup Functions
         function showNewsletterPopup() {
             const popup = document.getElementById('newsletterPopup');
@@ -2015,20 +2009,6 @@
                 closeNewsletterPopup();
             }
         });
-
-        function toggleMenu() {
-            const nav = document.getElementById('nav');
-            const hamburger = document.querySelector('.hamburger');
-            nav.classList.toggle('active');
-            hamburger.classList.toggle('active');
-        }
-
-        function closeMenu() {
-            const nav = document.getElementById('nav');
-            const hamburger = document.querySelector('.hamburger');
-            nav.classList.remove('active');
-            hamburger.classList.remove('active');
-        }
 
         // Profile Tabs Function
         function showProfileTab(tabName) {
