@@ -1,7 +1,27 @@
 {
-  "last_updated": "2026-06-20T19:51:33.771277+00:00",
+  "last_updated": "2026-07-10T19:20:30.989855+00:00",
   "campaign_count": 5,
   "campaigns": [
+    {
+      "id": "666058ba9e",
+      "title": "Swapping racing for my legs!",
+      "subject": "5km & 10km running race last weekend",
+      "preview_text": "I smashed 2 PB's in my most recent off track races!",
+      "send_time": "2026-07-02T05:49:30+00:00",
+      "emails_sent": 83,
+      "archive_url": "http://eepurl.com/Rt-B5m6P8T",
+      "status": "sent"
+    },
+    {
+      "id": "bdb84fe6f1",
+      "title": "Magnycours Test",
+      "subject": "Feeling the heat in France",
+      "preview_text": "We had a great test in Magnycours. Preparation for our next WSPB round",
+      "send_time": "2026-06-23T09:48:45+00:00",
+      "emails_sent": 82,
+      "archive_url": "http://eepurl.com/prtTgNjous",
+      "status": "sent"
+    },
     {
       "id": "31e1bf5cbc",
       "title": "Misano Round 5 - Our biggest test yet!",
@@ -30,26 +50,6 @@
       "send_time": "2026-05-19T16:55:01+00:00",
       "emails_sent": 82,
       "archive_url": "http://eepurl.com/kLVmqN2_b7",
-      "status": "sent"
-    },
-    {
-      "id": "9f1edaacd3",
-      "title": "World Sportbike Round 2!",
-      "subject": "Catch Up Newsetted - Round 1 Portimao",
-      "preview_text": null,
-      "send_time": "2026-05-14T06:59:05+00:00",
-      "emails_sent": 82,
-      "archive_url": "http://eepurl.com/jD5hUA",
-      "status": "sent"
-    },
-    {
-      "id": "b165269147",
-      "title": "Catch up!",
-      "subject": "From Aragon to Portimao - and my first World Superbike weekend",
-      "preview_text": null,
-      "send_time": "2026-04-13T17:09:44+00:00",
-      "emails_sent": 79,
-      "archive_url": "http://eepurl.com/jDPP1U",
       "status": "sent"
     }
   ]
