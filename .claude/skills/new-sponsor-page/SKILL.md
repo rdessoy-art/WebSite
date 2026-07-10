@@ -22,8 +22,9 @@ Run the `optimize-image` skill conventions: WebP preferred, ≤300 KB, lowercase
 ## 3. Create `sponsor-<name>.html`
 
 Copy the structure of the most recently added sponsor page (currently `sponsor-rockcameras.html`) — do not invent a new layout. Then:
-- Update title, `<h1>` and `<meta name="description">` (add both — the older template pages lack them, new pages must have them), hero, description, links, logo
-- Keep the GA snippet (`G-Z0P3DBDMDZ`), footer with the DessoyArt credit line, and `© <current year> <Sponsor Name>. Official Partner of Harrison Dessoy.`
+- Update title, `<meta name="description">`, description, links, logo
+- **`<h1>{Sponsor Name}</h1>` goes inside the `.sponsor-hero` div**, before or alongside the logo image. Every sponsor page already has `.sponsor-hero h1` CSS predefined (font-size, uppercase, letter-spacing) — for a long time all 13 pages had this CSS with no actual `<h1>` element using it, just a bare logo image (fixed 2026-07-10). Don't recreate that gap: the heading is not optional decoration, it's required for `site-check.py` and for the page to make sense to a screen reader.
+- Footer: empty `<footer></footer>` + `<script src="footer.js">` + `renderFooter({ withSocial: false, copyrightName: '<Sponsor Name>', copyrightSuffix: 'Official Partner of Harrison Dessoy.' })` — **never hardcode the footer**. Keep the GA snippet (`G-Z0P3DBDMDZ`) and the favicon `<link>` block too.
 - External links `target="_blank" rel="noopener"`; internal links same-tab
 
 ## 4. The three side-updates (the part that gets forgotten)

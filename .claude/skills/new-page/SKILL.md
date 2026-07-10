@@ -16,12 +16,12 @@ Copy the structurally closest existing page:
 
 ## 2. Required in every page
 
-- `<html lang="en">`, viewport meta, exactly one `<h1>`, `<meta name="description">` (~150 chars)
+- `<html lang="en">`, viewport meta, favicon `<link>` block (copy the 4 lines from any page), exactly one `<h1>`, `<meta name="description">` (~150 chars)
 - GA snippet in `<head>` (ID `G-Z0P3DBDMDZ` — copy verbatim from the base page)
 - Shared nav: empty `<nav id="nav"><ul></ul></nav>`, `<script src="nav.js">`, then `renderNav('<pageId or null>', false)` — **never a hardcoded menu**
-- Footer with contact block, copyright, "Racing at the Highest Level", and the DessoyArt credit line (copy the whole `<footer>` from the base page)
+- Shared footer: empty `<footer></footer>`, `<script src="footer.js">`, then `renderFooter({...})` — **never hardcode footer HTML**, that's exactly the copy-paste drift that used to cause inconsistent contact emails and stale copyright years across the site. Pass `withSocial: true` for pages with the full nav, `false` for minimal pages (see how `behind-the-scenes.html`/`nft.html` call it); `copyrightName`/`copyrightSuffix` only if this page needs different text than the default "Harrison Dessoy. All rights reserved."
 - Inline `<style>` using the shared tokens (`--primary: #e63946`, `--secondary: #1d3557`, etc.)
-- External links `target="_blank" rel="noopener"`
+- External links `target="_blank" rel="noopener"`; internal links same-tab, no exceptions
 
 Optional per purpose: newsletter popup (copy the modal block + `newsletter-popup.css`/`.js` includes from `events.html`).
 
