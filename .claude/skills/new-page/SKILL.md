@@ -35,4 +35,4 @@ Optional per purpose: newsletter popup (copy the modal block + `newsletter-popup
 
 - `python3 scripts/site-check.py` — new page must pass all checks
 - `verify-site` skill: page renders, nav + footer correct, mobile width (≤768px hamburger) works, console clean
-- Update `Development Standards/CLAUDE_CODE_GUIDE.md` site-structure listing if the page is a lasting addition.
+- Update `_internal/CLAUDE_CODE_GUIDE.md` site-structure listing if the page is a lasting addition.

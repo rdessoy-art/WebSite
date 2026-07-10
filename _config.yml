@@ -1,0 +1,11 @@
+# GitHub Pages (Jekyll) configuration.
+# Purpose: keep internal working files off the published site.
+# Folders starting with "_" (like _internal/) are excluded automatically;
+# this list covers the root-level files that must stay where they are:
+# CLAUDE.md is only auto-loaded by Claude Code from the repo root, and
+# scripts/ is referenced as `python3 scripts/site-check.py` throughout.
+exclude:
+  - CLAUDE.md
+  - scripts/
+  - .claude/
+  - Next change

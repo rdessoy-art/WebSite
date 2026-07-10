@@ -36,4 +36,4 @@ Copy the structure of the most recently added sponsor page (currently `sponsor-r
 
 - Run `python3 scripts/site-check.py` — the new page must pass every check.
 - Run the `verify-site` skill: confirm the card, hero logo, and page all render, links work, mobile width looks right.
-- Update the sponsor-page count in `Development Standards/CLAUDE_CODE_GUIDE.md` (section "Adding a New Sponsor Page").
+- Update the sponsor-page count in `_internal/CLAUDE_CODE_GUIDE.md` (section "Adding a New Sponsor Page").

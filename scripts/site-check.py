@@ -3,12 +3,12 @@
 
 Run from the repo root:  python3 scripts/site-check.py
 
-Every rule maps to a defect that actually shipped (see AUDIT.md):
+Every rule maps to a defect that actually shipped (see _internal/AUDIT.md):
 GA missing from a page, pages absent from sitemap.xml, footer credit
 missed, 8 MB product images, target=_blank without rel=noopener.
 
 Exit code 0 = clean, 1 = failures found. Pre-existing failures are being
-worked through via AUDIT.md — the bar for new changes is "don't add more".
+worked through via _internal/AUDIT.md — the bar for new changes is "don't add more".
 """
 
 import glob
@@ -111,7 +111,7 @@ def main():
         for f in failures:
             print(f"  ✗ {f}")
     if warnings:
-        print(f"\nWARNINGS ({len(warnings)}) — pre-existing ones tracked in AUDIT.md:")
+        print(f"\nWARNINGS ({len(warnings)}) — pre-existing ones tracked in _internal/AUDIT.md:")
         for w in warnings:
             print(f"  - {w}")
     if not failures and not warnings:

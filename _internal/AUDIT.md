@@ -66,7 +66,7 @@ The nav is now centralized in `nav.js` (done this session). These are the remain
 ## 7. Documentation drift — P2
 
 - [ ] **P2 — `STRIPE_SETUP.md` describes a flow that no longer exists:** it instructs replacing `STRIPE_PUBLISHABLE_KEY` on "line 9 of basket.js" — there is no such line, and checkout uses hosted payment links, not Stripe.js sessions. Rewrite to describe the real flow (payment links per product/size), or reduce it to "how to create a new payment link and wire a button".
-- [ ] **P2 — `Development Standards/CLAUDE_CODE_GUIDE.md` is good but stale** (last reviewed 2026-06-06): says 11 sponsor pages (now 13), "GA on all 22 pages" (behind-the-scenes is missing it), references the removed `STRIPE_PUBLISHABLE_KEY`/`addToBasket()`, predates `nav.js`, `card/`, the footer credit, and `FEED_SECURITY_CHANGES.md`. Refresh it — it's the map future sessions navigate by (see §8 for making it load automatically).
+- [ ] **P2 — `_internal/CLAUDE_CODE_GUIDE.md` is good but stale** (last reviewed 2026-06-06): says 11 sponsor pages (now 13), "GA on all 22 pages" (behind-the-scenes is missing it), references the removed `STRIPE_PUBLISHABLE_KEY`/`addToBasket()`, predates `nav.js`, `card/`, the footer credit, and `FEED_SECURITY_CHANGES.md`. Refresh it — it's the map future sessions navigate by (see §8 for making it load automatically).
 - [ ] **P3 — `SITEMAP_MAINTENANCE.md`** — re-check after fixing the sitemap gaps so doc and file agree.
 
 ## 8. Claude Code setup — recommendations
@@ -75,7 +75,7 @@ The single highest-leverage change: **you have a genuinely useful dev guide that
 
 *(All items in this section were implemented on 2026-07-10.)*
 
-- [x] **P1 — Create `CLAUDE.md` in the repo root.** `Development Standards/CLAUDE_CODE_GUIDE.md` opens with "Read this before making any changes" — but only `CLAUDE.md` is loaded automatically into every session. Recommended shape: a concise `CLAUDE.md` (~40 lines) with the invariants — no build system; nav lives in `nav.js`, never hardcode menus; footer conventions; add GA + sitemap entry + footer credit to every new page; escape anything rendered from `data/*.json`; image budget ("WebP, ≤300 KB, lowercase-hyphenated names"); update the docs it touches — plus a pointer to the full guide for detail. Keeping the deep guide separate and the auto-loaded file short is the right split.
+- [x] **P1 — Create `CLAUDE.md` in the repo root.** `_internal/CLAUDE_CODE_GUIDE.md` opens with "Read this before making any changes" — but only `CLAUDE.md` is loaded automatically into every session. Recommended shape: a concise `CLAUDE.md` (~40 lines) with the invariants — no build system; nav lives in `nav.js`, never hardcode menus; footer conventions; add GA + sitemap entry + footer credit to every new page; escape anything rendered from `data/*.json`; image budget ("WebP, ≤300 KB, lowercase-hyphenated names"); update the docs it touches — plus a pointer to the full guide for detail. Keeping the deep guide separate and the auto-loaded file short is the right split.
 
 - [x] **P2 — Write project skills** in `.claude/skills/` for the recurring workflows. Each encodes a multi-file checklist that is exactly the kind of thing that drifted before:
   - **`new-sponsor-page`** — the highest-value one. Scaffold `sponsor-<name>.html` from the current pattern, then do the four side-updates people forget: card in the index "Our Partners" grid, logo in the hero strip, `sitemap.xml` entry, GA snippet + footer credit. (Four of the sitemap gaps in §4 exist precisely because these steps were manual.)
