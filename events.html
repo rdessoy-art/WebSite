@@ -12,7 +12,24 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
     <title>Events - Harrison Dessoy Racing</title>
+    <meta name="description" content="Follow Harrison Dessoy's (#55) 2026 FIM World Sportbike Championship race calendar — dates, circuits, and event details for every round.">
+
+    <!-- Open Graph / share preview tags -->
+    <meta property="og:title" content="Events - Harrison Dessoy Racing">
+    <meta property="og:description" content="Follow Harrison Dessoy's (#55) 2026 FIM World Sportbike Championship race calendar — dates, circuits, and event details for every round.">
+    <meta property="og:image" content="https://dessoyracing.com/images/og-image-home.jpg">
+    <meta property="og:url" content="https://dessoyracing.com/events.html">
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Events - Harrison Dessoy Racing">
+    <meta name="twitter:description" content="Follow Harrison Dessoy's (#55) 2026 FIM World Sportbike Championship race calendar — dates, circuits, and event details for every round.">
+    <meta name="twitter:image" content="https://dessoyracing.com/images/og-image-home.jpg">
     <style>
         * {
             margin: 0;
@@ -97,6 +114,9 @@
             cursor: pointer;
             padding: 0.5rem;
             z-index: 1001;
+            background: none;
+            border: none;
+            font: inherit;
         }
 
         .hamburger span {
@@ -428,11 +448,30 @@
                 justify-content: center;
             }
         }
-    </style>
+            .skip-link {
+            position: absolute;
+            top: -100px;
+            left: 0;
+            background: var(--primary);
+            color: var(--light);
+            padding: 0.75rem 1.5rem;
+            z-index: 2000;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 0 0 5px 0;
+            transition: top 0.2s;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+</style>
     <link rel="stylesheet" href="newsletter-popup.css">
     <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/dba85c89d82fef7f216d3993b/caa6283199cbc79f4a36d9208.js");</script>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
     <header>
         <div class="header-content">
             <div class="logo">
@@ -441,107 +480,107 @@
                     Harrison Dessoy
                 </a>
             </div>
-            <div class="hamburger" onclick="toggleMenu()">
+            <button type="button" class="hamburger" onclick="toggleMenu()" aria-label="Menu" aria-expanded="false" aria-controls="nav">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
             <nav id="nav">
                 <ul></ul>
             </nav>
         </div>
     </header>
 
-    <main>
+    <main id="main-content">
         <div class="page-hero" style="background: url('images/SBK_Logo.jpg') center/cover no-repeat; min-height: 300px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
         </div>
 
-        <h2 class="events-title" style="text-align: center; border-left: none; margin: 2rem 0; font-size: 1.8rem;">Follow Harrison Dessoy at these world championship events in 2026</h2>
+        <h1 class="events-title" style="text-align: center; border-left: none; margin: 2rem 0; font-size: 1.8rem;">Follow Harrison Dessoy at these world championship events in 2026</h1>
 
         <div class="races-grid">
             <!-- Official Test - Portimão -->
             <div class="race-row" data-event-url="https://www.worldsbk.com/en/event/POR/2026?utm_campaign=EN_worldSBK&utm_source=web_DessoyRacing">
-                <img class="country-flag" src="https://flagcdn.com/w40/pt.png" alt="Portugal">
+                <img loading="lazy" class="country-flag" src="https://flagcdn.com/w40/pt.png" alt="Portugal">
                 <div class="country-name">Portugal</div>
                 <div class="race-date">March 25-26</div>
                 <div class="race-country">
-                    <img class="venue-logo" src="images/POR.svg" alt="Portimão">
+                    <img loading="lazy" class="venue-logo" src="images/POR.svg" alt="Portimão">
                     <span>Portimão</span>
                 </div>
                 <div class="track-name">Official Test</div>
-                <a href="portimao-test-report.html" class="race-report-btn" target="_blank">Test Report</a>
-                <a href="https://tickets.worldsbk.com/en/25811-portugal/?utm_source=worldsbk.com&utm_medium=web&utm_campaign=calendar26_por&_ga=2.199644654.1998201811.1764184683-720137188.1763886340" class="race-report-btn" target="_blank">Buy Tickets</a>
+                <a href="portimao-test-report.html" class="race-report-btn" target="_blank" rel="noopener">Test Report</a>
+                <a href="https://tickets.worldsbk.com/en/25811-portugal/?utm_source=worldsbk.com&utm_medium=web&utm_campaign=calendar26_por&_ga=2.199644654.1998201811.1764184683-720137188.1763886340" class="race-report-btn" target="_blank" rel="noopener">Buy Tickets</a>
             </div>
 
             <!-- Round 2 - Portuguese Round -->
             <div class="race-row" data-event-url="https://www.worldsbk.com/en/event/POR/2026?utm_campaign=EN_worldSBK&utm_source=web_DessoyRacing">
-                <img class="country-flag" src="https://flagcdn.com/w40/pt.png" alt="Portugal">
+                <img loading="lazy" class="country-flag" src="https://flagcdn.com/w40/pt.png" alt="Portugal">
                 <div class="country-name">Portugal</div>
                 <div class="race-date">March 27-29</div>
                 <div class="race-country">
-                    <img class="venue-logo" src="images/POR.svg" alt="Portimão">
+                    <img loading="lazy" class="venue-logo" src="images/POR.svg" alt="Portimão">
                     <span>Portimão</span>
                 </div>
                 <div class="track-name">Round 2</div>
-                <a href="Harrison_Dessoy_Portimao_SponsorDebrief.pdf" class="race-report-btn" target="_blank">Race Report</a>
-                <a href="https://tickets.worldsbk.com/en/25811-portugal/?utm_source=worldsbk.com&utm_medium=web&utm_campaign=calendar26_por&_ga=2.199644654.1998201811.1764184683-720137188.1763886340" class="race-report-btn" target="_blank">Buy Tickets</a>
+                <a href="Harrison_Dessoy_Portimao_SponsorDebrief.pdf" class="race-report-btn" target="_blank" rel="noopener">Race Report</a>
+                <a href="https://tickets.worldsbk.com/en/25811-portugal/?utm_source=worldsbk.com&utm_medium=web&utm_campaign=calendar26_por&_ga=2.199644654.1998201811.1764184683-720137188.1763886340" class="race-report-btn" target="_blank" rel="noopener">Buy Tickets</a>
             </div>
 
             <!-- Round 3 - Dutch Round -->
             <div class="race-row" data-event-url="https://www.worldsbk.com/en/event/NED/2026?utm_campaign=EN_worldSBK&utm_source=web_DessoyRacing">
-                <img class="country-flag" src="https://flagcdn.com/w40/nl.png" alt="Netherlands">
+                <img loading="lazy" class="country-flag" src="https://flagcdn.com/w40/nl.png" alt="Netherlands">
                 <div class="country-name">Netherlands</div>
                 <div class="race-date">April 17-19</div>
                 <div class="race-country">
                     <span>TT Circuit Assen</span>
                 </div>
                 <div class="track-name">Round 3</div>
-                <a href="Harrison_Dessoy_Assen_SponsorDebrief.pdf" class="race-report-btn" target="_blank">Race Report</a>
-                <a href="https://tickets.worldsbk.com/en/25751-netherlands/?utm_source=worldsbk.com&utm_medium=web&utm_campaign=calendar26_ned" class="race-report-btn" target="_blank">Buy Tickets</a>
+                <a href="Harrison_Dessoy_Assen_SponsorDebrief.pdf" class="race-report-btn" target="_blank" rel="noopener">Race Report</a>
+                <a href="https://tickets.worldsbk.com/en/25751-netherlands/?utm_source=worldsbk.com&utm_medium=web&utm_campaign=calendar26_ned" class="race-report-btn" target="_blank" rel="noopener">Buy Tickets</a>
             </div>
 
             <!-- Round 5 - Czech Round -->
             <div class="race-row" data-event-url="https://www.worldsbk.com/en/event/CZE/2026?utm_campaign=EN_worldSBK&utm_source=web_DessoyRacing">
-                <img class="country-flag" src="https://flagcdn.com/w40/cz.png" alt="Czech Republic">
+                <img loading="lazy" class="country-flag" src="https://flagcdn.com/w40/cz.png" alt="Czech Republic">
                 <div class="country-name">Czech Republic</div>
                 <div class="race-date">May 15-17</div>
                 <div class="race-country">
                     <span>Autodrom Most</span>
                 </div>
                 <div class="track-name">Round 5</div>
-                <a href="Most_Sponsor_Debrief.pdf" class="race-report-btn" target="_blank">Race Report</a>
-                <a href="https://tickets.worldsbk.com/en/25781-czech-republic/?utm_source=worldsbk.com&utm_medium=web&utm_campaign=calendar26_cze&_ga=2.240996931.1998201811.1764184683-720137188.1763886340" class="race-report-btn" target="_blank">Buy Tickets</a>
+                <a href="Most_Sponsor_Debrief.pdf" class="race-report-btn" target="_blank" rel="noopener">Race Report</a>
+                <a href="https://tickets.worldsbk.com/en/25781-czech-republic/?utm_source=worldsbk.com&utm_medium=web&utm_campaign=calendar26_cze&_ga=2.240996931.1998201811.1764184683-720137188.1763886340" class="race-report-btn" target="_blank" rel="noopener">Buy Tickets</a>
             </div>
 
             <!-- Round 6 - Aragon Round -->
             <div class="race-row" data-event-url="https://www.worldsbk.com/en/event/ESP/2026?utm_campaign=EN_worldSBK&utm_source=web_DessoyRacing">
-                <img class="country-flag" src="https://flagcdn.com/w40/es.png" alt="Spain">
+                <img loading="lazy" class="country-flag" src="https://flagcdn.com/w40/es.png" alt="Spain">
                 <div class="country-name">Spain</div>
                 <div class="race-date">May 29-31</div>
                 <div class="race-country">
                     <span>MotorLand Aragon</span>
                 </div>
                 <div class="track-name">Round 6</div>
-                <a href="Aragon_Sponsor_Debrief.pdf" class="race-report-btn" target="_blank">Race Report</a>
-                <a href="https://tickets.worldsbk.com/en/25741-aragon/" class="race-report-btn" target="_blank">Buy Tickets</a>
+                <a href="Aragon_Sponsor_Debrief.pdf" class="race-report-btn" target="_blank" rel="noopener">Race Report</a>
+                <a href="https://tickets.worldsbk.com/en/25741-aragon/" class="race-report-btn" target="_blank" rel="noopener">Buy Tickets</a>
             </div>
 
             <!-- Round 7 - Emilia-Romagna Round -->
             <div class="race-row" data-event-url="https://www.worldsbk.com/en/event/ITA/2026?utm_campaign=EN_worldSBK&utm_source=web_DessoyRacing">
-                <img class="country-flag" src="https://flagcdn.com/w40/it.png" alt="Italy">
+                <img loading="lazy" class="country-flag" src="https://flagcdn.com/w40/it.png" alt="Italy">
                 <div class="country-name">Italy</div>
                 <div class="race-date">June 12-14</div>
                 <div class="race-country">
                     <span>Misano World Circuit - Marco Simoncelli</span>
                 </div>
                 <div class="track-name">Round 7</div>
-                <a href="Misano_Sponsor_Debrief.pdf" class="race-report-btn" target="_blank">Race Report</a>
-                <a href="https://tickets.worldsbk.com/en/25801-emilia-romagna/?utm_source=worldsbk.com&utm_medium=web&utm_campaign=calendar26_rsm&_ga=2.141564530.1998201811.1764184683-720137188.1763886340" class="race-report-btn" target="_blank">Buy Tickets</a>
+                <a href="Misano_Sponsor_Debrief.pdf" class="race-report-btn" target="_blank" rel="noopener">Race Report</a>
+                <a href="https://tickets.worldsbk.com/en/25801-emilia-romagna/?utm_source=worldsbk.com&utm_medium=web&utm_campaign=calendar26_rsm&_ga=2.141564530.1998201811.1764184683-720137188.1763886340" class="race-report-btn" target="_blank" rel="noopener">Buy Tickets</a>
             </div>
 
             <!-- Round 9 - French Round -->
             <div class="race-row" data-event-url="https://www.worldsbk.com/en/event/FRA/2026?utm_campaign=EN_worldSBK&utm_source=web_DessoyRacing">
-                <img class="country-flag" src="https://flagcdn.com/w40/fr.png" alt="France">
+                <img loading="lazy" class="country-flag" src="https://flagcdn.com/w40/fr.png" alt="France">
                 <div class="country-name">France</div>
                 <div class="race-date">September 4-6</div>
                 <div class="race-country">
@@ -549,12 +588,12 @@
                 </div>
                 <div class="track-name">Round 9</div>
                 <button onclick="showReportComingSoon()" class="race-report-btn">Race Report</button>
-                <a href="https://tickets.worldsbk.com/en/25821-france/?utm_source=worldsbk.com&utm_medium=web&utm_campaign=calendar26_fra&_ga=2.141564530.1998201811.1764184683-720137188.1763886340" class="race-report-btn" target="_blank">Buy Tickets</a>
+                <a href="https://tickets.worldsbk.com/en/25821-france/?utm_source=worldsbk.com&utm_medium=web&utm_campaign=calendar26_fra&_ga=2.141564530.1998201811.1764184683-720137188.1763886340" class="race-report-btn" target="_blank" rel="noopener">Buy Tickets</a>
             </div>
 
             <!-- Round 10 - Italian Round -->
             <div class="race-row" data-event-url="https://www.worldsbk.com/en/event/ITA2/2026?utm_campaign=EN_worldSBK&utm_source=web_DessoyRacing">
-                <img class="country-flag" src="https://flagcdn.com/w40/it.png" alt="Italy">
+                <img loading="lazy" class="country-flag" src="https://flagcdn.com/w40/it.png" alt="Italy">
                 <div class="country-name">Italy</div>
                 <div class="race-date">September 25-27</div>
                 <div class="race-country">
@@ -562,12 +601,12 @@
                 </div>
                 <div class="track-name">Round 10</div>
                 <button onclick="showReportComingSoon()" class="race-report-btn">Race Report</button>
-                <a href="https://tickets.worldsbk.com/en/66578-italy/" class="race-report-btn" target="_blank">Buy Tickets</a>
+                <a href="https://tickets.worldsbk.com/en/66578-italy/" class="race-report-btn" target="_blank" rel="noopener">Buy Tickets</a>
             </div>
 
             <!-- Round 12 - Spanish Round -->
             <div class="race-row" data-event-url="https://www.worldsbk.com/en/event/ESP2/2026?utm_campaign=EN_worldSBK&utm_source=web_DessoyRacing">
-                <img class="country-flag" src="https://flagcdn.com/w40/es.png" alt="Spain">
+                <img loading="lazy" class="country-flag" src="https://flagcdn.com/w40/es.png" alt="Spain">
                 <div class="country-name">Spain</div>
                 <div class="race-date">October 16-18</div>
                 <div class="race-country">
@@ -575,34 +614,17 @@
                 </div>
                 <div class="track-name">Round 12</div>
                 <button onclick="showReportComingSoon()" class="race-report-btn">Race Report</button>
-                <a href="https://tickets.worldsbk.com/en/32851-jerez/" class="race-report-btn" target="_blank">Buy Tickets</a>
+                <a href="https://tickets.worldsbk.com/en/32851-jerez/" class="race-report-btn" target="_blank" rel="noopener">Buy Tickets</a>
             </div>
         </div>
     </main>
 
-    <footer>
-        <div class="social-links">
-            <a href="https://www.instagram.com/harrison_dessoy55/" title="Instagram" target="_blank" rel="noopener">
-                <img src="images/Instagram logo(2).png" alt="Instagram" width="50" height="50">
-            </a>
-            <a href="https://www.facebook.com/HarrisonDessoy" title="Facebook" target="_blank" rel="noopener">
-                <img src="images/Facebook logo.png" alt="Facebook" width="50" height="50">
-            </a>
-            <a href="https://www.youtube.com/channel/UCco2lC1RzhZFZYTZYMhFdcA" title="YouTube" target="_blank" rel="noopener">
-                <img src="images/Youtube_logo.png" alt="YouTube" width="50" height="50">
-            </a>
-            <a href="https://www.linkedin.com/in/harrisondessoy/" title="LinkedIn" target="_blank" rel="noopener">
-                <img src="images/LinkedIn_logo.png" alt="LinkedIn" width="50" height="50">
-            </a>
-        </div>
-        <div class="footer-contact" style="margin: 1.5rem 0;">
-            <p style="margin-bottom: 0.3rem;">Website: www.DessoyRacing.com</p>
-            <p>Email: <a href="mailto:Robert@DessoyRacing.com?subject=DessoyRacing.com%20website%20enquiry" style="color: var(--light); text-decoration: underline;">Robert@DessoyRacing.com</a></p>
-        </div>
-        <p>&copy; 2025 Harrison Dessoy. All rights reserved.</p>
-        <p>Racing at the Highest Level</p>
-        <p style="margin-top: 1rem; font-size: 0.85rem; opacity: 0.75;">Website designed &amp; built by DessoyArt &mdash; for website enquiries or changes, <a href="https://website.dessoy.co.uk" target="_blank" rel="noopener" style="color: var(--light); text-decoration: underline;">get in touch</a>.</p>
-    </footer>
+    <footer></footer>
+
+    <script src="footer.js"></script>
+    <script>
+        renderFooter({ withSocial: true });
+    </script>
 
     <script src="nav.js"></script>
     <script>
@@ -649,8 +671,10 @@
             document.getElementById('reportModal').classList.remove('active');
         }
 
-        document.getElementById('reportModal').addEventListener('click', function(e) {
-            if (e.target === this) closeReportModal();
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('reportModal').addEventListener('click', function(e) {
+                if (e.target === this) closeReportModal();
+            });
         });
 
         // Add click handlers to race rows

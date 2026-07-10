@@ -15,7 +15,24 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
     <title>Merchandise - Harrison Dessoy Racing</title>
+    <meta name="description" content="Official Harrison Dessoy Racing merchandise — HD55 caps, t-shirts, hoodies and beanies. Show your support for #55 on and off the track.">
+
+    <!-- Open Graph / share preview tags -->
+    <meta property="og:title" content="Merchandise - Harrison Dessoy Racing">
+    <meta property="og:description" content="Official Harrison Dessoy Racing merchandise — HD55 caps, t-shirts, hoodies and beanies. Show your support for #55 on and off the track.">
+    <meta property="og:image" content="https://dessoyracing.com/images/og-image-merchandise.jpg">
+    <meta property="og:url" content="https://dessoyracing.com/merchandise.html">
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Merchandise - Harrison Dessoy Racing">
+    <meta name="twitter:description" content="Official Harrison Dessoy Racing merchandise — HD55 caps, t-shirts, hoodies and beanies. Show your support for #55 on and off the track.">
+    <meta name="twitter:image" content="https://dessoyracing.com/images/og-image-merchandise.jpg">
     <style>
         * {
             margin: 0;
@@ -94,13 +111,6 @@
             color: var(--primary);
         }
 
-        .basket-icon {
-            display: none;
-        }
-
-        .basket-count {
-            display: none;
-        }
 
         .hamburger {
             display: none;
@@ -108,6 +118,9 @@
             cursor: pointer;
             padding: 0.5rem;
             z-index: 1001;
+            background: none;
+            border: none;
+            font: inherit;
         }
 
         .hamburger span {
@@ -315,24 +328,6 @@
             gap: 1rem;
         }
 
-        .add-to-basket-btn {
-            flex: 1;
-            padding: 0.8rem 1.5rem;
-            background: var(--secondary);
-            color: var(--light);
-            border: none;
-            border-radius: 5px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-align: center;
-        }
-
-        .add-to-basket-btn:hover {
-            background: var(--primary);
-            transform: translateY(-2px);
-        }
-
         .buy-now-btn {
             flex: 1;
             padding: 0.8rem 1.5rem;
@@ -374,15 +369,6 @@
             font-size: 1.1rem;
         }
 
-        /* Basket Sidebar */
-        /* Basket Sidebar - Hidden */
-        .basket-sidebar {
-            display: none;
-        }
-
-        .basket-overlay {
-            display: none;
-        }
 
         footer {
             background: var(--dark);
@@ -479,11 +465,30 @@
                 grid-template-columns: 1fr;
             }
         }
-    </style>
+            .skip-link {
+            position: absolute;
+            top: -100px;
+            left: 0;
+            background: var(--primary);
+            color: var(--light);
+            padding: 0.75rem 1.5rem;
+            z-index: 2000;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 0 0 5px 0;
+            transition: top 0.2s;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+</style>
     <link rel="stylesheet" href="newsletter-popup.css">
     <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/dba85c89d82fef7f216d3993b/caa6283199cbc79f4a36d9208.js");</script>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
     <header>
         <div class="header-content">
             <div class="logo">
@@ -492,22 +497,18 @@
                     Harrison Dessoy
                 </a>
             </div>
-            <div class="hamburger" onclick="toggleMenu()">
+            <button type="button" class="hamburger" onclick="toggleMenu()" aria-label="Menu" aria-expanded="false" aria-controls="nav">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
             <nav id="nav">
                 <ul></ul>
             </nav>
-            <div class="basket-icon" onclick="toggleBasket()">
-                🛒
-                <span class="basket-count" id="basketCount">0</span>
-            </div>
         </div>
     </header>
 
-    <main>
+    <main id="main-content">
         <h1>Official Merchandise</h1>
 
         <p style="font-size: 1.1rem; color: #666; margin-bottom: 2rem; line-height: 1.8;">
@@ -519,7 +520,7 @@
         <div class="products-grid">
             <!-- HD55 Beanie -->
             <div class="product-card">
-                <img src="images/Bennie2026_Front.png" alt="HD55 Beanie" class="product-image" id="beanie-image">
+                <img src="images/beanie-2026-front.webp" alt="HD55 Beanie" class="product-image" id="beanie-image">
                 <div class="product-content">
                     <h3>HD55 Beanie</h3>
                     <p class="product-price">£15.00</p>
@@ -543,8 +544,8 @@
             <div class="product-card">
                 <div class="product-carousel" data-carousel="tshirt">
                     <div class="carousel-images">
-                        <img src="images/T-Shirt_2026Front.png" alt="HD55 T-Shirt Front">
-                        <img src="images/T-Shirt2026_Rear.png" alt="HD55 T-Shirt Back">
+                        <img src="images/t-shirt-2026-front.webp" alt="HD55 T-Shirt Front">
+                        <img loading="lazy" src="images/t-shirt-2026-rear.webp" alt="HD55 T-Shirt Back">
                     </div>
                     <button class="carousel-btn prev" onclick="moveCarousel('tshirt', -1)">‹</button>
                     <button class="carousel-btn next" onclick="moveCarousel('tshirt', 1)">›</button>
@@ -568,8 +569,8 @@
             <div class="product-card">
                 <div class="product-carousel" data-carousel="hoody">
                     <div class="carousel-images">
-                        <img src="images/Hoody2026_Front.png" alt="HD55 Hoody Front">
-                        <img src="images/Hoody2026_Rear.png" alt="HD55 Hoody Back">
+                        <img src="images/hoody-2026-front.webp" alt="HD55 Hoody Front">
+                        <img loading="lazy" src="images/hoody-2026-rear.webp" alt="HD55 Hoody Back">
                     </div>
                     <button class="carousel-btn prev" onclick="moveCarousel('hoody', -1)">‹</button>
                     <button class="carousel-btn next" onclick="moveCarousel('hoody', 1)">›</button>
@@ -591,7 +592,7 @@
 
             <!-- HD55 Cap -->
             <div class="product-card">
-                <img src="images/Cap2026_Front.png" alt="HD55 Cap" class="product-image" id="cap-image">
+                <img src="images/cap-2026-front.webp" alt="HD55 Cap" class="product-image" id="cap-image">
                 <div class="product-content">
                     <h3>HD55 Cap</h3>
                     <p class="product-price">£15.00</p>
@@ -618,60 +619,16 @@
         </div>
     </main>
 
-    <!-- Basket Overlay -->
-    <div class="basket-overlay" id="basketOverlay" onclick="toggleBasket()"></div>
+    <footer></footer>
 
-    <!-- Basket Sidebar -->
-    <div class="basket-sidebar" id="basketSidebar">
-        <div class="basket-header">
-            <h2>Your Basket</h2>
-            <button class="close-basket" onclick="toggleBasket()">✕</button>
-        </div>
-        <div class="basket-items" id="basketItems">
-            <div class="basket-empty">Your basket is empty</div>
-        </div>
-        <div class="basket-footer">
-            <div class="basket-total">
-                <span>Total:</span>
-                <span id="basketTotal">£0.00</span>
-            </div>
-            <button class="checkout-btn" id="checkoutBtn" onclick="checkout()" disabled>Checkout</button>
-        </div>
-    </div>
-
-    <footer>
-        <div class="social-links">
-            <a href="https://www.instagram.com/harrison_dessoy55/" title="Instagram" target="_blank" rel="noopener">
-                <img src="images/Instagram logo(2).png" alt="Instagram" width="50" height="50">
-            </a>
-            <a href="https://www.facebook.com/HarrisonDessoy" title="Facebook" target="_blank" rel="noopener">
-                <img src="images/Facebook logo.png" alt="Facebook" width="50" height="50">
-            </a>
-            <a href="https://www.youtube.com/channel/UCco2lC1RzhZFZYTZYMhFdcA" title="YouTube" target="_blank" rel="noopener">
-                <img src="images/Youtube_logo.png" alt="YouTube" width="50" height="50">
-            </a>
-            <a href="https://www.linkedin.com/in/harrisondessoy/" title="LinkedIn" target="_blank" rel="noopener">
-                <img src="images/LinkedIn_logo.png" alt="LinkedIn" width="50" height="50">
-            </a>
-        </div>
-        <div class="footer-contact" style="margin: 1.5rem 0;">
-            <p style="margin-bottom: 0.3rem;">Website: www.DessoyRacing.com</p>
-            <p>Email: <a href="mailto:Robert@DessoyRacing.com?subject=DessoyRacing.com%20website%20enquiry" style="color: var(--light); text-decoration: underline;">Robert@DessoyRacing.com</a></p>
-        </div>
-        <p>&copy; 2025 Harrison Dessoy. All rights reserved.</p>
-        <p>Racing at the Highest Level</p>
-        <p style="margin-top: 1rem; font-size: 0.85rem; opacity: 0.75;">Website designed &amp; built by DessoyArt &mdash; for website enquiries or changes, <a href="https://website.dessoy.co.uk" target="_blank" rel="noopener" style="color: var(--light); text-decoration: underline;">get in touch</a>.</p>
-    </footer>
+    <script src="footer.js"></script>
+    <script>
+        renderFooter({ withSocial: true });
+    </script>
 
     <script src="nav.js"></script>
-    <script src="basket.js"></script>
     <script>
         renderNav('merchandise', false);
-
-        // Initialize basket on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            updateBasketDisplay();
-        });
 
         // Color-based payment link functions
         function changeBeanieImage() {
@@ -680,12 +637,12 @@
             const beanieImage = document.getElementById('beanie-image');
 
             if (selectedColor === 'black') {
-                beanieImage.src = 'images/image0.jpeg';
+                beanieImage.src = 'images/beanie-2026-black.webp';
             } else if (selectedColor === 'yellow') {
-                beanieImage.src = 'images/Hd55 Beanie yellow.jpeg';
+                beanieImage.src = 'images/beanie-2026-yellow.webp';
             } else {
                 // Red is the default
-                beanieImage.src = 'images/Bennie2026_Front.png';
+                beanieImage.src = 'images/beanie-2026-front.webp';
             }
         }
 
@@ -712,12 +669,12 @@
             const capImage = document.getElementById('cap-image');
 
             if (selectedColor === 'white') {
-                capImage.src = 'images/HD55 CAp white.jpeg';
+                capImage.src = 'images/cap-2026-white.webp';
             } else if (selectedColor === 'yellow') {
-                capImage.src = 'images/HD55 Cap yellow.jpeg';
+                capImage.src = 'images/cap-2026-yellow.webp';
             } else {
                 // Red is the default
-                capImage.src = 'images/Cap2026_Front.png';
+                capImage.src = 'images/cap-2026-front.webp';
             }
         }
 

@@ -15,7 +15,7 @@ python3 scripts/site-check.py
 
 Fix anything your change introduced. Pre-existing failures are tracked in `_internal/AUDIT.md` — don't add new ones.
 
-If you changed any `<script>` content, syntax-check it: extract inline scripts and run `node --check` (and `node --check nav.js basket.js newsletter-popup.js` if touched).
+If you changed any `<script>` content, syntax-check it: extract inline scripts and run `node --check` (and `node --check nav.js footer.js newsletter-popup.js` if touched).
 
 ## 2. Serve locally
 

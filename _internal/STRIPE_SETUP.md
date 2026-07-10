@@ -1,149 +1,64 @@
-# Stripe Checkout Integration Setup Guide
+# Stripe Payment Setup Guide
 
-This guide will help you complete the Stripe Checkout integration for your website.
+**How this site actually takes payments:** every "Buy Now" / "Join Now" button is a plain link to a Stripe-hosted **Payment Link** (`https://buy.stripe.com/...`). There is no checkout session, no cart, no Price IDs wired into the site's JavaScript, and (as of 2026-07-10) no `basket.js` at all. Clicking a button opens Stripe's hosted page directly in a new tab; Stripe handles the whole payment, then redirects to `success.html` or `cancel.html`.
 
-## Overview
+This is simpler than a Checkout Session integration and requires zero code changes to add a new product — you only need a new link.
 
-The Stripe Checkout integration has been set up to handle both single and multiple item purchases. Here's what's been implemented:
+## Creating a new Payment Link
 
-✅ Stripe.js added to all HTML pages
-✅ Basket system updated to support Stripe Price IDs
-✅ Checkout function created using Stripe Checkout API
-✅ Success page (success.html) created
-✅ Cancel page (cancel.html) created
+1. Stripe Dashboard → **Payment Links** → **+ New**
+2. Add the product (name, price, image) or pick an existing one
+3. Configure options as needed:
+   - Shipping countries, if it's a physical product (Settings → Shipping address collection)
+   - Quantity limits, if relevant
+4. Save — Stripe gives you a URL like `https://buy.stripe.com/abc123xyz`
+5. Set the **success URL** to `https://dessoyracing.com/success.html` and the **cancel/back URL** to `https://dessoyracing.com/cancel.html` (Payment Link settings → After payment)
 
-## What You Need to Do
+## Wiring it into the site
 
-### 1. Get Your Stripe API Keys
+### Simple case — one link, one button
+```html
+<a href="https://buy.stripe.com/your_new_link" target="_blank" rel="noopener" class="cta-button">Buy Now</a>
+```
+That's the entire integration. See any `sponsor-*.html` CTA button or a `fanclub.html` membership tier for the exact pattern to copy.
 
-1. Log in to your Stripe Dashboard: https://dashboard.stripe.com/
-2. Click on **Developers** → **API keys**
-3. Copy your **Publishable key** (starts with `pk_test_` or `pk_live_`)
-
-### 2. Update the Stripe Publishable Key
-
-Open `basket.js` and replace the placeholder key on line 9:
+### Variant case — color/size selectors (merchandise.html)
+`merchandise.html` has products with color variants (cap, beanie). Each color maps to its own Payment Link inside a `buyX()` function, e.g.:
 
 ```javascript
-// Replace this line:
-const STRIPE_PUBLISHABLE_KEY = 'pk_test_YOUR_PUBLISHABLE_KEY_HERE';
-
-// With your actual publishable key:
-const STRIPE_PUBLISHABLE_KEY = 'pk_test_51...'; // Your actual key
+function buyBeanie() {
+    const selectedColor = document.getElementById('beanie-color').value;
+    let paymentLink;
+    if (selectedColor === 'black') {
+        paymentLink = 'https://buy.stripe.com/dRmaEX1lU3pa5sx25V9k40a';
+    } else if (selectedColor === 'yellow') {
+        paymentLink = 'https://buy.stripe.com/3cI4gz1lUf7S1ch25V9k40b';
+    } else {
+        paymentLink = 'https://buy.stripe.com/14A8wP8Ome3O4ot8uj9k403'; // red, default
+    }
+    window.open(paymentLink, '_blank', 'noopener');
+}
 ```
-
-### 3. Get Your Stripe Price IDs
-
-For each product, you need to create a Price in Stripe:
-
-#### Option A: Use the Stripe Dashboard
-1. Go to **Products** in your Stripe Dashboard
-2. Click on a product (or create a new one)
-3. Copy the **Price ID** (starts with `price_`)
-
-#### Option B: Extract from Payment Links
-If you're using Stripe Payment Links, you can find the Price IDs:
-1. Go to **Payment Links** in Stripe Dashboard
-2. Click on your payment link
-3. The Price ID will be shown in the details
-
-### 4. Update Product Price IDs
-
-Update the Price IDs in your HTML files:
-
-#### merchandise.html (Line 558)
-```javascript
-// Replace:
-onclick="addToBasket('HD55 Beanie', 15.00, 'images/Drawing.jpg', 'https://buy.stripe.com/...', 'price_HD55_BEANIE_REPLACE_ME')"
-
-// With your actual Price ID:
-onclick="addToBasket('HD55 Beanie', 15.00, 'images/Drawing.jpg', 'https://buy.stripe.com/...', 'price_1234567890abcdef')"
-```
-
-#### fanclub.html (Line 788)
-```javascript
-// Replace:
-onclick="addToBasket('The Fan - Racing Club Membership', 50, 'images/HD55beanie.png', 'https://buy.stripe.com/...', 'price_FAN_MEMBERSHIP_REPLACE_ME')"
-
-// With your actual Price ID:
-onclick="addToBasket('The Fan - Racing Club Membership', 50, 'images/HD55beanie.png', 'https://buy.stripe.com/...', 'price_1234567890abcdef')"
-```
-
-## How It Works
-
-### Single Item Purchase
-- User clicks "Add to Basket" → Item added to basket
-- User clicks "Checkout" → Redirects to Stripe Checkout with that single item
-- After payment → Redirects to success.html
-
-### Multiple Item Purchase
-- User adds multiple items to basket
-- User clicks "Checkout" → Redirects to Stripe Checkout with all items as line items
-- After payment → Redirects to success.html
-
-### Payment Flow
-1. User clicks "Checkout"
-2. Stripe Checkout opens with all basket items
-3. User enters payment and shipping details
-4. On success → Redirected to `success.html` (basket is cleared)
-5. On cancel → Redirected to `cancel.html` (basket items preserved)
+To add a new color/size variant: create the Payment Link in Stripe, add a branch to the relevant `buyX()` function, and add the option to the matching `<select>`. There's a matching `changeXImage()` function per product that swaps the preview photo the same way — see the `add-product` Claude Code skill for the full checklist (including image optimization).
 
 ## Testing
 
-### Test Mode
-1. Use your test mode API keys (start with `pk_test_`)
-2. Use test card: `4242 4242 4242 4242`
-3. Use any future expiry date and any CVC
-
-### Going Live
-1. Replace `pk_test_` with your live `pk_live_` key
-2. Test the checkout flow one more time
-3. Make a real test purchase (you can refund it later)
-
-## Product Structure
-
-Each product in your basket needs:
-- **name**: Product name
-- **price**: Price in GBP (e.g., 15.00)
-- **image**: Product image path
-- **stripeLink**: Stripe Payment Link (for fallback/single items)
-- **stripePriceId**: Stripe Price ID (for checkout with multiple items)
-
-## Shipping Countries
-
-The checkout is currently configured to allow shipping to:
-- United Kingdom (GB)
-- United States (US)
-- Canada (CA)
-- Australia (AU)
-- New Zealand (NZ)
-- Ireland (IE)
-
-To modify this, edit the `shippingAddressCollection` in `basket.js` (line 200).
+- Stripe Payment Links have their own test-mode toggle in the Dashboard — no code-side test/live key to swap, since nothing in this repo holds a Stripe key at all
+- Test card: `4242 4242 4242 4242`, any future expiry, any CVC
+- To go live: switch the Payment Link itself to live mode in the Dashboard (or create a new live-mode link) and swap the URL in the HTML
 
 ## Troubleshooting
 
-### "Stripe is not configured" error
-- Check that you've replaced `STRIPE_PUBLISHABLE_KEY` in basket.js
-- Make sure Stripe.js is loading (check browser console)
+**Button does nothing / wrong product opens** — check the `href` (or the `paymentLink` variable for variant products) points at the correct Payment Link URL, and that you copied it from the correct (test vs. live) Stripe mode.
 
-### "Some items are missing payment information" error
-- Verify all products have valid Price IDs
-- Check that Price IDs start with `price_`
-
-### Checkout doesn't redirect
-- Check browser console for errors
-- Verify Price IDs are correct
-- Make sure you're using the correct Stripe account
+**Redirect after payment goes to the wrong place** — check the Payment Link's own "after payment" URL settings in the Stripe Dashboard; this site does not control that redirect from its own code.
 
 ## Need Help?
 
-- Stripe Documentation: https://stripe.com/docs/payments/checkout
+- Stripe Payment Links docs: https://stripe.com/docs/payment-links
 - Stripe Support: https://support.stripe.com/
 - Contact: Robert@DessoyRacing.com
 
 ## Security Notes
 
-⚠️ **Important**: Never commit your Stripe Secret Key (starts with `sk_`) to your repository. Only use the Publishable Key in your frontend code.
-
-The Publishable Key is safe to expose in your HTML/JS as it can only create checkout sessions, not process refunds or access sensitive data.
+No Stripe key of any kind belongs in this repository. Payment Links require no publishable or secret key in the site's code — the link itself is the only thing Stripe needs, and it can only be used to pay for the product it was created for.

@@ -12,6 +12,11 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <meta name="robots" content="noindex">
     <title>Order Success - Harrison Dessoy Racing</title>
     <style>
         * {
@@ -291,43 +296,17 @@
             <p>💬 If you have any questions, contact us at <a href="mailto:Robert@DessoyRacing.com" style="color: var(--primary); font-weight: bold;">Robert@DessoyRacing.com</a></p>
         </div>
 
-        <p style="margin: 2rem 0; color: #777;">
-            Your basket has been automatically cleared.
-        </p>
-
         <div class="button-group">
             <a href="index.html" class="btn btn-primary">Return to Home</a>
             <a href="merchandise.html" class="btn btn-secondary">Continue Shopping</a>
         </div>
     </main>
 
-    <footer>
-        <div class="social-links">
-            <a href="https://www.instagram.com/harrison_dessoy55/" title="Instagram" target="_blank" rel="noopener">
-                <img src="images/Instagram logo(2).png" alt="Instagram" width="50" height="50">
-            </a>
-            <a href="https://www.facebook.com/HarrisonDessoy" title="Facebook" target="_blank" rel="noopener">
-                <img src="images/Facebook logo.png" alt="Facebook" width="50" height="50">
-            </a>
-            <a href="https://www.youtube.com/channel/UCco2lC1RzhZFZYTZYMhFdcA" title="YouTube" target="_blank" rel="noopener">
-                <img src="images/Youtube_logo.png" alt="YouTube" width="50" height="50">
-            </a>
-            <a href="https://www.linkedin.com/in/harrisondessoy/" title="LinkedIn" target="_blank" rel="noopener">
-                <img src="images/LinkedIn_logo.png" alt="LinkedIn" width="50" height="50">
-            </a>
-        </div>
-        <div class="footer-contact" style="margin: 1.5rem 0;">
-            <p style="margin-bottom: 0.3rem;">Website: www.DessoyRacing.com</p>
-            <p>Email: <a href="mailto:Robert@DessoyRacing.com?subject=DessoyRacing.com%20website%20enquiry" style="color: var(--light); text-decoration: underline;">Robert@DessoyRacing.com</a></p>
-        </div>
-        <p>&copy; 2025 Harrison Dessoy. All rights reserved.</p>
-        <p>Racing at the Highest Level</p>
-        <p style="margin-top: 1rem; font-size: 0.85rem; opacity: 0.75;">Website designed &amp; built by DessoyArt &mdash; for website enquiries or changes, <a href="https://website.dessoy.co.uk" target="_blank" rel="noopener" style="color: var(--light); text-decoration: underline;">get in touch</a>.</p>
-    </footer>
+    <footer></footer>
 
+    <script src="footer.js"></script>
     <script>
-        // Clear the basket on successful purchase
-        localStorage.removeItem('hdRacingBasket');
+        renderFooter({ withSocial: true });
     </script>
 </body>
 </html>

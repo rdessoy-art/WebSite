@@ -106,16 +106,27 @@
     <priority>0.5</priority>
   </url>
 
-  <!-- Transaction Pages -->
   <url>
-    <loc>https://dessoyracing.com/success.html</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <loc>https://dessoyracing.com/sponsor-fletcherssolicitors.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
 
   <url>
-    <loc>https://dessoyracing.com/cancel.html</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <loc>https://dessoyracing.com/sponsor-grayers-graphics.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://dessoyracing.com/sponsor-pro-bolt.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://dessoyracing.com/sponsor-rockcameras.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
 </urlset>

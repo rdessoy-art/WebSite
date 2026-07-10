@@ -15,8 +15,25 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
     <link rel="canonical" href="https://dessoyracing.com/" />
     <title>Harrison Dessoy - Racing Excellence</title>
+    <meta name="description" content="Harrison Dessoy (#55) — FIM World Sportbike Championship rider for PHR Performance on a Triumph Daytona 660. Race results, news, sponsors and events.">
+
+    <!-- Open Graph / share preview tags -->
+    <meta property="og:title" content="Harrison Dessoy - World Sportbike Rider">
+    <meta property="og:description" content="Harrison Dessoy (#55) — FIM World Sportbike Championship rider for PHR Performance on a Triumph Daytona 660.">
+    <meta property="og:image" content="https://dessoyracing.com/images/og-image-home.jpg">
+    <meta property="og:url" content="https://dessoyracing.com/">
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Harrison Dessoy - World Sportbike Rider">
+    <meta name="twitter:description" content="Harrison Dessoy (#55) — FIM World Sportbike Championship rider for PHR Performance on a Triumph Daytona 660.">
+    <meta name="twitter:image" content="https://dessoyracing.com/images/og-image-home.jpg">
     <style>
         * {
             margin: 0;
@@ -58,14 +75,6 @@
             align-items: center;
             padding: 1rem 2rem;
             position: relative;
-        }
-
-        .basket-icon {
-            display: none;
-        }
-
-        .basket-count {
-            display: none;
         }
 
         .logo {
@@ -118,6 +127,9 @@
             cursor: pointer;
             padding: 0.5rem;
             z-index: 1001;
+            background: none;
+            border: none;
+            font: inherit;
         }
 
         .hamburger span {
@@ -160,7 +172,7 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-                        url('images/centered_wide_fade.png');
+                        url('images/hero-bg-desktop.webp');
             background-size: cover;
             background-position: center center;
             z-index: 0;
@@ -170,7 +182,7 @@
         @media (max-width: 1024px) {
             .hero-background {
                 background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-                            url('images/Cadwell win 1.JPEG');
+                            url('images/hero-bg-tablet.webp');
                 background-size: cover;
                 background-position: center center;
             }
@@ -179,7 +191,7 @@
         @media (max-width: 768px) {
             .hero-background {
                 background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-                            url('images/Cadwellpodium.JPG');
+                            url('images/hero-bg-mobile.webp');
                 background-size: cover;
                 background-position: center center;
             }
@@ -947,52 +959,6 @@
             opacity: 0.9;
         }
 
-        .countdown-container {
-            margin-top: 2rem;
-            text-align: center;
-        }
-
-        .countdown-label {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            color: var(--light);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .countdown {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .countdown-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-width: 80px;
-        }
-
-        .countdown-value {
-            font-size: 3rem;
-            font-weight: bold;
-            color: var(--primary);
-            background: rgba(255, 255, 255, 0.1);
-            padding: 1rem 1.5rem;
-            border-radius: 10px;
-            min-width: 80px;
-            border: 2px solid var(--primary);
-        }
-
-        .countdown-label-text {
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
-            color: var(--light);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
         .hero-sponsors {
             display: flex;
             justify-content: center;
@@ -1015,15 +981,6 @@
         .hero-sponsor-logo:hover {
             opacity: 1;
             transform: scale(1.1);
-        }
-
-        /* Basket Sidebar - Hidden */
-        .basket-sidebar {
-            display: none;
-        }
-
-        .basket-overlay {
-            display: none;
         }
 
         @media (max-width: 768px) {
@@ -1147,10 +1104,29 @@
                 grid-template-columns: 1fr;
             }
         }
-    </style>
+            .skip-link {
+            position: absolute;
+            top: -100px;
+            left: 0;
+            background: var(--primary);
+            color: var(--light);
+            padding: 0.75rem 1.5rem;
+            z-index: 2000;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 0 0 5px 0;
+            transition: top 0.2s;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+</style>
     <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/dba85c89d82fef7f216d3993b/caa6283199cbc79f4a36d9208.js");</script>
 </head>
 <body>
+    <a href="#home" class="skip-link">Skip to content</a>
     <header>
         <div class="header-content">
             <div class="logo">
@@ -1159,18 +1135,14 @@
                     Harrison Dessoy
                 </a>
             </div>
-            <div class="hamburger" onclick="toggleMenu()">
+            <button type="button" class="hamburger" onclick="toggleMenu()" aria-label="Menu" aria-expanded="false" aria-controls="nav">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
             <nav id="nav">
                 <ul></ul>
             </nav>
-            <div class="basket-icon" onclick="toggleBasket()">
-                🛒
-                <span class="basket-count" id="basketCount">0</span>
-            </div>
         </div>
     </header>
 
@@ -1204,7 +1176,7 @@
             <a href="https://twotyres.co.uk/" target="_blank" rel="noopener">
                 <img src="images/TwoTyres.jpeg" alt="Two Tyres" class="hero-sponsor-logo">
             </a>
-            <a href="sponsor-martin-sheath.html" target="_blank" rel="noopener">
+            <a href="sponsor-martin-sheath.html" rel="noopener">
                 <img src="images/EGR.png" alt="Eastern Garage Racing" class="hero-sponsor-logo">
             </a>
             <a href="https://markwalkercoaching.co.uk/" target="_blank" rel="noopener">
@@ -1351,7 +1323,7 @@
             <div style="margin-top: 3rem;">
                 <h3 style="color: var(--secondary); margin-bottom: 1.5rem; font-size: 1.8rem;">Race Highlights</h3>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-                    <a href="https://www.youtube.com/live/R__4OSQfO_8?si=sylYJQMw_Bw3GIHT&t=4080s" target="_blank" style="text-decoration: none; color: inherit; display: block; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.15)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 15px rgba(0,0,0,0.1)';">
+                    <a href="https://www.youtube.com/live/R__4OSQfO_8?si=sylYJQMw_Bw3GIHT&t=4080s" target="_blank" style="text-decoration: none; color: inherit; display: block; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.15)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 15px rgba(0,0,0,0.1)';" rel="noopener">
                         <div style="position: relative;">
                             <img src="images/IDM Assen - saturday 16-08-2025 - photo Damon Teerink-1616.JPEG" alt="IDM Assen Saturday 16-08-2025" style="width: 100%; height: 280px; object-fit: cover; object-position: center 85%; display: block;">
                             <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; background: rgba(230, 57, 70, 0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
@@ -1363,7 +1335,7 @@
                             <p style="color: #666; font-size: 0.9rem;">IDM Assen Saturday 16-08-2025</p>
                         </div>
                     </a>
-                    <a href="https://www.youtube.com/live/Q1f5JaANZI8?si=tzby891AUKnRfnEh&t=11630s" target="_blank" style="text-decoration: none; color: inherit; display: block; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.15)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 15px rgba(0,0,0,0.1)';">
+                    <a href="https://www.youtube.com/live/Q1f5JaANZI8?si=tzby891AUKnRfnEh&t=11630s" target="_blank" style="text-decoration: none; color: inherit; display: block; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.15)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 15px rgba(0,0,0,0.1)';" rel="noopener">
                         <div style="position: relative;">
                             <img src="images/IDM Assen - sunday 17-08-2025 - photo Damon Teerink-3677.JPEG" alt="IDM Assen Sunday 17-08-2025" style="width: 100%; height: 280px; object-fit: cover; object-position: center 65%; display: block;">
                             <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; background: rgba(230, 57, 70, 0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
@@ -1467,7 +1439,7 @@
             <div class="sponsors-grid">
                 <div class="sponsor-card">
                     <div class="sponsor-logo" style="background: white; padding: 1rem;">
-                        <img src="images/PHR-with-Wriiting-below-pdf.webp" alt="PHR Performance" style="width: 100%; height: 100%; object-fit: contain;">
+                        <img src="images/PHR-with-Wriiting-below-pdf.webp" alt="PHR Performance" style="width: 100%; height: 100%; object-fit: contain;" loading="lazy">
                     </div>
                     <h3>Professional Race Team</h3>
                     <p>PHR Performance by Peter Hickman provides world-class technical expertise and championship-winning insights, supporting Harrison with setup optimisation and race craft development.</p>
@@ -1476,7 +1448,7 @@
 
                 <div class="sponsor-card">
                     <div class="sponsor-logo" style="background: white; padding: 1rem;">
-                        <img src="images/GreyersGraphics.svg" alt="Grayers Graphics" style="width: 100%; height: 100%; object-fit: contain;">
+                        <img src="images/GreyersGraphics.svg" alt="Grayers Graphics" style="width: 100%; height: 100%; object-fit: contain;" loading="lazy">
                     </div>
                     <h3>Branding & Graphics Partner</h3>
                     <p>Grayers Graphics specializes in vehicle wrapping, sign writing, and graphic design, bringing over 15 years of expertise to create striking visual branding for Harrison's race team.</p>
@@ -1485,7 +1457,7 @@
 
                 <div class="sponsor-card">
                     <div class="sponsor-logo" style="background: white; padding: 1rem;">
-                        <img src="images/MWC_Logo_Black.png" alt="Mark Walker Coaching" style="width: 120%; height: 120%; object-fit: contain;">
+                        <img src="images/MWC_Logo_Black.png" alt="Mark Walker Coaching" style="width: 120%; height: 120%; object-fit: contain;" loading="lazy">
                     </div>
                     <h3>Fitness Coach</h3>
                     <p>Mark Walker Coaching provides elite sports science coaching and training programmes, helping Harrison achieve peak physical and mental performance through evidence-based methods.</p>
@@ -1494,7 +1466,7 @@
 
                 <div class="sponsor-card">
                     <div class="sponsor-logo" style="background: white; padding: 1rem;">
-                        <img src="images/weise-logo_h100.jpg" alt="Weise Clothing" style="width: 100%; height: 100%; object-fit: contain;">
+                        <img src="images/weise-logo_h100.jpg" alt="Weise Clothing" style="width: 100%; height: 100%; object-fit: contain;" loading="lazy">
                     </div>
                     <h3>Leathers Sponsor</h3>
                     <p>Weise provides premium motorcycle clothing and protective gear, ensuring Harrison has the best equipment for safety and performance on and off the track.</p>
@@ -1503,7 +1475,7 @@
 
                 <div class="sponsor-card">
                     <div class="sponsor-logo" style="background: white; padding: 1rem;">
-                        <img src="images/Zerofit Image.png" alt="ZeroFit" style="width: 100%; height: 100%; object-fit: contain;">
+                        <img src="images/Zerofit Image.png" alt="ZeroFit" style="width: 100%; height: 100%; object-fit: contain;" loading="lazy">
                     </div>
                     <h3>Baselayers sponsor</h3>
                     <p>ZeroFit supplies cutting-edge Japanese-designed base layers, providing exceptional thermal regulation and comfort for optimal performance during training and competition.</p>
@@ -1512,7 +1484,7 @@
 
                 <div class="sponsor-card">
                     <div class="sponsor-logo" style="background: white; padding: 1rem;">
-                        <img src="images/TwoTyres.jpeg" alt="Two Tyres" style="width: 100%; height: 100%; object-fit: contain;">
+                        <img src="images/TwoTyres.jpeg" alt="Two Tyres" style="width: 100%; height: 100%; object-fit: contain;" loading="lazy">
                     </div>
                     <h3>Product Partner</h3>
                     <p>Two Tyres provides premium motorcycle products, expert advice, and professional service, supporting Harrison with high-performance tyres and essential equipment.</p>
@@ -1521,7 +1493,7 @@
 
                 <div class="sponsor-card">
                     <div class="sponsor-logo" style="background: white; padding: 1rem;">
-                        <img src="images/EGR.png" alt="Eastern Garage Racing" style="width: 120%; height: 120%; object-fit: contain;">
+                        <img src="images/EGR.png" alt="Eastern Garage Racing" style="width: 120%; height: 120%; object-fit: contain;" loading="lazy">
                     </div>
                     <h3>Product Partner</h3>
                     <p>Martin Sheath and Eastern Garage Racing provide automotive expertise and support, bringing over 70 years of professional service excellence to Harrison's racing career.</p>
@@ -1530,7 +1502,7 @@
 
                 <div class="sponsor-card">
                     <div class="sponsor-logo" style="background: white; padding: 1rem;">
-                        <img src="images/Triumph Logo.png" alt="Triumph East London" style="width: 100%; height: 100%; object-fit: contain;">
+                        <img src="images/Triumph Logo.png" alt="Triumph East London" style="width: 100%; height: 100%; object-fit: contain;" loading="lazy">
                     </div>
                     <h3>Dealership Partner</h3>
                     <p>Triumph East London offers expert Triumph motorcycle services and support, representing iconic British motorcycling heritage and professional excellence.</p>
@@ -1539,7 +1511,7 @@
 
                 <div class="sponsor-card">
                     <div class="sponsor-logo" style="background: white; padding: 1rem;">
-                        <img src="images/ARC-ON-VECTOR.png" alt="ARC-ON Gloves" style="width: 100%; height: 100%; object-fit: contain;">
+                        <img src="images/ARC-ON-VECTOR.png" alt="ARC-ON Gloves" style="width: 100%; height: 100%; object-fit: contain;" loading="lazy">
                     </div>
                     <h3>Glove sponsor</h3>
                     <p>ARC-ON is a UK-based specialist manufacturer of award-winning motorcycle race gloves, delivering professional-grade protection and performance for elite racers.</p>
@@ -1548,7 +1520,7 @@
 
                 <div class="sponsor-card">
                     <div class="sponsor-logo" style="background: white; padding: 1rem;">
-                        <img src="images/Pro-Bolt Logo.jpg" alt="Pro Bolt" style="width: 100%; height: 100%; object-fit: contain;">
+                        <img src="images/Pro-Bolt Logo.jpg" alt="Pro Bolt" style="width: 100%; height: 100%; object-fit: contain;" loading="lazy">
                     </div>
                     <h3>Fasteners Specialist</h3>
                     <p>Pro Bolt specialises in premium titanium and stainless steel fasteners for motorcycles, providing lightweight, high-strength components that enhance performance and durability.</p>
@@ -1557,7 +1529,7 @@
 
                 <div class="sponsor-card">
                     <div class="sponsor-logo" style="background: white; padding: 1rem;">
-                        <img src="images/BonaBotanica_Logo.svg" alt="Bona Botanica" style="width: 100%; height: 100%; object-fit: contain;">
+                        <img src="images/BonaBotanica_Logo.svg" alt="Bona Botanica" style="width: 100%; height: 100%; object-fit: contain;" loading="lazy">
                     </div>
                     <h3>Nutrition &amp; Wellness Partner</h3>
                     <p>Bona Botanica produces natural health and wellness supplements, including their flagship XanthoPure™ mangosteen supplement, supporting Harrison's performance and vitality on and off the track.</p>
@@ -1566,7 +1538,7 @@
 
                 <div class="sponsor-card">
                     <div class="sponsor-logo" style="background: black; padding: 1rem;">
-                        <img src="images/RockCameras_Logo.png" alt="Rock Cameras" style="width: 100%; height: 100%; object-fit: contain;">
+                        <img src="images/RockCameras_Logo.png" alt="Rock Cameras" style="width: 100%; height: 100%; object-fit: contain;" loading="lazy">
                     </div>
                     <h3>Camera &amp; Media Partner</h3>
                     <p>Rock Cameras is a London-based specialist in professional camera rentals and digital equipment, ensuring every race weekend is captured with the precision and quality the sport demands.</p>
@@ -1575,7 +1547,7 @@
 
                 <div class="sponsor-card">
                     <div class="sponsor-logo" style="background: white; padding: 1rem;">
-                        <img src="images/Fletchers-Solicitors-Logo.png" alt="Fletchers Solicitors" style="width: 100%; height: 100%; object-fit: contain;">
+                        <img src="images/Fletchers-Solicitors-Logo.png" alt="Fletchers Solicitors" style="width: 100%; height: 100%; object-fit: contain;" loading="lazy">
                     </div>
                     <h3>Legal Partner</h3>
                     <p>Fletchers Solicitors is one of the UK's most trusted personal injury and medical negligence law firms, providing expert No Win, No Fee legal support to those who need it most.</p>
@@ -1599,50 +1571,12 @@
 
     </main>
 
-    <!-- Basket Overlay -->
-    <div class="basket-overlay" id="basketOverlay" onclick="toggleBasket()"></div>
+    <footer></footer>
 
-    <!-- Basket Sidebar -->
-    <div class="basket-sidebar" id="basketSidebar">
-        <div class="basket-header">
-            <h2>Your Basket</h2>
-            <button class="close-basket" onclick="toggleBasket()">✕</button>
-        </div>
-        <div class="basket-items" id="basketItems">
-            <div class="basket-empty">Your basket is empty</div>
-        </div>
-        <div class="basket-footer">
-            <div class="basket-total">
-                <span>Total:</span>
-                <span id="basketTotal">£0.00</span>
-            </div>
-            <button class="checkout-btn" id="checkoutBtn" onclick="checkout()" disabled>Checkout</button>
-        </div>
-    </div>
-
-    <footer>
-        <div class="social-links">
-            <a href="https://www.instagram.com/harrison_dessoy55/" title="Instagram" target="_blank" rel="noopener">
-                <img src="images/Instagram logo(2).png" alt="Instagram" width="50" height="50">
-            </a>
-            <a href="https://www.facebook.com/HarrisonDessoy" title="Facebook" target="_blank" rel="noopener">
-                <img src="images/Facebook logo.png" alt="Facebook" width="50" height="50">
-            </a>
-            <a href="https://www.youtube.com/channel/UCco2lC1RzhZFZYTZYMhFdcA" title="YouTube" target="_blank" rel="noopener">
-                <img src="images/Youtube_logo.png" alt="YouTube" width="50" height="50">
-            </a>
-            <a href="https://www.linkedin.com/in/harrisondessoy/" title="LinkedIn" target="_blank" rel="noopener">
-                <img src="images/LinkedIn_logo.png" alt="LinkedIn" width="50" height="50">
-            </a>
-        </div>
-        <div class="footer-contact" style="margin: 1.5rem 0;">
-            <p style="margin-bottom: 0.3rem;">Website: www.DessoyRacing.com</p>
-            <p>Email: <a href="mailto:Harrison@dessoyracing.com?subject=DessoyRacing.com%20website%20enquiry" style="color: var(--light); text-decoration: underline;">Harrison@dessoyracing.com</a></p>
-        </div>
-        <p>&copy; 2025 Harrison Dessoy. All rights reserved.</p>
-        <p>Racing at the Highest Level</p>
-        <p style="margin-top: 1rem; font-size: 0.85rem; opacity: 0.75;">Website designed &amp; built by DessoyArt &mdash; for website enquiries or changes, <a href="https://website.dessoy.co.uk" target="_blank" rel="noopener" style="color: var(--light); text-decoration: underline;">get in touch</a>.</p>
-    </footer>
+    <script src="footer.js"></script>
+    <script>
+        renderFooter({ withSocial: true });
+    </script>
 
     <!-- Newsletter Popup Modal -->
     <div id="newsletterPopup" class="newsletter-popup-overlay" style="display: none;">
@@ -1922,7 +1856,6 @@
     </style>
 
     <script src="nav.js"></script>
-    <script src="basket.js"></script>
     <script>
         renderNav('home', true);
 
@@ -2069,56 +2002,6 @@
                 showSection(hash);
             }
         });
-
-        // Countdown Timer
-        function updateCountdown() {
-            // Check if countdown elements exist on the page
-            const daysElement = document.getElementById("days");
-            const hoursElement = document.getElementById("hours");
-            const minutesElement = document.getElementById("minutes");
-            const secondsElement = document.getElementById("seconds");
-            const countdownElement = document.getElementById("countdown");
-
-            // Only run countdown if elements exist
-            if (!daysElement || !hoursElement || !minutesElement || !secondsElement) {
-                return; // Exit if countdown elements don't exist
-            }
-
-            // Set the date we're counting down to - November 23rd, 2025 at 3pm
-            const countDownDate = new Date("November 23, 2025 15:00:00").getTime();
-
-            // Update the countdown every 1 second
-            const x = setInterval(function() {
-                // Get today's date and time
-                const now = new Date().getTime();
-
-                // Find the distance between now and the count down date
-                const distance = countDownDate - now;
-
-                // Time calculations for days, hours, minutes and seconds
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-                // Display the result in the elements
-                daysElement.textContent = days;
-                hoursElement.textContent = hours;
-                minutesElement.textContent = minutes;
-                secondsElement.textContent = seconds;
-
-                // If the count down is finished, write some text
-                if (distance < 0) {
-                    clearInterval(x);
-                    if (countdownElement) {
-                        countdownElement.innerHTML = "<div style='font-size: 2rem; color: var(--primary);'>The announcement is here!</div>";
-                    }
-                }
-            }, 1000);
-        }
-
-        // Start the countdown when the page loads
-        updateCountdown();
 
         // Escape a value for safe interpolation into HTML.
         function escapeHtml(value) {

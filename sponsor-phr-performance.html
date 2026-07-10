@@ -11,6 +11,10 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
     <title>PHR Performance by Peter Hickman - Harrison Dessoy Partner</title>
     <style>
         * {
@@ -286,6 +290,7 @@
     </header>
 
     <div class="sponsor-hero">
+        <h1>PHR Performance</h1>
         <img src="images/PHR-with-Wriiting-below-pdf.webp" alt="PHR Performance Logo" style="max-width: 400px; margin: 2rem auto; display: block;">
     </div>
 
@@ -370,20 +375,17 @@
         <div class="cta-section">
             <h2>Learn More About PHR Performance</h2>
             <p>Discover more about Peter Hickman and PHR Performance's services</p>
-            <!-- <a href="https://peterhickman.net/phr-performance-about-us/" target="_blank" class="cta-button">Visit PHR Performance</a> -->
-            <a href="https://peterhickman.net/phr-performance-about-us/?utm_source=dessoyracing&utm_medium=website&utm_campaign=sponsor_link&utm_content=phr_performance" target="_blank" class="cta-button">Visit PHR Performance</a>       
+            <!-- <a href="https://peterhickman.net/phr-performance-about-us/" target="_blank" class="cta-button" rel="noopener">Visit PHR Performance</a> -->
+            <a href="https://peterhickman.net/phr-performance-about-us/?utm_source=dessoyracing&utm_medium=website&utm_campaign=sponsor_link&utm_content=phr_performance" target="_blank" class="cta-button" rel="noopener">Visit PHR Performance</a>       
             <a href="index.html" class="cta-button">Back to Harrison's Site</a>
         </div>
     </main>
 
-    <footer>
-        <div class="footer-contact" style="margin-bottom: 1rem;">
-            <p style="margin-bottom: 0.3rem;">Website: www.DessoyRacing.com</p>
-            <p>Email: <a href="mailto:Robert@DessoyRacing.com?subject=DessoyRacing.com%20website%20enquiry" style="color: var(--light); text-decoration: underline;">Robert@DessoyRacing.com</a></p>
-        </div>
-        <p>&copy; 2025 PHR Performance. Official Partner of Harrison Dessoy.</p>
-        <p>Racing at the Highest Level</p>
-        <p style="margin-top: 1rem; font-size: 0.85rem; opacity: 0.75;">Website designed &amp; built by DessoyArt &mdash; for website enquiries or changes, <a href="https://website.dessoy.co.uk" target="_blank" rel="noopener" style="color: var(--light); text-decoration: underline;">get in touch</a>.</p>
-    </footer>
+    <footer></footer>
+
+    <script src="footer.js"></script>
+    <script>
+        renderFooter({ withSocial: false, copyrightName: 'PHR Performance', copyrightSuffix: 'Official Partner of Harrison Dessoy.' });
+    </script>
 </body>
 </html>

@@ -15,7 +15,24 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
     <title>Fan Club - Harrison Dessoy Racing</title>
+    <meta name="description" content="Join the Harrison Dessoy Racing Fan Club — exclusive access, behind-the-scenes content and VIP experiences supporting #55 in the FIM World Sportbike Championship.">
+
+    <!-- Open Graph / share preview tags -->
+    <meta property="og:title" content="Fan Club - Harrison Dessoy Racing">
+    <meta property="og:description" content="Join the Harrison Dessoy Racing Fan Club — exclusive access, behind-the-scenes content and VIP experiences supporting #55 in the FIM World Sportbike Championship.">
+    <meta property="og:image" content="https://dessoyracing.com/images/og-image-fanclub.jpg">
+    <meta property="og:url" content="https://dessoyracing.com/fanclub.html">
+    <meta property="og:type" content="website">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Fan Club - Harrison Dessoy Racing">
+    <meta name="twitter:description" content="Join the Harrison Dessoy Racing Fan Club — exclusive access, behind-the-scenes content and VIP experiences supporting #55 in the FIM World Sportbike Championship.">
+    <meta name="twitter:image" content="https://dessoyracing.com/images/og-image-fanclub.jpg">
     <style>
         * {
             margin: 0;
@@ -55,13 +72,6 @@
             position: relative;
         }
 
-        .basket-icon {
-            display: none;
-        }
-
-        .basket-count {
-            display: none;
-        }
 
         .logo {
             display: flex;
@@ -105,6 +115,9 @@
             cursor: pointer;
             padding: 0.5rem;
             z-index: 1001;
+            background: none;
+            border: none;
+            font: inherit;
         }
 
         .hamburger span {
@@ -148,7 +161,7 @@
             padding: 4rem 2rem;
         }
 
-        h2 {
+        h1, h2 {
             font-size: 2.5rem;
             margin-bottom: 2rem;
             color: var(--secondary);
@@ -403,14 +416,6 @@
             box-shadow: none;
         }
 
-        /* Basket Sidebar - Hidden */
-        .basket-sidebar {
-            display: none;
-        }
-
-        .basket-overlay {
-            display: none;
-        }
 
         @media (max-width: 768px) {
             .header-content {
@@ -459,11 +464,30 @@
                 grid-template-columns: 1fr;
             }
         }
-    </style>
+            .skip-link {
+            position: absolute;
+            top: -100px;
+            left: 0;
+            background: var(--primary);
+            color: var(--light);
+            padding: 0.75rem 1.5rem;
+            z-index: 2000;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 0 0 5px 0;
+            transition: top 0.2s;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+</style>
     <link rel="stylesheet" href="newsletter-popup.css">
     <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/dba85c89d82fef7f216d3993b/caa6283199cbc79f4a36d9208.js");</script>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to content</a>
     <header>
         <div class="header-content">
             <div class="logo">
@@ -472,23 +496,19 @@
                     Harrison Dessoy
                 </a>
             </div>
-            <div class="hamburger" onclick="toggleMenu()">
+            <button type="button" class="hamburger" onclick="toggleMenu()" aria-label="Menu" aria-expanded="false" aria-controls="nav">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
             <nav id="nav">
                 <ul></ul>
             </nav>
-            <div class="basket-icon" onclick="toggleBasket()">
-                🛒
-                <span class="basket-count" id="basketCount">0</span>
-            </div>
         </div>
     </header>
 
-    <main>
-        <h2>Racing Club</h2>
+    <main id="main-content">
+        <h1>Racing Club</h1>
         <div class="fanclub-hero">
             <h3>Join Harrison's Racing Journey</h3>
             <p>Be part of something special as Harrison prepares for his 2026 racing campaign</p>
@@ -598,53 +618,14 @@
         </div>
     </main>
 
-    <!-- Basket Overlay -->
-    <div class="basket-overlay" id="basketOverlay" onclick="toggleBasket()"></div>
+    <footer></footer>
 
-    <!-- Basket Sidebar -->
-    <div class="basket-sidebar" id="basketSidebar">
-        <div class="basket-header">
-            <h2>Your Basket</h2>
-            <button class="close-basket" onclick="toggleBasket()">✕</button>
-        </div>
-        <div class="basket-items" id="basketItems">
-            <div class="basket-empty">Your basket is empty</div>
-        </div>
-        <div class="basket-footer">
-            <div class="basket-total">
-                <span>Total:</span>
-                <span id="basketTotal">£0.00</span>
-            </div>
-            <button class="checkout-btn" id="checkoutBtn" onclick="checkout()" disabled>Checkout</button>
-        </div>
-    </div>
-
-    <footer>
-        <div class="social-links">
-            <a href="https://www.instagram.com/harrison_dessoy55/" title="Instagram" target="_blank">
-                <img src="images/Instagram logo(2).png" alt="Instagram" width="24" height="24">
-            </a>
-            <a href="https://www.facebook.com/HarrisonDessoy" title="Facebook" target="_blank">
-                <img src="images/Facebook logo.png" alt="Facebook" width="24" height="24">
-            </a>
-            <a href="https://www.youtube.com/channel/UCco2lC1RzhZFZYTZYMhFdcA" title="YouTube" target="_blank">
-                <img src="images/Youtube_logo.png" alt="YouTube" width="24" height="24">
-            </a>
-            <a href="https://www.linkedin.com/in/harrisondessoy/" title="LinkedIn" target="_blank">
-                <img src="images/LinkedIn_logo.png" alt="LinkedIn" width="24" height="24">
-            </a>
-        </div>
-        <div class="footer-contact" style="margin: 1.5rem 0;">
-            <p style="margin-bottom: 0.3rem;">Website: www.DessoyRacing.com</p>
-            <p>Email: <a href="mailto:Robert@DessoyRacing.com?subject=DessoyRacing.com%20website%20enquiry" style="color: var(--light); text-decoration: underline;">Robert@DessoyRacing.com</a></p>
-        </div>
-        <p>&copy; 2025 Harrison Dessoy. All rights reserved.</p>
-        <p>Racing at the Highest Level</p>
-        <p style="margin-top: 1rem; font-size: 0.85rem; opacity: 0.75;">Website designed &amp; built by DessoyArt &mdash; for website enquiries or changes, <a href="https://website.dessoy.co.uk" target="_blank" rel="noopener" style="color: var(--light); text-decoration: underline;">get in touch</a>.</p>
-    </footer>
+    <script src="footer.js"></script>
+    <script>
+        renderFooter({ withSocial: true });
+    </script>
 
     <script src="nav.js"></script>
-    <script src="basket.js"></script>
     <script>
         renderNav('fanclub', false);
     </script>
