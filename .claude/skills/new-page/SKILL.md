@@ -23,7 +23,7 @@ Copy the structurally closest existing page:
 - Inline `<style>` using the shared tokens (`--primary: #e63946`, `--secondary: #1d3557`, etc.)
 - External links `target="_blank" rel="noopener"`; internal links same-tab, no exceptions
 
-Optional per purpose: newsletter popup (copy the modal block + `newsletter-popup.css`/`.js` includes from `events.html`).
+Optional per purpose: newsletter popup — link `newsletter-popup.css`, add `<script src="newsletter-popup.js">`, and call `renderNewsletterPopup()` alongside the nav/footer calls. **Don't hardcode the modal HTML** — it's injected by that function; see how `events.html` wires it up.
 
 ## 3. Wire it into the site
 

@@ -737,35 +737,10 @@
         }
     </script>
 
-    <!-- Newsletter Popup Modal -->
-    <div id="newsletterPopup" class="newsletter-popup-overlay" style="display: none;">
-        <div class="newsletter-popup-modal">
-            <button class="newsletter-popup-close" onclick="closeNewsletterPopup()">&times;</button>
-            <div class="newsletter-popup-container">
-                <div class="newsletter-popup-image">
-                    <img src="images/IDM Assen.jpg" alt="Harrison Dessoy Racing">
-                </div>
-                <div class="newsletter-popup-content">
-                    <h3 id="newsletterTitle">Stay Updated!</h3>
-                    <p id="newsletterMessage">Get exclusive racing updates, behind-the-scenes content, and special announcements delivered to your inbox.</p>
-                    <form id="newsletterForm" class="newsletter-popup-form" action="https://gmail.us14.list-manage.com/subscribe/post?u=dba85c89d82fef7f216d3993b&amp;id=6ff0d772ac&amp;f_id=0071bce5f0" method="post" target="hidden_iframe">
-                        <input type="text" name="FNAME" id="newsletterName" placeholder="Enter your name" required>
-                        <input type="email" name="EMAIL" id="newsletterEmail" placeholder="Enter your email" required>
-                        <!-- Anti-bot honeypot field -->
-                        <div style="position: absolute; left: -5000px;" aria-hidden="true">
-                            <input type="text" name="b_dba85c89d82fef7f216d3993b_6ff0d772ac" tabindex="-1" value="">
-                        </div>
-                        <button type="submit" class="newsletter-submit-btn" id="newsletterSubmitBtn">Subscribe</button>
-                    </form>
-                    <p class="newsletter-popup-privacy">We respect your privacy. Unsubscribe anytime.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Hidden iframe for form submission -->
-    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
 
     <script src="newsletter-popup.js"></script>
+    <script>
+        renderNewsletterPopup();
+    </script>
 </body>
 </html>

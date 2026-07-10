@@ -98,8 +98,8 @@ Main navigation links (rendered by `nav.js` — see below, never hardcode this):
 |------|---------|---------|
 | `nav.js` | index, events, fanclub, merchandise, partnership-menu | `renderNav(pageId, isHome)` builds the `<nav id="nav">` menu — never hardcode nav `<li>`s. `toggleMenu()`/`closeMenu()` here too, and keep `aria-expanded` on the hamburger `<button>` in sync. |
 | `footer.js` | All pages except `card/index.html` and `policies/*.html` | `renderFooter({withSocial, copyrightName, copyrightSuffix})` builds the whole `<footer>` — social links, contact, copyright (auto year), Privacy/Terms links, DessoyArt credit. Never hardcode a footer either. |
-| `newsletter-popup.js` | events.html, fanclub.html, merchandise.html, partnership-menu.html | Newsletter modal (8s delay, 7-day localStorage dismissal) |
-| `newsletter-popup.css` | All pages that include newsletter-popup.js | Modal CSS |
+| `newsletter-popup.js` | index, events, fanclub, merchandise, partnership-menu | `renderNewsletterPopup()` injects the modal HTML (`insertAdjacentHTML`) — call it once, synchronously, alongside `renderNav()`/`renderFooter()`. Also owns the show/hide/dismissal logic (8s delay, 7-day localStorage dismissal). Never hardcode the modal HTML either — index.html had a fully duplicated inline copy of this HTML/CSS/JS until 2026-07-10, and the CSS copy was missing a `z-index` fix the shared file had. |
+| `newsletter-popup.css` | Same 5 pages | Modal CSS, linked in `<head>` |
 | `scripts/site-check.py` | Run manually / via `verify-site` skill | Consistency checks — GA present, footer credit present, sitemap sync, exactly one `<h1>`, `rel="noopener"` on external links, no hardcoded nav, image size budget |
 
 `basket.js` was removed 2026-07-10 — it was fully vestigial (no `addToBasket()` existed anywhere, so the cart could never gain an item). It's not coming back; purchases are, and always were, direct `buy.stripe.com` Payment Links. See `STRIPE_SETUP.md`.
@@ -207,7 +207,7 @@ All site images live in `/images/` (~28 MB, down from ~98 MB after the 2026-07-1
 2. Include Google Analytics snippet in `<head>` — use the same tracking ID `G-Z0P3DBDMDZ`
 3. Include the favicon `<link>` block (copy from any page) and a `<meta name="description">`
 4. Give the page exactly one `<h1>`
-5. If the page needs a newsletter popup, add `newsletter-popup.css`, `newsletter-popup.js`, and the modal HTML (see `newsletter-popup.html` for the reference implementation)
+5. If the page needs a newsletter popup: link `newsletter-popup.css` in `<head>`, add `<script src="newsletter-popup.js">`, and call `renderNewsletterPopup()` alongside `renderNav()`/`renderFooter()` — **don't hardcode the modal HTML**, that's exactly the duplication that was cleaned up 2026-07-10 (`newsletter-popup.html` is a static reference showing what the injected markup looks like, not something to copy from)
 6. Add the page to `sitemap.xml` — see `SITEMAP_MAINTENANCE.md` for priority/frequency guidelines
 7. Update `SITEMAP_MAINTENANCE.md` to record the new page
 8. Link the page from at least one other page so it is reachable from the site
