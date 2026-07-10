@@ -25,10 +25,10 @@ function renderFooter(options = {}) {
     const social = withSocial ? `
         <div class="social-links">
             <a href="https://www.instagram.com/harrison_dessoy55/" title="Instagram" target="_blank" rel="noopener">
-                <img src="images/Instagram logo(2).png" alt="Instagram" width="50" height="50">
+                <img src="images/instagram-logo-2.png" alt="Instagram" width="50" height="50">
             </a>
             <a href="https://www.facebook.com/HarrisonDessoy" title="Facebook" target="_blank" rel="noopener">
-                <img src="images/Facebook logo.png" alt="Facebook" width="50" height="50">
+                <img src="images/facebook-logo.png" alt="Facebook" width="50" height="50">
             </a>
             <a href="https://www.youtube.com/channel/UCco2lC1RzhZFZYTZYMhFdcA" title="YouTube" target="_blank" rel="noopener">
                 <img src="images/Youtube_logo.png" alt="YouTube" width="50" height="50">

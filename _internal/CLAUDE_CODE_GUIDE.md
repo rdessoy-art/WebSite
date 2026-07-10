@@ -182,18 +182,18 @@ All site images live in `/images/` (~28 MB, down from ~98 MB after the 2026-07-1
 
 | File | Used For |
 |------|---------|
-| `HD55 White.png` | Header logo (50px height); source for the favicon |
-| `Harrison Dessoy 2025 logo.png` | Profile section logo |
+| `hd55-white.png` | Header logo (50px height); source for the favicon |
+| `harrison-dessoy-2025-logo.png` | Profile section logo |
 | `2025_profilepic.png` | Profile photo |
 | `hero-bg-desktop.webp` / `hero-bg-tablet.webp` / `hero-bg-mobile.webp` | Responsive hero backgrounds (index.html) |
 | `og-image-home.jpg` / `og-image-fanclub.jpg` / `og-image-merchandise.jpg` | Open Graph / Twitter card preview images (1200×630) |
 | `cap-2026-front.webp`, `hoody-2026-front.webp`/`-rear.webp`, `t-shirt-2026-front.webp`/`-rear.webp`, `beanie-2026-front.webp` (+ `-black`/`-yellow`/`-white` color variants) | Merchandise product photos |
-| `favicon.ico`, `favicon-16x16.png`, `favicon-32x32.png`, `apple-touch-icon.png` | Browser tab / home-screen icons, generated from `HD55 White.png` |
-| `Instagram logo(2).png`, `Facebook logo.png`, `Youtube_logo.png`, `LinkedIn_logo.png` | Footer social icons (rendered by `footer.js`) |
+| `favicon.ico`, `favicon-16x16.png`, `favicon-32x32.png`, `apple-touch-icon.png` | Browser tab / home-screen icons, generated from `hd55-white.png` |
+| `instagram-logo-2.png`, `facebook-logo.png`, `Youtube_logo.png`, `LinkedIn_logo.png` | Footer social icons (rendered by `footer.js`) |
 
 **Formats in use:** WebP (preferred — merch, hero backgrounds, most logos), PNG (logos/UI needing transparency), JPEG/JPG (photos, OG images), SVG (a few sponsor logos).
 
-**Convention for new images:** WebP, ≤300–500 KB, lowercase-hyphenated filename (`sponsor-name-logo.webp`, not `Sponsor Name (2).PNG`). Use the `optimize-image` Claude Code skill — `cwebp` is installed via Homebrew on the primary dev machine (verified 2026-07-10: turns an 8.5 MB source photo into ~45 KB with no visible quality loss). Existing pre-2026-07-10 filenames keep spaces/mixed case; match them exactly since the deploy host is case-sensitive.
+**Convention for new images:** WebP, ≤300–500 KB, lowercase-hyphenated filename (`sponsor-name-logo.webp`, not `Sponsor Name (2).PNG`). Use the `optimize-image` Claude Code skill — `cwebp` is installed via Homebrew on the primary dev machine (verified 2026-07-10: turns an 8.5 MB source photo into ~45 KB with no visible quality loss). **2026-07-11:** the 15 image filenames that had spaces or parens were renamed to this convention (see `AUDIT.md` §5), so no image reference needs URL-encoding anymore. Two non-image files still have spaces (`230308_Article for Harrison.docx`, `ARC-ON VECTOR.pdf` — both unreferenced by any page, out of scope for this item), and plenty of existing images still have mixed-case names without spaces (e.g. `BonaBotanica_Logo.svg`, `Fletchers-Solicitors-Logo.png`) — matching case exactly still matters for those since the deploy host is case-sensitive; the convention above is for new images going forward, not a retroactive rename of everything.
 
 `scripts/site-check.py` flags any committed image over 500 KB — a growing list of pre-existing large photos (data/Instagram JPEGs, a few `images/IMG_*.JPEG` files) is tracked as ongoing warnings in `AUDIT.md`, not yet cleaned up.
 

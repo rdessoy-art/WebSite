@@ -16,7 +16,7 @@ function renderNewsletterPopup() {
             <button class="newsletter-popup-close" onclick="closeNewsletterPopup()">&times;</button>
             <div class="newsletter-popup-container">
                 <div class="newsletter-popup-image">
-                    <img src="images/IDM Assen.jpg" alt="Harrison Dessoy Racing">
+                    <img src="images/idm-assen.jpg" alt="Harrison Dessoy Racing">
                 </div>
                 <div class="newsletter-popup-content">
                     <h3 id="newsletterTitle">Stay Updated!</h3>
