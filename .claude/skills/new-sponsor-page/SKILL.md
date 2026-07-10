@@ -22,7 +22,7 @@ Run the `optimize-image` skill conventions: WebP preferred, ≤300 KB, lowercase
 ## 3. Create `sponsor-<name>.html`
 
 Copy the structure of the most recently added sponsor page (currently `sponsor-rockcameras.html`) — do not invent a new layout. Then:
-- Update title, `<h1>` (add one — older pages lack it, new pages must have it), hero, description, links, logo
+- Update title, `<h1>` and `<meta name="description">` (add both — the older template pages lack them, new pages must have them), hero, description, links, logo
 - Keep the GA snippet (`G-Z0P3DBDMDZ`), footer with the DessoyArt credit line, and `© <current year> <Sponsor Name>. Official Partner of Harrison Dessoy.`
 - External links `target="_blank" rel="noopener"`; internal links same-tab
 

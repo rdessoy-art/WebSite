@@ -20,15 +20,15 @@ Raw images are the #1 performance problem this site has had (a 49 MB merchandise
 
 ## Tooling on this machine
 
-`cwebp` is **not installed** and `sips` cannot encode WebP here. In order of preference:
+`cwebp` is installed (Homebrew, verified 2026-07-10 — turned the 8.5 MB cap photo into 43 KB at 800 px with no visible quality loss). Use it as the default:
 
-1. **WebP via cwebp** (best compression): needs `brew install webp` — ask the user before installing. Then:
-   `cwebp -q 80 -resize <width> 0 in.png -o images/out.webp`
-2. **Fallback that always works — `sips`:**
-   - Photos (no transparency): `sips -Z <maxdim> -s format jpeg -s formatOptions 80 in.png --out images/out.jpg`
-   - Logos needing transparency: keep PNG, just resize: `sips -Z <maxdim> in.png --out images/out.png`
-   A 1200 px q80 JPEG lands well under 300 KB for normal photos — the fallback still turns 8 MB into ~150 KB.
-3. HEIC inputs: `sips` converts them directly (`-s format jpeg`); don't commit the `.heic` original.
+```
+cwebp -q 80 -resize <width> 0 in.png -o images/out.webp
+```
+
+WebP handles transparency, so logos convert too (no need to stay PNG). If `cwebp` is ever missing (new machine), `brew install webp` restores it; the stopgap is `sips`: photos → `sips -Z <maxdim> -s format jpeg -s formatOptions 80 in.png --out images/out.jpg`, transparent logos → resize-only PNG.
+
+HEIC inputs: `sips -s format jpeg` converts them directly; don't commit the `.heic` original.
 
 ## Process
 
