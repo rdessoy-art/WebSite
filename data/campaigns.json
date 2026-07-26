@@ -1,7 +1,17 @@
 {
-  "last_updated": "2026-07-10T19:20:30.989855+00:00",
+  "last_updated": "2026-07-26T18:37:51.290376+00:00",
   "campaign_count": 5,
   "campaigns": [
+    {
+      "id": "162193a5a6",
+      "title": "Trackdside At WSBK Donington!",
+      "subject": "WSBK Home round at Doningtong",
+      "preview_text": "No racing, but doing the Superbike Superpole comentary was awsome.",
+      "send_time": "2026-07-13T06:39:00+00:00",
+      "emails_sent": 83,
+      "archive_url": "http://eepurl.com/Beclo3-med",
+      "status": "sent"
+    },
     {
       "id": "666058ba9e",
       "title": "Swapping racing for my legs!",
@@ -40,16 +50,6 @@
       "send_time": "2026-06-06T11:08:32+00:00",
       "emails_sent": 81,
       "archive_url": "http://eepurl.com/tAsZ-apmQv",
-      "status": "sent"
-    },
-    {
-      "id": "4f686fec97",
-      "title": "North West 200 & WSPB Rd3!",
-      "subject": "Autodrome Most - Round 3 ",
-      "preview_text": null,
-      "send_time": "2026-05-19T16:55:01+00:00",
-      "emails_sent": 82,
-      "archive_url": "http://eepurl.com/kLVmqN2_b7",
       "status": "sent"
     }
   ]
