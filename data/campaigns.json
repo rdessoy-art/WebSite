@@ -1,7 +1,27 @@
 {
-  "last_updated": "2026-08-13T20:49:35.784830+00:00",
+  "last_updated": "2026-09-06T21:36:04.800096+00:00",
   "campaign_count": 5,
   "campaigns": [
+    {
+      "id": "7a7ed23015",
+      "title": "[Re-sent] Summer break + French testing.",
+      "subject": "Enjoying the time off + getting important bike time",
+      "preview_text": "No racing, but finding new hobbies and enjoying the sunshine",
+      "send_time": "2026-08-30T19:00:14+00:00",
+      "emails_sent": 1,
+      "archive_url": "http://eepurl.com/hgrOy5gbmv",
+      "status": "sent"
+    },
+    {
+      "id": "48c2941c52",
+      "title": "Summer break + French testing.",
+      "subject": "Enjoying the time off + getting important bike time",
+      "preview_text": "No racing, but finding new hobbies and enjoying the sunshine",
+      "send_time": "2026-08-27T09:12:28+00:00",
+      "emails_sent": 86,
+      "archive_url": "http://eepurl.com/oYC2eyYEbJ",
+      "status": "sent"
+    },
     {
       "id": "162193a5a6",
       "title": "Trackdside At WSBK Donington!",
@@ -30,26 +50,6 @@
       "send_time": "2026-06-23T09:48:45+00:00",
       "emails_sent": 82,
       "archive_url": "http://eepurl.com/prtTgNjous",
-      "status": "sent"
-    },
-    {
-      "id": "31e1bf5cbc",
-      "title": "Misano Round 5 - Our biggest test yet!",
-      "subject": "Misano was our biggest test, yet",
-      "preview_text": "Learning the Misano circuit was more difficult than I expected",
-      "send_time": "2026-06-20T19:49:37+00:00",
-      "emails_sent": 82,
-      "archive_url": "http://eepurl.com/IBwctkr-cH",
-      "status": "sent"
-    },
-    {
-      "id": "cad67a55cf",
-      "title": "Harrison's first World Championship podium \ud83c\udfc6",
-      "subject": "Harrison's first World Championship podium \ud83c\udfc6",
-      "preview_text": "From P19 on the grid to first World Championship silverware \u2014 what a weekend in Aragon",
-      "send_time": "2026-06-06T11:08:32+00:00",
-      "emails_sent": 81,
-      "archive_url": "http://eepurl.com/tAsZ-apmQv",
       "status": "sent"
     }
   ]
