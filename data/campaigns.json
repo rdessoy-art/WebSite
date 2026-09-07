@@ -1,7 +1,17 @@
 {
-  "last_updated": "2026-09-06T21:36:04.800096+00:00",
+  "last_updated": "2026-09-07T16:43:51.582518+00:00",
   "campaign_count": 5,
   "campaigns": [
+    {
+      "id": "810a49bcb9",
+      "title": "World Sportbike Round 6 - France",
+      "subject": "MagnyCours Round 6",
+      "preview_text": "Back on the grid with some great points!",
+      "send_time": "2026-09-07T09:37:43+00:00",
+      "emails_sent": 86,
+      "archive_url": "http://eepurl.com/fZg6-x3BRq",
+      "status": "sent"
+    },
     {
       "id": "7a7ed23015",
       "title": "[Re-sent] Summer break + French testing.",
@@ -40,16 +50,6 @@
       "send_time": "2026-07-02T05:49:30+00:00",
       "emails_sent": 83,
       "archive_url": "http://eepurl.com/Rt-B5m6P8T",
-      "status": "sent"
-    },
-    {
-      "id": "bdb84fe6f1",
-      "title": "Magnycours Test",
-      "subject": "Feeling the heat in France",
-      "preview_text": "We had a great test in Magnycours. Preparation for our next WSPB round",
-      "send_time": "2026-06-23T09:48:45+00:00",
-      "emails_sent": 82,
-      "archive_url": "http://eepurl.com/prtTgNjous",
       "status": "sent"
     }
   ]
