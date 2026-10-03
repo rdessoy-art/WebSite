@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-03T08:59:03.802785+00:00",
+  "last_updated": "2026-10-03T09:02:36.809910+00:00",
   "current_season_id": "08223905-c688-4253-86b8-0081b439a87a",
   "seasons": [
     {
@@ -142,6 +142,20 @@
       "event_end_date": "2026-10-18",
       "ticket_url": "https://tickets.worldsbk.com/en/32851-jerez/",
       "event_info_url": "https://www.worldsbk.com/en/event/ESP2/2026",
+      "report_url": null
+    },
+    {
+      "id": "696e6e05-7007-4452-876d-5c524d9d517b",
+      "season_id": "23978074-5806-47c6-9477-aaa497d53bc7",
+      "country": "Italy",
+      "country_code": "it",
+      "location": "Eicma Event",
+      "round_label": "PHR Performance",
+      "is_test": false,
+      "event_start_date": "2026-11-04",
+      "event_end_date": "2026-11-06",
+      "ticket_url": "https://ticketseicma.it/en/",
+      "event_info_url": null,
       "report_url": null
     }
   ]
