@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-03T12:12:50.855056+00:00",
+  "last_updated": "2026-10-03T12:14:07.836668+00:00",
   "current_season_id": "08223905-c688-4253-86b8-0081b439a87a",
   "seasons": [
     {
@@ -59,7 +59,7 @@
       "report_label": "Race Report",
       "event_start_date": "2026-09-25",
       "event_end_date": "2026-09-27",
-      "ticket_url": null,
+      "ticket_url": "https://tickets.worldsbk.com/en/53278-estoril/",
       "event_info_url": null,
       "report_url": "debriefs/cremona-circuit-20260925.pdf"
     },
