@@ -1,7 +1,17 @@
 {
-  "last_updated": "2026-09-07T16:43:51.582518+00:00",
+  "last_updated": "2026-10-03T09:04:35.110948+00:00",
   "campaign_count": 5,
   "campaigns": [
+    {
+      "id": "4cd7277071",
+      "title": "Cremona Testing",
+      "subject": "Italian Testing",
+      "preview_text": "A new track with new challenges. Time we face the Cremona circuit layout...",
+      "send_time": "2026-09-18T09:09:37+00:00",
+      "emails_sent": 88,
+      "archive_url": "http://eepurl.com/qqiO7_GiOV",
+      "status": "sent"
+    },
     {
       "id": "810a49bcb9",
       "title": "World Sportbike Round 6 - France",
@@ -40,16 +50,6 @@
       "send_time": "2026-07-13T06:39:00+00:00",
       "emails_sent": 83,
       "archive_url": "http://eepurl.com/Beclo3-med",
-      "status": "sent"
-    },
-    {
-      "id": "666058ba9e",
-      "title": "Swapping racing for my legs!",
-      "subject": "5km & 10km running race last weekend",
-      "preview_text": "I smashed 2 PB's in my most recent off track races!",
-      "send_time": "2026-07-02T05:49:30+00:00",
-      "emails_sent": 83,
-      "archive_url": "http://eepurl.com/Rt-B5m6P8T",
       "status": "sent"
     }
   ]
