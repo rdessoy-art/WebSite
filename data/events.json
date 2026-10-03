@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-03T09:26:55.088509+00:00",
+  "last_updated": "2026-10-03T09:27:02.956164+00:00",
   "current_season_id": "08223905-c688-4253-86b8-0081b439a87a",
   "seasons": [
     {
@@ -128,7 +128,7 @@
       "event_end_date": "2026-09-27",
       "ticket_url": "None",
       "event_info_url": "None",
-      "report_url": null
+      "report_url": "debriefs/cremona-circuit-20260925.pdf"
     },
     {
       "id": "e2bfc7ad-3015-4a8b-8eb8-728742dd5077",
