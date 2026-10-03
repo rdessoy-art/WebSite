@@ -189,10 +189,18 @@ itself only renders what `data/events.json` says.
   carries a separate per-circuit `venue-logo` image), `location` (circuit name),
   `round_label`, `event_start_date`/`event_end_date`, `ticket_url`, `event_info_url` (the
   whole-row click target, was `data-event-url` hardcoded per row), `report_url`.
-- **`is_test` is computed by Publisher, not derived here** — it decides the "Test Report" vs
-  "Race Report" button label. Don't re-derive this from `round_label` text in this repo; if
-  Publisher's derivation (round_label containing "test", case-insensitive) is ever wrong,
-  fix it there so there's one definition, not two that can drift apart.
+- **`report_label` is computed by Publisher, not derived here** — one of `'Race Report'` /
+  `'Test Report'` / `'Report'` (the last for a General-type debrief — a motorcycle show, a
+  track day, a sponsor visit — which has no race/test distinction to make). Don't re-derive
+  this from `round_label` text or a `debrief_type` field in this repo; if Publisher's logic
+  is ever wrong, fix it there so there's one definition, not two that can drift apart.
+  `debrief_type` itself (`'race'`/`'general'`) rides along in the JSON but is informational
+  only — this page doesn't branch on it directly, only on `report_label` and `report_url`.
+- **`showReportComingSoon(reportLabel)` takes the clicked button's own label** and sets the
+  modal's heading/body to match (`"${label} Coming Soon"`), rather than a fixed "Race Report
+  Coming Soon" — the old fixed text read wrong the moment a General debrief's button just
+  says "Report". The body text itself stays generic ("This isn't available yet…") rather than
+  branching three ways on top of the heading.
 - **A season `<select>` (`#season-select`) filters the events list**, defaulting to
   `current_season_id` from the JSON — hidden entirely when there's only one season (or none
   yet). `data/events.json` is a **flat** events array (each event carries its own
