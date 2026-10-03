@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-03T09:06:11.892397+00:00",
+  "last_updated": "2026-10-03T09:26:55.088509+00:00",
   "current_season_id": "08223905-c688-4253-86b8-0081b439a87a",
   "seasons": [
     {
@@ -114,7 +114,7 @@
       "event_end_date": "2026-09-06",
       "ticket_url": "None",
       "event_info_url": "None",
-      "report_url": null
+      "report_url": "debriefs/magny-cours-20260904.pdf"
     },
     {
       "id": "5b808355-7824-4942-950d-03e0f1ce5858",
