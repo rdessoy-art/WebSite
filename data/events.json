@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-03T10:55:03.587315+00:00",
+  "last_updated": "2026-10-03T11:30:52.916990+00:00",
   "current_season_id": "08223905-c688-4253-86b8-0081b439a87a",
   "seasons": [
     {
@@ -30,7 +30,7 @@
       "event_start_date": "2026-11-04",
       "event_end_date": "2026-11-06",
       "ticket_url": "https://ticketseicma.it/en/",
-      "event_info_url": "None",
+      "event_info_url": null,
       "report_url": null
     },
     {
@@ -59,8 +59,8 @@
       "report_label": "Race Report",
       "event_start_date": "2026-09-25",
       "event_end_date": "2026-09-27",
-      "ticket_url": "None",
-      "event_info_url": "None",
+      "ticket_url": null,
+      "event_info_url": null,
       "report_url": "debriefs/cremona-circuit-20260925.pdf"
     },
     {
@@ -74,8 +74,8 @@
       "report_label": "Race Report",
       "event_start_date": "2026-09-04",
       "event_end_date": "2026-09-06",
-      "ticket_url": "None",
-      "event_info_url": "None",
+      "ticket_url": null,
+      "event_info_url": null,
       "report_url": "debriefs/magny-cours-20260904.pdf"
     },
     {
