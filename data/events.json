@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-03T11:30:52.916990+00:00",
+  "last_updated": "2026-10-03T11:34:44.197458+00:00",
   "current_season_id": "08223905-c688-4253-86b8-0081b439a87a",
   "seasons": [
     {
@@ -24,7 +24,7 @@
       "debrief_type": "general",
       "country": "Italy",
       "country_code": "it",
-      "location": "Eicma Event",
+      "location": "Eicma",
       "round_label": "PHR Performance",
       "report_label": "Report",
       "event_start_date": "2026-11-04",
