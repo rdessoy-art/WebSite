@@ -1,6 +1,141 @@
 {
-  "last_updated": null,
-  "current_season_id": null,
-  "seasons": [],
-  "events": []
+  "last_updated": "2026-10-03T08:56:57.815147+00:00",
+  "current_season_id": "08223905-c688-4253-86b8-0081b439a87a",
+  "seasons": [
+    {
+      "id": "08223905-c688-4253-86b8-0081b439a87a",
+      "label": "2026 World Sportbike Season",
+      "start_date": "2026-03-25",
+      "end_date": "2026-10-18",
+      "is_current": true
+    }
+  ],
+  "events": [
+    {
+      "id": "3bc20118-5e13-44d8-ab30-f5fb4fa35256",
+      "season_id": "08223905-c688-4253-86b8-0081b439a87a",
+      "country": "Portugal",
+      "country_code": "pt",
+      "location": "Portim\u00e3o",
+      "round_label": "Official Test",
+      "is_test": true,
+      "event_start_date": "2026-03-25",
+      "event_end_date": "2026-03-26",
+      "ticket_url": "https://tickets.worldsbk.com/en/25811-portugal/",
+      "event_info_url": "https://www.worldsbk.com/en/event/POR/2026",
+      "report_url": "debriefs/Harrison_Dessoy_Test_Day_Debrief_Portimao_2026.pdf"
+    },
+    {
+      "id": "11a9aedb-39fd-4c4c-9f7e-4c80a4ef60a0",
+      "season_id": "08223905-c688-4253-86b8-0081b439a87a",
+      "country": "Portugal",
+      "country_code": "pt",
+      "location": "Portim\u00e3o",
+      "round_label": "Round 1",
+      "is_test": false,
+      "event_start_date": "2026-03-27",
+      "event_end_date": "2026-03-29",
+      "ticket_url": "https://tickets.worldsbk.com/en/25811-portugal/",
+      "event_info_url": "https://www.worldsbk.com/en/event/POR/2026",
+      "report_url": "debriefs/Harrison_Dessoy_Portimao_SponsorDebrief.pdf"
+    },
+    {
+      "id": "27d3a9ed-60c8-41e2-8634-e08210acb390",
+      "season_id": "08223905-c688-4253-86b8-0081b439a87a",
+      "country": "Netherlands",
+      "country_code": "nl",
+      "location": "TT Circuit Assen",
+      "round_label": "Round 2",
+      "is_test": false,
+      "event_start_date": "2026-04-17",
+      "event_end_date": "2026-04-19",
+      "ticket_url": "https://tickets.worldsbk.com/en/25751-netherlands/",
+      "event_info_url": "https://www.worldsbk.com/en/event/NED/2026",
+      "report_url": "debriefs/Harrison_Dessoy_Assen_SponsorDebrief.pdf"
+    },
+    {
+      "id": "02daf9b6-8e3e-45af-a675-eb41e68376b2",
+      "season_id": "08223905-c688-4253-86b8-0081b439a87a",
+      "country": "Czech Republic",
+      "country_code": "cz",
+      "location": "Autodrom Most",
+      "round_label": "Round 3",
+      "is_test": false,
+      "event_start_date": "2026-05-15",
+      "event_end_date": "2026-05-17",
+      "ticket_url": "https://tickets.worldsbk.com/en/25781-czech-republic/",
+      "event_info_url": "https://www.worldsbk.com/en/event/CZE/2026",
+      "report_url": "debriefs/Most_Sponsor_Debrief.pdf"
+    },
+    {
+      "id": "72fb49a9-950b-484f-bb50-1616ebdfcb37",
+      "season_id": "08223905-c688-4253-86b8-0081b439a87a",
+      "country": "Spain",
+      "country_code": "es",
+      "location": "MotorLand Aragon",
+      "round_label": "Round 4",
+      "is_test": false,
+      "event_start_date": "2026-05-29",
+      "event_end_date": "2026-05-31",
+      "ticket_url": "https://tickets.worldsbk.com/en/25741-aragon/",
+      "event_info_url": "https://www.worldsbk.com/en/event/ESP/2026",
+      "report_url": "debriefs/Aragon_Sponsor_Debrief.pdf"
+    },
+    {
+      "id": "a883f5f9-4d34-4870-89a9-9838d88683f0",
+      "season_id": "08223905-c688-4253-86b8-0081b439a87a",
+      "country": "Italy",
+      "country_code": "it",
+      "location": "Misano World Circuit - Marco Simoncelli",
+      "round_label": "Round 5",
+      "is_test": false,
+      "event_start_date": "2026-06-12",
+      "event_end_date": "2026-06-14",
+      "ticket_url": "https://tickets.worldsbk.com/en/25801-emilia-romagna/",
+      "event_info_url": "https://www.worldsbk.com/en/event/ITA/2026",
+      "report_url": "debriefs/Misano_Sponsor_Debrief.pdf"
+    },
+    {
+      "id": "f83cd924-6b2a-45ae-8bac-c5e2fafa2724",
+      "season_id": "08223905-c688-4253-86b8-0081b439a87a",
+      "country": "France",
+      "country_code": "fr",
+      "location": "Magny Cours",
+      "round_label": "Round 6",
+      "is_test": false,
+      "event_start_date": "2026-09-04",
+      "event_end_date": "2026-09-06",
+      "ticket_url": "None",
+      "event_info_url": "None",
+      "report_url": null
+    },
+    {
+      "id": "5b808355-7824-4942-950d-03e0f1ce5858",
+      "season_id": "08223905-c688-4253-86b8-0081b439a87a",
+      "country": "Italy",
+      "country_code": "it",
+      "location": "Cremona Circuit",
+      "round_label": "Round 7",
+      "is_test": false,
+      "event_start_date": "2026-09-25",
+      "event_end_date": "2026-09-27",
+      "ticket_url": "None",
+      "event_info_url": "None",
+      "report_url": null
+    },
+    {
+      "id": "e2bfc7ad-3015-4a8b-8eb8-728742dd5077",
+      "season_id": "08223905-c688-4253-86b8-0081b439a87a",
+      "country": "Spain",
+      "country_code": "es",
+      "location": "Circuito de Jerez",
+      "round_label": "Round 8",
+      "is_test": false,
+      "event_start_date": "2026-10-16",
+      "event_end_date": "2026-10-18",
+      "ticket_url": "https://tickets.worldsbk.com/en/32851-jerez/",
+      "event_info_url": "https://www.worldsbk.com/en/event/ESP2/2026",
+      "report_url": null
+    }
+  ]
 }
