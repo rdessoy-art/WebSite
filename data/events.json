@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-03T12:14:26.181213+00:00",
+  "last_updated": "2026-10-03T12:16:40.485661+00:00",
   "current_season_id": "08223905-c688-4253-86b8-0081b439a87a",
   "seasons": [
     {
@@ -20,7 +20,7 @@
   "events": [
     {
       "id": "696e6e05-7007-4452-876d-5c524d9d517b",
-      "season_id": "23978074-5806-47c6-9477-aaa497d53bc7",
+      "season_id": "08223905-c688-4253-86b8-0081b439a87a",
       "debrief_type": "general",
       "country": "Italy",
       "country_code": "it",
