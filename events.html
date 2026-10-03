@@ -549,8 +549,17 @@
     <script>
         renderNav('events', false);
 
-        function showReportComingSoon() {
-            document.getElementById('reportModal').classList.add('active');
+        function showReportComingSoon(reportLabel) {
+            var modal = document.getElementById('reportModal');
+            var label = reportLabel || 'Report';
+            // Generic wording that works for a race, a test day, or a
+            // general event (a show, a sponsor visit) alike — the old
+            // fixed text ("This race hasn't taken place yet...") read
+            // wrong for anything that wasn't a race.
+            modal.querySelector('h3').textContent = label + ' Coming Soon';
+            modal.querySelector('p').textContent =
+                "This isn't available yet — it will be published here shortly after the event.";
+            modal.classList.add('active');
         }
 
         function closeReportModal() {
@@ -632,10 +641,13 @@
                 ? `<img loading="lazy" class="country-flag" src="https://flagcdn.com/w40/${escapeHtml(evt.country_code)}.png" alt="${escapeHtml(evt.country)}">`
                 : '<span class="country-flag" aria-hidden="true"></span>';
 
-            const reportLabel = evt.is_test ? 'Test Report' : 'Race Report';
+            // report_label ('Race Report' / 'Test Report' / 'Report' for a
+            // General debrief) is computed by Publisher, not re-derived
+            // here — see data/events.json's documented contract.
+            const reportLabel = evt.report_label || 'Report';
             const reportControl = evt.report_url
-                ? `<a href="${safeRelativePath(evt.report_url)}" class="race-report-btn" target="_blank" rel="noopener">${reportLabel}</a>`
-                : `<button type="button" onclick="showReportComingSoon()" class="race-report-btn">${reportLabel}</button>`;
+                ? `<a href="${safeRelativePath(evt.report_url)}" class="race-report-btn" target="_blank" rel="noopener">${escapeHtml(reportLabel)}</a>`
+                : `<button type="button" onclick="showReportComingSoon('${escapeHtml(reportLabel)}')" class="race-report-btn">${escapeHtml(reportLabel)}</button>`;
 
             let ticketControl = '';
             if (evt.ticket_url) {
@@ -729,11 +741,14 @@
         loadEvents();
     </script>
 
-    <!-- Race Report Coming Soon Modal -->
+    <!-- Report Coming Soon Modal — h3/p text is set dynamically by
+         showReportComingSoon() to match whichever button was clicked
+         (Race Report / Test Report / Report); this markup is just the
+         structural fallback. -->
     <div id="reportModal" class="report-modal-overlay">
         <div class="report-modal">
-            <h3>Race Report Coming Soon</h3>
-            <p>This race hasn't taken place yet. Harrison's report will be available here shortly after the event.</p>
+            <h3>Report Coming Soon</h3>
+            <p>This isn't available yet — it will be published here shortly after the event.</p>
             <button class="report-modal-close" onclick="closeReportModal()">Close</button>
         </div>
     </div>
