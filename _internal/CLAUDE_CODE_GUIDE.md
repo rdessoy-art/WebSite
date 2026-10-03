@@ -171,8 +171,51 @@ All data is pre-generated JSON loaded via `fetch()` in JavaScript by `index.html
 | Instagram posts | `data/Instagram/instagram.json` | index.html | Ongoing |
 | Facebook posts | `data/facebook/posts.json` | index.html | Ongoing |
 | Mastodon posts | `data/mastodon/posts.json` | index.html | Ongoing |
+| Race calendar | `data/events.json` | events.html | On event/season save in Publisher |
 
 Images for social posts are stored alongside their JSON files in the respective subdirectory. (`data/mastodon.json` at the data/ root, a stale duplicate of `data/mastodon/posts.json`, was deleted 2026-07-10.)
+
+### events.html — rewritten to be data-driven (3 October 2026)
+
+Was previously **hand-coded**: every race weekend was its own `<div class="race-row">`
+written directly into the page, with "Race Report" linking straight to a PDF in `debriefs/`
+that Rob uploaded and wired up by hand after every race (visible in the git log — a
+repeated manual chore, not a one-off). Publisher now owns this data end-to-end; the page
+itself only renders what `data/events.json` says.
+
+- **`loadEvents()` fetches `data/events.json` and builds every `.race-row` client-side** via
+  `renderEventRow()` — there is no longer a hardcoded row in the HTML. Fields map directly:
+  `country`/`country_code` (flag, via `flagcdn.com/w40/{code}.png` — the file no longer
+  carries a separate per-circuit `venue-logo` image), `location` (circuit name),
+  `round_label`, `event_start_date`/`event_end_date`, `ticket_url`, `event_info_url` (the
+  whole-row click target, was `data-event-url` hardcoded per row), `report_url`.
+- **`is_test` is computed by Publisher, not derived here** — it decides the "Test Report" vs
+  "Race Report" button label. Don't re-derive this from `round_label` text in this repo; if
+  Publisher's derivation (round_label containing "test", case-insensitive) is ever wrong,
+  fix it there so there's one definition, not two that can drift apart.
+- **A season `<select>` (`#season-select`) filters the events list**, defaulting to
+  `current_season_id` from the JSON — hidden entirely when there's only one season (or none
+  yet). `data/events.json` is a **flat** events array (each event carries its own
+  `season_id`), not events nested under seasons, specifically so this page does one
+  `Array.filter()` rather than rebuilding a nested structure.
+- **"Coming soon" still works exactly as before** (`showReportComingSoon()` /
+  `#reportModal`) — it fires whenever `report_url` is null, same modal, same markup, just
+  triggered by data instead of being hardcoded per missing row.
+- **Buy Tickets is disabled with no `href` at all once the event is in the past** (`isPastEvent()`
+  compares real ISO dates to `new Date()`), not just greyed out via CSS — a deliberate product
+  choice (Rob: "I like to retain a 'missed out' feeling"). This also replaces the old
+  `greyOutPastTickets()` function, which parsed the visible `.race-date` TEXT against a
+  **hardcoded year 2026** — a bug that would have silently mis-fired every year from 2027
+  onward; the new code compares real dates from the JSON instead.
+- **Every value from `data/events.json` still goes through `escapeHtml()`/`safeUrl()`** per
+  this file's own untrusted-data rule above — `events.html` now defines its own copies of
+  those two helpers (this site has no shared JS module system; every page that needs them
+  defines its own, matching `index.html`'s existing copy) plus `safeRelativePath()` for the
+  `debriefs/*.pdf` report link, which is a repo-relative path rather than an absolute URL and
+  so cannot use `safeUrl()`'s `new URL()` parse as-is.
+- **`data/events.json` ships seeded empty** (`seasons: []`, `events: []`) so the page never
+  shows a raw fetch error before Publisher's first real sync — the "no seasons yet" branch in
+  `loadEvents()` renders every event ungrouped rather than assuming seasons always exist.
 
 ---
 
