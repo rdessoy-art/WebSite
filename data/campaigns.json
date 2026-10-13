@@ -1,7 +1,27 @@
 {
-  "last_updated": "2026-10-03T09:04:35.110948+00:00",
+  "last_updated": "2026-10-13T14:09:07.040664+00:00",
   "campaign_count": 5,
   "campaigns": [
+    {
+      "id": "95eed84de4",
+      "title": "Season Finale",
+      "subject": "Final round of the season in Jerez",
+      "preview_text": "We are ready for the last round of the World Sportbike Championship",
+      "send_time": "2026-10-13T07:34:27+00:00",
+      "emails_sent": 91,
+      "archive_url": "http://eepurl.com/maU2ZB6g96",
+      "status": "sent"
+    },
+    {
+      "id": "e503593f02",
+      "title": "World Championship Podium Finish!",
+      "subject": "P2 Podium!",
+      "preview_text": "From our best qualifying to my 2nd ever World Championship Podium.",
+      "send_time": "2026-10-07T12:25:24+00:00",
+      "emails_sent": 90,
+      "archive_url": "http://eepurl.com/9tVfYD5yfO",
+      "status": "sent"
+    },
     {
       "id": "4cd7277071",
       "title": "Cremona Testing",
@@ -30,26 +50,6 @@
       "send_time": "2026-08-30T19:00:14+00:00",
       "emails_sent": 1,
       "archive_url": "http://eepurl.com/hgrOy5gbmv",
-      "status": "sent"
-    },
-    {
-      "id": "48c2941c52",
-      "title": "Summer break + French testing.",
-      "subject": "Enjoying the time off + getting important bike time",
-      "preview_text": "No racing, but finding new hobbies and enjoying the sunshine",
-      "send_time": "2026-08-27T09:12:28+00:00",
-      "emails_sent": 86,
-      "archive_url": "http://eepurl.com/oYC2eyYEbJ",
-      "status": "sent"
-    },
-    {
-      "id": "162193a5a6",
-      "title": "Trackdside At WSBK Donington!",
-      "subject": "WSBK Home round at Doningtong",
-      "preview_text": "No racing, but doing the Superbike Superpole comentary was awsome.",
-      "send_time": "2026-07-13T06:39:00+00:00",
-      "emails_sent": 83,
-      "archive_url": "http://eepurl.com/Beclo3-med",
       "status": "sent"
     }
   ]
