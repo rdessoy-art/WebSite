@@ -1,20 +1,20 @@
 {
-  "last_updated": "2026-10-19T09:00:12.498146+00:00",
-  "current_season_id": "08223905-c688-4253-86b8-0081b439a87a",
+  "last_updated": "2026-10-19T19:51:31.879453+00:00",
+  "current_season_id": "23978074-5806-47c6-9477-aaa497d53bc7",
   "seasons": [
     {
       "id": "23978074-5806-47c6-9477-aaa497d53bc7",
       "label": "2027 World Sportbike Season",
       "start_date": "2026-11-01",
       "end_date": "2027-10-31",
-      "is_current": false
+      "is_current": true
     },
     {
       "id": "08223905-c688-4253-86b8-0081b439a87a",
       "label": "2026 World Sportbike Season",
       "start_date": "2026-03-25",
       "end_date": "2026-10-18",
-      "is_current": true
+      "is_current": false
     }
   ],
   "events": [
