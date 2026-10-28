@@ -1,7 +1,17 @@
 {
-  "last_updated": "2026-10-13T14:09:07.040664+00:00",
+  "last_updated": "2026-10-28T15:10:12.148057+00:00",
   "campaign_count": 5,
   "campaigns": [
+    {
+      "id": "9adbf3f6a8",
+      "title": "2026 Over & Out ",
+      "subject": "2026 Complete ",
+      "preview_text": "A cloudy Jerez finishes off the 2026 season! ",
+      "send_time": "2026-10-19T07:45:09+00:00",
+      "emails_sent": 91,
+      "archive_url": "http://eepurl.com/SEgVFsDqF3",
+      "status": "sent"
+    },
     {
       "id": "95eed84de4",
       "title": "Season Finale",
@@ -40,16 +50,6 @@
       "send_time": "2026-09-07T09:37:43+00:00",
       "emails_sent": 86,
       "archive_url": "http://eepurl.com/fZg6-x3BRq",
-      "status": "sent"
-    },
-    {
-      "id": "7a7ed23015",
-      "title": "[Re-sent] Summer break + French testing.",
-      "subject": "Enjoying the time off + getting important bike time",
-      "preview_text": "No racing, but finding new hobbies and enjoying the sunshine",
-      "send_time": "2026-08-30T19:00:14+00:00",
-      "emails_sent": 1,
-      "archive_url": "http://eepurl.com/hgrOy5gbmv",
       "status": "sent"
     }
   ]
