@@ -233,14 +233,16 @@ All site images live in `/images/` (~28 MB, down from ~98 MB after the 2026-07-1
 
 | File | Used For |
 |------|---------|
-| `hd55-white.png` | Header logo (50px height); source for the favicon |
+| `optimised/hd55-white.webp` | Header logo (50px height, 100×100 file). The original `hd55-white.png` is in `images-src/` and is still the source for the favicon |
 | `harrison-dessoy-2025-logo.png` | Profile section logo |
-| `2025_profilepic.png` | Profile photo |
+| `optimised/2025-profilepic-*.{avif,webp,jpg}` | Profile photo (`<picture>`; original in `images-src/`) |
 | `hero-bg-desktop.webp` / `hero-bg-tablet.webp` / `hero-bg-mobile.webp` | Responsive hero backgrounds (index.html) |
 | `og-image-home.jpg` / `og-image-fanclub.jpg` / `og-image-merchandise.jpg` | Open Graph / Twitter card preview images (1200×630) |
 | `cap-2026-front.webp`, `hoody-2026-front.webp`/`-rear.webp`, `t-shirt-2026-front.webp`/`-rear.webp`, `beanie-2026-front.webp` (+ `-black`/`-yellow`/`-white` color variants) | Merchandise product photos |
 | `favicon.ico`, `favicon-16x16.png`, `favicon-32x32.png`, `apple-touch-icon.png` | Browser tab / home-screen icons, generated from `hd55-white.png` |
 | `instagram-logo-2.png`, `facebook-logo.png`, `Youtube_logo.png`, `LinkedIn_logo.png` | Footer social icons (rendered by `footer.js`) |
+
+**Optimised images (2026-11):** large originals live in `images-src/` and are **never edited or deployed-from**. `python3 tools/optimise_images.py` (needs `pip install -r requirements.txt`, i.e. Pillow) writes the web copies to `images/optimised/`: photos as `<stem>-{480,960,1600}.{avif,webp,jpg}` (used via `<picture>` + `srcset`/`sizes`, or `image-set()` for CSS backgrounds) and logos as one `<stem>.webp` (≤60 KB). It is idempotent and has `--dry-run`. To add a photo or logo: drop the original in `images-src/`, add a logo's slug to `LOGO_STEMS` in the script if it is a logo, run the script, then reference the generated files. The home page's images dropped from ~14 MB to under 1 MB this way. Not covered: `data/Instagram/*` (written by the Publisher) and a few unreferenced legacy photos still in `images/`.
 
 **Formats in use:** WebP (preferred — merch, hero backgrounds, most logos), PNG (logos/UI needing transparency), JPEG/JPG (photos, OG images), SVG (a few sponsor logos).
 

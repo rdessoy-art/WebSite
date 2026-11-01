@@ -34,6 +34,10 @@
     <meta name="twitter:title" content="Harrison Dessoy - World Sportbike Rider">
     <meta name="twitter:description" content="Harrison Dessoy (#55) — FIM World Sportbike Championship rider for PHR Performance on a Triumph Daytona 660.">
     <meta name="twitter:image" content="https://dessoyracing.com/images/og-image-home.jpg">
+    <!-- Hero background is a CSS background (no <img>), so preload it with high priority. media= mirrors the CSS breakpoints. -->
+    <link rel="preload" as="image" href="images/hero-bg-mobile.webp" media="(max-width: 768px)" fetchpriority="high">
+    <link rel="preload" as="image" href="images/hero-bg-tablet.webp" media="(min-width: 769px) and (max-width: 1024px)" fetchpriority="high">
+    <link rel="preload" as="image" href="images/hero-bg-desktop.webp" media="(min-width: 1025px)" fetchpriority="high">
     <style>
         * {
             margin: 0;
@@ -1132,7 +1136,7 @@
         <div class="header-content">
             <div class="logo">
                 <a href="index.html">
-                    <img src="images/hd55-white.png" alt="Harrison Dessoy Logo" width="50" height="50" style="height: 50px; margin-right: 10px;">
+                    <img src="images/optimised/hd55-white.webp" decoding="async" alt="Harrison Dessoy Logo" width="50" height="50" style="height: 50px; margin-right: 10px;">
                     Harrison Dessoy
                 </a>
             </div>
@@ -1163,46 +1167,46 @@
         </div>
         <div class="hero-sponsors">
             <a href="https://peterhickman.net/phr-performance-about-us/" target="_blank" rel="noopener">
-                <img src="images/PHR-with-Wriiting-below-pdf.webp" alt="PHR Performance" width="198" height="80" class="hero-sponsor-logo">
+                <img src="images/PHR-with-Wriiting-below-pdf.webp" decoding="async" alt="PHR Performance" width="198" height="80" class="hero-sponsor-logo">
             </a>
             <a href="https://grayersgraphics.co.uk/" target="_blank" rel="noopener">
-                <img src="images/GreyersGraphics.svg" alt="Grayers Graphics" width="304" height="80" class="hero-sponsor-logo">
+                <img src="images/GreyersGraphics.svg" decoding="async" alt="Grayers Graphics" width="304" height="80" class="hero-sponsor-logo">
             </a>
             <a href="https://www.helmetcity.co.uk/?gad_source=1&gad_campaignid=6537330215&gbraid=0AAAAAD9UmMHwmlr8gLIXihUjChuLC68Ww&gclid=CjwKCAiAz_DIBhBJEiwAVH2XwNmJiT2IRxf2Wd8vgqQxzBFxpzKCSs_45A9_f8TFOpyYXJrBiaqxkhoCz0QQAvD_BwE" target="_blank" rel="noopener">
-                <img src="images/HelmetCity.PNG" alt="Helmet City" width="192" height="80" class="hero-sponsor-logo">
+                <img src="images/HelmetCity.PNG" decoding="async" alt="Helmet City" width="192" height="80" class="hero-sponsor-logo">
             </a>
             <a href="sponsor-fletcherssolicitors.html" rel="noopener">
-                <img src="images/fletchers-solicitors-logo.webp" alt="Fletchers Solicitors" width="191" height="80" class="hero-sponsor-logo">
+                <img src="images/fletchers-solicitors-logo.webp" decoding="async" alt="Fletchers Solicitors" width="191" height="80" class="hero-sponsor-logo">
             </a>
             <a href="https://twotyres.co.uk/" target="_blank" rel="noopener">
-                <img src="images/TwoTyres.jpeg" alt="Two Tyres" width="107" height="80" class="hero-sponsor-logo">
+                <img src="images/TwoTyres.jpeg" decoding="async" alt="Two Tyres" width="107" height="80" class="hero-sponsor-logo">
             </a>
             <a href="sponsor-martin-sheath.html" rel="noopener">
-                <img src="images/EGR.png" alt="Eastern Garage Racing" width="65" height="80" class="hero-sponsor-logo">
+                <img src="images/optimised/egr.webp" decoding="async" alt="Eastern Garage Racing" width="65" height="80" class="hero-sponsor-logo">
             </a>
             <a href="https://markwalkercoaching.co.uk/" target="_blank" rel="noopener">
-                <img src="images/MWC_Logo_Black.png" alt="Mark Walker Coaching" width="80" height="80" class="hero-sponsor-logo">
+                <img src="images/optimised/mwc-logo-black.webp" decoding="async" alt="Mark Walker Coaching" width="80" height="80" class="hero-sponsor-logo">
             </a>
             <a href="https://www.weiseclothing.com/about/" target="_blank" rel="noopener">
-                <img src="images/weise-logo_h100.jpg" alt="Weise Clothing" width="80" height="80" class="hero-sponsor-logo">
+                <img src="images/weise-logo_h100.jpg" decoding="async" alt="Weise Clothing" width="80" height="80" class="hero-sponsor-logo">
             </a>
             <a href="sponsor-zerofit.html" rel="noopener">
-                <img src="images/zerofit-image.png" alt="ZeroFit" width="154" height="80" class="hero-sponsor-logo">
+                <img src="images/zerofit-image.png" decoding="async" alt="ZeroFit" width="154" height="80" class="hero-sponsor-logo">
             </a>
             <a href="sponsor-triumph-east-london.html" rel="noopener">
-                <img src="images/triumph-logo.png" alt="Triumph East London" width="80" height="80" class="hero-sponsor-logo">
+                <img src="images/triumph-logo.png" decoding="async" alt="Triumph East London" width="80" height="80" class="hero-sponsor-logo">
             </a>
             <a href="sponsor-arc-on.html" rel="noopener">
-                <img src="images/ARC-ON-VECTOR.png" alt="ARC-ON Gloves" width="113" height="80" class="hero-sponsor-logo">
+                <img src="images/optimised/arc-on-vector.webp" decoding="async" alt="ARC-ON Gloves" width="113" height="80" class="hero-sponsor-logo">
             </a>
             <a href="https://www.pro-bolt.com/titanium/" target="_blank" rel="noopener">
-                <img src="images/pro-bolt-logo.jpg" alt="Pro Bolt" width="137" height="80" class="hero-sponsor-logo">
+                <img src="images/optimised/pro-bolt-logo.webp" decoding="async" alt="Pro Bolt" width="137" height="80" class="hero-sponsor-logo">
             </a>
             <a href="https://bonabotanica.com" target="_blank" rel="noopener">
-                <img src="images/BonaBotanica_Logo.svg" alt="Bona Botanica" width="230" height="80" class="hero-sponsor-logo">
+                <img src="images/BonaBotanica_Logo.svg" decoding="async" alt="Bona Botanica" width="230" height="80" class="hero-sponsor-logo">
             </a>
             <a href="https://www.rockcameras.co.uk" target="_blank" rel="noopener">
-                <img src="images/RockCameras_Logo.png" alt="Rock Cameras" width="142" height="80" class="hero-sponsor-logo">
+                <img src="images/optimised/rockcameras-logo.webp" decoding="async" alt="Rock Cameras" width="142" height="80" class="hero-sponsor-logo">
             </a>
         </div>
     </section>
@@ -1212,12 +1216,12 @@
             <h2>Harrison Dessoy</h2>
             <div class="about-grid">
                 <div class="about-image">
-                    <img src="images/2025_profilepic.png" alt="Harrison Dessoy - Profile Photo" style="width: 100%; height: auto; display: block;" onerror="this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:400px;background:linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);color:white;font-size:3rem;font-weight:bold;\'>Image Not Found - Check Path</div>'">
+                    <picture><source type="image/avif" srcset="images/optimised/2025-profilepic-480.avif 480w, images/optimised/2025-profilepic-502.avif 502w" sizes="(min-width: 768px) 450px, 90vw"><source type="image/webp" srcset="images/optimised/2025-profilepic-480.webp 480w, images/optimised/2025-profilepic-502.webp 502w" sizes="(min-width: 768px) 450px, 90vw"><img src="images/optimised/2025-profilepic-502.jpg" srcset="images/optimised/2025-profilepic-480.jpg 480w, images/optimised/2025-profilepic-502.jpg 502w" sizes="(min-width: 768px) 450px, 90vw" width="502" height="848" loading="lazy" decoding="async" alt="Harrison Dessoy - Profile Photo" style="width: 100%; height: auto; display: block;" onerror="this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:400px;background:linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);color:white;font-size:3rem;font-weight:bold;\'>Image Not Found - Check Path</div>'"></picture>
                 </div>
                 <div class="about-content">
                     <!-- HD Logo -->
                     <div style="text-align: center; margin-bottom: 1.25rem;">
-                        <img src="images/harrison-dessoy-2025-logo.png" alt="Harrison Dessoy Logo" style="max-width: 80%; width: 80%; height: auto;">
+                        <img src="images/harrison-dessoy-2025-logo.png" decoding="async" width="500" height="500" alt="Harrison Dessoy Logo" loading="lazy" style="max-width: 80%; width: 80%; height: auto;">
                     </div>
 
                     <!-- Rider Information -->
@@ -1326,7 +1330,7 @@
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
                     <a href="https://www.youtube.com/live/R__4OSQfO_8?si=sylYJQMw_Bw3GIHT&t=4080s" target="_blank" style="text-decoration: none; color: inherit; display: block; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.15)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 15px rgba(0,0,0,0.1)';" rel="noopener">
                         <div style="position: relative;">
-                            <img src="images/idm-assen-saturday-16-08-2025-photo-damon-teerink-1616.jpeg" alt="IDM Assen Saturday 16-08-2025" style="width: 100%; height: 280px; object-fit: cover; object-position: center 85%; display: block;">
+                            <picture><source type="image/avif" srcset="images/optimised/idm-assen-saturday-16-08-2025-photo-damon-teerink-1616-480.avif 480w, images/optimised/idm-assen-saturday-16-08-2025-photo-damon-teerink-1616-960.avif 960w, images/optimised/idm-assen-saturday-16-08-2025-photo-damon-teerink-1616-1600.avif 1600w" sizes="(min-width: 1000px) 33vw, 100vw"><source type="image/webp" srcset="images/optimised/idm-assen-saturday-16-08-2025-photo-damon-teerink-1616-480.webp 480w, images/optimised/idm-assen-saturday-16-08-2025-photo-damon-teerink-1616-960.webp 960w, images/optimised/idm-assen-saturday-16-08-2025-photo-damon-teerink-1616-1600.webp 1600w" sizes="(min-width: 1000px) 33vw, 100vw"><img src="images/optimised/idm-assen-saturday-16-08-2025-photo-damon-teerink-1616-960.jpg" srcset="images/optimised/idm-assen-saturday-16-08-2025-photo-damon-teerink-1616-480.jpg 480w, images/optimised/idm-assen-saturday-16-08-2025-photo-damon-teerink-1616-960.jpg 960w, images/optimised/idm-assen-saturday-16-08-2025-photo-damon-teerink-1616-1600.jpg 1600w" sizes="(min-width: 1000px) 33vw, 100vw" width="960" height="1707" loading="lazy" decoding="async" alt="IDM Assen Saturday 16-08-2025" style="width: 100%; height: 280px; object-fit: cover; object-position: center 85%; display: block;"></picture>
                             <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; background: rgba(230, 57, 70, 0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
                                 <div style="width: 0; height: 0; border-left: 20px solid white; border-top: 12px solid transparent; border-bottom: 12px solid transparent; margin-left: 5px;"></div>
                             </div>
@@ -1338,7 +1342,7 @@
                     </a>
                     <a href="https://www.youtube.com/live/Q1f5JaANZI8?si=tzby891AUKnRfnEh&t=11630s" target="_blank" style="text-decoration: none; color: inherit; display: block; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.15)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 15px rgba(0,0,0,0.1)';" rel="noopener">
                         <div style="position: relative;">
-                            <img src="images/idm-assen-sunday-17-08-2025-photo-damon-teerink-3677.jpeg" alt="IDM Assen Sunday 17-08-2025" style="width: 100%; height: 280px; object-fit: cover; object-position: center 65%; display: block;">
+                            <picture><source type="image/avif" srcset="images/optimised/idm-assen-sunday-17-08-2025-photo-damon-teerink-3677-480.avif 480w, images/optimised/idm-assen-sunday-17-08-2025-photo-damon-teerink-3677-960.avif 960w, images/optimised/idm-assen-sunday-17-08-2025-photo-damon-teerink-3677-1600.avif 1600w" sizes="(min-width: 1000px) 33vw, 100vw"><source type="image/webp" srcset="images/optimised/idm-assen-sunday-17-08-2025-photo-damon-teerink-3677-480.webp 480w, images/optimised/idm-assen-sunday-17-08-2025-photo-damon-teerink-3677-960.webp 960w, images/optimised/idm-assen-sunday-17-08-2025-photo-damon-teerink-3677-1600.webp 1600w" sizes="(min-width: 1000px) 33vw, 100vw"><img src="images/optimised/idm-assen-sunday-17-08-2025-photo-damon-teerink-3677-960.jpg" srcset="images/optimised/idm-assen-sunday-17-08-2025-photo-damon-teerink-3677-480.jpg 480w, images/optimised/idm-assen-sunday-17-08-2025-photo-damon-teerink-3677-960.jpg 960w, images/optimised/idm-assen-sunday-17-08-2025-photo-damon-teerink-3677-1600.jpg 1600w" sizes="(min-width: 1000px) 33vw, 100vw" width="960" height="640" loading="lazy" decoding="async" alt="IDM Assen Sunday 17-08-2025" style="width: 100%; height: 280px; object-fit: cover; object-position: center 65%; display: block;"></picture>
                             <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; background: rgba(230, 57, 70, 0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
                                 <div style="width: 0; height: 0; border-left: 20px solid white; border-top: 12px solid transparent; border-bottom: 12px solid transparent; margin-left: 5px;"></div>
                             </div>
@@ -1364,7 +1368,7 @@
                     <h3 style="color: var(--secondary); margin-bottom: 1.5rem; font-size: 1.5rem; border-left: 5px solid var(--primary); padding-left: 1rem;">Key posts from Harrison Dessoy</h3>
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
                         <a href="https://www.instagram.com/p/DSCs8frjMiX/" target="_blank" rel="noopener" class="blog-card" style="text-decoration: none; color: inherit;">
-                            <div class="blog-image" style="background-image: url('images/bike-shed-dinner.jpg');"></div>
+                            <div class="blog-image" style="background-image: url('images/optimised/bike-shed-dinner-960.jpg'); background-image: image-set(url('images/optimised/bike-shed-dinner-960.avif') type('image/avif'), url('images/optimised/bike-shed-dinner-960.webp') type('image/webp'), url('images/optimised/bike-shed-dinner-960.jpg') type('image/jpeg'));"></div>
                             <div class="blog-content">
                                 <p class="blog-date">@harrison_dessoy55</p>
                                 <h3>Annual 2026 Bike Shed Dinner</h3>
@@ -1374,7 +1378,7 @@
                         </a>
 
                         <a href="https://www.instagram.com/p/DRxR_qKDMFN/" target="_blank" rel="noopener" class="blog-card" style="text-decoration: none; color: inherit;">
-                            <div class="blog-image" style="background-image: url('images/arcon-photo.jpg');"></div>
+                            <div class="blog-image" style="background-image: url('images/optimised/arcon-photo-960.jpg'); background-image: image-set(url('images/optimised/arcon-photo-960.avif') type('image/avif'), url('images/optimised/arcon-photo-960.webp') type('image/webp'), url('images/optimised/arcon-photo-960.jpg') type('image/jpeg'));"></div>
                             <div class="blog-content">
                                 <p class="blog-date">@harrison_dessoy55</p>
                                 <h3>Arcon Photo</h3>
@@ -1384,7 +1388,7 @@
                         </a>
 
                         <a href="https://www.instagram.com/harrison_dessoy55/" target="_blank" rel="noopener" class="blog-card" style="text-decoration: none; color: inherit;">
-                            <div class="blog-image" style="background-image: url('images/IMG_9759.JPEG');"></div>
+                            <div class="blog-image" style="background-image: url('images/optimised/img-9759-960.jpg'); background-image: image-set(url('images/optimised/img-9759-960.avif') type('image/avif'), url('images/optimised/img-9759-960.webp') type('image/webp'), url('images/optimised/img-9759-960.jpg') type('image/jpeg'));"></div>
                             <div class="blog-content">
                                 <p class="blog-date">@harrison_dessoy55</p>
                                 <h3>Motorcycle Live Throwback</h3>
@@ -1410,7 +1414,7 @@
                         </a>
 
                         <a href="https://www.instagram.com/p/DRcFtGYjNkb/?img_index=1" target="_blank" rel="noopener" class="blog-card" style="text-decoration: none; color: inherit;">
-                            <div class="blog-image" style="background-image: url('images/PHR-48-scaled.jpg');"></div>
+                            <div class="blog-image" style="background-image: url('images/optimised/phr-48-scaled-960.jpg'); background-image: image-set(url('images/optimised/phr-48-scaled-960.avif') type('image/avif'), url('images/optimised/phr-48-scaled-960.webp') type('image/webp'), url('images/optimised/phr-48-scaled-960.jpg') type('image/jpeg'));"></div>
                             <div class="blog-content">
                                 <p class="blog-date">@phr_performance</p>
                                 <h3>PHR Performance Update</h3>
@@ -1440,7 +1444,7 @@
             <div class="sponsors-grid">
                 <div class="sponsor-card">
                     <div class="sponsor-logo" style="background: white; padding: 1rem;">
-                        <img src="images/PHR-with-Wriiting-below-pdf.webp" alt="PHR Performance" style="width: 100%; height: 100%; object-fit: contain;" loading="lazy">
+                        <img src="images/PHR-with-Wriiting-below-pdf.webp" decoding="async" width="1024" height="414" alt="PHR Performance" style="width: 100%; height: 100%; object-fit: contain;" loading="lazy">
                     </div>
                     <h3>Professional Race Team</h3>
                     <p>PHR Performance by Peter Hickman provides world-class technical expertise and championship-winning insights, supporting Harrison with setup optimisation and race craft development.</p>
@@ -1449,7 +1453,7 @@
 
                 <div class="sponsor-card">
                     <div class="sponsor-logo" style="background: white; padding: 1rem;">
-                        <img src="images/fletchers-solicitors-logo.webp" alt="Fletchers Solicitors" style="width: 100%; height: 100%; object-fit: contain;" loading="lazy">
+                        <img src="images/fletchers-solicitors-logo.webp" decoding="async" width="603" height="253" alt="Fletchers Solicitors" style="width: 100%; height: 100%; object-fit: contain;" loading="lazy">
                     </div>
                     <h3>Legal Partner</h3>
                     <p>Fletchers Solicitors is one of the UK's most trusted personal injury and medical negligence law firms, providing expert No Win, No Fee legal support to those who need it most.</p>
@@ -1458,7 +1462,7 @@
 
                 <div class="sponsor-card">
                     <div class="sponsor-logo" style="background: white; padding: 1rem;">
-                        <img src="images/MWC_Logo_Black.png" alt="Mark Walker Coaching" style="width: 120%; height: 120%; object-fit: contain;" loading="lazy">
+                        <img src="images/optimised/mwc-logo-black.webp" decoding="async" alt="Mark Walker Coaching" style="width: 120%; height: 120%; object-fit: contain;" loading="lazy" width="800" height="800">
                     </div>
                     <h3>Fitness Coach</h3>
                     <p>Mark Walker Coaching provides elite sports science coaching and training programmes, helping Harrison achieve peak physical and mental performance through evidence-based methods.</p>
@@ -1467,7 +1471,7 @@
 
                 <div class="sponsor-card">
                     <div class="sponsor-logo" style="background: white; padding: 1rem;">
-                        <img src="images/weise-logo_h100.jpg" alt="Weise Clothing" style="width: 100%; height: 100%; object-fit: contain;" loading="lazy">
+                        <img src="images/weise-logo_h100.jpg" decoding="async" width="150" height="150" alt="Weise Clothing" style="width: 100%; height: 100%; object-fit: contain;" loading="lazy">
                     </div>
                     <h3>Leathers Sponsor</h3>
                     <p>Weise provides premium motorcycle clothing and protective gear, ensuring Harrison has the best equipment for safety and performance on and off the track.</p>
@@ -1476,7 +1480,7 @@
 
                 <div class="sponsor-card">
                     <div class="sponsor-logo" style="background: white; padding: 1rem;">
-                        <img src="images/zerofit-image.png" alt="ZeroFit" style="width: 100%; height: 100%; object-fit: contain;" loading="lazy">
+                        <img src="images/zerofit-image.png" decoding="async" width="311" height="162" alt="ZeroFit" style="width: 100%; height: 100%; object-fit: contain;" loading="lazy">
                     </div>
                     <h3>Baselayers sponsor</h3>
                     <p>ZeroFit supplies cutting-edge Japanese-designed base layers, providing exceptional thermal regulation and comfort for optimal performance during training and competition.</p>
@@ -1485,7 +1489,7 @@
 
                 <div class="sponsor-card">
                     <div class="sponsor-logo" style="background: white; padding: 1rem;">
-                        <img src="images/TwoTyres.jpeg" alt="Two Tyres" style="width: 100%; height: 100%; object-fit: contain;" loading="lazy">
+                        <img src="images/TwoTyres.jpeg" decoding="async" width="454" height="341" alt="Two Tyres" style="width: 100%; height: 100%; object-fit: contain;" loading="lazy">
                     </div>
                     <h3>Product Partner</h3>
                     <p>Two Tyres provides premium motorcycle products, expert advice, and professional service, supporting Harrison with high-performance tyres and essential equipment.</p>
@@ -1494,7 +1498,7 @@
 
                 <div class="sponsor-card">
                     <div class="sponsor-logo" style="background: white; padding: 1rem;">
-                        <img src="images/EGR.png" alt="Eastern Garage Racing" style="width: 120%; height: 120%; object-fit: contain;" loading="lazy">
+                        <img src="images/optimised/egr.webp" decoding="async" alt="Eastern Garage Racing" style="width: 120%; height: 120%; object-fit: contain;" loading="lazy" width="650" height="800">
                     </div>
                     <h3>Product Partner</h3>
                     <p>Martin Sheath and Eastern Garage Racing provide automotive expertise and support, bringing over 70 years of professional service excellence to Harrison's racing career.</p>
@@ -1503,7 +1507,7 @@
 
                 <div class="sponsor-card">
                     <div class="sponsor-logo" style="background: white; padding: 1rem;">
-                        <img src="images/triumph-logo.png" alt="Triumph East London" style="width: 100%; height: 100%; object-fit: contain;" loading="lazy">
+                        <img src="images/triumph-logo.png" decoding="async" width="225" height="225" alt="Triumph East London" style="width: 100%; height: 100%; object-fit: contain;" loading="lazy">
                     </div>
                     <h3>Dealership Partner</h3>
                     <p>Triumph East London offers expert Triumph motorcycle services and support, representing iconic British motorcycling heritage and professional excellence.</p>
@@ -1512,7 +1516,7 @@
 
                 <div class="sponsor-card">
                     <div class="sponsor-logo" style="background: white; padding: 1rem;">
-                        <img src="images/ARC-ON-VECTOR.png" alt="ARC-ON Gloves" style="width: 100%; height: 100%; object-fit: contain;" loading="lazy">
+                        <img src="images/optimised/arc-on-vector.webp" decoding="async" alt="ARC-ON Gloves" style="width: 100%; height: 100%; object-fit: contain;" loading="lazy" width="800" height="566">
                     </div>
                     <h3>Glove sponsor</h3>
                     <p>ARC-ON is a UK-based specialist manufacturer of award-winning motorcycle race gloves, delivering professional-grade protection and performance for elite racers.</p>
@@ -1521,7 +1525,7 @@
 
                 <div class="sponsor-card">
                     <div class="sponsor-logo" style="background: white; padding: 1rem;">
-                        <img src="images/pro-bolt-logo.jpg" alt="Pro Bolt" style="width: 100%; height: 100%; object-fit: contain;" loading="lazy">
+                        <img src="images/optimised/pro-bolt-logo.webp" decoding="async" alt="Pro Bolt" style="width: 100%; height: 100%; object-fit: contain;" loading="lazy" width="800" height="468">
                     </div>
                     <h3>Fasteners Specialist</h3>
                     <p>Pro Bolt specialises in premium titanium and stainless steel fasteners for motorcycles, providing lightweight, high-strength components that enhance performance and durability.</p>
@@ -1530,7 +1534,7 @@
 
                 <div class="sponsor-card">
                     <div class="sponsor-logo" style="background: white; padding: 1rem;">
-                        <img src="images/BonaBotanica_Logo.svg" alt="Bona Botanica" style="width: 100%; height: 100%; object-fit: contain;" loading="lazy">
+                        <img src="images/BonaBotanica_Logo.svg" decoding="async" width="16" height="145" alt="Bona Botanica" style="width: 100%; height: 100%; object-fit: contain;" loading="lazy">
                     </div>
                     <h3>Nutrition &amp; Wellness Partner</h3>
                     <p>Bona Botanica produces natural health and wellness supplements, including their flagship XanthoPure™ mangosteen supplement, supporting Harrison's performance and vitality on and off the track.</p>
@@ -1539,7 +1543,7 @@
 
                 <div class="sponsor-card">
                     <div class="sponsor-logo" style="background: black; padding: 1rem;">
-                        <img src="images/RockCameras_Logo.png" alt="Rock Cameras" style="width: 100%; height: 100%; object-fit: contain;" loading="lazy">
+                        <img src="images/optimised/rockcameras-logo.webp" decoding="async" alt="Rock Cameras" style="width: 100%; height: 100%; object-fit: contain;" loading="lazy" width="800" height="450">
                     </div>
                     <h3>Camera &amp; Media Partner</h3>
                     <p>Rock Cameras is a London-based specialist in professional camera rentals and digital equipment, ensuring every race weekend is captured with the precision and quality the sport demands.</p>
@@ -1548,7 +1552,7 @@
 
                 <div class="sponsor-card">
                     <div class="sponsor-logo" style="background: white; padding: 1rem;">
-                        <img src="images/GreyersGraphics.svg" alt="Grayers Graphics" style="width: 100%; height: 100%; object-fit: contain;" loading="lazy">
+                        <img src="images/GreyersGraphics.svg" decoding="async" width="428" height="112" alt="Grayers Graphics" style="width: 100%; height: 100%; object-fit: contain;" loading="lazy">
                     </div>
                     <h3>Branding & Graphics Partner</h3>
                     <p>Grayers Graphics specializes in vehicle wrapping, sign writing, and graphic design, bringing over 15 years of expertise to create striking visual branding for Harrison's race team.</p>

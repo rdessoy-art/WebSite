@@ -1,0 +1,4 @@
+# Only needed to run tools/optimise_images.py on your own machine.
+# The website itself has no build step and nothing here is deployed.
+# Pillow 12 can write AVIF and WebP natively, so pillow-avif-plugin is NOT needed.
+Pillow>=12.0
