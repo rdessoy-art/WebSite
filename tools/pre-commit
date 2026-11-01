@@ -1,0 +1,5 @@
+#!/bin/sh
+# Optional git hook. Install with:  cp tools/pre-commit .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit
+# Runs the design-system guard, then the older consistency script, before every commit.
+python3 tools/check_site.py || exit 1
+python3 scripts/site-check.py > /dev/null || { echo "scripts/site-check.py failed - run it to see why"; exit 1; }

@@ -123,6 +123,8 @@ All other CSS is **inline** inside `<style>` blocks in each HTML file's `<head>`
 
 **Responsive breakpoints:** 1024px, 768px, 480px
 
+**Design system (2026-11):** `DESIGN.md` documents the tokens, components and `<picture>` pattern. `css/tokens.css` is the single `:root` block linked by every page (24 per-page `:root` blocks were removed; screenshots were pixel-identical). `python3 tools/check_site.py` guards oversized images, `<img>` attributes and hard-coded colours against a baseline (`tools/check_site_baseline.json`; `--update-baseline` after fixing old problems, optional hook: `tools/pre-commit`).
+
 **Home-page polish (2026-11):** `index.html` has a type scale and font token in `:root` (`--font-sans` is the system UI font; swap it for a self-hosted web font in one line), a hero overlay token (`--hero-overlay`, white text ≥ 5.9:1 on all three hero images), a blurred translucent header (solid fallback via `@supports`), uniform sponsor tiles (greyscale → colour on hover, colour on touch; `.sponsor-logo--dark` for logos that need a black tile) and a scroll fade-in (`.reveal`, IntersectionObserver, off under `prefers-reduced-motion`). Other pages still use their own inline CSS until the shared stylesheet lands.
 
 **Layout patterns:** CSS Grid for product grids, sponsor grids, blog card grids; Flexbox for nav, footer, hero

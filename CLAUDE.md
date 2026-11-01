@@ -2,7 +2,7 @@
 
 Static HTML site for Harrison Dessoy (HD55), World Sportbike rider. **No build system, no framework, no package manager** — every page is a standalone `.html` file deployed via GitHub Pages (merge to `main` = live on dessoyracing.com).
 
-Full details in `_internal/CLAUDE_CODE_GUIDE.md` — read it before structural changes. This file is the short list of invariants.
+Full details in `_internal/CLAUDE_CODE_GUIDE.md` — read it before structural changes. **Read `DESIGN.md` before touching any HTML/CSS** (tokens, components, image patterns). This file is the short list of invariants.
 
 ## Invariants — never violate these
 
@@ -25,13 +25,14 @@ Use the `new-page` or `new-sponsor-page` skill — they encode this checklist.
 
 ## Images
 
-- New images: **WebP, ≤300 KB, lowercase-hyphenated filename** (`phr-logo.webp`, not `PHR Logo (2).PNG`). Use the `optimize-image` skill before committing anything from a camera or design export — raw merch PNGs have shipped at 8 MB before.
+- New images: original goes in `images-src/`, then run **`python3 tools/optimise_images.py`** (Pillow, see `requirements.txt`); reference the generated files in `images/optimised/` (photos via `<picture>` AVIF/WebP/JPEG, logos as one ≤60 KB WebP). No committed image over 200 KB. See the `optimize-image` skill — raw merch PNGs have shipped at 8 MB before.
+- Every `<img>` has `alt`, `width` and `height`; below the fold add `loading="lazy" decoding="async"`.
 - Existing filenames contain spaces/mixed case; match them exactly (deploy host is case-sensitive).
 
 ## Conventions
 
-- CSS is inline per page (`<style>` in head) using the shared tokens: `--primary: #e63946`, `--secondary: #1d3557`, `--accent: #f1faee`, `--dark`, `--light`. Match the page you're editing.
+- CSS is inline per page (`<style>` in head), but **all tokens live in `css/tokens.css`** (one `:root`, linked by every page): brand `--primary #e63946`, `--secondary #1d3557`, `--accent #f1faee`, `--dark`, `--light`, plus text/line/radius/shadow/type tokens. No new hard-coded hex colours, radii or shadows. Match the page you're editing.
 - External links: `target="_blank" rel="noopener"`. Internal links: same tab.
-- Before committing page changes, run `python3 scripts/site-check.py` and don't introduce new failures (pre-existing ones are tracked in `_internal/AUDIT.md`).
+- Before committing page changes, run `python3 scripts/site-check.py` and `python3 tools/check_site.py` (oversized images, `<img>` attributes, hard-coded colours; known old problems are in `tools/check_site_baseline.json`) and don't introduce new failures (pre-existing ones are tracked in `_internal/AUDIT.md`).
 - Verify changes in a real browser via the `verify-site` skill (local server on port 8899).
 - When you change behaviour, update the doc that describes it (`_internal/CLAUDE_CODE_GUIDE.md`, `_internal/STRIPE_SETUP.md`, `_internal/SITEMAP_MAINTENANCE.md`, …) in the same change.
