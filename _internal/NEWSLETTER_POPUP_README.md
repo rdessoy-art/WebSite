@@ -4,7 +4,7 @@ This guide explains how the newsletter popup works and how to add it to addition
 
 ## Overview
 
-The newsletter popup appears after 8 seconds on every page and includes:
+The newsletter popup appears after 20 seconds, or once the visitor has scrolled about 40% of the page (whichever comes first), on every page and includes:
 - A name field for user's name
 - An email field for user's email address
 - An image of Harrison Dessoy racing (`images/optimised/idm-assen-*.{avif,webp,jpg}` via `<picture>`; original in `images-src/`) displayed on the left
@@ -50,20 +50,21 @@ The newsletter popup is live on:
 ## Configuration
 
 ### Timing
-The popup appears after **8 seconds**. To change this, edit the timeout value in `newsletter-popup.js`:
+The popup appears after **20 seconds** or at **40% scroll depth**, whichever comes first. Both are constants at the top of `newsletter-popup.js`:
 
 ```javascript
-// Show popup after 8 seconds
-setTimeout(() => {
-    showNewsletterPopup();
-}, 8000); // Change this value (in milliseconds)
+const NEWSLETTER_DELAY_MS = 20000;      // time-based trigger
+const NEWSLETTER_SCROLL_DEPTH = 0.4;    // scroll-based trigger (40% of the page)
 ```
+
+### Accessibility
+The dialog has `role="dialog"` and `aria-modal="true"`. **Esc** closes it, **Tab**/**Shift+Tab** stay inside it, and focus returns to the previously focused element on close.
 
 ### Dismissal Period
 The popup won't show again for **7 days** after being closed. To change this, edit `newsletter-popup.js`:
 
 ```javascript
-const expiryTime = dismissalTime + (7 * 24 * 60 * 60 * 1000); // 7 days in milliseconds
+const NEWSLETTER_DISMISS_DAYS = 7;   // in newsletter-popup.js
 ```
 
 ### Image Path
@@ -86,7 +87,7 @@ The image paths are set to `images/optimised/idm-assen-*`. If pages are in subdi
 To test the popup:
 1. Clear localStorage: Open browser console and run `localStorage.removeItem('newsletterPopupDismissed')`
 2. Reload the page
-3. Wait 8 seconds for the popup to appear
+3. Wait 20 seconds (or scroll about 40% down the page) for the popup to appear
 4. Test the form submission with a valid email
 
 ## Troubleshooting
