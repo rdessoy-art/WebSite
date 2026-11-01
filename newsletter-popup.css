@@ -260,3 +260,8 @@
         font-size: 0.9rem;
     }
 }
+
+/* The dialog container takes focus when it opens; no ring needed on it, but keep rings on real controls */
+.newsletter-popup-modal:focus { outline: none; }
+.newsletter-popup-close:focus-visible,
+.newsletter-submit-btn:focus-visible { outline: 3px solid var(--primary, #e63946); outline-offset: 2px; }
