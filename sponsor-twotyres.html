@@ -16,6 +16,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
     <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
     <title>Two Tyres - Harrison Dessoy Partner</title>
+    <link rel="stylesheet" href="css/tokens.css">
     <style>
         * {
             margin: 0;
@@ -23,18 +24,10 @@
             box-sizing: border-box;
         }
 
-        :root {
-            --primary: #e63946;
-            --secondary: #1d3557;
-            --accent: #f1faee;
-            --dark: #0a0a0a;
-            --light: #ffffff;
-        }
-
-        body {
+body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: var(--ink);
             background: var(--light);
         }
 
@@ -42,7 +35,7 @@
             background: linear-gradient(135deg, var(--dark) 0%, var(--secondary) 100%);
             color: var(--light);
             padding: 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            box-shadow: var(--shadow-header);
         }
 
         .header-content {
@@ -77,7 +70,7 @@
             text-decoration: none;
             padding: 0.5rem 1.5rem;
             border: 2px solid var(--primary);
-            border-radius: 50px;
+            border-radius: var(--radius-pill);
             transition: all 0.3s;
         }
 
@@ -111,7 +104,7 @@
             max-width: 400px;
             background: var(--light);
             padding: 2rem;
-            border-radius: 10px;
+            border-radius: var(--radius);
         }
 
         .sponsor-logo-hero img {
@@ -154,7 +147,7 @@
         .partnership-card {
             background: var(--accent);
             padding: 2rem;
-            border-radius: 10px;
+            border-radius: var(--radius);
             border-left: 5px solid var(--primary);
         }
 
@@ -187,7 +180,7 @@
             background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
             color: var(--light);
             padding: 3rem;
-            border-radius: 10px;
+            border-radius: var(--radius);
             margin: 3rem 0;
             text-align: center;
         }
@@ -214,9 +207,9 @@
         .feature-box {
             background: var(--light);
             padding: 2rem;
-            border-radius: 10px;
+            border-radius: var(--radius);
             text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow-card);
             border-top: 4px solid var(--primary);
         }
 
@@ -228,7 +221,7 @@
         .cta-section {
             background: var(--accent);
             padding: 3rem;
-            border-radius: 10px;
+            border-radius: var(--radius);
             text-align: center;
             margin-top: 4rem;
         }
@@ -245,7 +238,7 @@
             background: var(--primary);
             color: var(--light);
             text-decoration: none;
-            border-radius: 50px;
+            border-radius: var(--radius-pill);
             font-weight: bold;
             transition: all 0.3s;
             border: 2px solid var(--primary);
@@ -256,7 +249,7 @@
             background: var(--secondary);
             border-color: var(--secondary);
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            box-shadow: var(--shadow-lift);
         }
 
         footer {

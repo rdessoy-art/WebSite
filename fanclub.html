@@ -33,6 +33,7 @@
     <meta name="twitter:title" content="Fan Club - Harrison Dessoy Racing">
     <meta name="twitter:description" content="Join the Harrison Dessoy Racing Fan Club — exclusive access, behind-the-scenes content and VIP experiences supporting #55 in the FIM World Sportbike Championship.">
     <meta name="twitter:image" content="https://dessoyracing.com/images/og-image-fanclub.jpg">
+    <link rel="stylesheet" href="css/tokens.css">
     <style>
         * {
             margin: 0;
@@ -40,18 +41,10 @@
             box-sizing: border-box;
         }
 
-        :root {
-            --primary: #e63946;
-            --secondary: #1d3557;
-            --accent: #f1faee;
-            --dark: #0a0a0a;
-            --light: #ffffff;
-        }
-
-        body {
+body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: var(--ink);
             background: var(--light);
         }
 
@@ -59,7 +52,7 @@
             background: linear-gradient(135deg, var(--dark) 0%, var(--secondary) 100%);
             color: var(--light);
             padding: 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            box-shadow: var(--shadow-header);
         }
 
         .header-content {
@@ -146,7 +139,7 @@
             text-decoration: none;
             padding: 0.5rem 1.5rem;
             border: 2px solid var(--primary);
-            border-radius: 50px;
+            border-radius: var(--radius-pill);
             transition: all 0.3s;
         }
 
@@ -173,7 +166,7 @@
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: var(--light);
             padding: 3rem;
-            border-radius: 10px;
+            border-radius: var(--radius);
             text-align: center;
             margin-bottom: 3rem;
         }
@@ -188,7 +181,7 @@
             padding: 0.8rem 1rem;
             background: var(--accent);
             color: var(--secondary);
-            border-radius: 5px;
+            border-radius: var(--radius-sm);
             font-size: 0.9rem;
             font-weight: 600;
             text-align: center;
@@ -198,8 +191,8 @@
         .club-intro {
             background: var(--light);
             padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-card);
             margin-bottom: 3rem;
             border-left: 5px solid var(--primary);
         }
@@ -211,7 +204,7 @@
         }
 
         .club-intro p {
-            color: #555;
+            color: var(--ink-soft);
             line-height: 1.8;
             margin-bottom: 1rem;
         }
@@ -225,7 +218,7 @@
 
         .tier-card {
             background: var(--light);
-            border-radius: 10px;
+            border-radius: var(--radius);
             padding: 2rem;
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
             transition: transform 0.3s, box-shadow 0.3s;
@@ -239,15 +232,15 @@
         }
 
         .tier-card.bronze {
-            border: 3px solid #cd7f32;
+            border: 3px solid var(--bronze);
         }
 
         .tier-card.silver {
-            border: 3px solid #c0c0c0;
+            border: 3px solid var(--silver);
         }
 
         .tier-card.gold {
-            border: 3px solid #ffd700;
+            border: 3px solid var(--gold);
         }
 
         .tier-badge {
@@ -267,7 +260,7 @@
             text-align: center;
             margin-bottom: 1.5rem;
             padding-bottom: 1rem;
-            border-bottom: 2px solid #eee;
+            border-bottom: 2px solid var(--line-soft);
         }
 
         .tier-header h3 {
@@ -285,13 +278,13 @@
 
         .tier-price span {
             font-size: 1rem;
-            color: #666;
+            color: var(--ink-muted);
             font-weight: normal;
         }
 
         .tier-limit {
             font-size: 0.85rem;
-            color: #666;
+            color: var(--ink-muted);
             font-weight: 600;
         }
 
@@ -302,7 +295,7 @@
 
         .tier-benefits li {
             padding: 0.6rem 0;
-            color: #555;
+            color: var(--ink-soft);
             display: flex;
             align-items: flex-start;
             line-height: 1.5;
@@ -320,9 +313,9 @@
         .tier-note {
             background: var(--accent);
             padding: 1rem;
-            border-radius: 5px;
+            border-radius: var(--radius-sm);
             font-size: 0.85rem;
-            color: #666;
+            color: var(--ink-muted);
             font-style: italic;
             margin-top: 1rem;
             border-left: 3px solid var(--secondary);
@@ -339,7 +332,7 @@
             text-align: center;
             padding: 2rem;
             background: var(--light);
-            border-radius: 10px;
+            border-radius: var(--radius);
             box-shadow: 0 3px 10px rgba(0,0,0,0.1);
         }
 
@@ -355,7 +348,7 @@
         }
 
         .why-join-card p {
-            color: #666;
+            color: var(--ink-muted);
             font-size: 0.95rem;
         }
 
@@ -363,7 +356,7 @@
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: var(--light);
             padding: 3rem;
-            border-radius: 10px;
+            border-radius: var(--radius);
             text-align: center;
             margin: 3rem 0;
         }
@@ -544,7 +537,7 @@
                 <div class="tier-note">
                     Perfect for supporters who want exclusive content and official club gear while staying connected to the journey.
                 </div>
-                <a href="https://buy.stripe.com/aFa8wPe8G3pa8EJ7qf9k402" target="_blank" rel="noopener" style="display: block; margin-top: 1rem; padding: 1rem; background: var(--primary); color: var(--light); text-decoration: none; border-radius: 5px; font-weight: bold; text-align: center; transition: all 0.3s;" onmouseover="this.style.background='var(--secondary)'" onmouseout="this.style.background='var(--primary)'">Join Now →</a>
+                <a href="https://buy.stripe.com/aFa8wPe8G3pa8EJ7qf9k402" target="_blank" rel="noopener" style="display: block; margin-top: 1rem; padding: 1rem; background: var(--primary); color: var(--light); text-decoration: none; border-radius: var(--radius-sm); font-weight: bold; text-align: center; transition: all 0.3s;" onmouseover="this.style.background='var(--secondary)'" onmouseout="this.style.background='var(--primary)'">Join Now →</a>
                 <p class="raffle-notice">Entered into raffle, prizes to be won after every 3 rounds of World Sportbike</p>
             </div>
 
@@ -564,7 +557,7 @@
                 <div class="tier-note">
                     For dedicated fans who want premium merch and genuine personal touches from the team. First 50 members get the exclusive Silver NFT!
                 </div>
-                <a href="https://buy.stripe.com/eVq14nggO5xi1ch25V9k404" target="_blank" rel="noopener" style="display: block; margin-top: 1rem; padding: 1rem; background: var(--primary); color: var(--light); text-decoration: none; border-radius: 5px; font-weight: bold; text-align: center; transition: all 0.3s;" onmouseover="this.style.background='var(--secondary)'" onmouseout="this.style.background='var(--primary)'">Join Now →</a>
+                <a href="https://buy.stripe.com/eVq14nggO5xi1ch25V9k404" target="_blank" rel="noopener" style="display: block; margin-top: 1rem; padding: 1rem; background: var(--primary); color: var(--light); text-decoration: none; border-radius: var(--radius-sm); font-weight: bold; text-align: center; transition: all 0.3s;" onmouseover="this.style.background='var(--secondary)'" onmouseout="this.style.background='var(--primary)'">Join Now →</a>
                 <p class="raffle-notice">Entered into raffle, prizes to be won after every 3 rounds of World Sportbike</p>
             </div>
 
@@ -587,7 +580,7 @@
                 <div class="tier-note">
                     The ultimate VIP experience - direct access to Harrison, a genuine insider's view of elite-level racing.
                 </div>
-                <a href="https://buy.stripe.com/bJe9AT8Om7FqaMRaCr9k405" target="_blank" rel="noopener" style="display: block; margin-top: 1rem; padding: 1rem; background: var(--primary); color: var(--light); text-decoration: none; border-radius: 5px; font-weight: bold; text-align: center; transition: all 0.3s;" onmouseover="this.style.background='var(--secondary)'" onmouseout="this.style.background='var(--primary)'">Join Now →</a>
+                <a href="https://buy.stripe.com/bJe9AT8Om7FqaMRaCr9k405" target="_blank" rel="noopener" style="display: block; margin-top: 1rem; padding: 1rem; background: var(--primary); color: var(--light); text-decoration: none; border-radius: var(--radius-sm); font-weight: bold; text-align: center; transition: all 0.3s;" onmouseover="this.style.background='var(--secondary)'" onmouseout="this.style.background='var(--primary)'">Join Now →</a>
                 <p class="raffle-notice">Entered into raffle, prizes to be won after every 3 rounds of World Sportbike</p>
             </div>
         </div>

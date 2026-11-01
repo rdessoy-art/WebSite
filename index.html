@@ -38,6 +38,7 @@
     <link rel="preload" as="image" href="images/hero-bg-mobile.webp" media="(max-width: 768px)" fetchpriority="high">
     <link rel="preload" as="image" href="images/hero-bg-tablet.webp" media="(min-width: 769px) and (max-width: 1024px)" fetchpriority="high">
     <link rel="preload" as="image" href="images/hero-bg-desktop.webp" media="(min-width: 1025px)" fetchpriority="high">
+    <link rel="stylesheet" href="css/tokens.css">
     <style>
         * {
             margin: 0;
@@ -45,30 +46,10 @@
             box-sizing: border-box;
         }
 
-        :root {
-            --primary: #e63946;
-            --secondary: #1d3557;
-            --accent: #f1faee;
-            --dark: #0a0a0a;
-            --light: #ffffff;
-
-            /* Typography: system UI font = SF Pro on Mac/iPhone, Segoe UI on Windows, Roboto on Android.
-               To switch to a self-hosted web font later, change this one line. */
-            --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            --text-sm: 0.875rem;
-            --text-base: 1rem;
-            --text-lg: 1.125rem;
-            --text-xl: 1.5rem;
-            --text-hero: clamp(2.5rem, 7vw, 4rem);
-
-            /* Hero text-contrast overlay: darker behind the text, lighter at the top */
-            --hero-overlay: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.68) 45%, rgba(10,10,10,0.85) 100%);
-        }
-
-        body {
+body {
             font-family: var(--font-sans);
             line-height: 1.6;
-            color: #333;
+            color: var(--ink);
             background: var(--light);
         }
 
@@ -81,7 +62,7 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            box-shadow: var(--shadow-header);
         }
 
         /* Translucent, blurred header where the browser supports it */
@@ -260,7 +241,7 @@
             background: var(--primary);
             color: var(--light);
             text-decoration: none;
-            border-radius: 50px;
+            border-radius: var(--radius-pill);
             font-weight: bold;
             transition: all 0.3s;
             border: 2px solid var(--primary);
@@ -291,7 +272,7 @@
             position: relative;
             padding: 3rem;
             background: linear-gradient(135deg, rgba(241, 250, 238, 0.95) 0%, rgba(255, 255, 255, 0.92) 50%, rgba(241, 250, 238, 0.95) 100%);
-            border-radius: 15px;
+            border-radius: var(--radius-lg);
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
         }
 
@@ -353,9 +334,9 @@
         /* Rider Information Box */
         .rider-info-box {
             background: var(--light);
-            border-radius: 10px;
+            border-radius: var(--radius);
             padding: 1.5rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow-card);
         }
 
         .rider-info-list {
@@ -381,7 +362,7 @@
         }
 
         .rider-info-row .info-value {
-            color: #333;
+            color: var(--ink);
             font-size: 1rem;
         }
 
@@ -413,10 +394,10 @@
         .stat-card {
             background: linear-gradient(135deg, var(--accent) 0%, var(--light) 100%);
             padding: 2rem;
-            border-radius: 10px;
+            border-radius: var(--radius);
             text-align: center;
             border: 3px solid var(--primary);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow-card);
         }
 
         .stat-card h3 {
@@ -433,9 +414,9 @@
         /* Profile Tabs */
         .profile-tabs-container {
             background: var(--light);
-            border-radius: 10px;
+            border-radius: var(--radius);
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow-card);
         }
 
         .profile-tabs {
@@ -452,7 +433,7 @@
             border-bottom: 3px solid transparent;
             font-size: 1rem;
             font-weight: 600;
-            color: #666;
+            color: var(--ink-muted);
             cursor: pointer;
             transition: all 0.3s;
             text-transform: capitalize;
@@ -486,26 +467,26 @@
         .tab-panel p {
             margin-bottom: 1.5rem;
             line-height: 1.8;
-            color: #555;
+            color: var(--ink-soft);
         }
 
         .career-list {
             display: flex;
             flex-direction: column;
             gap: 0;
-            border: 1px solid #ddd;
+            border: 1px solid var(--line);
         }
 
         .career-year {
             display: flex;
             padding: 1rem 1.5rem;
-            background: #ffffff;
-            border-bottom: 1px solid #ddd;
+            background: var(--light);
+            border-bottom: 1px solid var(--line);
             transition: background 0.2s;
         }
 
         .career-year:nth-child(even) {
-            background: #f5f5f5;
+            background: var(--surface);
         }
 
         .career-year:last-child {
@@ -524,7 +505,7 @@
         }
 
         .career-year .achievement {
-            color: #333;
+            color: var(--ink);
             font-weight: normal;
             font-size: 1rem;
         }
@@ -550,7 +531,7 @@
         }
 
         .stat-row .stat-value {
-            color: #555;
+            color: var(--ink-soft);
             font-size: 1.1rem;
         }
 
@@ -599,9 +580,9 @@
 
         .blog-card {
             background: var(--light);
-            border-radius: 10px;
+            border-radius: var(--radius);
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow-card);
             transition: transform 0.3s;
         }
 
@@ -669,9 +650,9 @@
 
         .sponsor-card {
             background: var(--light);
-            border-radius: 10px;
+            border-radius: var(--radius);
             padding: 2rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow-card);
             border: 2px solid var(--accent);
             transition: all 0.3s;
         }
@@ -689,7 +670,7 @@
             padding: 1rem;
             background: var(--light);
             border: 1px solid #e5e7eb;
-            border-radius: 10px;
+            border-radius: var(--radius);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -721,7 +702,7 @@
         .partnership-section {
             background: var(--accent);
             padding: 3rem;
-            border-radius: 10px;
+            border-radius: var(--radius);
             margin-top: 3rem;
             border-left: 5px solid var(--primary);
         }
@@ -730,7 +711,7 @@
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: var(--light);
             padding: 3rem;
-            border-radius: 10px;
+            border-radius: var(--radius);
             text-align: center;
             margin-bottom: 3rem;
         }
@@ -750,9 +731,9 @@
         .benefit-card {
             background: var(--light);
             padding: 2rem;
-            border-radius: 10px;
+            border-radius: var(--radius);
             text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow-card);
         }
 
         .benefit-icon {
@@ -768,7 +749,7 @@
         .signup-form {
             background: var(--accent);
             padding: 3rem;
-            border-radius: 10px;
+            border-radius: var(--radius);
             max-width: 600px;
             margin: 3rem auto;
         }
@@ -794,7 +775,7 @@
             width: 100%;
             padding: 0.8rem;
             border: 2px solid var(--secondary);
-            border-radius: 5px;
+            border-radius: var(--radius-sm);
             font-size: 1rem;
         }
 
@@ -809,7 +790,7 @@
             background: var(--primary);
             color: var(--light);
             border: none;
-            border-radius: 5px;
+            border-radius: var(--radius-sm);
             font-size: 1.1rem;
             font-weight: bold;
             cursor: pointer;
@@ -822,36 +803,36 @@
         }
 
         .submit-button:disabled {
-            background: #ccc;
+            background: var(--line-strong);
             cursor: not-allowed;
             transform: none;
         }
 
         .form-message {
             padding: 1rem;
-            border-radius: 5px;
+            border-radius: var(--radius-sm);
             margin-bottom: 1.5rem;
             text-align: center;
             font-weight: 500;
         }
 
         .form-message.success {
-            background: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
+            background: var(--alert-success-bg);
+            color: var(--alert-success-text);
+            border: 1px solid var(--alert-success-border);
         }
 
         .form-message.error {
-            background: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
+            background: var(--alert-danger-bg);
+            color: var(--alert-danger-text);
+            border: 1px solid var(--alert-danger-border);
         }
 
         .club-intro {
             background: var(--light);
             padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-card);
             margin-bottom: 3rem;
             border-left: 5px solid var(--primary);
         }
@@ -863,7 +844,7 @@
         }
 
         .club-intro p {
-            color: #555;
+            color: var(--ink-soft);
             line-height: 1.8;
             margin-bottom: 1rem;
         }
@@ -877,7 +858,7 @@
 
         .tier-card {
             background: var(--light);
-            border-radius: 10px;
+            border-radius: var(--radius);
             padding: 2rem;
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
             transition: transform 0.3s, box-shadow 0.3s;
@@ -891,15 +872,15 @@
         }
 
         .tier-card.bronze {
-            border: 3px solid #cd7f32;
+            border: 3px solid var(--bronze);
         }
 
         .tier-card.silver {
-            border: 3px solid #c0c0c0;
+            border: 3px solid var(--silver);
         }
 
         .tier-card.gold {
-            border: 3px solid #ffd700;
+            border: 3px solid var(--gold);
         }
 
         .tier-badge {
@@ -919,7 +900,7 @@
             text-align: center;
             margin-bottom: 1.5rem;
             padding-bottom: 1rem;
-            border-bottom: 2px solid #eee;
+            border-bottom: 2px solid var(--line-soft);
         }
 
         .tier-header h3 {
@@ -937,13 +918,13 @@
 
         .tier-price span {
             font-size: 1rem;
-            color: #666;
+            color: var(--ink-muted);
             font-weight: normal;
         }
 
         .tier-limit {
             font-size: 0.85rem;
-            color: #666;
+            color: var(--ink-muted);
             font-weight: 600;
         }
 
@@ -954,7 +935,7 @@
 
         .tier-benefits li {
             padding: 0.6rem 0;
-            color: #555;
+            color: var(--ink-soft);
             display: flex;
             align-items: flex-start;
             line-height: 1.5;
@@ -972,9 +953,9 @@
         .tier-note {
             background: var(--accent);
             padding: 1rem;
-            border-radius: 5px;
+            border-radius: var(--radius-sm);
             font-size: 0.85rem;
-            color: #666;
+            color: var(--ink-muted);
             font-style: italic;
             margin-top: 1rem;
             border-left: 3px solid var(--secondary);
@@ -991,7 +972,7 @@
             text-align: center;
             padding: 2rem;
             background: var(--light);
-            border-radius: 10px;
+            border-radius: var(--radius);
             box-shadow: 0 3px 10px rgba(0,0,0,0.1);
         }
 
@@ -1007,7 +988,7 @@
         }
 
         .why-join-card p {
-            color: #666;
+            color: var(--ink-muted);
             font-size: 0.95rem;
         }
 
@@ -1015,7 +996,7 @@
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: var(--light);
             padding: 3rem;
-            border-radius: 10px;
+            border-radius: var(--radius);
             text-align: center;
             margin: 3rem 0;
         }
@@ -1042,7 +1023,7 @@
             gap: 3rem;
             flex-wrap: wrap;
             padding: 3rem 2rem;
-            background: #ffffff;
+            background: var(--light);
             border-top: 1px solid #e0e0e0;
         }
 
@@ -1400,7 +1381,7 @@
             <div style="margin-top: 3rem;">
                 <h3 style="color: var(--secondary); margin-bottom: 1.5rem; font-size: 1.8rem;">Race Highlights</h3>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-                    <a href="https://www.youtube.com/live/R__4OSQfO_8?si=sylYJQMw_Bw3GIHT&t=4080s" target="_blank" style="text-decoration: none; color: inherit; display: block; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.15)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 15px rgba(0,0,0,0.1)';" rel="noopener">
+                    <a href="https://www.youtube.com/live/R__4OSQfO_8?si=sylYJQMw_Bw3GIHT&t=4080s" target="_blank" style="text-decoration: none; color: inherit; display: block; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-card); transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.15)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 15px rgba(0,0,0,0.1)';" rel="noopener">
                         <div style="position: relative;">
                             <picture><source type="image/avif" srcset="images/optimised/idm-assen-saturday-16-08-2025-photo-damon-teerink-1616-480.avif 480w, images/optimised/idm-assen-saturday-16-08-2025-photo-damon-teerink-1616-960.avif 960w, images/optimised/idm-assen-saturday-16-08-2025-photo-damon-teerink-1616-1600.avif 1600w" sizes="(min-width: 1000px) 33vw, 100vw"><source type="image/webp" srcset="images/optimised/idm-assen-saturday-16-08-2025-photo-damon-teerink-1616-480.webp 480w, images/optimised/idm-assen-saturday-16-08-2025-photo-damon-teerink-1616-960.webp 960w, images/optimised/idm-assen-saturday-16-08-2025-photo-damon-teerink-1616-1600.webp 1600w" sizes="(min-width: 1000px) 33vw, 100vw"><img src="images/optimised/idm-assen-saturday-16-08-2025-photo-damon-teerink-1616-960.jpg" srcset="images/optimised/idm-assen-saturday-16-08-2025-photo-damon-teerink-1616-480.jpg 480w, images/optimised/idm-assen-saturday-16-08-2025-photo-damon-teerink-1616-960.jpg 960w, images/optimised/idm-assen-saturday-16-08-2025-photo-damon-teerink-1616-1600.jpg 1600w" sizes="(min-width: 1000px) 33vw, 100vw" width="960" height="1707" loading="lazy" decoding="async" alt="IDM Assen Saturday 16-08-2025" style="width: 100%; height: 280px; object-fit: cover; object-position: center 85%; display: block;"></picture>
                             <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; background: rgba(230, 57, 70, 0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
@@ -1409,10 +1390,10 @@
                         </div>
                         <div style="padding: 1.5rem; background: var(--light);">
                             <h4 style="color: var(--secondary); margin-bottom: 0.5rem; font-size: 1.1rem;">Assen IDM Race 1</h4>
-                            <p style="color: #666; font-size: 0.9rem;">IDM Assen Saturday 16-08-2025</p>
+                            <p style="color: var(--ink-muted); font-size: 0.9rem;">IDM Assen Saturday 16-08-2025</p>
                         </div>
                     </a>
-                    <a href="https://www.youtube.com/live/Q1f5JaANZI8?si=tzby891AUKnRfnEh&t=11630s" target="_blank" style="text-decoration: none; color: inherit; display: block; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.15)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 15px rgba(0,0,0,0.1)';" rel="noopener">
+                    <a href="https://www.youtube.com/live/Q1f5JaANZI8?si=tzby891AUKnRfnEh&t=11630s" target="_blank" style="text-decoration: none; color: inherit; display: block; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-card); transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(0,0,0,0.15)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 15px rgba(0,0,0,0.1)';" rel="noopener">
                         <div style="position: relative;">
                             <picture><source type="image/avif" srcset="images/optimised/idm-assen-sunday-17-08-2025-photo-damon-teerink-3677-480.avif 480w, images/optimised/idm-assen-sunday-17-08-2025-photo-damon-teerink-3677-960.avif 960w, images/optimised/idm-assen-sunday-17-08-2025-photo-damon-teerink-3677-1600.avif 1600w" sizes="(min-width: 1000px) 33vw, 100vw"><source type="image/webp" srcset="images/optimised/idm-assen-sunday-17-08-2025-photo-damon-teerink-3677-480.webp 480w, images/optimised/idm-assen-sunday-17-08-2025-photo-damon-teerink-3677-960.webp 960w, images/optimised/idm-assen-sunday-17-08-2025-photo-damon-teerink-3677-1600.webp 1600w" sizes="(min-width: 1000px) 33vw, 100vw"><img src="images/optimised/idm-assen-sunday-17-08-2025-photo-damon-teerink-3677-960.jpg" srcset="images/optimised/idm-assen-sunday-17-08-2025-photo-damon-teerink-3677-480.jpg 480w, images/optimised/idm-assen-sunday-17-08-2025-photo-damon-teerink-3677-960.jpg 960w, images/optimised/idm-assen-sunday-17-08-2025-photo-damon-teerink-3677-1600.jpg 1600w" sizes="(min-width: 1000px) 33vw, 100vw" width="960" height="640" loading="lazy" decoding="async" alt="IDM Assen Sunday 17-08-2025" style="width: 100%; height: 280px; object-fit: cover; object-position: center 65%; display: block;"></picture>
                             <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; background: rgba(230, 57, 70, 0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
@@ -1421,7 +1402,7 @@
                         </div>
                         <div style="padding: 1.5rem; background: var(--light);">
                             <h4 style="color: var(--secondary); margin-bottom: 0.5rem; font-size: 1.1rem;">Assen IDM Race 2</h4>
-                            <p style="color: #666; font-size: 0.9rem;">IDM Assen Sunday 17-08-2025</p>
+                            <p style="color: var(--ink-muted); font-size: 0.9rem;">IDM Assen Sunday 17-08-2025</p>
                         </div>
                     </a>
                 </div>
@@ -1520,7 +1501,7 @@
                     </div>
                     <h3>Professional Race Team</h3>
                     <p>PHR Performance by Peter Hickman provides world-class technical expertise and championship-winning insights, supporting Harrison with setup optimisation and race craft development.</p>
-                    <a href="sponsor-phr-performance.html" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1.5rem; background: var(--primary); color: var(--light); text-decoration: none; border-radius: 5px; font-weight: bold;">Learn More →</a>
+                    <a href="sponsor-phr-performance.html" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1.5rem; background: var(--primary); color: var(--light); text-decoration: none; border-radius: var(--radius-sm); font-weight: bold;">Learn More →</a>
                 </div>
 
                 <div class="sponsor-card">
@@ -1529,7 +1510,7 @@
                     </div>
                     <h3>Legal Partner</h3>
                     <p>Fletchers Solicitors is one of the UK's most trusted personal injury and medical negligence law firms, providing expert No Win, No Fee legal support to those who need it most.</p>
-                    <a href="sponsor-fletcherssolicitors.html" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1.5rem; background: var(--primary); color: var(--light); text-decoration: none; border-radius: 5px; font-weight: bold;">Learn More →</a>
+                    <a href="sponsor-fletcherssolicitors.html" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1.5rem; background: var(--primary); color: var(--light); text-decoration: none; border-radius: var(--radius-sm); font-weight: bold;">Learn More →</a>
                 </div>
 
                 <div class="sponsor-card">
@@ -1538,7 +1519,7 @@
                     </div>
                     <h3>Fitness Coach</h3>
                     <p>Mark Walker Coaching provides elite sports science coaching and training programmes, helping Harrison achieve peak physical and mental performance through evidence-based methods.</p>
-                    <a href="sponsor-mark-walker-coaching.html" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1.5rem; background: var(--primary); color: var(--light); text-decoration: none; border-radius: 5px; font-weight: bold;">Learn More →</a>
+                    <a href="sponsor-mark-walker-coaching.html" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1.5rem; background: var(--primary); color: var(--light); text-decoration: none; border-radius: var(--radius-sm); font-weight: bold;">Learn More →</a>
                 </div>
 
                 <div class="sponsor-card">
@@ -1547,7 +1528,7 @@
                     </div>
                     <h3>Leathers Sponsor</h3>
                     <p>Weise provides premium motorcycle clothing and protective gear, ensuring Harrison has the best equipment for safety and performance on and off the track.</p>
-                    <a href="sponsor-weise.html" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1.5rem; background: var(--primary); color: var(--light); text-decoration: none; border-radius: 5px; font-weight: bold;">Learn More →</a>
+                    <a href="sponsor-weise.html" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1.5rem; background: var(--primary); color: var(--light); text-decoration: none; border-radius: var(--radius-sm); font-weight: bold;">Learn More →</a>
                 </div>
 
                 <div class="sponsor-card">
@@ -1556,7 +1537,7 @@
                     </div>
                     <h3>Baselayers sponsor</h3>
                     <p>ZeroFit supplies cutting-edge Japanese-designed base layers, providing exceptional thermal regulation and comfort for optimal performance during training and competition.</p>
-                    <a href="sponsor-zerofit.html" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1.5rem; background: var(--primary); color: var(--light); text-decoration: none; border-radius: 5px; font-weight: bold;">Learn More →</a>
+                    <a href="sponsor-zerofit.html" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1.5rem; background: var(--primary); color: var(--light); text-decoration: none; border-radius: var(--radius-sm); font-weight: bold;">Learn More →</a>
                 </div>
 
                 <div class="sponsor-card">
@@ -1565,7 +1546,7 @@
                     </div>
                     <h3>Product Partner</h3>
                     <p>Two Tyres provides premium motorcycle products, expert advice, and professional service, supporting Harrison with high-performance tyres and essential equipment.</p>
-                    <a href="sponsor-twotyres.html" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1.5rem; background: var(--primary); color: var(--light); text-decoration: none; border-radius: 5px; font-weight: bold;">Learn More →</a>
+                    <a href="sponsor-twotyres.html" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1.5rem; background: var(--primary); color: var(--light); text-decoration: none; border-radius: var(--radius-sm); font-weight: bold;">Learn More →</a>
                 </div>
 
                 <div class="sponsor-card">
@@ -1574,7 +1555,7 @@
                     </div>
                     <h3>Product Partner</h3>
                     <p>Martin Sheath and Eastern Garage Racing provide automotive expertise and support, bringing over 70 years of professional service excellence to Harrison's racing career.</p>
-                    <a href="sponsor-martin-sheath.html" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1.5rem; background: var(--primary); color: var(--light); text-decoration: none; border-radius: 5px; font-weight: bold;">Learn More →</a>
+                    <a href="sponsor-martin-sheath.html" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1.5rem; background: var(--primary); color: var(--light); text-decoration: none; border-radius: var(--radius-sm); font-weight: bold;">Learn More →</a>
                 </div>
 
                 <div class="sponsor-card">
@@ -1583,7 +1564,7 @@
                     </div>
                     <h3>Dealership Partner</h3>
                     <p>Triumph East London offers expert Triumph motorcycle services and support, representing iconic British motorcycling heritage and professional excellence.</p>
-                    <a href="sponsor-triumph-east-london.html" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1.5rem; background: var(--primary); color: var(--light); text-decoration: none; border-radius: 5px; font-weight: bold;">Learn More →</a>
+                    <a href="sponsor-triumph-east-london.html" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1.5rem; background: var(--primary); color: var(--light); text-decoration: none; border-radius: var(--radius-sm); font-weight: bold;">Learn More →</a>
                 </div>
 
                 <div class="sponsor-card">
@@ -1592,7 +1573,7 @@
                     </div>
                     <h3>Glove sponsor</h3>
                     <p>ARC-ON is a UK-based specialist manufacturer of award-winning motorcycle race gloves, delivering professional-grade protection and performance for elite racers.</p>
-                    <a href="sponsor-arc-on.html" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1.5rem; background: var(--primary); color: var(--light); text-decoration: none; border-radius: 5px; font-weight: bold;">Learn More →</a>
+                    <a href="sponsor-arc-on.html" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1.5rem; background: var(--primary); color: var(--light); text-decoration: none; border-radius: var(--radius-sm); font-weight: bold;">Learn More →</a>
                 </div>
 
                 <div class="sponsor-card">
@@ -1601,7 +1582,7 @@
                     </div>
                     <h3>Fasteners Specialist</h3>
                     <p>Pro Bolt specialises in premium titanium and stainless steel fasteners for motorcycles, providing lightweight, high-strength components that enhance performance and durability.</p>
-                    <a href="sponsor-pro-bolt.html" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1.5rem; background: var(--primary); color: var(--light); text-decoration: none; border-radius: 5px; font-weight: bold;">Learn More →</a>
+                    <a href="sponsor-pro-bolt.html" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1.5rem; background: var(--primary); color: var(--light); text-decoration: none; border-radius: var(--radius-sm); font-weight: bold;">Learn More →</a>
                 </div>
 
                 <div class="sponsor-card">
@@ -1610,7 +1591,7 @@
                     </div>
                     <h3>Nutrition &amp; Wellness Partner</h3>
                     <p>Bona Botanica produces natural health and wellness supplements, including their flagship XanthoPure™ mangosteen supplement, supporting Harrison's performance and vitality on and off the track.</p>
-                    <a href="sponsor-bonabotanica.html" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1.5rem; background: var(--primary); color: var(--light); text-decoration: none; border-radius: 5px; font-weight: bold;">Learn More →</a>
+                    <a href="sponsor-bonabotanica.html" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1.5rem; background: var(--primary); color: var(--light); text-decoration: none; border-radius: var(--radius-sm); font-weight: bold;">Learn More →</a>
                 </div>
 
                 <div class="sponsor-card">
@@ -1619,7 +1600,7 @@
                     </div>
                     <h3>Camera &amp; Media Partner</h3>
                     <p>Rock Cameras is a London-based specialist in professional camera rentals and digital equipment, ensuring every race weekend is captured with the precision and quality the sport demands.</p>
-                    <a href="sponsor-rockcameras.html" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1.5rem; background: var(--primary); color: var(--light); text-decoration: none; border-radius: 5px; font-weight: bold;">Learn More →</a>
+                    <a href="sponsor-rockcameras.html" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1.5rem; background: var(--primary); color: var(--light); text-decoration: none; border-radius: var(--radius-sm); font-weight: bold;">Learn More →</a>
                 </div>
 
                 <div class="sponsor-card">
@@ -1628,7 +1609,7 @@
                     </div>
                     <h3>Branding & Graphics Partner</h3>
                     <p>Grayers Graphics specializes in vehicle wrapping, sign writing, and graphic design, bringing over 15 years of expertise to create striking visual branding for Harrison's race team.</p>
-                    <a href="sponsor-grayers-graphics.html" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1.5rem; background: var(--primary); color: var(--light); text-decoration: none; border-radius: 5px; font-weight: bold;">Learn More →</a>
+                    <a href="sponsor-grayers-graphics.html" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1.5rem; background: var(--primary); color: var(--light); text-decoration: none; border-radius: var(--radius-sm); font-weight: bold;">Learn More →</a>
                 </div>
             </div>
 
@@ -1775,11 +1756,11 @@
                         `;
                     }).join('');
                 } else {
-                    newslettersContainer.innerHTML = '<p style="color: #666; text-align: center; padding: 2rem;">No newsletters available yet.</p>';
+                    newslettersContainer.innerHTML = '<p style="color: var(--ink-muted); text-align: center; padding: 2rem;">No newsletters available yet.</p>';
                 }
             } catch (error) {
                 console.error('Error loading campaigns:', error);
-                document.getElementById('newsletters-container').innerHTML = '<p style="color: #666; text-align: center; padding: 2rem;">Unable to load newsletters.</p>';
+                document.getElementById('newsletters-container').innerHTML = '<p style="color: var(--ink-muted); text-align: center; padding: 2rem;">Unable to load newsletters.</p>';
             }
         }
 
@@ -1812,11 +1793,11 @@
                 return `
                     <a href="${safeUrl(post.permalink)}" target="_blank" rel="noopener" class="blog-card" style="text-decoration: none; color: inherit;">
                         <div class="blog-image" style="${imageStyle}">
-                            ${stats ? `<span style="position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.7); color: white; padding: 0.5rem; border-radius: 5px; font-size: 0.9rem;">${stats}</span>` : ''}
+                            ${stats ? `<span style="position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.7); color: white; padding: 0.5rem; border-radius: var(--radius-sm); font-size: 0.9rem;">${stats}</span>` : ''}
                         </div>
                         <div class="blog-content">
                             <p class="blog-date">${postDate}</p>
-                            <p style="color: #555; line-height: 1.6; margin-bottom: 1rem;">${truncated}</p>
+                            <p style="color: var(--ink-soft); line-height: 1.6; margin-bottom: 1rem;">${truncated}</p>
                             <span class="read-more">${viewLabel} →</span>
                         </div>
                     </a>`;
@@ -1826,7 +1807,7 @@
                 <div>
                     <h3 style="color: var(--secondary); margin-bottom: 1.5rem; font-size: 1.5rem; border-left: 5px solid var(--primary); padding-left: 1rem;">${label}</h3>
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-                        ${cards || `<p style="color: #666; text-align: center; padding: 2rem;">No posts available yet.</p>`}
+                        ${cards || `<p style="color: var(--ink-muted); text-align: center; padding: 2rem;">No posts available yet.</p>`}
                     </div>
                 </div>`;
         }

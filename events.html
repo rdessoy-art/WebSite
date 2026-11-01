@@ -30,6 +30,7 @@
     <meta name="twitter:title" content="Events - Harrison Dessoy Racing">
     <meta name="twitter:description" content="Follow Harrison Dessoy's (#55) 2026 FIM World Sportbike Championship race calendar — dates, circuits, and event details for every round.">
     <meta name="twitter:image" content="https://dessoyracing.com/images/og-image-home.jpg">
+    <link rel="stylesheet" href="css/tokens.css">
     <style>
         * {
             margin: 0;
@@ -37,18 +38,10 @@
             box-sizing: border-box;
         }
 
-        :root {
-            --primary: #e63946;
-            --secondary: #1d3557;
-            --accent: #f1faee;
-            --dark: #0a0a0a;
-            --light: #ffffff;
-        }
-
-        body {
+body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: var(--ink);
             background: var(--light);
         }
 
@@ -60,7 +53,7 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            box-shadow: var(--shadow-header);
         }
 
         .header-content {
@@ -151,7 +144,7 @@
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: var(--light);
             padding: 3rem;
-            border-radius: 10px;
+            border-radius: var(--radius);
             text-align: center;
             margin-bottom: 3rem;
         }
@@ -189,7 +182,7 @@
             align-items: center;
             background: var(--light);
             padding: 1.5rem;
-            border-radius: 10px;
+            border-radius: var(--radius);
             box-shadow: 0 3px 10px rgba(0,0,0,0.1);
             transition: transform 0.3s, box-shadow 0.3s;
             border-left: 4px solid var(--primary);
@@ -234,7 +227,7 @@
         }
 
         .race-country {
-            color: #555;
+            color: var(--ink-soft);
             font-weight: 500;
             display: flex;
             align-items: center;
@@ -262,7 +255,7 @@
         }
 
         .track-length {
-            color: #666;
+            color: var(--ink-muted);
             font-size: 0.9rem;
             text-align: center;
         }
@@ -272,7 +265,7 @@
             background: var(--primary);
             color: var(--light);
             border: none;
-            border-radius: 5px;
+            border-radius: var(--radius-sm);
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s;
@@ -330,7 +323,7 @@
         }
 
         .race-report-btn.btn-past {
-            background: #999;
+            background: var(--ink-faint);
             cursor: not-allowed;
             opacity: 0.6;
             pointer-events: none;
@@ -363,7 +356,7 @@
 
         .events-empty {
             text-align: center;
-            color: #666;
+            color: var(--ink-muted);
             padding: 3rem 1rem;
             font-size: 1.1rem;
         }
@@ -384,7 +377,7 @@
 
         .report-modal {
             background: var(--light);
-            border-radius: 10px;
+            border-radius: var(--radius);
             padding: 2.5rem 2rem;
             max-width: 420px;
             width: 90%;
@@ -399,7 +392,7 @@
         }
 
         .report-modal p {
-            color: #555;
+            color: var(--ink-soft);
             font-size: 1rem;
             line-height: 1.6;
             margin-bottom: 1.5rem;
@@ -410,7 +403,7 @@
             background: var(--primary);
             color: var(--light);
             border: none;
-            border-radius: 5px;
+            border-radius: var(--radius-sm);
             font-weight: bold;
             font-size: 1rem;
             cursor: pointer;

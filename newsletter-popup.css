@@ -14,8 +14,8 @@
 }
 
 .newsletter-popup-modal {
-    background: var(--light, #ffffff);
-    border-radius: 15px;
+    background: var(--light);
+    border-radius: var(--radius-lg);
     max-width: 900px;
     width: 90%;
     position: relative;
@@ -81,7 +81,7 @@
     background: transparent;
     border: none;
     font-size: 2rem;
-    color: #999;
+    color: var(--ink-faint);
     cursor: pointer;
     width: 35px;
     height: 35px;
@@ -95,20 +95,20 @@
 }
 
 .newsletter-popup-close:hover {
-    background: var(--accent, #f1faee);
-    color: var(--primary, #e63946);
+    background: var(--accent, var(--accent));
+    color: var(--primary, var(--primary));
     transform: rotate(90deg);
 }
 
 .newsletter-popup-content h3 {
-    color: var(--secondary, #1d3557);
+    color: var(--secondary, var(--secondary));
     font-size: 2rem;
     margin-bottom: 1rem;
     text-align: center;
 }
 
 .newsletter-popup-content p {
-    color: #555;
+    color: var(--ink-soft);
     font-size: 1rem;
     line-height: 1.6;
     margin-bottom: 1.5rem;
@@ -125,14 +125,14 @@
 .newsletter-popup-form input[type="text"] {
     width: 100%;
     padding: 1rem;
-    border: 2px solid var(--accent, #f1faee);
+    border: 2px solid var(--accent, var(--accent));
     border-radius: 8px;
     font-size: 1rem;
     transition: all 0.3s;
     font-family: inherit;
     line-height: normal;
-    background-color: #ffffff;
-    color: #333;
+    background-color: var(--light);
+    color: var(--ink);
     box-sizing: border-box;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -142,15 +142,15 @@
 .newsletter-popup-form input[type="email"]:focus,
 .newsletter-popup-form input[type="text"]:focus {
     outline: none;
-    border-color: var(--primary, #e63946);
+    border-color: var(--primary, var(--primary));
     box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.1);
 }
 
 .newsletter-submit-btn {
     width: 100%;
     padding: 1rem;
-    background: var(--primary, #e63946);
-    color: var(--light, #ffffff);
+    background: var(--primary, var(--primary));
+    color: var(--light);
     border: none;
     border-radius: 8px;
     font-size: 1.1rem;
@@ -160,14 +160,14 @@
 }
 
 .newsletter-submit-btn:hover {
-    background: var(--secondary, #1d3557);
+    background: var(--secondary, var(--secondary));
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(230, 57, 70, 0.3);
 }
 
 .newsletter-popup-privacy {
     font-size: 0.85rem !important;
-    color: #999 !important;
+    color: var(--ink-faint) !important;
     margin-top: 1rem !important;
     margin-bottom: 0 !important;
 }
@@ -264,4 +264,4 @@
 /* The dialog container takes focus when it opens; no ring needed on it, but keep rings on real controls */
 .newsletter-popup-modal:focus { outline: none; }
 .newsletter-popup-close:focus-visible,
-.newsletter-submit-btn:focus-visible { outline: 3px solid var(--primary, #e63946); outline-offset: 2px; }
+.newsletter-submit-btn:focus-visible { outline: 3px solid var(--primary, var(--primary)); outline-offset: 2px; }
