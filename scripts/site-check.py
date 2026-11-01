@@ -53,8 +53,8 @@ def check_pages():
         # it up (script include + renderFooter call) satisfies this even
         # though the string isn't in the static HTML.
         uses_footer_js = "footer.js" in html and "renderFooter(" in html
-        if "built by DessoyArt" not in html and not uses_footer_js:
-            failures.append(f"{page}: missing DessoyArt footer credit line")
+        if "websites.dessoy.co.uk" not in html and not uses_footer_js:
+            failures.append(f"{page}: missing websites.dessoy.co.uk footer credit line")
 
         h1s = len(re.findall(r"<h1[\s>]", html))
         if h1s == 0:

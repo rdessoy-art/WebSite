@@ -16,7 +16,7 @@ Full details in `_internal/CLAUDE_CODE_GUIDE.md` — read it before structural c
 
 1. Google Analytics snippet in `<head>` (ID `G-Z0P3DBDMDZ` — copy from any page)
 2. Favicon `<link>` block (copy from any page — 4 lines, `favicon.ico` + 2 PNG sizes + apple-touch-icon)
-3. Shared nav + footer (`nav.js`/`footer.js`, see above) **including the DessoyArt credit line**
+3. Shared nav + footer (`nav.js`/`footer.js`, see above) **including the websites.dessoy.co.uk credit line**
 4. Exactly one `<h1>`, a `<meta name="description">`, `lang="en"`, viewport meta
 5. An entry in `sitemap.xml` (see `_internal/SITEMAP_MAINTENANCE.md` for priorities)
 6. A link from at least one existing page

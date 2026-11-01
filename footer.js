@@ -48,5 +48,5 @@ function renderFooter(options = {}) {
         <p>&copy; ${year} ${copyrightName}. ${copyrightSuffix}</p>
         <p>Racing at the Highest Level</p>
         <p style="margin-top: 0.75rem; font-size: 0.8rem; opacity: 0.65;"><a href="policies/privacy-policy.html" style="color: var(--light); text-decoration: underline;">Privacy Policy</a> &middot; <a href="policies/terms-of-service.html" style="color: var(--light); text-decoration: underline;">Terms of Service</a></p>
-        <p style="margin-top: 1rem; font-size: 0.85rem; opacity: 0.75;">Website designed &amp; built by DessoyArt &mdash; for website enquiries or changes, <a href="https://website.dessoy.co.uk" target="_blank" rel="noopener" style="color: var(--light); text-decoration: underline;">get in touch</a>.</p>`;
+        <p style="margin-top: 1rem; font-size: 0.85rem; opacity: 0.75;">Website designed &amp; built by <a href="https://websites.dessoy.co.uk" target="_blank" rel="noopener" style="color: var(--light); text-decoration: underline;">websites.dessoy.co.uk</a></p>`;
 }
