@@ -53,7 +53,7 @@ QUALITY_FLOOR = {"avif": 35, "webp": 40, "jpeg": 35}  # never go below these
 
 PHOTO_WIDTHS = (480, 960, 1600)
 QUALITY = {"avif": 58, "webp": 79, "jpeg": 82}
-IMAGE_SUFFIXES = {".jpg", ".jpeg", ".jfif", ".png", ".webp"}
+IMAGE_SUFFIXES = {".jpg", ".jpeg", ".jfif", ".png", ".webp", ".avif"}
 
 
 # --------------------------------------------------------------------------
