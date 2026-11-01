@@ -17,7 +17,7 @@ From the user (ask if missing):
 
 ## 2. Prepare the logo
 
-Run the `optimize-image` skill conventions: WebP preferred, ≤300 KB, lowercase-hyphenated name into `images/`. If the logo only looks right on a dark tile (white/knockout logos), note it — the index card `.sponsor-logo` div takes `background: black` (see the Rock Cameras card) and that's fine.
+Run the `optimize-image` flow: original into `images-src/`, add the slug to `LOGO_STEMS`, run `tools/optimise_images.py`, use the generated `images/optimised/<name>.webp` (≤ 60 KB). Read `DESIGN.md` first. If the logo only looks right on a dark tile (white/knockout logos), note it — give the index card's `.sponsor-logo` div the `sponsor-logo--dark` class (see the Rock Cameras card) — never an inline background. (To-do: make white-background versions of sponsor logos.)
 
 ## 3. Create `sponsor-<name>.html`
 
