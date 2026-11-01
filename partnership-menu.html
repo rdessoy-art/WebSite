@@ -17,6 +17,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
     <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
     <title>Partnership Menu - Harrison Dessoy Racing</title>
+    <link rel="stylesheet" href="css/tokens.css">
     <style>
         * {
             margin: 0;
@@ -24,18 +25,10 @@
             box-sizing: border-box;
         }
 
-        :root {
-            --primary: #e63946;
-            --secondary: #1d3557;
-            --accent: #f1faee;
-            --dark: #0a0a0a;
-            --light: #ffffff;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+body {
+            font-family: var(--font-sans);
             line-height: 1.6;
-            color: #333;
+            color: var(--ink);
             background: var(--light);
         }
 
@@ -43,7 +36,7 @@
             background: linear-gradient(135deg, var(--dark) 0%, var(--secondary) 100%);
             color: var(--light);
             padding: 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            box-shadow: var(--shadow-header);
         }
 
         .header-content {
@@ -143,7 +136,7 @@
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: var(--light);
             padding: 3rem;
-            border-radius: 10px;
+            border-radius: var(--radius);
             text-align: center;
             margin-bottom: 3rem;
         }
@@ -156,8 +149,8 @@
         .partnership-intro {
             background: var(--light);
             padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-card);
             margin-bottom: 3rem;
             border-left: 5px solid var(--primary);
         }
@@ -169,7 +162,7 @@
         }
 
         .partnership-intro p {
-            color: #555;
+            color: var(--ink-soft);
             line-height: 1.8;
             margin-bottom: 1rem;
         }
@@ -183,7 +176,7 @@
 
         .tier-card {
             background: var(--light);
-            border-radius: 10px;
+            border-radius: var(--radius);
             padding: 2rem;
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
             transition: transform 0.3s, box-shadow 0.3s;
@@ -197,15 +190,15 @@
         }
 
         .tier-card.title {
-            border: 3px solid #ffd700;
+            border: 3px solid var(--gold);
         }
 
         .tier-card.primary {
-            border: 3px solid #c0c0c0;
+            border: 3px solid var(--silver);
         }
 
         .tier-card.secondary {
-            border: 3px solid #cd7f32;
+            border: 3px solid var(--bronze);
         }
 
         .tier-card.personal {
@@ -229,7 +222,7 @@
             text-align: center;
             margin-bottom: 1.5rem;
             padding-bottom: 1rem;
-            border-bottom: 2px solid #eee;
+            border-bottom: 2px solid var(--line-soft);
         }
 
         .tier-header h3 {
@@ -265,7 +258,7 @@
 
         .tier-benefits li {
             padding: 0.5rem 0;
-            color: #555;
+            color: var(--ink-soft);
             display: flex;
             align-items: flex-start;
             line-height: 1.5;
@@ -284,7 +277,7 @@
         .contact-form {
             background: var(--accent);
             padding: 3rem;
-            border-radius: 10px;
+            border-radius: var(--radius);
             max-width: 600px;
             margin: 3rem auto;
         }
@@ -310,7 +303,7 @@
             width: 100%;
             padding: 0.8rem;
             border: 2px solid var(--secondary);
-            border-radius: 5px;
+            border-radius: var(--radius-sm);
             font-size: 1rem;
         }
 
@@ -325,7 +318,7 @@
             background: var(--primary);
             color: var(--light);
             border: none;
-            border-radius: 5px;
+            border-radius: var(--radius-sm);
             font-size: 1.1rem;
             font-weight: bold;
             cursor: pointer;
@@ -338,36 +331,36 @@
         }
 
         .submit-button:disabled {
-            background: #ccc;
+            background: var(--line-strong);
             cursor: not-allowed;
             transform: none;
         }
 
         .form-message {
             padding: 1rem;
-            border-radius: 5px;
+            border-radius: var(--radius-sm);
             margin-bottom: 1.5rem;
             text-align: center;
             font-weight: 500;
         }
 
         .form-message.success {
-            background: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
+            background: var(--alert-success-bg);
+            color: var(--alert-success-text);
+            border: 1px solid var(--alert-success-border);
         }
 
         .form-message.error {
-            background: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
+            background: var(--alert-danger-bg);
+            color: var(--alert-danger-text);
+            border: 1px solid var(--alert-danger-border);
         }
 
         .cta-box {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: var(--light);
             padding: 3rem;
-            border-radius: 10px;
+            border-radius: var(--radius);
             text-align: center;
             margin: 3rem 0;
         }
@@ -577,7 +570,7 @@
 
                 <div class="tier-section">
                     <h4>Branding Benefits</h4>
-                    <p style="color: #555; margin-bottom: 0.8rem;">Prominent Company Logo Placement on:</p>
+                    <p style="color: var(--ink-soft); margin-bottom: 0.8rem;">Prominent Company Logo Placement on:</p>
                     <ul class="tier-benefits">
                         <li>Race Bikes (x2)</li>
                         <li>Riders Leathers (x2)</li>
@@ -615,7 +608,7 @@
 
                 <div class="tier-section">
                     <h4>Branding Benefits</h4>
-                    <p style="color: #555; margin-bottom: 0.8rem;">Company Logo added to:</p>
+                    <p style="color: var(--ink-soft); margin-bottom: 0.8rem;">Company Logo added to:</p>
                     <ul class="tier-benefits">
                         <li>Team Race Truck</li>
                         <li>Garage Boarding</li>
@@ -659,7 +652,7 @@
 
                 <div class="tier-section">
                     <h4>Branding Benefits</h4>
-                    <p style="color: #555; margin-bottom: 0.8rem;">Company Logo added to:</p>
+                    <p style="color: var(--ink-soft); margin-bottom: 0.8rem;">Company Logo added to:</p>
                     <ul class="tier-benefits">
                         <li>Harrison Dessoy Helmet, side of visor and top visor strip</li>
                         <li>Belly Pan of Race Bike</li>

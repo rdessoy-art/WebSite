@@ -7,7 +7,7 @@ description: Add or update a product on the merchandise page — image optimizat
 
 ## The one hard rule: optimize the image first
 
-Product photos arrive as 8–9 MB design-export PNGs. The merchandise page once carried ~49 MB of them. Before anything else, run the source image through the `optimize-image` skill: **WebP, ≤300 KB, ~800 px on the long edge** (cards render ~400 px tall), lowercase-hyphenated name like `hoody-2026-front.webp`. Never commit the raw export.
+Product photos arrive as 8–9 MB design-export PNGs. The merchandise page once carried ~49 MB of them. Before anything else, run the source image through the `optimize-image` skill (`tools/optimise_images.py`, original kept in `images-src/`): **WebP/AVIF, ≤200 KB per file, ~800 px on the long edge** (cards render ~400 px tall), lowercase-hyphenated name like `hoody-2026-front.webp`. Never commit the raw export.
 
 ## How purchases work here
 

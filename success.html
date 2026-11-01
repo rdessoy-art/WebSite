@@ -18,6 +18,7 @@
     <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
     <meta name="robots" content="noindex">
     <title>Order Success - Harrison Dessoy Racing</title>
+    <link rel="stylesheet" href="css/tokens.css">
     <style>
         * {
             margin: 0;
@@ -25,19 +26,10 @@
             box-sizing: border-box;
         }
 
-        :root {
-            --primary: #e63946;
-            --secondary: #1d3557;
-            --accent: #f1faee;
-            --dark: #0a0a0a;
-            --light: #ffffff;
-            --success: #4caf50;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+body {
+            font-family: var(--font-sans);
             line-height: 1.6;
-            color: #333;
+            color: var(--ink);
             background: var(--light);
             min-height: 100vh;
             display: flex;
@@ -48,7 +40,7 @@
             background: linear-gradient(135deg, var(--dark) 0%, var(--secondary) 100%);
             color: var(--light);
             padding: 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            box-shadow: var(--shadow-header);
         }
 
         .header-content {
@@ -131,7 +123,7 @@
 
         .success-message {
             font-size: 1.2rem;
-            color: #555;
+            color: var(--ink-soft);
             margin-bottom: 2rem;
             line-height: 1.8;
         }
@@ -139,7 +131,7 @@
         .info-box {
             background: var(--accent);
             padding: 2rem;
-            border-radius: 10px;
+            border-radius: var(--radius);
             margin: 2rem 0;
             border-left: 5px solid var(--success);
             text-align: left;
@@ -153,7 +145,7 @@
 
         .info-box p {
             margin-bottom: 0.5rem;
-            color: #555;
+            color: var(--ink-soft);
         }
 
         .button-group {
@@ -168,7 +160,7 @@
             display: inline-block;
             padding: 1rem 2rem;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: var(--radius-sm);
             font-weight: bold;
             transition: all 0.3s;
             border: none;

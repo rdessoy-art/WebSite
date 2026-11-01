@@ -33,6 +33,7 @@
     <meta name="twitter:title" content="Merchandise - Harrison Dessoy Racing">
     <meta name="twitter:description" content="Official Harrison Dessoy Racing merchandise — HD55 caps, t-shirts, hoodies and beanies. Show your support for #55 on and off the track.">
     <meta name="twitter:image" content="https://dessoyracing.com/images/og-image-merchandise.jpg">
+    <link rel="stylesheet" href="css/tokens.css">
     <style>
         * {
             margin: 0;
@@ -40,18 +41,10 @@
             box-sizing: border-box;
         }
 
-        :root {
-            --primary: #e63946;
-            --secondary: #1d3557;
-            --accent: #f1faee;
-            --dark: #0a0a0a;
-            --light: #ffffff;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+body {
+            font-family: var(--font-sans);
             line-height: 1.6;
-            color: #333;
+            color: var(--ink);
             background: var(--light);
             min-height: 100vh;
             display: flex;
@@ -62,7 +55,7 @@
             background: linear-gradient(135deg, var(--dark) 0%, var(--secondary) 100%);
             color: var(--light);
             padding: 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            box-shadow: var(--shadow-header);
         }
 
         .header-content {
@@ -168,9 +161,9 @@
 
         .product-card {
             background: var(--light);
-            border-radius: 10px;
+            border-radius: var(--radius);
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: var(--shadow-card);
             transition: transform 0.3s;
         }
 
@@ -276,7 +269,7 @@
         }
 
         .shipping-note {
-            color: #666;
+            color: var(--ink-muted);
             font-size: 0.9rem;
             margin-top: -0.5rem;
             margin-bottom: 1rem;
@@ -284,7 +277,7 @@
         }
 
         .product-description {
-            color: #666;
+            color: var(--ink-muted);
             margin-bottom: 1rem;
             line-height: 1.6;
         }
@@ -304,10 +297,10 @@
         .color-selector select {
             width: 100%;
             padding: 0.6rem;
-            border: 2px solid #ddd;
-            border-radius: 5px;
+            border: 2px solid var(--line);
+            border-radius: var(--radius-sm);
             font-size: 1rem;
-            color: #333;
+            color: var(--ink);
             background-color: white;
             cursor: pointer;
             transition: border-color 0.3s;
@@ -334,7 +327,7 @@
             background: var(--primary);
             color: var(--light);
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: var(--radius-sm);
             font-weight: bold;
             text-align: center;
             transition: all 0.3s;
@@ -354,7 +347,7 @@
             text-align: center;
             padding: 3rem;
             background: var(--accent);
-            border-radius: 10px;
+            border-radius: var(--radius);
             margin-top: 2rem;
         }
 
@@ -365,7 +358,7 @@
         }
 
         .coming-soon-section p {
-            color: #666;
+            color: var(--ink-muted);
             font-size: 1.1rem;
         }
 
@@ -511,7 +504,7 @@
     <main id="main-content">
         <h1>Official Merchandise</h1>
 
-        <p style="font-size: 1.1rem; color: #666; margin-bottom: 2rem; line-height: 1.8;">
+        <p style="font-size: 1.1rem; color: var(--ink-muted); margin-bottom: 2rem; line-height: 1.8;">
             Show your support for Harrison Dessoy Racing with our official merchandise.
             High-quality racing gear and apparel for fans and supporters.
             All proceeds help support the racing team's season.
