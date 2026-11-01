@@ -347,6 +347,7 @@ These files exist for a reason — do not delete them:
 |------|-------|
 | `../CLAUDE.md` | Short invariants auto-loaded by Claude Code every session (points here for detail) |
 | `AUDIT.md` (this folder) | Prioritized site audit checklist (started 2026-07-10, updated as items are completed) — the authoritative list of what's done vs. outstanding |
+| `known-gaps.md` (this folder) | Register of outstanding defects (`D-`), gaps (`G-`) and enhancements (`E-`); new findings go here |
 | `FEED_SECURITY_CHANGES.md` (this folder) | Feed-rendering XSS fix + required Publisher-side sanitization — read before touching `loadCampaigns()`/`renderFeedSection()` |
 | `../.claude/skills/` | Project skills: new-page, new-sponsor-page, add-product, optimize-image, verify-site |
 | `../scripts/site-check.py` | Consistency checks (GA, footer credit, sitemap, nav, h1, noopener, image budget) — run before committing |

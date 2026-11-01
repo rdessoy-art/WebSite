@@ -68,6 +68,24 @@ Photo:
 - Logos: one `images/optimised/NAME.webp` (≤ 60 KB, ≤ 800 px). SVGs stay as they are.
 - No generated or committed image over 200 KB (`tools/check_site.py` enforces this; a few known exceptions are listed in its baseline).
 
+### Light and dark logo pairs
+
+A logo with black lettering disappears on a dark background, and white lettering disappears on white. Where a sponsor needs both, keep two originals and use the right one per surface. Rock Cameras is the worked example.
+
+1. Save both originals in `images-src/` (PNG, JPG, WebP or AVIF), e.g. `RockCameras_Logo.avif` and `RockCameras_Logo_Dark.avif`. The output name is the file name lowercased with hyphens: `rockcameras-logo.webp`, `rockcameras-logo-dark.webp`.
+2. Add both stems to `LOGO_STEMS` in `tools/optimise_images.py`. If a file is still over 60 KB, add it to `LOGO_EDGES` to cap its width (the textured dark Rock Cameras logo needed 640).
+3. Run `python3 tools/optimise_images.py` and note the width and height it prints.
+4. Use the right file per surface:
+
+| Surface | Which file |
+|---|---|
+| Home sponsor tile (white `.sponsor-logo`) | light version |
+| Home sponsor tile with `.sponsor-logo--dark` | dark version |
+| Home hero logo strip (white background) | light version |
+| Sponsor page hero (red-to-navy gradient) | dark version |
+
+Update `width`/`height` on every `<img>` you change, and never add inline sizes or backgrounds to the tile.
+
 ## 6. Motion
 
 - Scroll fade-in: add nothing by hand — `index.html` adds `.reveal` to cards and an IntersectionObserver reveals them. It is off under `prefers-reduced-motion` and content is visible without JavaScript.
@@ -93,4 +111,4 @@ Photo:
 
 - `card/index.html` and `policies/*.html` have their own deliberate designs and are not covered by the checker or tokens.
 - Only `index.html` has the Phase 2 polish (fixed blurred header, hero overlay, scroll fade-in). Other pages share the tokens and font but keep their simpler static header.
-- To-do: create white-background versions of the sponsor logos (Apple creator tools) to enable a white-on-dark sponsor-tile option.
+- Outstanding work (e.g. light/dark versions of the other sponsor logos) is tracked in `_internal/known-gaps.md`, not here.

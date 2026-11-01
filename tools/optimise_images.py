@@ -42,9 +42,9 @@ REPO = Path(__file__).resolve().parent.parent
 # (sponsor pages show logos up to 400 px wide).  The header logo is only ever
 # 50 px, so it gets a much smaller file.
 LOGO_DEFAULT_EDGE = 800
-LOGO_EDGES: dict[str, int] = {"hd55-white": 100}
+LOGO_EDGES: dict[str, int] = {"hd55-white": 100, "rockcameras-logo-dark": 640}
 LOGO_STEMS = {
-    "hd55-white", "egr", "pro-bolt-logo", "rockcameras-logo",
+    "hd55-white", "egr", "pro-bolt-logo", "rockcameras-logo", "rockcameras-logo-dark",
     "arc-on-vector", "mwc-logo-black",
 }
 LOGO_BUDGET_BYTES = 60 * 1024  # "no logo over 60 KB"
@@ -53,7 +53,7 @@ QUALITY_FLOOR = {"avif": 35, "webp": 40, "jpeg": 35}  # never go below these
 
 PHOTO_WIDTHS = (480, 960, 1600)
 QUALITY = {"avif": 58, "webp": 79, "jpeg": 82}
-IMAGE_SUFFIXES = {".jpg", ".jpeg", ".jfif", ".png", ".webp"}
+IMAGE_SUFFIXES = {".jpg", ".jpeg", ".jfif", ".png", ".webp", ".avif"}
 
 
 # --------------------------------------------------------------------------
@@ -194,7 +194,7 @@ class Encoder:
         usually tiny. If that is over budget (e.g. a noisy JPEG original) fall
         back to high-quality lossy WebP."""
         im.save(target, "WEBP", lossless=True, method=6)
-        for quality in (90, 85, 80):
+        for quality in (90, 85, 80, 75, 70, 65, 60):
             if target.stat().st_size <= LOGO_BUDGET_BYTES:
                 return
             im.save(target, "WEBP", quality=quality, method=6)
