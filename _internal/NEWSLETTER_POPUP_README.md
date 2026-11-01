@@ -7,7 +7,7 @@ This guide explains how the newsletter popup works and how to add it to addition
 The newsletter popup appears after 8 seconds on every page and includes:
 - A name field for user's name
 - An email field for user's email address
-- An image of Harrison Dessoy racing (idm-assen.jpg) displayed on the left
+- An image of Harrison Dessoy racing (`images/optimised/idm-assen-*.{avif,webp,jpg}` via `<picture>`; original in `images-src/`) displayed on the left
 - Mailchimp integration for newsletter signups
 - 7-day dismissal period (won't show again for 7 days after closing)
 
@@ -67,9 +67,9 @@ const expiryTime = dismissalTime + (7 * 24 * 60 * 60 * 1000); // 7 days in milli
 ```
 
 ### Image Path
-The image path is set to `images/idm-assen.jpg`. If pages are in subdirectories, you may need to adjust the path:
-- For pages in root: `images/idm-assen.jpg`
-- For pages in subdirectories: `../images/idm-assen.jpg` or adjust as needed
+The image paths are set to `images/optimised/idm-assen-*`. If pages are in subdirectories, you may need to adjust the paths:
+- For pages in root: `images/optimised/idm-assen-960.jpg` (etc.)
+- For pages in subdirectories: `../images/optimised/...` or adjust as needed
 
 ## Features
 

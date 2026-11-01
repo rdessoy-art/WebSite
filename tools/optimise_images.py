@@ -48,6 +48,7 @@ LOGO_STEMS = {
     "arc-on-vector", "mwc-logo-black",
 }
 LOGO_BUDGET_BYTES = 60 * 1024  # "no logo over 60 KB"
+FILE_BUDGET_BYTES = 450 * 1024  # stays under site-check.py's 500 KB image warning
 
 PHOTO_WIDTHS = (480, 960, 1600)
 QUALITY = {"avif": 58, "webp": 79, "jpeg": 82}
@@ -165,8 +166,7 @@ class Encoder:
             if is_logo:
                 self._save_logo(im, job.target)
             elif job.fmt == "jpeg":
-                im.convert("RGB").save(job.target, "JPEG", quality=QUALITY["jpeg"],
-                                       optimize=True, progressive=True)
+                self._save_jpeg(im.convert("RGB"), job.target)
             elif job.fmt == "png":
                 im.save(job.target, "PNG", optimize=True)
             elif job.fmt == "webp":
@@ -174,6 +174,16 @@ class Encoder:
             elif job.fmt == "avif":
                 im.save(job.target, "AVIF", quality=QUALITY["avif"], speed=4)
         return job.target.stat().st_size
+
+    @staticmethod
+    def _save_jpeg(im: Image.Image, target: Path) -> None:
+        """JPEG is the oldest-browser fallback and the least efficient format, so
+        the biggest widths can exceed the size budget. Lower the quality in small
+        steps until the file fits (never below 60)."""
+        for quality in range(QUALITY["jpeg"], 59, -4):
+            im.save(target, "JPEG", quality=quality, optimize=True, progressive=True)
+            if target.stat().st_size <= FILE_BUDGET_BYTES:
+                return
 
     @staticmethod
     def _save_logo(im: Image.Image, target: Path) -> None:

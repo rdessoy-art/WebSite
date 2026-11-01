@@ -35,6 +35,13 @@
     overflow: hidden;
 }
 
+/* <picture> is inline by default; make it fill the image box so the img height:100% still works */
+.newsletter-popup-image picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
 .newsletter-popup-image img {
     width: 100%;
     height: 100%;
