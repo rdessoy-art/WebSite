@@ -29,6 +29,14 @@ Use the `new-page` or `new-sponsor-page` skill — they encode this checklist.
 - Every `<img>` has `alt`, `width` and `height`; below the fold add `loading="lazy" decoding="async"`.
 - Existing filenames contain spaces/mixed case; match them exactly (deploy host is case-sensitive).
 
+## Where outstanding work is recorded
+
+`_internal/known-gaps.md` is the **single register** of known defects, gaps and planned enhancements, with stable IDs (`D-1`, `G-2`, `E-3`). This file, `DESIGN.md` and `_internal/CLAUDE_CODE_GUIDE.md` describe how the site works and carry **no** outstanding work.
+
+- Found a defect you are not fixing now? Add it to the register, not a code comment.
+- Fixing one? Move the entry to *Resolved* in the same change, with the date and PR, and cite the ID in the commit (`Closes D-1`).
+- A closed decision ("we considered X and rejected it") stays in the reference doc next to the code it governs.
+
 ## Conventions
 
 - CSS is inline per page (`<style>` in head), but **all tokens live in `css/tokens.css`** (one `:root`, linked by every page): brand `--primary #e63946`, `--secondary #1d3557`, `--accent #f1faee`, `--dark`, `--light`, plus text/line/radius/shadow/type tokens. No new hard-coded hex colours, radii or shadows. Match the page you're editing.
