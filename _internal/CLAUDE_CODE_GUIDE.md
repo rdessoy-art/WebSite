@@ -123,6 +123,8 @@ All other CSS is **inline** inside `<style>` blocks in each HTML file's `<head>`
 
 **Responsive breakpoints:** 1024px, 768px, 480px
 
+**Home-page polish (2026-11):** `index.html` has a type scale and font token in `:root` (`--font-sans` is the system UI font; swap it for a self-hosted web font in one line), a hero overlay token (`--hero-overlay`, white text ≥ 5.9:1 on all three hero images), a blurred translucent header (solid fallback via `@supports`), uniform sponsor tiles (greyscale → colour on hover, colour on touch; `.sponsor-logo--dark` for logos that need a black tile) and a scroll fade-in (`.reveal`, IntersectionObserver, off under `prefers-reduced-motion`). Other pages still use their own inline CSS until the shared stylesheet lands.
+
 **Layout patterns:** CSS Grid for product grids, sponsor grids, blog card grids; Flexbox for nav, footer, hero
 
 **Sponsor page hero:** every `sponsor-*.html` shares a `.sponsor-hero` div with `.sponsor-hero h1` / `.sponsor-hero p` CSS predefined — when creating a new one, actually use the `<h1>{Sponsor Name}</h1>` (this CSS existed on all 13 pages for a long time with no `<h1>` in the HTML using it — fixed 2026-07-10, don't reintroduce the gap).
