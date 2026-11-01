@@ -42,17 +42,18 @@ REPO = Path(__file__).resolve().parent.parent
 # (sponsor pages show logos up to 400 px wide).  The header logo is only ever
 # 50 px, so it gets a much smaller file.
 LOGO_DEFAULT_EDGE = 800
-LOGO_EDGES: dict[str, int] = {"hd55-white": 100}
+LOGO_EDGES: dict[str, int] = {"hd55-white": 100, "rockcameras-logo-dark": 640}
 LOGO_STEMS = {
-    "hd55-white", "egr", "pro-bolt-logo", "rockcameras-logo",
+    "hd55-white", "egr", "pro-bolt-logo", "rockcameras-logo", "rockcameras-logo-dark",
     "arc-on-vector", "mwc-logo-black",
 }
 LOGO_BUDGET_BYTES = 60 * 1024  # "no logo over 60 KB"
-FILE_BUDGET_BYTES = 450 * 1024  # stays under site-check.py's 500 KB image warning
+FILE_BUDGET_BYTES = 200 * 1024  # no generated file over 200 KB (tools/check_site.py enforces this)
+QUALITY_FLOOR = {"avif": 35, "webp": 40, "jpeg": 35}  # never go below these
 
 PHOTO_WIDTHS = (480, 960, 1600)
 QUALITY = {"avif": 58, "webp": 79, "jpeg": 82}
-IMAGE_SUFFIXES = {".jpg", ".jpeg", ".jfif", ".png", ".webp"}
+IMAGE_SUFFIXES = {".jpg", ".jpeg", ".jfif", ".png", ".webp", ".avif"}
 
 
 # --------------------------------------------------------------------------
@@ -170,20 +171,22 @@ class Encoder:
             elif job.fmt == "png":
                 im.save(job.target, "PNG", optimize=True)
             elif job.fmt == "webp":
-                im.save(job.target, "WEBP", quality=QUALITY["webp"], method=6)
+                self._save_within_budget(im, job.target, "WEBP", "webp", method=6)
             elif job.fmt == "avif":
-                im.save(job.target, "AVIF", quality=QUALITY["avif"], speed=4)
+                self._save_within_budget(im, job.target, "AVIF", "avif", speed=4)
         return job.target.stat().st_size
 
     @staticmethod
-    def _save_jpeg(im: Image.Image, target: Path) -> None:
-        """JPEG is the oldest-browser fallback and the least efficient format, so
-        the biggest widths can exceed the size budget. Lower the quality in small
-        steps until the file fits (never below 60)."""
-        for quality in range(QUALITY["jpeg"], 59, -4):
-            im.save(target, "JPEG", quality=quality, optimize=True, progressive=True)
+    def _save_within_budget(im: Image.Image, target: Path, pil_format: str, key: str, **options) -> None:
+        """Save at the normal quality; if the file is over the size budget,
+        lower the quality in small steps (never below QUALITY_FLOOR) until it fits."""
+        for quality in range(QUALITY[key], QUALITY_FLOOR[key] - 1, -4):
+            im.save(target, pil_format, quality=quality, **options)
             if target.stat().st_size <= FILE_BUDGET_BYTES:
                 return
+
+    def _save_jpeg(self, im: Image.Image, target: Path) -> None:
+        self._save_within_budget(im, target, "JPEG", "jpeg", optimize=True, progressive=True)
 
     @staticmethod
     def _save_logo(im: Image.Image, target: Path) -> None:
@@ -191,7 +194,7 @@ class Encoder:
         usually tiny. If that is over budget (e.g. a noisy JPEG original) fall
         back to high-quality lossy WebP."""
         im.save(target, "WEBP", lossless=True, method=6)
-        for quality in (90, 85, 80):
+        for quality in (90, 85, 80, 75, 70, 65, 60):
             if target.stat().st_size <= LOGO_BUDGET_BYTES:
                 return
             im.save(target, "WEBP", quality=quality, method=6)

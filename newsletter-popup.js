@@ -1,7 +1,18 @@
 /**
  * Newsletter Popup Functions
- * Shows a newsletter signup popup after 8 seconds on every page
+ * Shows a newsletter signup popup once a visitor has had a chance to look
+ * around: after 20 seconds OR once they have scrolled about 40% of the page,
+ * whichever comes first. Not shown again for 7 days after it is dismissed.
+ * Keyboard accessible: Esc closes, Tab is kept inside the dialog, and focus
+ * returns to where it was when the dialog closes.
  */
+
+const NEWSLETTER_DELAY_MS = 20000;      // time-based trigger
+const NEWSLETTER_SCROLL_DEPTH = 0.4;    // scroll-based trigger (40% of the page)
+const NEWSLETTER_DISMISS_DAYS = 7;
+const NEWSLETTER_STORAGE_KEY = 'newsletterPopupDismissed';
+
+let newsletterPreviousFocus = null;     // element to give focus back to on close
 
 // Builds and inserts the popup + hidden iframe. Call once, synchronously,
 // before this file's own DOMContentLoaded listener runs (i.e. anywhere in a
@@ -12,8 +23,8 @@ function renderNewsletterPopup() {
 
     document.body.insertAdjacentHTML('beforeend', `
     <div id="newsletterPopup" class="newsletter-popup-overlay" style="display: none;">
-        <div class="newsletter-popup-modal">
-            <button class="newsletter-popup-close" onclick="closeNewsletterPopup()">&times;</button>
+        <div class="newsletter-popup-modal" role="dialog" aria-modal="true" aria-labelledby="newsletterTitle" tabindex="-1">
+            <button type="button" class="newsletter-popup-close" aria-label="Close" onclick="closeNewsletterPopup()">&times;</button>
             <div class="newsletter-popup-container">
                 <div class="newsletter-popup-image">
                     <picture><source type="image/avif" srcset="images/optimised/idm-assen-480.avif 480w, images/optimised/idm-assen-960.avif 960w, images/optimised/idm-assen-1600.avif 1600w" sizes="(min-width: 600px) 300px, 100vw"><source type="image/webp" srcset="images/optimised/idm-assen-480.webp 480w, images/optimised/idm-assen-960.webp 960w, images/optimised/idm-assen-1600.webp 1600w" sizes="(min-width: 600px) 300px, 100vw"><img src="images/optimised/idm-assen-960.jpg" srcset="images/optimised/idm-assen-480.jpg 480w, images/optimised/idm-assen-960.jpg 960w, images/optimised/idm-assen-1600.jpg 1600w" sizes="(min-width: 600px) 300px, 100vw" width="960" height="1200" loading="lazy" decoding="async" alt="Harrison Dessoy Racing"></picture>
@@ -43,8 +54,13 @@ function renderNewsletterPopup() {
 // Newsletter Popup Functions
 function showNewsletterPopup() {
     const popup = document.getElementById('newsletterPopup');
-    if (popup) {
+    if (popup && popup.style.display !== 'flex') {
+        newsletterPreviousFocus = document.activeElement;
         popup.style.display = 'flex';
+        // Focus the dialog itself (not the first input) so a phone keyboard
+        // does not pop up; the first Tab then lands on the first control.
+        const modal = popup.querySelector('.newsletter-popup-modal');
+        if (modal) modal.focus();
     }
 }
 
@@ -52,33 +68,79 @@ function closeNewsletterPopup() {
     const popup = document.getElementById('newsletterPopup');
     if (popup) {
         popup.style.display = 'none';
-        // Store dismissal in localStorage for 7 days
-        const dismissalTime = new Date().getTime();
-        const expiryTime = dismissalTime + (7 * 24 * 60 * 60 * 1000); // 7 days in milliseconds
-        localStorage.setItem('newsletterPopupDismissed', expiryTime.toString());
+        // Remember the dismissal. localStorage can throw (e.g. Safari private
+        // mode), so never let that break closing the popup.
+        try {
+            const expiryTime = Date.now() + (NEWSLETTER_DISMISS_DAYS * 24 * 60 * 60 * 1000);
+            localStorage.setItem(NEWSLETTER_STORAGE_KEY, expiryTime.toString());
+        } catch (e) { /* ignore */ }
+        if (newsletterPreviousFocus && typeof newsletterPreviousFocus.focus === 'function') {
+            newsletterPreviousFocus.focus();
+        }
+        newsletterPreviousFocus = null;
     }
 }
 
 function checkNewsletterPopup() {
-    const dismissalExpiry = localStorage.getItem('newsletterPopupDismissed');
-    const currentTime = new Date().getTime();
+    let dismissalExpiry = null;
+    try {
+        dismissalExpiry = localStorage.getItem(NEWSLETTER_STORAGE_KEY);
+    } catch (e) { /* storage unavailable: treat as not dismissed */ }
 
-    // Check if popup was dismissed and if 7 days have passed
-    if (dismissalExpiry && currentTime < parseInt(dismissalExpiry)) {
-        // Popup is still dismissed
+    // Still within the dismissal window: stay quiet
+    if (dismissalExpiry && Date.now() < parseInt(dismissalExpiry)) {
         return;
     }
 
-    // Clear expired dismissal
+    // Clear an expired dismissal
     if (dismissalExpiry) {
-        localStorage.removeItem('newsletterPopupDismissed');
+        try { localStorage.removeItem(NEWSLETTER_STORAGE_KEY); } catch (e) { /* ignore */ }
     }
 
-    // Show popup after 8 seconds
-    setTimeout(() => {
+    // Two triggers; whichever fires first shows the popup and cancels the other.
+    let timer = null;
+    const trigger = () => {
+        clearTimeout(timer);
+        window.removeEventListener('scroll', onScroll);
         showNewsletterPopup();
-    }, 8000);
+    };
+    const onScroll = () => {
+        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+        if (scrollable > 0 && window.scrollY / scrollable >= NEWSLETTER_SCROLL_DEPTH) {
+            trigger();
+        }
+    };
+    timer = setTimeout(trigger, NEWSLETTER_DELAY_MS);
+    window.addEventListener('scroll', onScroll, { passive: true });
 }
+
+// Keyboard: Esc closes; Tab / Shift+Tab stay inside the dialog while it is open.
+document.addEventListener('keydown', function(e) {
+    const popup = document.getElementById('newsletterPopup');
+    if (!popup || popup.style.display !== 'flex') return;
+
+    if (e.key === 'Escape') {
+        closeNewsletterPopup();
+        return;
+    }
+    if (e.key !== 'Tab') return;
+
+    const focusable = Array.from(popup.querySelectorAll(
+        'button:not([disabled]), input:not([disabled]):not([tabindex="-1"]), a[href], [tabindex]:not([tabindex="-1"])'
+    )).filter(el => el.offsetParent !== null);   // skip hidden elements (e.g. the form after success)
+    if (!focusable.length) return;
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    const modal = popup.querySelector('.newsletter-popup-modal');
+    if (e.shiftKey && (document.activeElement === first || document.activeElement === modal)) {
+        e.preventDefault();
+        last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+    }
+});
 
 // Handle newsletter form submission
 document.addEventListener('DOMContentLoaded', function() {
